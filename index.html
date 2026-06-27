@@ -34,12 +34,11 @@
             display: flex;
             align-items: center;
         }
-        /* تنظیمات عکس لوگو */
         .logo-img {
             height: 60px;
             width: auto;
             margin-left: 15px;
-            border-radius: 8px; /* کمی گرد کردن گوشه‌های لوگو */
+            border-radius: 8px;
         }
         .site-title {
             color: #2e7d32;
@@ -47,14 +46,24 @@
             margin: 0;
             font-weight: bold;
         }
-        /* تنظیمات تاریخ */
-        .date-container {
+        .date-weather-container {
             font-size: 13px;
             color: #666;
             text-align: left;
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #c8e6c9;
         }
-        .date-container div {
+        .date-weather-container div {
             margin-bottom: 4px;
+        }
+        /* استایل بخش آب و هوا */
+        .weather {
+            font-weight: bold;
+            color: #1b5e20;
+            margin-top: 5px;
+            font-size: 14px;
         }
         nav {
             background-color: #2e7d32;
@@ -81,63 +90,95 @@
         }
         .main-container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 0 20px;
-        }
-        .news-section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            padding: 20px;
-            margin-bottom: 30px;
         }
         .section-heading {
             color: #2e7d32;
             border-bottom: 2px solid #2e7d32;
             padding-bottom: 5px;
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 25px;
+            font-size: 20px;
         }
-        .featured-news {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        /* گرید خبرها */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
         }
         @media(min-width: 768px) {
-            .featured-news {
-                flex-direction: row;
+            .news-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
-        .news-image-wrapper {
-            flex: 1;
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .news-image {
             width: 100%;
-            height: auto;
-            border-radius: 6px;
+            height: 200px;
             object-fit: cover;
-            max-height: 350px;
         }
         .news-content {
-            flex: 1.5;
+            padding: 20px;
+            flex: 1;
             display: flex;
             flex-direction: column;
         }
         .news-title {
             color: #111;
-            font-size: 22px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 10px;
             line-height: 1.4;
         }
         .news-meta {
             font-size: 12px;
             color: #777;
             margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
-        .news-text {
-            font-size: 15px;
+        .news-excerpt {
+            font-size: 14px;
             color: #444;
+            margin-bottom: 15px;
             text-align: justify;
+        }
+        /* استایل دکمه و متن بازشونده */
+        details {
+            margin-top: auto;
+        }
+        summary {
+            list-style: none;
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary:hover {
+            background-color: #1b5e20;
+        }
+        .full-text {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-right: 3px solid #2e7d32;
+            font-size: 14px;
+            color: #333;
+            text-align: justify;
+            line-height: 1.7;
         }
         footer {
             background-color: #1b5e20;
@@ -154,15 +195,14 @@
     <header>
         <div class="header-top">
             <div class="logo-title">
-                <!-- فراخوانی لوگوی شما -->
                 <img class="logo-img" src="logo.jpg" alt="لوگوی گلهای رنگارنگ">
-                
                 <h1 class="site-title">گلهای رنگارنگ</h1>
             </div>
-            <div class="date-container">
-                <!-- جایگاه تاریخ شمسی و میلادی -->
+            <div class="date-weather-container">
                 <div id="jalali-date"></div>
-                <div id="gregorian-date" dir="ltr"></div>
+                <div id="gregorian-date" dir="ltr" style="text-align: right;"></div>
+                <!-- بخش آب و هوا -->
+                <div class="weather">🌤 آب و هوا: لوس سانتوس ۲°C</div>
             </div>
         </div>
     </header>
@@ -170,30 +210,90 @@
     <nav>
         <ul class="nav-links">
             <li><a href="#">صفحه اصلی</a></li>
-            <li><a href="#">سیاسی</a></li>
-            <li><a href="#">بین‌الملل</a></li>
-            <li><a href="#">درباره ما</a></li>
+            <li><a href="#">گزارش و تحقیقات علمی</a></li>
+            <li><a href="#">اقتصاد</a></li>
+            <li><a href="#">فرهنگ و هنر</a></li>
         </ul>
     </nav>
 
     <main class="main-container">
-        <section class="news-section">
-            <h2 class="section-heading">اخبار بین‌الملل</h2>
+        <h2 class="section-heading">آخرین گزارش‌ها و تحقیقات</h2>
+        
+        <div class="news-grid">
             
-            <article class="featured-news">
-                <div class="news-image-wrapper">
-                    <!-- تصویر فرضی زندان سیاسی -->
-                    <img class="news-image" src="https://images.unsplash.com/photo-1588682121305-6f6f9fc53ee7?q=80&w=600" alt="تصویر فرضی زندان سیاسی">
-                </div>
+            <!-- خبر اول -->
+            <article class="news-card">
+                <img class="news-image" src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=600" alt="حمل و نقل عمومی">
                 <div class="news-content">
-                    <h3 class="news-title">گزارش ویژه: بررسی وضعیت زندان‌های سیاسی در آمریکا</h3>
-                    <div class="news-meta">منتشر شده در: امروز | سرویس: بین‌الملل</div>
-                    <p class="news-text">
-                        در این گزارش تحلیلی، نگاهی به وضعیت نگهداری و شرایط زندانیان سیاسی در ایالات متحده آمریکا انداخته‌ایم. فعالان حقوق بشر نسبت به شرایط برخی از این بازداشتگاه‌ها ابراز نگرانی کرده‌اند و خواستار شفافیت بیشتر در روند دادرسی و برخورداری از حقوق اولیه این افراد شده‌اند. جزئیات بیشتر این پرونده همچنان توسط نهادهای مستقل در دست بررسی است.
+                    <h3 class="news-title">بررسی چالش‌ها و توسعه سیستم حمل و نقل عمومی در آمریکا</h3>
+                    <div class="news-meta">گزارشگر: سارا احمدی | سرویس: زیرساخت و توسعه</div>
+                    <p class="news-excerpt">
+                        سیستم حمل و نقل عمومی در بسیاری از شهرهای بزرگ آمریکا با چالش فرسودگی زیرساخت‌ها و نیاز به بودجه‌های کلان برای نوسازی مواجه است.
                     </p>
+                    <details>
+                        <summary>ادامه خبر</summary>
+                        <div class="full-text">
+                            بر اساس جدیدترین تحقیقات انجام شده در حوزه شهرسازی، شبکه‌های مترو و اتوبوس‌رانی در کلان‌شهرهای ایالات متحده نیازمند بازنگری جدی هستند. در این گزارش که توسط تیم تحقیقاتی مستقل تهیه شده، آمده است که سرمایه‌گذاری در بخش قطارهای سریع‌السیر و استفاده از انرژی‌های پاک در اتوبوس‌های شهری می‌تواند تا ۴۰ درصد از ترافیک و آلودگی‌های شهری بکاهد. با این حال، اختلافات بر سر تامین بودجه فدرال همچنان بزرگترین مانع بر سر راه این پروژه‌ها محسوب می‌شود.
+                        </div>
+                    </details>
                 </div>
             </article>
-        </section>
+
+            <!-- خبر دوم -->
+            <article class="news-card">
+                <img class="news-image" src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=600" alt="بودجه نیویورک">
+                <div class="news-content">
+                    <h3 class="news-title">گزارش وضعیت بودجه‌بندی سال آینده نیویورک</h3>
+                    <div class="news-meta">گزارشگر: امیرحسین داودی | سرویس: اقتصاد کلان</div>
+                    <p class="news-excerpt">
+                        شهرداری نیویورک پیش‌نویس بودجه سال آینده را با تمرکز بر کاهش هزینه‌های اداری و افزایش خدمات رفاهی به شورای شهر ارائه کرد.
+                    </p>
+                    <details>
+                        <summary>ادامه خبر</summary>
+                        <div class="full-text">
+                            لایحه بودجه سال آینده شهر نیویورک با تغییرات چشمگیری روبرو شده است. در این پیش‌نویس، بودجه بخش‌های مربوط به خدمات درمانی عمومی و ترمیم خیابان‌ها افزایش یافته، اما در مقابل، یارانه‌های اختصاص‌یافته به برخی پروژه‌های ساختمانی کاهش پیدا کرده است. تحلیل‌گران اقتصادی معتقدند این سیاست انقباضی می‌تواند در کوتاه‌مدت باعث کنترل تورم شهری شود، هرچند ممکن است اعتراض برخی از پیمانکاران بزرگ را در پی داشته باشد.
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <!-- خبر سوم -->
+            <article class="news-card">
+                <img class="news-image" src="https://images.unsplash.com/photo-1528325983791-c1bcbc354ceb?q=80&w=600" alt="روانشناسی">
+                <div class="news-content">
+                    <h3 class="news-title">تأثیر فضای مجازی بر تغییر الگوی تمرکز در بزرگسالان</h3>
+                    <div class="news-meta">گزارشگر: رضا ملکی | سرویس: روانشناسی و جامعه</div>
+                    <p class="news-excerpt">
+                        یک تحقیق جالب روانشناسی نشان می‌دهد که استفاده مداوم از محتواهای کوتاه دیجیتال چگونه سیستم پاداش‌دهی مغز را تغییر داده است.
+                    </p>
+                    <details>
+                        <summary>ادامه خبر</summary>
+                        <div class="full-text">
+                            در یک پژوهش دانشگاهی که اخیراً منتشر شده، رفتار بیش از ۲ هزار داوطلب مورد بررسی قرار گرفت. نتایج این گزارش جالب نشان می‌دهد که ترشح دوپامین هنگام تماشای ویدیوهای کوتاه به شدت بالا می‌رود و همین امر باعث می‌شود مغز برای تمرکز روی کارهای طولانی‌مدت و عمیق، دچار مشکل شود. روانشناسان توصیه می‌کنند برای بازیابی تمرکز، تکنیک‌هایی مانند «سم‌زدایی دیجیتال» به صورت دوره‌ای و محدود کردن زمان استفاده از شبکه‌های اجتماعی در طول روز به کار گرفته شود.
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <!-- خبر چهارم -->
+            <article class="news-card">
+                <img class="news-image" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600" alt="سینما و تلویزیون">
+                <div class="news-content">
+                    <h3 class="news-title">معرفی ویژه برنامه‌های تلویزیونی و سریال‌های ۲۰۲۵ و ۲۰۲۶</h3>
+                    <div class="news-meta">گزارشگر: نیلوفر داوودی | سرویس: فرهنگ و هنر</div>
+                    <p class="news-excerpt">
+                        نگاهی به جذاب‌ترین فیلم‌ها، برنامه‌های تلویزیونی و سریال‌هایی که در سال‌های پیش رو مهمان خانه‌های شما خواهند بود.
+                    </p>
+                    <details>
+                        <summary>ادامه خبر</summary>
+                        <div class="full-text">
+                            سال‌های ۲۰۲۵ و ۲۰۲۶ پر از شگفتی برای علاقه‌مندان به دنیای تصویر است. بسیاری از فرنچایزهای بزرگ سینمایی قرار است با نسخه‌های جدید به پرده نقره‌ای بازگردند. در بخش تلویزیون و شبکه‌های استریم، شاهد رشد چشمگیر بودجه برای درام‌های تاریخی و سریال‌های کره‌ای هستیم که با فضاسازی‌های کلاسیک و داستان‌های غنی، جایگاه ویژه‌ای در میان مخاطبان جهانی پیدا کرده‌اند. همچنین برنامه‌های ویژه استعدادیابی و مستندهای تعاملی از دیگر برنامه‌هایی هستند که پیش‌بینی می‌شود رکوردهای تماشا را در دو سال آینده بشکنند.
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+        </div>
     </main>
 
     <footer>
@@ -201,11 +301,11 @@
     </footer>
 
     <script>
-        // کدهای مربوط به نمایش خودکار تاریخ شمسی
+        // تاریخ شمسی
         const jalaliOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('jalali-date').innerText = new Date().toLocaleDateString('fa-IR', jalaliOptions);
 
-        // کدهای مربوط به نمایش خودکار تاریخ میلادی
+        // تاریخ میلادی
         const gregorianOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', gregorianOptions);
     </script>
