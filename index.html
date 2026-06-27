@@ -27,29 +27,34 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .logo-title {
             display: flex;
             align-items: center;
         }
-        /* بخش لوگو */
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            background-color: #2e7d32;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 12px;
-            font-weight: bold;
+        /* تنظیمات عکس لوگو */
+        .logo-img {
+            height: 60px;
+            width: auto;
             margin-left: 15px;
+            border-radius: 8px; /* کمی گرد کردن گوشه‌های لوگو */
         }
         .site-title {
             color: #2e7d32;
             font-size: 24px;
             margin: 0;
+            font-weight: bold;
+        }
+        /* تنظیمات تاریخ */
+        .date-container {
+            font-size: 13px;
+            color: #666;
+            text-align: left;
+        }
+        .date-container div {
+            margin-bottom: 4px;
         }
         nav {
             background-color: #2e7d32;
@@ -62,9 +67,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-        .nav-links li {
-            margin-left: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .nav-links a {
             color: white;
@@ -80,16 +84,6 @@
             margin: 20px auto;
             padding: 0 20px;
         }
-        /* نوار خبر فوری */
-        .ticker {
-            background-color: #e8f5e9;
-            border-right: 4px solid #2e7d32;
-            padding: 8px 15px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #1b5e20;
-            border-radius: 4px;
-        }
         .news-section {
             background-color: white;
             border-radius: 8px;
@@ -104,7 +98,6 @@
             margin-bottom: 20px;
             font-size: 18px;
         }
-        /* استایل بخش خبر تصویری */
         .featured-news {
             display: flex;
             flex-direction: column;
@@ -161,41 +154,42 @@
     <header>
         <div class="header-top">
             <div class="logo-title">
-                <div class="logo-placeholder">لوگو</div>
+                <!-- فراخوانی لوگوی شما -->
+                <img class="logo-img" src="logo.jpg" alt="لوگوی گلهای رنگارنگ">
                 
                 <h1 class="site-title">گلهای رنگارنگ</h1>
             </div>
-            <div class="date-time" style="font-size: 13px; color: #666;" id="live-date"></div>
+            <div class="date-container">
+                <!-- جایگاه تاریخ شمسی و میلادی -->
+                <div id="jalali-date"></div>
+                <div id="gregorian-date" dir="ltr"></div>
+            </div>
         </div>
     </header>
 
     <nav>
         <ul class="nav-links">
             <li><a href="#">صفحه اصلی</a></li>
-            <li><a href="#">آخرین اخبار</a></li>
-            <li><a href="#">گزارش‌ها</a></li>
+            <li><a href="#">سیاسی</a></li>
+            <li><a href="#">بین‌الملل</a></li>
             <li><a href="#">درباره ما</a></li>
         </ul>
     </nav>
 
     <main class="main-container">
-        <div class="ticker">
-            <strong>خبر فوری:</strong> وب‌سایت رسمی خبرگزاری گلهای رنگارنگ با تم اختصاصی آغاز به کار کرد.
-        </div>
-
         <section class="news-section">
-            <h2 class="section-heading">اخبار ویژه</h2>
+            <h2 class="section-heading">اخبار بین‌الملل</h2>
             
             <article class="featured-news">
                 <div class="news-image-wrapper">
-                    <img class="news-image" src="khabar1.jpg" alt="تصویر خبر">
-
+                    <!-- تصویر فرضی زندان سیاسی -->
+                    <img class="news-image" src="https://images.unsplash.com/photo-1588682121305-6f6f9fc53ee7?q=80&w=600" alt="تصویر فرضی زندان سیاسی">
                 </div>
                 <div class="news-content">
-                    <h3 class="news-title">راه‌اندازی پلتفرم جدید خبرگزاری گلهای رنگارنگ با طراحی مدرن</h3>
-                    <div class="news-meta">منتشر شده در: امروز | دسته بندی: فرهنگی و رسانه</div>
+                    <h3 class="news-title">گزارش ویژه: بررسی وضعیت زندان‌های سیاسی در آمریکا</h3>
+                    <div class="news-meta">منتشر شده در: امروز | سرویس: بین‌الملل</div>
                     <p class="news-text">
-                        امروز وب‌سایت خبرگزاری گلهای رنگارنگ رسماً فعالیت خود را آغاز کرد. این پلتفرم با هدف پوشش اخبار متنوع و با بهره‌گیری از تم اختصاصی سبز و سفید، فضایی حرفه‌ای و خبرگزاری‌گونه را برای مخاطبان خود فراهم کرده است. در به‌روزرسانی‌های بعدی، امکانات چندرسانه‌ای بیشتری به این وب‌سایت اضافه خواهد شد.
+                        در این گزارش تحلیلی، نگاهی به وضعیت نگهداری و شرایط زندانیان سیاسی در ایالات متحده آمریکا انداخته‌ایم. فعالان حقوق بشر نسبت به شرایط برخی از این بازداشتگاه‌ها ابراز نگرانی کرده‌اند و خواستار شفافیت بیشتر در روند دادرسی و برخورداری از حقوق اولیه این افراد شده‌اند. جزئیات بیشتر این پرونده همچنان توسط نهادهای مستقل در دست بررسی است.
                     </p>
                 </div>
             </article>
@@ -207,9 +201,13 @@
     </footer>
 
     <script>
-        // نمایش اتوماتیک تاریخ امروز به شمسی در هدر سایت
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('live-date').innerText = new Date().toLocaleDateString('fa-IR', options);
+        // کدهای مربوط به نمایش خودکار تاریخ شمسی
+        const jalaliOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('jalali-date').innerText = new Date().toLocaleDateString('fa-IR', jalaliOptions);
+
+        // کدهای مربوط به نمایش خودکار تاریخ میلادی
+        const gregorianOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', gregorianOptions);
     </script>
 </body>
 </html>
