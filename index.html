@@ -3,48 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت شخصی من</title>
+    <title>خبرگزاری گلهای رنگارنگ</title>
     <style>
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            text-align: center;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background-color: #f5f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #2e7d32;
+            padding: 15px 20px;
+        }
+        .header-top {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 90%;
+        .logo-title {
+            display: flex;
+            align-items: center;
         }
-        h1 { color: #2c3e50; }
-        p { font-size: 18px; line-height: 1.6; }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 25px;
-            background-color: #3498db;
+        /* بخش لوگو */
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background-color: #2e7d32;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+        .site-title {
+            color: #2e7d32;
+            font-size: 24px;
+            margin: 0;
+        }
+        nav {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 0;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links a {
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
+            font-size: 14px;
+            font-weight: bold;
         }
-        .btn:hover { background-color: #2980b9; }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        /* نوار خبر فوری */
+        .ticker {
+            background-color: #e8f5e9;
+            border-right: 4px solid #2e7d32;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #1b5e20;
+            border-radius: 4px;
+        }
+        .news-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .section-heading {
+            color: #2e7d32;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        /* استایل بخش خبر تصویری */
+        .featured-news {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media(min-width: 768px) {
+            .featured-news {
+                flex-direction: row;
+            }
+        }
+        .news-image-wrapper {
+            flex: 1;
+        }
+        .news-image {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            object-fit: cover;
+            max-height: 350px;
+        }
+        .news-content {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-title {
+            color: #111;
+            font-size: 22px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .news-meta {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        .news-text {
+            font-size: 15px;
+            color: #444;
+            text-align: justify;
+        }
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>سلام! به سایت من خوش آمدید</h1>
-        <p>این اولین وب‌سایت من است که با استفاده از گیت‌هاب روی موبایل ساخته‌ام.</p>
-        <a href="#" class="btn">ارتباط با من</a>
-    </div>
+
+    <header>
+        <div class="header-top">
+            <div class="logo-title">
+                <div class="logo-placeholder">لوگو</div>
+                
+                <h1 class="site-title">گلهای رنگارنگ</h1>
+            </div>
+            <div class="date-time" style="font-size: 13px; color: #666;" id="live-date"></div>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">صفحه اصلی</a></li>
+            <li><a href="#">آخرین اخبار</a></li>
+            <li><a href="#">گزارش‌ها</a></li>
+            <li><a href="#">درباره ما</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        <div class="ticker">
+            <strong>خبر فوری:</strong> وب‌سایت رسمی خبرگزاری گلهای رنگارنگ با تم اختصاصی آغاز به کار کرد.
+        </div>
+
+        <section class="news-section">
+            <h2 class="section-heading">اخبار ویژه</h2>
+            
+            <article class="featured-news">
+                <div class="news-image-wrapper">
+                    <img class="news-image" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=600" alt="تصویر خبر">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">راه‌اندازی پلتفرم جدید خبرگزاری گلهای رنگارنگ با طراحی مدرن</h3>
+                    <div class="news-meta">منتشر شده در: امروز | دسته بندی: فرهنگی و رسانه</div>
+                    <p class="news-text">
+                        امروز وب‌سایت خبرگزاری گلهای رنگارنگ رسماً فعالیت خود را آغاز کرد. این پلتفرم با هدف پوشش اخبار متنوع و با بهره‌گیری از تم اختصاصی سبز و سفید، فضایی حرفه‌ای و خبرگزاری‌گونه را برای مخاطبان خود فراهم کرده است. در به‌روزرسانی‌های بعدی، امکانات چندرسانه‌ای بیشتری به این وب‌سایت اضافه خواهد شد.
+                    </p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>ساخته شده توسط گروه گلهای رنگارنگ</p>
+    </footer>
+
+    <script>
+        // نمایش اتوماتیک تاریخ امروز به شمسی در هدر سایت
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('live-date').innerText = new Date().toLocaleDateString('fa-IR', options);
+    </script>
 </body>
 </html>
