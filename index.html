@@ -28,7 +28,7 @@
             max-width: 1200px;
             margin: 0 auto;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         .logo-title {
             display: flex;
@@ -46,24 +46,32 @@
             margin: 0;
             font-weight: bold;
         }
-        .date-weather-container {
-            font-size: 13px;
-            color: #666;
-            text-align: left;
+        /* استایل جدید و مدرن بخش تاریخ و هواشناسی */
+        .info-widget {
             background: #e8f5e9;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 10px 15px;
+            border-radius: 8px;
             border: 1px solid #c8e6c9;
+            min-width: 200px;
         }
-        .date-weather-container div {
-            margin-bottom: 4px;
+        .date-text {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed #a5d6a7;
+            padding-bottom: 5px;
         }
-        /* استایل بخش آب و هوا */
-        .weather {
+        .weather-container {
+            font-size: 14px;
             font-weight: bold;
             color: #1b5e20;
-            margin-top: 5px;
-            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .weather-text {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
         }
         nav {
             background-color: #2e7d32;
@@ -100,7 +108,6 @@
             margin-bottom: 25px;
             font-size: 20px;
         }
-        /* گرید خبرها */
         .news-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -149,36 +156,20 @@
             margin-bottom: 15px;
             text-align: justify;
         }
-        /* استایل دکمه و متن بازشونده */
-        details {
+        /* دکمه لینک به صفحه جدید */
+        .read-more-btn {
             margin-top: auto;
-        }
-        summary {
-            list-style: none;
-            display: inline-block;
+            align-self: flex-start;
             background-color: #2e7d32;
             color: white;
             padding: 8px 15px;
             border-radius: 4px;
             font-size: 13px;
-            cursor: pointer;
+            text-decoration: none;
             transition: background 0.3s;
         }
-        summary::-webkit-details-marker {
-            display: none;
-        }
-        summary:hover {
+        .read-more-btn:hover {
             background-color: #1b5e20;
-        }
-        .full-text {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-right: 3px solid #2e7d32;
-            font-size: 14px;
-            color: #333;
-            text-align: justify;
-            line-height: 1.7;
         }
         footer {
             background-color: #1b5e20;
@@ -198,12 +189,18 @@
                 <img class="logo-img" src="logo.jpg" alt="لوگوی گلهای رنگارنگ">
                 <h1 class="site-title">گلهای رنگارنگ</h1>
             </div>
-            <div class="date-weather-container">
-                <div id="jalali-date"></div>
-                <div id="gregorian-date" dir="ltr" style="text-align: right;"></div>
-                <!-- بخش آب و هوا -->
-                <div class="weather">🌤 آب و هوا: لوس سانتوس ۲°C</div>
+            
+            <!-- ویجت تاریخ و هواشناسی زنده -->
+            <div class="info-widget">
+                <div class="date-text">
+                    <span id="jalali-date"></span> | <span id="gregorian-date" dir="ltr"></span>
+                </div>
+                <div class="weather-container">
+                    <span>♨️ هواشناسی: </span>
+                    <span id="live-weather" class="weather-text">لوسانتوس 4+</span>
+                </div>
             </div>
+
         </div>
     </header>
 
@@ -230,12 +227,7 @@
                     <p class="news-excerpt">
                         سیستم حمل و نقل عمومی در بسیاری از شهرهای بزرگ آمریکا با چالش فرسودگی زیرساخت‌ها و نیاز به بودجه‌های کلان برای نوسازی مواجه است.
                     </p>
-                    <details>
-                        <summary>ادامه خبر</summary>
-                        <div class="full-text">
-                            بر اساس جدیدترین تحقیقات انجام شده در حوزه شهرسازی، شبکه‌های مترو و اتوبوس‌رانی در کلان‌شهرهای ایالات متحده نیازمند بازنگری جدی هستند. در این گزارش که توسط تیم تحقیقاتی مستقل تهیه شده، آمده است که سرمایه‌گذاری در بخش قطارهای سریع‌السیر و استفاده از انرژی‌های پاک در اتوبوس‌های شهری می‌تواند تا ۴۰ درصد از ترافیک و آلودگی‌های شهری بکاهد. با این حال، اختلافات بر سر تامین بودجه فدرال همچنان بزرگترین مانع بر سر راه این پروژه‌ها محسوب می‌شود.
-                        </div>
-                    </details>
+                    <a href="news1.html" class="read-more-btn">ادامه خبر</a>
                 </div>
             </article>
 
@@ -248,30 +240,20 @@
                     <p class="news-excerpt">
                         شهرداری نیویورک پیش‌نویس بودجه سال آینده را با تمرکز بر کاهش هزینه‌های اداری و افزایش خدمات رفاهی به شورای شهر ارائه کرد.
                     </p>
-                    <details>
-                        <summary>ادامه خبر</summary>
-                        <div class="full-text">
-                            لایحه بودجه سال آینده شهر نیویورک با تغییرات چشمگیری روبرو شده است. در این پیش‌نویس، بودجه بخش‌های مربوط به خدمات درمانی عمومی و ترمیم خیابان‌ها افزایش یافته، اما در مقابل، یارانه‌های اختصاص‌یافته به برخی پروژه‌های ساختمانی کاهش پیدا کرده است. تحلیل‌گران اقتصادی معتقدند این سیاست انقباضی می‌تواند در کوتاه‌مدت باعث کنترل تورم شهری شود، هرچند ممکن است اعتراض برخی از پیمانکاران بزرگ را در پی داشته باشد.
-                        </div>
-                    </details>
+                    <a href="news2.html" class="read-more-btn">ادامه خبر</a>
                 </div>
             </article>
 
-            <!-- خبر سوم -->
+            <!-- خبر سوم (عکس اصلاح شد) -->
             <article class="news-card">
-                <img class="news-image" src="https://images.unsplash.com/photo-1528325983791-c1bcbc354ceb?q=80&w=600" alt="روانشناسی">
+                <img class="news-image" src="https://images.unsplash.com/photo-1551847677-dc82d7624c1c?q=80&w=600" alt="روانشناسی">
                 <div class="news-content">
                     <h3 class="news-title">تأثیر فضای مجازی بر تغییر الگوی تمرکز در بزرگسالان</h3>
                     <div class="news-meta">گزارشگر: رضا ملکی | سرویس: روانشناسی و جامعه</div>
                     <p class="news-excerpt">
                         یک تحقیق جالب روانشناسی نشان می‌دهد که استفاده مداوم از محتواهای کوتاه دیجیتال چگونه سیستم پاداش‌دهی مغز را تغییر داده است.
                     </p>
-                    <details>
-                        <summary>ادامه خبر</summary>
-                        <div class="full-text">
-                            در یک پژوهش دانشگاهی که اخیراً منتشر شده، رفتار بیش از ۲ هزار داوطلب مورد بررسی قرار گرفت. نتایج این گزارش جالب نشان می‌دهد که ترشح دوپامین هنگام تماشای ویدیوهای کوتاه به شدت بالا می‌رود و همین امر باعث می‌شود مغز برای تمرکز روی کارهای طولانی‌مدت و عمیق، دچار مشکل شود. روانشناسان توصیه می‌کنند برای بازیابی تمرکز، تکنیک‌هایی مانند «سم‌زدایی دیجیتال» به صورت دوره‌ای و محدود کردن زمان استفاده از شبکه‌های اجتماعی در طول روز به کار گرفته شود.
-                        </div>
-                    </details>
+                    <a href="news3.html" class="read-more-btn">ادامه خبر</a>
                 </div>
             </article>
 
@@ -284,12 +266,7 @@
                     <p class="news-excerpt">
                         نگاهی به جذاب‌ترین فیلم‌ها، برنامه‌های تلویزیونی و سریال‌هایی که در سال‌های پیش رو مهمان خانه‌های شما خواهند بود.
                     </p>
-                    <details>
-                        <summary>ادامه خبر</summary>
-                        <div class="full-text">
-                            سال‌های ۲۰۲۵ و ۲۰۲۶ پر از شگفتی برای علاقه‌مندان به دنیای تصویر است. بسیاری از فرنچایزهای بزرگ سینمایی قرار است با نسخه‌های جدید به پرده نقره‌ای بازگردند. در بخش تلویزیون و شبکه‌های استریم، شاهد رشد چشمگیر بودجه برای درام‌های تاریخی و سریال‌های کره‌ای هستیم که با فضاسازی‌های کلاسیک و داستان‌های غنی، جایگاه ویژه‌ای در میان مخاطبان جهانی پیدا کرده‌اند. همچنین برنامه‌های ویژه استعدادیابی و مستندهای تعاملی از دیگر برنامه‌هایی هستند که پیش‌بینی می‌شود رکوردهای تماشا را در دو سال آینده بشکنند.
-                        </div>
-                    </details>
+                    <a href="news4.html" class="read-more-btn">ادامه خبر</a>
                 </div>
             </article>
 
@@ -301,13 +278,31 @@
     </footer>
 
     <script>
-        // تاریخ شمسی
-        const jalaliOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        // تنظیم تاریخ
+        const jalaliOptions = { year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('jalali-date').innerText = new Date().toLocaleDateString('fa-IR', jalaliOptions);
+        document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', jalaliOptions);
 
-        // تاریخ میلادی
-        const gregorianOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', gregorianOptions);
+        // انیمیشن زنده هواشناسی
+        const weatherCities = [
+            "لوسانتوس 4+",
+            "سان آندریاس 3+",
+            "سان فییرو 1+",
+            "لیبرتی سیتی 1+",
+            "وای سیتی 4+",
+            "کارل سیتی 3+"
+        ];
+        let weatherIndex = 0;
+        const weatherEl = document.getElementById('live-weather');
+        
+        setInterval(() => {
+            weatherEl.style.opacity = 0; // محو شدن
+            setTimeout(() => {
+                weatherIndex = (weatherIndex + 1) % weatherCities.length;
+                weatherEl.innerText = weatherCities[weatherIndex];
+                weatherEl.style.opacity = 1; // ظاهر شدن شهر جدید
+            }, 500);
+        }, 3000); // تغییر هر 3 ثانیه
     </script>
 </body>
 </html>
