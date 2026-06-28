@@ -17,7 +17,8 @@
         
         .article-container { max-width: 750px; margin: 0 auto; padding: 0 20px 60px; text-align: justify; }
         
-        h1 { font-size: 34px; line-height: 1.4; margin-bottom: 20px; letter-spacing: normal; word-spacing: normal; }
+        /* تراز کردن راست برای جلوگیری از کشیدگی حروف در تیتر */
+        h1 { font-size: 34px; line-height: 1.4; margin-bottom: 20px; text-align: right; }
         
         .article-meta { font-family: Tahoma, sans-serif; font-size: 13px; color: #555; margin-bottom: 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0; }
         .article-meta span { display: block; margin-bottom: 5px; }
@@ -28,7 +29,8 @@
         
         p { font-size: 18px; margin-bottom: 25px; color: #222; }
 
-        .ad-container { margin-top: 50px; padding: 20px 15px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; background-color: #fafafa; }
+        /* محدود کردن سایز تبلیغات دقیقا مشابه صفحه اصلی */
+        .ad-container { max-width: 600px; margin: 50px auto 0; padding: 15px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; background-color: #fafafa; }
         .ad-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px; text-align: center; font-family: Tahoma, sans-serif; }
         .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
         .ad-thumb { width: 65px; height: 65px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
@@ -52,8 +54,9 @@
         </div>
 
         <figure class="article-hero">
-            <img src="https://images.unsplash.com/photo-1596720426673-e4e14290f1cc?q=80&w=1200](https://images.unsplash.com/photo-1596720426673-e4e14290f1cc?q=80&w=1200)
-            <figcaption>دولت ترامپ تأکید دارد که رئیس‌جمهور می‌تواند اقدامات کارمندان فدرال، از جمله دادستان‌ها و قضات مهاجرت را هدایت کند. اعتبار عکس: Unsplash</figcaption>
+            <!-- عکس ترامپ در حال امضا در کاخ سفید -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Donald_Trump_signs_an_Executive_Order.jpg/1024px-Donald_Trump_signs_an_Executive_Order.jpg" alt="Trump in White House Oval Office">
+            <figcaption>دولت ترامپ تأکید دارد که رئیس‌جمهور می‌تواند اقدامات کارمندان فدرال، از جمله دادستان‌ها و قضات مهاجرت را هدایت کند.</figcaption>
         </figure>
 
         <p>در گوشه کوچکی از دنیای حقوق که چنین مسائلی را دنبال می‌کند، حکم ماه مارس همچون صاعقه‌ای فرود آمد.</p>
@@ -74,7 +77,7 @@
 
         <p>سخنگوی این هیئت نیز از اظهارنظر خودداری کرد.</p>
         
-        <!-- تبلیغات اضافه شده به انتهای خبر -->
+        <!-- تبلیغات کوچک انتهای خبر -->
         <div class="ad-container">
             <span class="ad-label">تبلیغات</span>
             <div class="ad-flex">
@@ -89,4 +92,3 @@
 
 </body>
 </html>
-
