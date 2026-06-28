@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ترامپ یک قرارداد معدنی میلیارد دلاری بست - گلهای رنگارنگ</title>
-    <!-- اضافه کردن فونت‌های زیبای فارسی -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; 
-            background-color: #ffffff; 
-            color: #000000; 
-            line-height: 1.9; 
-        }
+        body { font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; background-color: #ffffff; color: #000000; line-height: 1.9; }
+        
         header { text-align: center; padding: 20px; border-bottom: 1px solid #000; margin-bottom: 40px; }
         .site-title { font-size: 32px; font-family: 'Lalezar', cursive; text-decoration: none; color: #000; }
         
         .article-container { max-width: 750px; margin: 0 auto; padding: 0 20px 60px; text-align: justify; }
-        h1 { font-size: 34px; line-height: 1.4; margin-bottom: 20px; }
+        
+        /* اصلاح فاصله‌های تیتر خبر */
+        h1 { font-size: 34px; line-height: 1.3; margin-bottom: 20px; letter-spacing: normal; word-spacing: normal; }
         
         .article-meta { font-family: Tahoma, sans-serif; font-size: 13px; color: #555; margin-bottom: 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0; }
         .article-meta span { display: block; margin-bottom: 5px; }
@@ -31,6 +28,14 @@
         .article-hero figcaption { font-size: 12px; color: #666; margin-top: 8px; text-align: right; border-right: 2px solid #ddd; padding-right: 10px; }
         
         p { font-size: 18px; margin-bottom: 25px; color: #222; }
+
+        /* استایل تبلیغات انتهای خبر */
+        .ad-container { margin-top: 50px; padding: 20px 15px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; background-color: #fafafa; }
+        .ad-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px; text-align: center; font-family: Tahoma, sans-serif; }
+        .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
+        .ad-thumb { width: 65px; height: 65px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .ad-content { font-size: 15px; font-weight: bold; color: #000; }
+        .ad-subtext { font-weight: normal; font-size: 12px; color: #555; display: block; margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -49,7 +54,6 @@
         </div>
 
         <figure class="article-hero">
-            <!-- عکس ترامپ و پسرش -->
             <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son">
             <figcaption>پسران ترامپ از قراردادهای مربوط به دوران ریاست‌جمهوری پدرشان سود می‌برند.</figcaption>
         </figure>
@@ -67,6 +71,18 @@
         <p>در فاصله چند هفته پس از مذاکرات هتل سنت رجیس، سرمایه‌گذارانی از شرکت "دومیناری سکیوریتیز" (Dominari Securities) - که در برج ترامپ در نیویورک مستقر است و بخشی از سهام آن متعلق به دو پسر ارشد رئیس‌جمهور، یعنی دونالد ترامپ جونیور و اریک ترامپ است - با شرکای دیگر همراه شدند تا ۲۰ درصد از سهام پروژه قزاقستان را در اختیار بگیرند.</p>
 
         <p>تقریباً در همان زمان، "کانتور فیتزجرالد" (Cantor Fitzgerald)، یک شرکت سرمایه‌گذاری تحت کنترل خانواده آقای لوتنیک و با نظارت پسرانش، براندون و کایل لوتنیک، به یکی از سرمایه‌گذاران اصلی که با دومیناری در توافق قزاقستان همکاری می‌کرد، کمک کرد تا ۲۱۰ میلیون دلار سرمایه جدید برای یک نهاد مرتبط جمع‌آوری کند. چنین دورهای جذب سرمایه‌ای معمولاً میلیون‌ها دلار کارمزد برای کانتور به همراه دارد.</p>
+        
+        <!-- تبلیغات اضافه شده به انتهای خبر -->
+        <div class="ad-container">
+            <span class="ad-label">تبلیغات</span>
+            <div class="ad-flex">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=200" alt="لوازم خانگی" class="ad-thumb">
+                <div class="ad-content">
+                    خرید نقدی و اقساطی لوازم خانگی لایت هوم
+                    <span class="ad-subtext">آدرس: شهر لوسانتوس، خیابان شمال غربی A2، روبه‌روی بانک</span>
+                </div>
+            </div>
+        </div>
     </main>
 
 </body>
