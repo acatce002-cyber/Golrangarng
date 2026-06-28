@@ -4,34 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>گلهای رنگارنگ</title>
-    <!-- اضافه کردن فونت‌های زیبای فارسی -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; 
-            background-color: #ffffff; 
-            color: #000000; 
-            line-height: 1.6; 
-        }
+        body { font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; background-color: #ffffff; color: #000000; line-height: 1.6; }
         
         header { text-align: center; padding: 30px 20px 10px; }
         .logo-title-container { margin-bottom: 15px; }
-        .site-title { 
-            font-size: 52px; 
-            font-family: 'Lalezar', cursive; /* فونت مخصوص روزنامه برای عنوان سایت */
-            color: #000;
-        }
+        .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; }
         .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
 
         .ticker-bar { font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
 
-        .ad-container { max-width: 600px; margin: 30px auto; text-align: center; padding: 15px; border: 1px solid #ddd; background-color: #fafafa; }
-        .ad-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; font-family: Tahoma, sans-serif; }
+        /* استایل جدید و مدرن تبلیغات */
+        .ad-container { max-width: 600px; margin: 30px auto; padding: 15px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; background-color: #fafafa; }
+        .ad-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px; text-align: center; font-family: Tahoma, sans-serif; }
+        .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
+        .ad-thumb { width: 65px; height: 65px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .ad-content { font-size: 15px; font-weight: bold; }
+        .ad-subtext { font-weight: normal; font-size: 12px; color: #555; display: block; margin-top: 4px; }
 
         .main-news { max-width: 800px; margin: 40px auto; padding: 0 20px; }
         .news-link { text-decoration: none; color: #000; display: block; text-align: right; }
@@ -59,18 +53,21 @@
         <span>🌤 لوسانتوس ۲۲°C | سان فیرو ۱۷°C | سان آندریاس ۲۲°C</span>
     </div>
 
+    <!-- تبلیغات با عکس کوچک -->
     <div class="ad-container">
         <span class="ad-label">تبلیغات</span>
-        <div class="ad-content">
-            فروش ویژه گوشی موبایل ای‌پکس (Apex)<br>
-            <span style="font-weight: normal; font-size: 13px;">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
+        <div class="ad-flex">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
+            <div class="ad-content">
+                فروش ویژه گوشی موبایل ای‌پکس (Apex)
+                <span class="ad-subtext">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
+            </div>
         </div>
     </div>
 
     <main class="main-news">
         <a href="news1.html" class="news-link">
             <article>
-                <!-- عکس ترامپ و پسرش -->
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
                 
                 <h2 class="news-headline">ترامپ یک قرارداد معدنی میلیارد دلاری بست؛ پسرانش در صف سودآوری</h2>
