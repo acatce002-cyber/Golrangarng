@@ -14,10 +14,13 @@
         
         header { text-align: center; padding: 30px 20px 10px; }
         .logo-title-container { margin-bottom: 15px; }
-        .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; }
+        .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; text-decoration: none; }
         .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
 
         .ticker-bar { font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
+        
+        /* استایل مربوط به انیمیشن نرم آب‌وهوا */
+        .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
 
         .ad-container { max-width: 600px; margin: 30px auto; padding: 15px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; background-color: #fafafa; }
         .ad-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px; text-align: center; font-family: Tahoma, sans-serif; }
@@ -37,6 +40,12 @@
         
         .divider { border: 0; border-top: 1px solid #ddd; margin: 40px 0; }
 
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 50px 0 20px; }
+        .pagination a { text-decoration: none; color: #000; padding: 8px 14px; border: 1px solid #ddd; border-radius: 4px; font-size: 15px; font-family: Tahoma, sans-serif; transition: 0.3s; }
+        .pagination a.active { background-color: #000; color: #fff; border-color: #000; cursor: default; }
+        .pagination a:hover:not(.active) { background-color: #f4f4f4; }
+        .pagination a.next-prev { font-weight: bold; padding: 8px 18px; }
+
         footer { text-align: center; font-size: 12px; color: #666; margin-top: 60px; padding: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; }
     </style>
 </head>
@@ -44,14 +53,15 @@
 
     <header>
         <div class="logo-title-container">
-            <h1 class="site-title">گلهای رنگارنگ</h1>
+            <a href="index.html" style="text-decoration: none;"><h1 class="site-title">گلهای رنگارنگ</h1></a>
         </div>
         <div class="header-date" id="gregorian-date" dir="ltr"></div>
     </header>
 
+    <!-- نوار آپدیت شده و متحرک ساعت و آب‌وهوا -->
     <div class="ticker-bar">
         <span>⏱ ساعت: <span id="live-time"></span></span>
-        <span>🌤 لوسانتوس ۲۲°C | سان فیرو ۱۷°C | سان آندریاس ۲۲°C</span>
+        <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۲°C | 🌤 سان آندریاس ۲۱°C | ☁️ سان فییرو ۲۰°C</span></span>
     </div>
 
     <div class="ad-container">
@@ -67,7 +77,6 @@
 
     <main class="main-news">
         
-        <!-- خبر اول (آمازون) - آدرس دهی به پوشه news و images -->
         <a href="news/news2.html" class="news-link">
             <article>
                 <img src="images/amazon.jpg" alt="Amazon Prime Delivery" class="front-page-img">
@@ -89,7 +98,6 @@
 
         <hr class="divider">
 
-        <!-- خبر دوم (معدن ترامپ) -->
         <a href="news/news1.html" class="news-link">
             <article>
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
@@ -98,6 +106,12 @@
             </article>
         </a>
 
+        <div class="pagination">
+            <a href="index.html" class="active">۱</a>
+            <a href="page2.html">۲</a>
+            <a href="page2.html" class="next-prev">صفحه بعدی &laquo;</a>
+        </div>
+
     </main>
 
     <footer>
@@ -105,15 +119,37 @@
     </footer>
 
     <script>
+        // تاریخ
         const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
 
+        // ساعت متحرک
         function updateTime() {
             const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
             document.getElementById('live-time').innerText = new Date().toLocaleTimeString('fa-IR', timeOptions);
         }
         setInterval(updateTime, 1000);
         updateTime();
+
+        // آب‌وهوای متحرک سه تایی
+        const weatherChunks = [
+            "☀️ لوسانتوس ۲۲°C | 🌤 سان آندریاس ۲۱°C | ☁️ سان فییرو ۲۰°C",
+            "🌦 لیبرتی سیتی ۲۳°C | ☀️ وای سیتی ۲۴°C | 🌥 کارل سیتی ۱۷°C"
+        ];
+        
+        let weatherIdx = 0;
+        const weatherEl = document.getElementById('live-weather');
+        
+        // هر ۴ ثانیه یک بار تغییر می‌کند
+        setInterval(() => {
+            weatherEl.style.opacity = 0; // ابتدا متن را محو می‌کند
+            setTimeout(() => {
+                weatherIdx = (weatherIdx + 1) % weatherChunks.length;
+                weatherEl.innerText = weatherChunks[weatherIdx]; // متن را عوض می‌کند
+                weatherEl.style.opacity = 1; // متن جدید را ظاهر می‌کند
+            }, 500); // نیم ثانیه صبر برای اتمام محو شدن
+        }, 4000);
     </script>
 </body>
 </html>
+
