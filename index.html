@@ -3,307 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خبرگزاری گلهای رنگارنگ</title>
+    <title>گلهای رنگارنگ</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* تنظیمات پایه نیویورک تایمز */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: Georgia, 'Times New Roman', Tahoma, serif; 
+            background-color: #ffffff; 
+            color: #000000; 
+            line-height: 1.6; 
         }
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background-color: #f5f7f6;
-            color: #333;
-            line-height: 1.6;
-        }
+        
+        /* هدر (بالای سایت) */
         header {
-            background-color: #ffffff;
-            border-bottom: 3px solid #2e7d32;
-            padding: 15px 20px;
+            text-align: center;
+            padding: 30px 20px 10px;
         }
-        .header-top {
+        .logo-title-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
             gap: 15px;
+            margin-bottom: 15px;
         }
-        .logo-title {
-            display: flex;
-            align-items: center;
-        }
-        .logo-img {
-            height: 60px;
+        .site-logo {
+            height: 50px;
             width: auto;
-            margin-left: 15px;
-            border-radius: 8px;
         }
         .site-title {
-            color: #2e7d32;
-            font-size: 24px;
-            margin: 0;
+            font-size: 42px;
             font-weight: bold;
+            letter-spacing: -1px;
+            font-family: 'Times New Roman', Times, serif; /* فونت کلاسیک */
         }
-        /* استایل جدید و مدرن بخش تاریخ و هواشناسی */
-        .info-widget {
-            background: #e8f5e9;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid #c8e6c9;
-            min-width: 200px;
-        }
-        .date-text {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 5px;
-            border-bottom: 1px dashed #a5d6a7;
-            padding-bottom: 5px;
-        }
-        .weather-container {
+        .header-date {
             font-size: 14px;
-            font-weight: bold;
-            color: #1b5e20;
+            font-family: Arial, sans-serif;
+            border-top: 1px solid #000;
+            border-bottom: 3px solid #000;
+            padding: 8px 0;
+            margin: 0 20px;
+        }
+
+        /* نوار زنده ساعت و هواشناسی */
+        .ticker-bar {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ddd;
+            padding: 8px 20px;
             display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .weather-text {
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
-        }
-        nav {
-            background-color: #2e7d32;
-            color: white;
-            padding: 10px 0;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
             flex-wrap: wrap;
-            gap: 15px;
+            justify-content: center;
+            gap: 20px;
+            color: #333;
         }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
+
+        /* بخش تبلیغات */
+        .ad-container {
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+        }
+        .ad-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+            font-family: Arial, sans-serif;
+        }
+        .ad-content {
+            font-size: 15px;
             font-weight: bold;
+            font-family: Tahoma, sans-serif;
         }
-        .nav-links a:hover {
+
+        /* بخش خبر */
+        .main-news {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .news-link {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .news-link:hover .news-headline {
             text-decoration: underline;
         }
-        .main-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+        .news-article-eng {
+            direction: ltr; /* چپ چین برای خبر انگلیسی */
+            text-align: left;
         }
-        .section-heading {
-            color: #2e7d32;
-            border-bottom: 2px solid #2e7d32;
-            padding-bottom: 5px;
-            margin-bottom: 25px;
-            font-size: 20px;
+        .news-headline {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
-        .news-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-        @media(min-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        .news-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .news-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .news-content {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .news-title {
-            color: #111;
+        .news-summary {
             font-size: 18px;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            color: #333;
+            line-height: 1.5;
         }
-        .news-meta {
-            font-size: 12px;
-            color: #777;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        .news-excerpt {
-            font-size: 14px;
-            color: #444;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        /* دکمه لینک به صفحه جدید */
-        .read-more-btn {
-            margin-top: auto;
-            align-self: flex-start;
-            background-color: #2e7d32;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-size: 13px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        .read-more-btn:hover {
-            background-color: #1b5e20;
-        }
+
         footer {
-            background-color: #1b5e20;
-            color: white;
             text-align: center;
-            padding: 15px 20px;
-            margin-top: 40px;
-            font-size: 14px;
+            font-size: 12px;
+            color: #666;
+            margin-top: 60px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-top">
-            <div class="logo-title">
-                <img class="logo-img" src="logo.jpg" alt="لوگوی گلهای رنگارنگ">
-                <h1 class="site-title">گلهای رنگارنگ</h1>
-            </div>
-            
-            <!-- ویجت تاریخ و هواشناسی زنده -->
-            <div class="info-widget">
-                <div class="date-text">
-                    <span id="jalali-date"></span> | <span id="gregorian-date" dir="ltr"></span>
-                </div>
-                <div class="weather-container">
-                    <span>♨️ هواشناسی: </span>
-                    <span id="live-weather" class="weather-text">لوسانتوس 4+</span>
-                </div>
-            </div>
-
+        <div class="logo-title-container">
+            <!-- لوگوی شما -->
+            <img src="logo.jpg" alt="Logo" class="site-logo">
+            <h1 class="site-title">گلهای رنگارنگ</h1>
         </div>
+        <!-- تاریخ میلادی -->
+        <div class="header-date" id="gregorian-date" dir="ltr"></div>
     </header>
 
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#">صفحه اصلی</a></li>
-            <li><a href="#">گزارش و تحقیقات علمی</a></li>
-            <li><a href="#">اقتصاد</a></li>
-            <li><a href="#">فرهنگ و هنر</a></li>
-        </ul>
-    </nav>
+    <!-- نوار زنده ساعت و آب و هوا -->
+    <div class="ticker-bar">
+        <span>⏱ ساعت: <span id="live-time"></span></span>
+        <span>🌤 لوسانتوس ۲۲°C | سان فیرو ۱۷°C | سان آندریاس ۲۲°C</span>
+    </div>
 
-    <main class="main-container">
-        <h2 class="section-heading">آخرین گزارش‌ها و تحقیقات</h2>
-        
-        <div class="news-grid">
-            
-            <!-- خبر اول -->
-            <article class="news-card">
-                <img class="news-image" src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=600" alt="حمل و نقل عمومی">
-                <div class="news-content">
-                    <h3 class="news-title">بررسی چالش‌ها و توسعه سیستم حمل و نقل عمومی در آمریکا</h3>
-                    <div class="news-meta">گزارشگر: سارا احمدی | سرویس: زیرساخت و توسعه</div>
-                    <p class="news-excerpt">
-                        سیستم حمل و نقل عمومی در بسیاری از شهرهای بزرگ آمریکا با چالش فرسودگی زیرساخت‌ها و نیاز به بودجه‌های کلان برای نوسازی مواجه است.
-                    </p>
-                    <a href="news1.html" class="read-more-btn">ادامه خبر</a>
-                </div>
-            </article>
-
-            <!-- خبر دوم -->
-            <article class="news-card">
-                <img class="news-image" src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=600" alt="بودجه نیویورک">
-                <div class="news-content">
-                    <h3 class="news-title">گزارش وضعیت بودجه‌بندی سال آینده نیویورک</h3>
-                    <div class="news-meta">گزارشگر: امیرحسین داودی | سرویس: اقتصاد کلان</div>
-                    <p class="news-excerpt">
-                        شهرداری نیویورک پیش‌نویس بودجه سال آینده را با تمرکز بر کاهش هزینه‌های اداری و افزایش خدمات رفاهی به شورای شهر ارائه کرد.
-                    </p>
-                    <a href="news2.html" class="read-more-btn">ادامه خبر</a>
-                </div>
-            </article>
-
-            <!-- خبر سوم (عکس اصلاح شد) -->
-            <article class="news-card">
-                <img class="news-image" src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=600" alt="روانشناسی فضای مجازی">
-
-                <div class="news-content">
-                    <h3 class="news-title">تأثیر فضای مجازی بر تغییر الگوی تمرکز در بزرگسالان</h3>
-                    <div class="news-meta">گزارشگر: رضا ملکی | سرویس: روانشناسی و جامعه</div>
-                    <p class="news-excerpt">
-                        یک تحقیق جالب روانشناسی نشان می‌دهد که استفاده مداوم از محتواهای کوتاه دیجیتال چگونه سیستم پاداش‌دهی مغز را تغییر داده است.
-                    </p>
-                    <a href="news3.html" class="read-more-btn">ادامه خبر</a>
-                </div>
-            </article>
-
-            <!-- خبر چهارم -->
-            <article class="news-card">
-                <img class="news-image" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600" alt="سینما و تلویزیون">
-                <div class="news-content">
-                    <h3 class="news-title">معرفی ویژه برنامه‌های تلویزیونی و سریال‌های ۲۰۲۵ و ۲۰۲۶</h3>
-                    <div class="news-meta">گزارشگر: نیلوفر داوودی | سرویس: فرهنگ و هنر</div>
-                    <p class="news-excerpt">
-                        نگاهی به جذاب‌ترین فیلم‌ها، برنامه‌های تلویزیونی و سریال‌هایی که در سال‌های پیش رو مهمان خانه‌های شما خواهند بود.
-                    </p>
-                    <a href="news4.html" class="read-more-btn">ادامه خبر</a>
-                </div>
-            </article>
-
+    <!-- جایگاه تبلیغات -->
+    <div class="ad-container">
+        <span class="ad-label">تبلیغات</span>
+        <div class="ad-content">
+            فروش ویژه گوشی موبایل ای‌پکس (Apex)<br>
+            <span style="font-weight: normal; font-size: 13px;">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
         </div>
+    </div>
+
+    <!-- محتوای خبر -->
+    <main class="main-news">
+        <!-- کل این تگ a یک لینک به صفحه news1.html است -->
+        <a href="news1.html" class="news-link">
+            <article class="news-article-eng">
+                <h2 class="news-headline">Trump Cut a Billion-Dollar Mining Deal. His Sons Stand to Profit.</h2>
+                <p class="news-summary">When Commerce Secretary Howard Lutnick met with Kazakhstan’s president at the St. Regis Hotel last September in New York, President Trump jumped in by phone as the men sealed a deal on a top priority for Washington.</p>
+            </article>
+        </a>
     </main>
 
     <footer>
-        <p>ساخته شده توسط گروه گلهای رنگارنگ</p>
+        &copy; 2026 گلهای رنگارنگ
     </footer>
 
     <script>
-        // تنظیم تاریخ
-        const jalaliOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('jalali-date').innerText = new Date().toLocaleDateString('fa-IR', jalaliOptions);
-        document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', jalaliOptions);
+        // تنظیم تاریخ میلادی (مثل استایل روزنامه‌ها)
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
 
-        // انیمیشن زنده هواشناسی
-        const weatherCities = [
-            "لوسانتوس 4+",
-            "سان آندریاس 3+",
-            "سان فییرو 1+",
-            "لیبرتی سیتی 1+",
-            "وای سیتی 4+",
-            "کارل سیتی 3+"
-        ];
-        let weatherIndex = 0;
-        const weatherEl = document.getElementById('live-weather');
-        
-        setInterval(() => {
-            weatherEl.style.opacity = 0; // محو شدن
-            setTimeout(() => {
-                weatherIndex = (weatherIndex + 1) % weatherCities.length;
-                weatherEl.innerText = weatherCities[weatherIndex];
-                weatherEl.style.opacity = 1; // ظاهر شدن شهر جدید
-            }, 500);
-        }, 3000); // تغییر هر 3 ثانیه
+        // ساعت زنده
+        function updateTime() {
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById('live-time').innerText = new Date().toLocaleTimeString('fa-IR', timeOptions);
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
     </script>
+
 </body>
 </html>
+
