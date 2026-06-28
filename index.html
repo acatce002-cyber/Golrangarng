@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>گلهای رنگارنگ</title>
     <style>
-        /* تنظیمات پایه نیویورک تایمز */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: Georgia, 'Times New Roman', Tahoma, serif; 
@@ -14,135 +13,47 @@
             line-height: 1.6; 
         }
         
-        /* هدر (بالای سایت) */
-        header {
-            text-align: center;
-            padding: 30px 20px 10px;
-        }
-        .logo-title-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .site-logo {
-            height: 50px;
-            width: auto;
-        }
-        .site-title {
-            font-size: 42px;
-            font-weight: bold;
-            letter-spacing: -1px;
-            font-family: 'Times New Roman', Times, serif; /* فونت کلاسیک */
-        }
-        .header-date {
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            border-top: 1px solid #000;
-            border-bottom: 3px solid #000;
-            padding: 8px 0;
-            margin: 0 20px;
-        }
+        header { text-align: center; padding: 30px 20px 10px; }
+        .logo-title-container { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .site-logo { height: 50px; width: auto; }
+        .site-title { font-size: 42px; font-weight: bold; letter-spacing: -1px; font-family: 'Times New Roman', Times, serif; }
+        .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
 
-        /* نوار زنده ساعت و هواشناسی */
-        .ticker-bar {
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #ddd;
-            padding: 8px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            color: #333;
-        }
+        .ticker-bar { font-family: Arial, sans-serif; font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
 
-        /* بخش تبلیغات */
-        .ad-container {
-            max-width: 600px;
-            margin: 30px auto;
-            text-align: center;
-            padding: 15px;
-            border: 1px solid #ddd;
-            background-color: #fafafa;
-        }
-        .ad-label {
-            font-size: 10px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 8px;
-            font-family: Arial, sans-serif;
-        }
-        .ad-content {
-            font-size: 15px;
-            font-weight: bold;
-            font-family: Tahoma, sans-serif;
-        }
+        .ad-container { max-width: 600px; margin: 30px auto; text-align: center; padding: 15px; border: 1px solid #ddd; background-color: #fafafa; }
+        .ad-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; font-family: Arial, sans-serif; }
+        .ad-content { font-size: 15px; font-weight: bold; font-family: Tahoma, sans-serif; }
 
-        /* بخش خبر */
-        .main-news {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .news-link {
-            text-decoration: none;
-            color: #000;
-            display: block;
-        }
-        .news-link:hover .news-headline {
-            text-decoration: underline;
-        }
-        .news-article-eng {
-            direction: ltr; /* چپ چین برای خبر انگلیسی */
-            text-align: left;
-        }
-        .news-headline {
-            font-size: 32px;
-            font-weight: bold;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-        .news-summary {
-            font-size: 18px;
-            color: #333;
-            line-height: 1.5;
-        }
+        .main-news { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .news-link { text-decoration: none; color: #000; display: block; }
+        .news-link:hover .news-headline { text-decoration: underline; }
+        .news-article-eng { direction: ltr; text-align: left; }
+        
+        /* استایل عکس صفحه اصلی */
+        .front-page-img { width: 100%; height: auto; margin-bottom: 15px; border-bottom: 1px solid #eee; }
+        
+        .news-headline { font-size: 32px; font-weight: bold; line-height: 1.2; margin-bottom: 15px; }
+        .news-summary { font-size: 18px; color: #333; line-height: 1.5; }
 
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-            margin-top: 60px;
-            padding: 20px;
-            border-top: 1px solid #ddd;
-            font-family: Arial, sans-serif;
-        }
+        footer { text-align: center; font-size: 12px; color: #666; margin-top: 60px; padding: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-title-container">
-            <!-- لوگوی شما -->
             <img src="logo.jpg" alt="Logo" class="site-logo">
             <h1 class="site-title">گلهای رنگارنگ</h1>
         </div>
-        <!-- تاریخ میلادی -->
         <div class="header-date" id="gregorian-date" dir="ltr"></div>
     </header>
 
-    <!-- نوار زنده ساعت و آب و هوا -->
     <div class="ticker-bar">
         <span>⏱ ساعت: <span id="live-time"></span></span>
         <span>🌤 لوسانتوس ۲۲°C | سان فیرو ۱۷°C | سان آندریاس ۲۲°C</span>
     </div>
 
-    <!-- جایگاه تبلیغات -->
     <div class="ad-container">
         <span class="ad-label">تبلیغات</span>
         <div class="ad-content">
@@ -151,11 +62,12 @@
         </div>
     </div>
 
-    <!-- محتوای خبر -->
     <main class="main-news">
-        <!-- کل این تگ a یک لینک به صفحه news1.html است -->
         <a href="news1.html" class="news-link">
             <article class="news-article-eng">
+                <!-- عکس اضافه شده به صفحه اصلی -->
+                <img src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?q=80&w=800" alt="Capitol Building" class="front-page-img">
+                
                 <h2 class="news-headline">Trump Cut a Billion-Dollar Mining Deal. His Sons Stand to Profit.</h2>
                 <p class="news-summary">When Commerce Secretary Howard Lutnick met with Kazakhstan’s president at the St. Regis Hotel last September in New York, President Trump jumped in by phone as the men sealed a deal on a top priority for Washington.</p>
             </article>
@@ -167,11 +79,9 @@
     </footer>
 
     <script>
-        // تنظیم تاریخ میلادی (مثل استایل روزنامه‌ها)
         const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
 
-        // ساعت زنده
         function updateTime() {
             const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
             document.getElementById('live-time').innerText = new Date().toLocaleTimeString('fa-IR', timeOptions);
@@ -179,7 +89,5 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
-
 </body>
 </html>
-
