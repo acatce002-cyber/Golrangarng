@@ -17,21 +17,18 @@
         .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; text-decoration: none; }
         .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
 
-        /* انیمیشن پالس برای دکمه */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
             50% { transform: scale(1.05); box-shadow: 0 0 10px 10px rgba(211, 47, 47, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
         }
 
-        /* انیمیشن حرکت پس‌زمینه (برای دکمه و تبلیغات) */
         @keyframes movingGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* استایل دکمه قرعه‌کشی (رنگارنگ متحرک + پالس) */
         .lottery-btn {
             background: linear-gradient(-45deg, #d32f2f, #ff1744, #ff5252, #b71c1c);
             background-size: 400% 400%;
@@ -50,7 +47,6 @@
         .ticker-bar { font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
         .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
 
-        /* نوار اخبار کوتاه */
         .short-news-bar {
             background-color: #e53935;
             margin: 25px auto; 
@@ -82,7 +78,6 @@
             line-height: 1.4;
         }
 
-        /* تبلیغات */
         .ad-container { 
             max-width: 600px; 
             width: 95%;
@@ -167,6 +162,31 @@
 
     <main class="main-news">
         
+        <!-- خبر اول (خبر جدید: U.S.M.C.A) -->
+        <a href="news/news4.html" class="news-link">
+            <article>
+                <img src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?q=80&w=800" alt="USMCA Trade Deal" class="front-page-img">
+                <span class="exclusive-tag">🔴 خبر ویژه و فوری</span>
+                <h2 class="news-headline">آمریکا از تمدید توافقنامه نفتا (U.S.M.C.A) خودداری کرد؛ آغاز شمارش معکوس ۱۰ ساله</h2>
+                <p class="news-summary">دولت ترامپ روز چهارشنبه اعلام کرد که درخواست فوری برای تمدید توافقنامه تجاری آمریکای شمالی نخواهد داد؛ تصمیمی که کسب‌وکارها را در مورد آینده این پیمان در هاله‌ای از ابهام قرار داده است.</p>
+            </article>
+        </a>
+
+        <!-- تبلیغ موبایل -->
+        <div class="ad-container ad-phone">
+            <span class="ad-label">تبلیغات</span>
+            <div class="ad-flex">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
+                <div class="ad-content">
+                    فروش ویژه گوشی موبایل ای‌پکس (Apex)
+                    <span class="ad-subtext">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- خبر دوم (سوریه) -->
         <a href="news/news3.html" class="news-link">
             <article>
                 <img src="images/syria_trump.jpg?v=2" alt="Trump Syria News" class="front-page-img">
@@ -189,32 +209,12 @@
 
         <hr class="divider">
 
+        <!-- خبر سوم (آمازون) -->
         <a href="news/news2.html" class="news-link">
             <article>
                 <img src="images/amazon.jpg?v=1" alt="Amazon Prime Delivery" class="front-page-img">
                 <h2 class="news-headline">گزارش ویژه: حمل‌ونقل آمازون پرایم در آمریکا؛ از سفارش یک باتری تا یخچال</h2>
                 <p class="news-summary">شبکه حمل‌ونقل Amazon Prime یکی از بزرگ‌ترین و پیشرفته‌ترین سیستم‌های لجستیکی جهان است. این شبکه هر روز میلیون‌ها سفارش را از انبارها به خانه مشتریان در سراسر آمریکا می‌رساند.</p>
-            </article>
-        </a>
-
-        <div class="ad-container ad-phone">
-            <span class="ad-label">تبلیغات</span>
-            <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
-                <div class="ad-content">
-                    فروش ویژه گوشی موبایل ای‌پکس (Apex)
-                    <span class="ad-subtext">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
-                </div>
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <a href="news/news1.html" class="news-link">
-            <article>
-                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
-                <h2 class="news-headline">ترامپ یک قرارداد معدنی میلیارد دلاری بست؛ پسرانش در صف سودآوری</h2>
-                <p class="news-summary">هنگامی که هاوارد لوتنیک، وزیر بازرگانی، سپتامبر گذشته با رئیس‌جمهور قزاقستان در هتل سنت رجیس نیویورک دیدار کرد، پرزیدنت ترامپ به صورت تلفنی وارد بحث شد تا این توافق که از اولویت‌های اصلی لوسانتوس بود را نهایی کند.</p>
             </article>
         </a>
 
@@ -241,7 +241,6 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // اسکریپت هواشناسی (دماها کاهش یافته)
         const weatherChunks = [
             "☀️ لوسانتوس ۲۰°C | 🌤 سان آندریاس ۱۵°C | ☁️ سان فییرو ۱۹°C",
             "🌦 لیبرتی سیتی ۱۶°C | ☀️ وای سیتی ۲۲°C | 🌥 کارل سیتی ۱۲°C"
@@ -257,7 +256,6 @@
             }, 500); 
         }, 4000);
 
-        // اسکریپت اخبار کوتاه (تغییر هر ۳ ثانیه + خبر جدید اضافه شد)
         const shortNewsList = [
             "بیهوش شدن یک شهروند سان فیرو از شدت گرما",
             "رایگان شدن بلیت مترو برای یک هفته در لاسونتراس",
@@ -272,9 +270,8 @@
                 shortNewsIdx = (shortNewsIdx + 1) % shortNewsList.length;
                 shortNewsEl.innerText = shortNewsList[shortNewsIdx];
                 shortNewsEl.style.opacity = 1; 
-            }, 300); // زمان محو شدن و ظاهر شدن سریع‌تر شد تا با ۳ ثانیه هماهنگ باشد
-        }, 3000); // 3000 میلی‌ثانیه یعنی دقیقاً تغییر هر ۳ ثانیه
+            }, 300); 
+        }, 3000); 
     </script>
 </body>
 </html>
-
