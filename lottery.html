@@ -3,157 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قرعه‌کشی بزرگ گلهای رنگارنگ</title>
+    <title>قرعه‌کشی گلهای رنگارنگ</title>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- کتابخانه افکت انفجار استیکر (Confetti) -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             font-family: 'Vazirmatn', sans-serif;
-            /* بک‌گراند گرادیان متحرک */
-            background: linear-gradient(-45deg, #0f172a, #4c1d95, #1e1b4b, #b8860b);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; position: relative; padding: 20px 10px;
+            background: linear-gradient(135deg, #111827, #030712);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+            overflow-x: hidden;
         }
 
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        h1 {
+            font-family: 'Lalezar', cursive;
+            font-size: 36px;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
 
-        /* آیکون‌های متحرک پس‌زمینه */
-        .bg-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-        .floating-icon { position: absolute; font-size: 2rem; opacity: 0; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); animation: floatUp linear infinite; }
-        @keyframes floatUp { 0% { transform: translateY(110vh) rotate(0deg); opacity: 0.1; } 20% { opacity: 0.4; } 80% { opacity: 0.4; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
-
-        /* هدر و تایمر شیشه‌ای */
-        .header { text-align: center; margin-bottom: 20px; z-index: 10; width: 100%; }
-        .header h1 { font-family: 'Lalezar', cursive; font-size: 40px; background: linear-gradient(to right, #ffd700, #fff, #ffd700); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); margin-bottom: 5px; }
-        .flowers { font-size: 20px; letter-spacing: 10px; margin-bottom: 15px; }
-        
+        /* تایمر شیشه‌ای مدرن و ساده */
         .glass-timer {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; padding: 15px; display: flex; justify-content: center; gap: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); max-width: 350px; margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            margin-bottom: 35px;
         }
-        .time-box { display: flex; flex-direction: column; align-items: center; width: 50px; }
-        .time-box span { font-size: 24px; font-weight: 900; color: #ffd700; text-shadow: 0 2px 5px rgba(0,0,0,0.5); font-family: Tahoma, monospace; }
-        .time-box label { font-size: 11px; color: #ddd; margin-top: 5px; }
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 50px;
+        }
+        .time-box span {
+            font-size: 24px;
+            font-weight: 900;
+            color: #d4af37;
+            font-family: Tahoma, monospace;
+        }
+        .time-box label {
+            font-size: 11px;
+            color: #aaaaaa;
+            margin-top: 4px;
+        }
 
-        /* گردونه سه‌بعدی */
-        .wheel-wrapper { position: relative; width: 300px; height: 300px; margin: 20px 0; border-radius: 50%; box-shadow: 0 0 40px rgba(255, 215, 0, 0.3), inset 0 0 20px rgba(0,0,0,0.8); z-index: 10; }
-        .wheel-pointer { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 40px solid #ffd700; z-index: 20; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5)); }
-        
+        /* بخش گردونه لوکس طلایی و سیاه */
+        .wheel-container {
+            position: relative;
+            width: 310px;
+            height: 310px;
+            margin-bottom: 35px;
+        }
+        .pointer {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-top: 32px solid #d4af37;
+            z-index: 10;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+        }
         .wheel {
-            width: 100%; height: 100%; border-radius: 50%; border: 6px solid #b8860b; position: relative; overflow: hidden;
-            transition: transform 6s cubic-bezier(0.15, 0.9, 0.2, 1);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid #d4af37;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(0,0,0,0.9);
+            position: relative;
+            overflow: hidden;
+            transition: transform 6s cubic-bezier(0.15, 0.85, 0.2, 1);
             background: conic-gradient(
-                #ef4444 0deg 51.42deg, #3b82f6 51.42deg 102.85deg, #10b981 102.85deg 154.28deg, 
-                #f59e0b 154.28deg 205.71deg, #8b5cf6 205.71deg 257.14deg, #64748b 257.14deg 308.57deg, #ec4899 308.57deg 360deg
+                #1a1a1a 0deg 51.42deg,
+                #2a2415 51.42deg 102.85deg,
+                #1a1a1a 102.85deg 154.28deg,
+                #2a2415 154.28deg 205.71deg,
+                #1a1a1a 205.71deg 257.14deg,
+                #2a2415 257.14deg 308.57deg,
+                #1a1a1a 308.57deg 360deg
             );
         }
-        .wheel-segment {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform-origin: 50% 50%; display: flex; justify-content: center; padding-top: 25px; font-weight: 900; font-size: 14px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); color: #fff; pointer-events: none;
+        .segment {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: 50% 50%;
+            display: flex;
+            justify-content: center;
+            padding-top: 22px;
+            font-weight: bold;
+            font-size: 13px;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+            pointer-events: none;
         }
-        /* تنظیم زاویه متن‌ها */
-        .seg-1 { transform: rotate(25.71deg); } .seg-2 { transform: rotate(77.13deg); } .seg-3 { transform: rotate(128.56deg); } .seg-4 { transform: rotate(179.99deg); } .seg-5 { transform: rotate(231.42deg); } .seg-6 { transform: rotate(282.85deg); } .seg-7 { transform: rotate(334.28deg); }
+        /* زوایای چرخش متن ۷ بخش هندسی گردونه */
+        .seg-1 { transform: rotate(25.71deg); }
+        .seg-2 { transform: rotate(77.13deg); }
+        .seg-3 { transform: rotate(128.56deg); }
+        .seg-4 { transform: rotate(179.99deg); }
+        .seg-5 { transform: rotate(231.42deg); }
+        .seg-6 { transform: rotate(282.85deg); }
+        .seg-7 { transform: rotate(334.28deg); }
 
-        /* فرم شیشه‌ای بررسی کد */
-        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 10; }
+        /* باکس شیک فرم کدهای ورودی */
+        .form-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
         
-        input { width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; color: #fff; font-size: 16px; text-align: center; text-transform: uppercase; font-family: Tahoma; outline: none; transition: 0.3s; margin-bottom: 15px; }
-        input:focus { border-color: #ffd700; background: rgba(0,0,0,0.5); }
+        input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: Tahoma, sans-serif;
+            outline: none;
+            transition: 0.3s;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        input:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
         
-        .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; font-family: 'Vazirmatn'; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
-        .btn-check { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-        .btn-check:hover { background: rgba(255,255,255,0.2); transform: scale(1.02); }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Vazirmatn';
+            cursor: pointer;
+            transition: 0.2s;
+            display: block;
+        }
+        .btn-check {
+            background: #2563eb;
+            color: #ffffff;
+        }
+        .btn-check:hover {
+            background: #1d4ed8;
+        }
+        .btn-spin {
+            background: linear-gradient(135deg, #d4af37, #aa8416);
+            color: #000000;
+            display: none; /* در ابتدا مخفی است تا کد تایید شود */
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .btn-spin:hover {
+            transform: scale(1.02);
+        }
         
-        .btn-spin { background: linear-gradient(135deg, #ffd700, #f59e0b); color: #000; display: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); }
-        .btn-spin:hover { transform: scale(1.05); }
-        
-        .status-msg { font-size: 14px; font-weight: bold; min-height: 20px; }
-        .text-red { color: #ef4444; } .text-yellow { color: #facc15; } .text-green { color: #10b981; }
+        .msg {
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            min-height: 20px;
+        }
+        .err { color: #ef4444; }
+        .warn { color: #fbbf24; }
+        .succ { color: #10b981; }
 
-        /* پنجره مودال برنده شدن */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 100; opacity: 0; transition: 0.3s; }
-        .modal.active { display: flex; opacity: 1; }
-        .modal-content { background: rgba(30, 41, 59, 0.95); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 30px; width: 85%; max-width: 400px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); transform: scale(0.8); transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .modal.active .modal-content { transform: scale(1); }
-        .modal-title { font-size: 28px; margin-bottom: 10px; font-family: 'Lalezar'; color: #ffd700; }
-        .modal-desc { font-size: 16px; line-height: 1.8; margin-bottom: 20px; color: #fff; }
-        .btn-close { background: #ef4444; color: #fff; padding: 10px 25px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-family: 'Vazirmatn'; font-weight: bold; }
+        /* پاپ‌آپ ساده و شیک برنده شدن (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #18181b;
+            border: 1px solid #d4af37;
+            border-radius: 16px;
+            padding: 30px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        .modal-title {
+            font-size: 26px;
+            color: #d4af37;
+            font-family: 'Lalezar';
+            margin-bottom: 12px;
+        }
+        .modal-desc {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #e4e4e7;
+        }
+        .modal-code {
+            background: #27272a;
+            padding: 10px;
+            font-size: 18px;
+            font-family: monospace;
+            font-weight: bold;
+            border: 1px dashed #d4af37;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .btn-close {
+            background: #dc2626;
+            color: #ffffff;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Vazirmatn';
+        }
+        .btn-close:hover { background: #b91c1c; }
+        
+        .back-home {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888888;
+            text-decoration: none;
+            border-bottom: 1px dashed #555;
+            padding-bottom: 2px;
+        }
+        .back-home:hover { color: #fff; border-color: #fff; }
     </style>
 </head>
 <body>
 
-    <!-- بکگراند آیکون‌های متحرک -->
-    <div class="bg-particles" id="particles"></div>
+    <h1>قرعه کشی گلهای رنگارنگ</h1>
 
-    <div class="header">
-        <h1>🎉 قرعه‌کشی بزرگ گلهای رنگارنگ 🎉</h1>
-        <div class="flowers">🌸 🌺 🌼 🌷</div>
-        
-        <div class="glass-timer" id="timer-box">
-            <div class="time-box"><span id="days">00</span><label>روز</label></div>
-            <div class="time-box"><span id="hours">00</span><label>ساعت</label></div>
-            <div class="time-box"><span id="minutes">00</span><label>دقیقه</label></div>
-            <div class="time-box"><span id="seconds">00</span><label>ثانیه</label></div>
-        </div>
+    <!-- تایمر شیشه‌ای معکوس یک هفته‌ای -->
+    <div class="glass-timer" id="timer">
+        <div class="time-box"><span id="days">07</span><label>روز</label></div>
+        <div class="time-box"><span id="hours">00</span><label>ساعت</label></div>
+        <div class="time-box"><span id="minutes">00</span><label>دقیقه</label></div>
+        <div class="time-box"><span id="seconds">00</span><label>ثانیه</label></div>
     </div>
 
-    <div class="wheel-wrapper">
-        <div class="wheel-pointer"></div>
+    <!-- گردونه طلایی و سیاه لوکس -->
+    <div class="wheel-container">
+        <div class="pointer"></div>
         <div class="wheel" id="wheel">
-            <div class="wheel-segment seg-1">🚗 تسلا</div>
-            <div class="wheel-segment seg-2">📱 آیفون ۱۷</div>
-            <div class="wheel-segment seg-3">💵 ۱۰۰ دلار</div>
-            <div class="wheel-segment seg-4">🚲 دوچرخه</div>
-            <div class="wheel-segment seg-5">💵 ۵۰ دلار</div>
-            <div class="wheel-segment seg-6">😔 پوچ</div>
-            <div class="wheel-segment seg-7">💵 ۳۰ دلار</div>
+            <div class="segment seg-1">🚗 ماشین تسلا</div>
+            <div class="segment seg-2">📱 آیفون ۱۷</div>
+            <div class="segment seg-3">💵 ۱۰۰ دلار</div>
+            <div class="segment seg-4">🚲 دوچرخه</div>
+            <div class="segment seg-5">💵 ۵۰ دلار</div>
+            <div class="segment seg-6">😔 پوچ</div>
+            <div class="segment seg-7">💵 ۳۰ دلار</div>
         </div>
     </div>
 
-    <div class="glass-panel" id="panel">
-        <input type="text" id="codeInput" placeholder="کد قرعه‌کشی را وارد کنید..." autocomplete="off">
+    <!-- پنل فرم بررسی و چرخش -->
+    <div class="form-panel">
+        <input type="text" id="codeInput" placeholder="کد قرعه‌کشی خود را وارد کنید" autocomplete="off" spellcheck="false">
         <button class="btn btn-check" id="checkBtn" onclick="verifyCode()">✅ بررسی کد</button>
-        <button class="btn btn-spin" id="spinBtn" onclick="startSpin()">🎡 شروع چرخش</button>
-        <div class="status-msg" id="statusMsg"></div>
+        <button class="btn btn-spin" id="spinBtn" onclick="startSpin()">🎡 چرخاندن گردونه</button>
+        <div class="msg" id="msg"></div>
     </div>
 
-    <div class="modal" id="resultModal">
+    <a href="index.html" class="back-home">بازگشت به صفحه اصلی</a>
+
+    <!-- مودال نمایش برنده شدن -->
+    <div class="modal" id="modal">
         <div class="modal-content">
-            <h2 class="modal-title" id="modalTitle">تبریک!</h2>
-            <p class="modal-desc" id="modalDesc">متن جایزه</p>
+            <div class="modal-title" id="modalTitle">تبریک! 🎉</div>
+            <p class="modal-desc" id="modalDesc"></p>
+            <div id="codeContainer" style="display:none;">
+                کد رهگیری اختصاصی شما:
+                <div class="modal-code" id="trackingCode"></div>
+            </div>
             <button class="btn-close" onclick="closeModal()">بستن پنجره</button>
         </div>
     </div>
 
-    <script>
-        // --- 1. تولید آیکون‌های متحرک در بکگراند ---
-        const icons = ['🚗', '💵', '📱', '🚲', '🎁', '⭐', '✨'];
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
-            let el = document.createElement('div');
-            el.className = 'floating-icon';
-            el.innerText = icons[Math.floor(Math.random() * icons.length)];
-            el.style.left = Math.random() * 100 + 'vw';
-            el.style.animationDuration = (Math.random() * 10 + 8) + 's';
-            el.style.animationDelay = (Math.random() * 5) + 's';
-            particlesContainer.appendChild(el);
-        }
+    <!-- صداهای استاندارد و باکیفیت وب -->
+    <audio id="sndClick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <audio id="sndWin" src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3" preload="auto"></audio>
+    <audio id="sndLose" src="https://assets.mixkit.co/active_storage/sfx/2574/2574-preview.mp3" preload="auto"></audio>
 
-        // --- 2. تایمر شمارش معکوس (۱ هفته) ---
-        // تاریخ پایان روی ۸ جولای ۲۰۲۶ تنظیم شده است
-        const endDate = new Date("July 8, 2026 23:59:59").getTime();
+    <script>
+        // --- ۱. سیستم شمارش معکوس دقیق یک هفته‌ای ---
+        // تاریخ پایان قرعه‌کشی روی یک هفته دیگر (۸ جولای ۲۰۲۶) تنظیم شده است
+        const targetDate = new Date("July 8, 2026 23:59:59").getTime();
         
-        const timerInterval = setInterval(() => {
+        const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
-            const distance = endDate - now;
+            const distance = targetDate - now;
 
             if (distance < 0) {
-                clearInterval(timerInterval);
-                document.getElementById("timer-box").innerHTML = "<h3 style='color:#ef4444; margin:auto;'>قرعه‌کشی به پایان رسید!</h3>";
-                document.getElementById("panel").style.display = "none";
+                clearInterval(countdownInterval);
+                document.getElementById("timer").innerHTML = "<h3 style='color:#ef4444; margin:auto;'>مهلت شرکت در قرعه‌کشی پایان یافته است</h3>";
+                document.getElementById("codeInput").disabled = true;
+                document.getElementById("checkBtn").disabled = true;
                 return;
             }
+
             document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStartNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+            document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 *Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
