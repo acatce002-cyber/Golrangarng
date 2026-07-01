@@ -15,7 +15,7 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            overflow: hidden; 
+            overflow-x: hidden; 
             position: relative;
         }
 
@@ -35,11 +35,25 @@
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
-        .content { z-index: 10; display: flex; flex-direction: column; align-items: center; margin-top: 40px; text-align: center; }
-        h1 { font-family: 'Lalezar', cursive; font-size: 50px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); margin-bottom: 10px; color: #fff; }
-        h2 { font-size: 22px; font-weight: normal; margin-bottom: 40px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .content { z-index: 10; display: flex; flex-direction: column; align-items: center; margin-top: 30px; text-align: center; width: 100%; }
+        h1 { font-family: 'Lalezar', cursive; font-size: 45px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; color: #fff; }
+        h2 { font-size: 20px; font-weight: normal; margin-bottom: 25px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
 
-        .wheel-container { position: relative; width: 320px; height: 320px; margin-bottom: 40px; }
+        /* استایل تایمر شمارش معکوس */
+        .countdown-container {
+            background: rgba(0, 0, 0, 0.4); padding: 15px 25px; border-radius: 12px;
+            margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .countdown-container h3 { font-size: 15px; margin-bottom: 15px; color: #ffd740; font-weight: normal; }
+        .countdown { display: flex; gap: 15px; justify-content: center; direction: ltr; }
+        .time-box {
+            display: flex; flex-direction: column; align-items: center;
+            background: rgba(255, 255, 255, 0.15); padding: 10px; border-radius: 8px; min-width: 60px;
+        }
+        .time-box span { font-size: 22px; font-weight: bold; font-family: Tahoma, monospace; }
+        .time-box .label { font-size: 11px; font-family: 'Vazirmatn'; margin-top: 5px; font-weight: normal; }
+
+        .wheel-container { position: relative; width: 300px; height: 300px; margin-bottom: 30px; }
         
         .pointer {
             position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
@@ -66,7 +80,7 @@
         .wheel-text {
             position: absolute; width: 50%; height: 20px; top: calc(50% - 10px); left: 50%;
             transform-origin: left center; text-align: right; padding-right: 15px; font-weight: bold;
-            font-size: 14px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            font-size: 13px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
         .input-section {
@@ -87,7 +101,6 @@
         
         .back-link { margin-top: 20px; color: #fff; text-decoration: none; font-size: 14px; z-index: 10; border-bottom: 1px solid #fff; padding-bottom: 2px; margin-bottom: 30px;}
         
-        /* استایل پنجره پاپ‌آپ (مودال) برای نمایش جایزه */
         .modal {
             display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center;
@@ -101,11 +114,11 @@
         .modal-content p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
         .modal-content .code-box { 
             background: #f1f1f1; padding: 10px; font-size: 20px; letter-spacing: 2px;
-            font-family: monospace; font-weight: bold; border: 2px dashed #d32f2f; margin-bottom: 20px; 
+            font-family: Tahoma, monospace; font-weight: bold; border: 2px dashed #d32f2f; margin-bottom: 20px; 
         }
         .close-btn {
             background-color: #d32f2f; color: white; border: none; padding: 10px 20px;
-            border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;
+            border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; font-family: 'Vazirmatn';
         }
     </style>
 </head>
@@ -122,6 +135,17 @@
     <div class="content">
         <h1>قرعه کشی گلهای رنگارنگ</h1>
         <h2>گردونه رو بچرخون و جایزه‌تو بگیر!</h2>
+
+        <!-- بخش تایمر -->
+        <div class="countdown-container" id="countdown-container">
+            <h3>⏳ زمان باقی‌مانده تا پایان قرعه‌کشی:</h3>
+            <div class="countdown">
+                <div class="time-box"><span id="days">00</span><span class="label">روز</span></div>
+                <div class="time-box"><span id="hours">00</span><span class="label">ساعت</span></div>
+                <div class="time-box"><span id="minutes">00</span><span class="label">دقیقه</span></div>
+                <div class="time-box"><span id="seconds">00</span><span class="label">ثانیه</span></div>
+            </div>
+        </div>
 
         <div class="wheel-container">
             <div class="pointer"></div>
@@ -144,7 +168,6 @@
         <a href="index.html" class="back-link">بازگشت به صفحه اصلی</a>
     </div>
 
-    <!-- پاپ آپ نمایش جایزه و کد پیگیری -->
     <div id="prizeModal" class="modal">
         <div class="modal-content">
             <h3 id="modal-title">تبریک!</h3>
@@ -159,22 +182,44 @@
     </div>
 
     <script>
-        // 20 کد معتبر و اختصاصی
-        const allCodes = [
-            "WIN-11A", "WIN-22B", "WIN-33C", "WIN-44D", "WIN-55E",
-            "LUCK-901", "LUCK-802", "LUCK-703", "LUCK-604", "LUCK-505",
-            "GOL-X1", "GOL-X2", "GOL-X3", "GOL-X4", "GOL-X5",
-            "STAR-A", "STAR-B", "STAR-C", "STAR-D", "STAR-E"
+        // --- کدهای مربوط به تایمر ---
+        // تنظیم تاریخ پایان (یک هفته بعد: 8 جولای 2026 - ساعت 23:59:59)
+        const countDownDate = new Date("July 8, 2026 23:59:59").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("countdown-container").innerHTML = "<h3 style='color:#ff5252; margin:0;'>فرصت شرکت در قرعه‌کشی به پایان رسید!</h3>";
+            }
+        }, 1000);
+
+        // --- کدهای مربوط به گردونه ---
+        const secretCodes = [
+            "V0lOLTExQQ==", "V0lOLTIyQg==", "V0lOLTMzQw==", "V0lOLTQ0RA==", "V0lOLTU1RQ==",
+            "TFVDSy05MDE=", "TFVDSy04MDI=", "TFVDSy03MDM=", "TFVDSy02MDQ=", "TFVDSy01MDU=",
+            "R09MLVgx", "R09MLVgy", "R09MLVgz", "R09MLVg0", "R09MLVg1",
+            "U1RBUi1B", "U1RBUi1C", "U1RBUi1D", "U1RBUi1E", "U1RBUi1F"
         ];
         
-        // آرایه‌ای برای ذخیره کدهایی که کاربر استفاده کرده است
         let usedCodes = []; 
-        
         let isSpinning = false;
         let currentRotation = 0;
 
         function generateTrackingCode() {
-            return Math.floor(100000 + Math.random() * 900000); // تولید کد 6 رقمی
+            return Math.floor(100000 + Math.random() * 900000); 
         }
 
         function spinWheel() {
@@ -187,7 +232,9 @@
                 return;
             }
 
-            if (!allCodes.includes(codeInput)) {
+            const hashedInput = btoa(codeInput);
+
+            if (!secretCodes.includes(hashedInput)) {
                 alert("❌ کد وارد شده نامعتبر است!");
                 return;
             }
@@ -197,7 +244,6 @@
                 return;
             }
 
-            // کد استفاده شد
             usedCodes.push(codeInput);
             isSpinning = true;
 
@@ -234,7 +280,7 @@
             setTimeout(() => {
                 showModal(prizeName, isWin);
                 isSpinning = false;
-                document.getElementById('code-input').value = ""; // خالی کردن کادر
+                document.getElementById('code-input').value = ""; 
             }, 4100);
         }
 
