@@ -2,313 +2,75 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قرعه کشی گلهای رنگارنگ</title>
+    <title>قرعه‌کشی طلایی گلهای رنگارنگ</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Vazirmatn', sans-serif; 
-            background: linear-gradient(135deg, #1b5e20, #4caf50); 
-            color: #fff; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            overflow-x: hidden; 
-            position: relative;
-        }
-
-        .bg-icons { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .bg-icons span {
-            position: absolute; font-size: 40px; opacity: 0;
-            animation: floatUp 10s linear infinite;
-        }
-        .bg-icons span:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
-        .bg-icons span:nth-child(2) { left: 30%; animation-duration: 9s; animation-delay: 2s; }
-        .bg-icons span:nth-child(3) { left: 60%; animation-duration: 15s; animation-delay: 4s; }
-        .bg-icons span:nth-child(4) { left: 80%; animation-duration: 11s; animation-delay: 1s; }
-        .bg-icons span:nth-child(5) { left: 45%; animation-duration: 14s; animation-delay: 5s; }
+        body { margin: 0; background: #0a0a0a; color: #ffd700; font-family: 'Vazirmatn', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        .lux-bg { position: fixed; width: 100%; height: 100%; background: radial-gradient(circle, #2a2a00 0%, #000 100%); z-index: -1; }
         
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 0.8; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        .content { z-index: 10; display: flex; flex-direction: column; align-items: center; margin-top: 30px; text-align: center; width: 100%; }
-        h1 { font-family: 'Lalezar', cursive; font-size: 45px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); margin-bottom: 5px; color: #fff; }
-        h2 { font-size: 20px; font-weight: normal; margin-bottom: 25px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
-
-        /* استایل تایمر شمارش معکوس */
-        .countdown-container {
-            background: rgba(0, 0, 0, 0.4); padding: 15px 25px; border-radius: 12px;
-            margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .countdown-container h3 { font-size: 15px; margin-bottom: 15px; color: #ffd740; font-weight: normal; }
-        .countdown { display: flex; gap: 15px; justify-content: center; direction: ltr; }
-        .time-box {
-            display: flex; flex-direction: column; align-items: center;
-            background: rgba(255, 255, 255, 0.15); padding: 10px; border-radius: 8px; min-width: 60px;
-        }
-        .time-box span { font-size: 22px; font-weight: bold; font-family: Tahoma, monospace; }
-        .time-box .label { font-size: 11px; font-family: 'Vazirmatn'; margin-top: 5px; font-weight: normal; }
-
-        .wheel-container { position: relative; width: 300px; height: 300px; margin-bottom: 30px; }
+        h1 { font-family: 'Lalezar', cursive; font-size: 50px; margin: 30px 0; text-shadow: 0 0 20px #ffd700; }
         
-        .pointer {
-            position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent;
-            border-top: 40px solid #d32f2f; z-index: 20; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-        }
-
-        .wheel {
-            width: 100%; height: 100%; border-radius: 50%;
-            background: conic-gradient(
-                #ff5252 0% 14.28%, 
-                #448aff 14.28% 28.57%, 
-                #ffab40 28.57% 42.85%, 
-                #69f0ae 42.85% 57.14%, 
-                #e040fb 57.14% 71.42%, 
-                #ffd740 71.42% 85.71%, 
-                #9e9e9e 85.71% 100%
-            );
-            border: 8px solid #fff; box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            position: relative; transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-            transform: rotate(0deg); overflow: hidden;
-        }
-
-        .wheel-text {
-            position: absolute; width: 50%; height: 20px; top: calc(50% - 10px); left: 50%;
-            transform-origin: left center; text-align: right; padding-right: 15px; font-weight: bold;
-            font-size: 13px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        .input-section {
-            background: rgba(255, 255, 255, 0.9); padding: 25px; border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 10; display: flex; flex-direction: column; gap: 15px;
-            width: 90%; max-width: 400px;
-        }
-        input {
-            padding: 12px; font-size: 16px; border: 2px solid #2e7d32; border-radius: 6px;
-            text-align: center; outline: none; font-family: Tahoma; text-transform: uppercase;
-        }
-        button {
-            background-color: #d32f2f; color: white; border: none; padding: 15px;
-            font-size: 18px; font-weight: bold; font-family: 'Vazirmatn'; border-radius: 6px;
-            cursor: pointer; transition: 0.3s;
-        }
-        button:hover { background-color: #b71c1c; }
+        .wheel-container { position: relative; width: 350px; height: 350px; }
+        .wheel { width: 100%; height: 100%; border-radius: 50%; border: 10px solid #d4af37; box-shadow: 0 0 50px rgba(212,175,55,0.4); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); position: relative; overflow: hidden; }
         
-        .back-link { margin-top: 20px; color: #fff; text-decoration: none; font-size: 14px; z-index: 10; border-bottom: 1px solid #fff; padding-bottom: 2px; margin-bottom: 30px;}
+        .icon { position: absolute; font-size: 30px; top: 20%; left: 40%; transform-origin: 50px 150px; }
         
-        .modal {
-            display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background-color: #fff; color: #000; padding: 30px; border-radius: 10px;
-            text-align: center; max-width: 400px; width: 85%; font-family: 'Vazirmatn', sans-serif;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .modal-content h3 { color: #2e7d32; font-size: 24px; margin-bottom: 15px; }
-        .modal-content p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
-        .modal-content .code-box { 
-            background: #f1f1f1; padding: 10px; font-size: 20px; letter-spacing: 2px;
-            font-family: Tahoma, monospace; font-weight: bold; border: 2px dashed #d32f2f; margin-bottom: 20px; 
-        }
-        .close-btn {
-            background-color: #d32f2f; color: white; border: none; padding: 10px 20px;
-            border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold; font-family: 'Vazirmatn';
-        }
+        .input-box { margin-top: 50px; display: flex; flex-direction: column; gap: 10px; width: 300px; }
+        input { padding: 15px; border-radius: 30px; border: 2px solid #d4af37; background: #1a1a1a; color: #fff; text-align: center; }
+        button { padding: 15px; border-radius: 30px; border: none; background: #d4af37; color: #000; font-weight: bold; cursor: pointer; }
+        
+        .modal { display: none; position: fixed; top:0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 99; }
+        .modal-content { background: #1a1a1a; padding: 40px; border: 2px solid #d4af37; border-radius: 20px; text-align: center; }
     </style>
 </head>
 <body>
-
-    <div class="bg-icons">
-        <span>🚗</span>
-        <span>🏦</span>
-        <span>🚲</span>
-        <span>💵</span>
-        <span>📱</span>
+    <div class="lux-bg"></div>
+    <h1>✨ قرعه‌کشی طلایی ✨</h1>
+    
+    <div class="wheel-container">
+        <div class="wheel" id="wheel">
+            <!-- چیدمان نمادین گرافیکی -->
+            <div class="icon" style="transform: rotate(0deg);">🚗</div>
+            <div class="icon" style="transform: rotate(51deg);">🚲</div>
+            <div class="icon" style="transform: rotate(102deg);">📱</div>
+            <div class="icon" style="transform: rotate(153deg);">💵</div>
+            <div class="icon" style="transform: rotate(204deg);">💵</div>
+            <div class="icon" style="transform: rotate(255deg);">💵</div>
+            <div class="icon" style="transform: rotate(306deg);">❌</div>
+        </div>
     </div>
 
-    <div class="content">
-        <h1>قرعه کشی گلهای رنگارنگ</h1>
-        <h2>گردونه رو بچرخون و جایزه‌تو بگیر!</h2>
-
-        <!-- بخش تایمر -->
-        <div class="countdown-container" id="countdown-container">
-            <h3>⏳ زمان باقی‌مانده تا پایان قرعه‌کشی:</h3>
-            <div class="countdown">
-                <div class="time-box"><span id="days">00</span><span class="label">روز</span></div>
-                <div class="time-box"><span id="hours">00</span><span class="label">ساعت</span></div>
-                <div class="time-box"><span id="minutes">00</span><span class="label">دقیقه</span></div>
-                <div class="time-box"><span id="seconds">00</span><span class="label">ثانیه</span></div>
-            </div>
-        </div>
-
-        <div class="wheel-container">
-            <div class="pointer"></div>
-            <div class="wheel" id="wheel">
-                <div class="wheel-text" style="transform: rotate(-64.28deg);">تسلا</div>
-                <div class="wheel-text" style="transform: rotate(-12.85deg);">دوچرخه</div>
-                <div class="wheel-text" style="transform: rotate(38.57deg);">آیفون ۱۷</div>
-                <div class="wheel-text" style="transform: rotate(90deg);">۱۰۰ دلار</div>
-                <div class="wheel-text" style="transform: rotate(141.42deg);">۵۰ دلار</div>
-                <div class="wheel-text" style="transform: rotate(192.85deg);">۳۰ دلار</div>
-                <div class="wheel-text" style="transform: rotate(244.28deg);">پوچ</div>
-            </div>
-        </div>
-
-        <div class="input-section">
-            <input type="text" id="code-input" placeholder="کد قرعه‌کشی خود را وارد کنید..." autocomplete="off">
-            <button onclick="spinWheel()">بچرخون و برنده شو!</button>
-        </div>
-
-        <a href="index.html" class="back-link">بازگشت به صفحه اصلی</a>
+    <div class="input-box">
+        <input type="text" id="code" placeholder="کد طلایی خود را وارد کنید">
+        <button onclick="spin()">چرخش گردونه</button>
     </div>
 
-    <div id="prizeModal" class="modal">
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <h3 id="modal-title">تبریک!</h3>
-            <p id="modal-text"></p>
-            <div id="modal-code-box" style="display:none;">
-                کد رهگیری شما:<br>
-                <div class="code-box" id="tracking-code"></div>
-                لطفاً این کد را برای دریافت جایزه به پشتیبانی ارسال کنید.
-            </div>
-            <button class="close-btn" onclick="closeModal()">بستن</button>
+            <h2 id="result-text"></h2>
+            <p>برای دریافت جایزه، این کد را به پشتیبانی بفرستید: <b id="tracking"></b></p>
+            <button onclick="document.getElementById('modal').style.display='none'">بستن</button>
         </div>
     </div>
 
     <script>
-        // --- کدهای مربوط به تایمر ---
-        // تنظیم تاریخ پایان (یک هفته بعد: 8 جولای 2026 - ساعت 23:59:59)
-        const countDownDate = new Date("July 8, 2026 23:59:59").getTime();
+        const spinSound = new Audio('https://www.soundjay.com/misc/sounds/magic-chime-01.mp3');
+        const winSound = new Audio('https://www.soundjay.com/human/sounds/applause-01.mp3');
 
-        const timerInterval = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
-
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                document.getElementById("countdown-container").innerHTML = "<h3 style='color:#ff5252; margin:0;'>فرصت شرکت در قرعه‌کشی به پایان رسید!</h3>";
-            }
-        }, 1000);
-
-        // --- کدهای مربوط به گردونه ---
-        const secretCodes = [
-            "V0lOLTExQQ==", "V0lOLTIyQg==", "V0lOLTMzQw==", "V0lOLTQ0RA==", "V0lOLTU1RQ==",
-            "TFVDSy05MDE=", "TFVDSy04MDI=", "TFVDSy03MDM=", "TFVDSy02MDQ=", "TFVDSy01MDU=",
-            "R09MLVgx", "R09MLVgy", "R09MLVgz", "R09MLVg0", "R09MLVg1",
-            "U1RBUi1B", "U1RBUi1C", "U1RBUi1D", "U1RBUi1E", "U1RBUi1F"
-        ];
-        
-        let usedCodes = []; 
-        let isSpinning = false;
-        let currentRotation = 0;
-
-        function generateTrackingCode() {
-            return Math.floor(100000 + Math.random() * 900000); 
-        }
-
-        function spinWheel() {
-            if (isSpinning) return;
-
-            const codeInput = document.getElementById('code-input').value.trim().toUpperCase();
-
-            if (codeInput === "") {
-                alert("لطفاً یک کد وارد کنید!");
-                return;
-            }
-
-            const hashedInput = btoa(codeInput);
-
-            if (!secretCodes.includes(hashedInput)) {
-                alert("❌ کد وارد شده نامعتبر است!");
-                return;
-            }
-
-            if (usedCodes.includes(codeInput)) {
-                alert("⚠️ این کد قبلاً استفاده یا منقضی شده است!");
-                return;
-            }
-
-            usedCodes.push(codeInput);
-            isSpinning = true;
-
-            const random = Math.random() * 100;
-            let sliceIndex; 
-            let prizeName;
-            let isWin = true;
-
-            if (random < 1) { 
-                sliceIndex = 0; prizeName = "🚗 یک دستگاه ماشین تسلا"; 
-            } else if (random < 10) { 
-                sliceIndex = 1; prizeName = "🚲 یک دستگاه دوچرخه"; 
-            } else if (random < 20) { 
-                sliceIndex = 2; prizeName = "📱 گوشی آیفون ۱۷"; 
-            } else if (random < 40) { 
-                sliceIndex = 3; prizeName = "💵 ۱۰۰ دلار نقد"; 
-            } else if (random < 70) { 
-                sliceIndex = 4; prizeName = "💵 ۵۰ دلار نقد"; 
-            } else if (random < 80) { 
-                sliceIndex = 5; prizeName = "💵 ۳۰ دلار نقد"; 
-            } else { 
-                sliceIndex = 6; prizeName = "پوچ! متاسفانه چیزی برنده نشدی 😔"; 
-                isWin = false;
-            }
-
-            const sliceDegree = 360 / 7;
-            const stopAngle = (sliceIndex * sliceDegree) + (sliceDegree / 2);
-            
-            currentRotation += (360 * 5) + (360 - stopAngle);
-
+        function spin() {
+            spinSound.play();
             const wheel = document.getElementById('wheel');
-            wheel.style.transform = `rotate(${currentRotation}deg)`;
-
+            const randomRotation = Math.floor(Math.random() * 3600) + 1800;
+            wheel.style.transform = `rotate(${randomRotation}deg)`;
+            
             setTimeout(() => {
-                showModal(prizeName, isWin);
-                isSpinning = false;
-                document.getElementById('code-input').value = ""; 
-            }, 4100);
-        }
-
-        function showModal(prize, isWin) {
-            const modal = document.getElementById('prizeModal');
-            const title = document.getElementById('modal-title');
-            const text = document.getElementById('modal-text');
-            const codeBoxDiv = document.getElementById('modal-code-box');
-            const trackingCodeSpan = document.getElementById('tracking-code');
-
-            modal.style.display = 'flex';
-
-            if (isWin) {
-                title.innerText = "🎉 تبریک می‌گوییم! 🎉";
-                title.style.color = "#2e7d32";
-                text.innerText = "شما برنده شدید: " + prize;
-                codeBoxDiv.style.display = "block";
-                trackingCodeSpan.innerText = generateTrackingCode();
-            } else {
-                title.innerText = "متاسفیم!";
-                title.style.color = "#d32f2f";
-                text.innerText = prize;
-                codeBoxDiv.style.display = "none";
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('prizeModal').style.display = 'none';
+                winSound.play();
+                confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+                document.getElementById('modal').style.display = 'flex';
+                document.getElementById('result-text').innerText = "تبریک! شما برنده شدید!";
+                document.getElementById('tracking').innerText = Math.floor(Math.random()*900000);
+            }, 4200);
         }
     </script>
 </body>
