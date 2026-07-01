@@ -2,77 +2,69 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>قرعه‌کشی طلایی گلهای رنگارنگ</title>
+    <title>قرعه‌کشی گلهای رنگارنگ</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background: #0a0a0a; color: #ffd700; font-family: 'Vazirmatn', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        .lux-bg { position: fixed; width: 100%; height: 100%; background: radial-gradient(circle, #2a2a00 0%, #000 100%); z-index: -1; }
+        body { margin: 0; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #ffd700; font-family: 'Vazirmatn', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        h1 { font-family: 'Lalezar', cursive; font-size: 45px; margin: 20px; text-shadow: 0 0 10px #000; }
         
-        h1 { font-family: 'Lalezar', cursive; font-size: 50px; margin: 30px 0; text-shadow: 0 0 20px #ffd700; }
+        .wheel-container { position: relative; width: 300px; height: 300px; margin: 20px; }
+        .wheel { width: 100%; height: 100%; border-radius: 50%; border: 8px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.5); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); position: relative; background: conic-gradient(#ff0000 0% 14%, #0000ff 14% 28%, #ffa500 28% 42%, #008000 42% 57%, #800080 57% 71%, #ffff00 71% 85%, #808080 85% 100%); }
         
-        .wheel-container { position: relative; width: 350px; height: 350px; }
-        .wheel { width: 100%; height: 100%; border-radius: 50%; border: 10px solid #d4af37; box-shadow: 0 0 50px rgba(212,175,55,0.4); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); position: relative; overflow: hidden; }
-        
-        .icon { position: absolute; font-size: 30px; top: 20%; left: 40%; transform-origin: 50px 150px; }
-        
-        .input-box { margin-top: 50px; display: flex; flex-direction: column; gap: 10px; width: 300px; }
-        input { padding: 15px; border-radius: 30px; border: 2px solid #d4af37; background: #1a1a1a; color: #fff; text-align: center; }
-        button { padding: 15px; border-radius: 30px; border: none; background: #d4af37; color: #000; font-weight: bold; cursor: pointer; }
-        
-        .modal { display: none; position: fixed; top:0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 99; }
-        .modal-content { background: #1a1a1a; padding: 40px; border: 2px solid #d4af37; border-radius: 20px; text-align: center; }
+        .pointer { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 40px solid #d4af37; z-index: 5; }
+
+        .input-box { background: rgba(0,0,0,0.6); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #d4af37; }
+        input { padding: 12px; width: 220px; border-radius: 8px; border: none; text-align: center; font-size: 16px; }
+        button { padding: 12px 30px; margin-top: 10px; cursor: pointer; background: #d4af37; border: none; border-radius: 8px; font-weight: bold; font-family: 'Vazirmatn'; }
+
+        .modal { display: none; position: fixed; top:0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 100; }
+        .modal-content { background: #fff; color: #000; padding: 30px; border-radius: 15px; text-align: center; max-width: 350px; }
     </style>
 </head>
 <body>
-    <div class="lux-bg"></div>
-    <h1>✨ قرعه‌کشی طلایی ✨</h1>
+    <h1>✨ قرعه‌کشی بزرگ ✨</h1>
     
     <div class="wheel-container">
-        <div class="wheel" id="wheel">
-            <!-- چیدمان نمادین گرافیکی -->
-            <div class="icon" style="transform: rotate(0deg);">🚗</div>
-            <div class="icon" style="transform: rotate(51deg);">🚲</div>
-            <div class="icon" style="transform: rotate(102deg);">📱</div>
-            <div class="icon" style="transform: rotate(153deg);">💵</div>
-            <div class="icon" style="transform: rotate(204deg);">💵</div>
-            <div class="icon" style="transform: rotate(255deg);">💵</div>
-            <div class="icon" style="transform: rotate(306deg);">❌</div>
-        </div>
+        <div class="pointer"></div>
+        <div class="wheel" id="wheel"></div>
     </div>
 
     <div class="input-box">
-        <input type="text" id="code" placeholder="کد طلایی خود را وارد کنید">
-        <button onclick="spin()">چرخش گردونه</button>
+        <input type="text" id="code" placeholder="کد قرعه‌کشی خود را وارد کنید...">
+        <br>
+        <button onclick="spin()">شروع چرخش</button>
     </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
             <h2 id="result-text"></h2>
-            <p>برای دریافت جایزه، این کد را به پشتیبانی بفرستید: <b id="tracking"></b></p>
-            <button onclick="document.getElementById('modal').style.display='none'">بستن</button>
+            <p id="msg"></p>
+            <button onclick="location.reload()">بستن و خروج</button>
         </div>
     </div>
 
     <script>
-        const spinSound = new Audio('https://www.soundjay.com/misc/sounds/magic-chime-01.mp3');
-        const winSound = new Audio('https://www.soundjay.com/human/sounds/applause-01.mp3');
+        const secretCodes = ["WIN1", "WIN2", "WIN3", "WIN4", "WIN5"]; // کدهای نمونه
+        let used = [];
 
         function spin() {
-            spinSound.play();
+            const code = document.getElementById('code').value.toUpperCase();
+            if (!secretCodes.includes(code)) { alert("کد اشتباه است!"); return; }
+            if (used.includes(code)) { alert("این کد قبلاً استفاده شده!"); return; }
+            
+            used.push(code);
             const wheel = document.getElementById('wheel');
-            const randomRotation = Math.floor(Math.random() * 3600) + 1800;
-            wheel.style.transform = `rotate(${randomRotation}deg)`;
+            const deg = Math.floor(Math.random() * 3600) + 1800;
+            wheel.style.transform = `rotate(${deg}deg)`;
             
             setTimeout(() => {
-                winSound.play();
-                confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
                 document.getElementById('modal').style.display = 'flex';
-                document.getElementById('result-text').innerText = "تبریک! شما برنده شدید!";
-                document.getElementById('tracking').innerText = Math.floor(Math.random()*900000);
+                document.getElementById('result-text').innerText = "🎉 تبریک برنده شدید!";
+                document.getElementById('msg').innerText = "برای دریافت جایزه، این کد را به پشتیبانی بفرستید: " + Math.floor(Math.random()*900000);
             }, 4200);
         }
     </script>
 </body>
 </html>
-
