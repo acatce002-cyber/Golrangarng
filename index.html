@@ -26,33 +26,39 @@
         .ticker-bar { font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
         .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
 
-        /* --- نوار جدید و جذاب خبر فوری --- */
-        .breaking-news-bar {
-            background-color: #161616;
-            color: #ffffff;
-            padding: 10px 20px;
-            font-size: 14px;
+        /* --- استایل نوار اخبار کوتاه --- */
+        .short-news-bar {
+            background-color: #e53935; /* رنگ پس‌زمینه قرمز */
+            margin: 25px auto; /* ایجاد فاصله با هواشناسی بالا و تبلیغ پایین */
+            max-width: 800px;
+            width: 95%;
+            border-radius: 8px;
+            padding: 12px 15px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 8px;
-            border-bottom: 2px solid #d32f2f;
+            gap: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        .breaking-title {
-            color: #ff3333;
+        .short-news-label {
+            color: #ffffff; /* رنگ سفید برای کلمه اخبار کوتاه */
             font-weight: bold;
-            animation: blink 1.2s infinite alternate;
             font-family: Tahoma, sans-serif;
+            font-size: 14px;
+            white-space: nowrap;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
         }
-        .breaking-content {
+        .short-news-content {
+            color: #000000; /* رنگ سیاه برای متن خبر */
             font-weight: bold;
-        }
-        @keyframes blink {
-            0% { opacity: 0.3; transform: scale(0.97); }
-            100% { opacity: 1; transform: scale(1.03); }
+            font-size: 15px;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+            line-height: 1.4;
         }
 
-        /* --- انیمیشن حرکت پس‌زمینه رنگی تبلیغات --- */
+        /* --- انیمیشن پس‌زمینه تبلیغات --- */
         @keyframes movingGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -61,8 +67,8 @@
         
         .ad-container { 
             max-width: 600px; 
-            width: 100%;
-            margin: 30px auto; 
+            width: 95%;
+            margin: 25px auto; 
             padding: 15px; 
             border-radius: 12px;
             border: 1px solid rgba(0,0,0,0.08); 
@@ -70,17 +76,8 @@
             background-size: 400% 400%;
         }
 
-        /* تبلیغ گالری خودرو با تم متحرک طلایی/نارنجی لوکس */
-        .ad-car {
-            background: linear-gradient(-45deg, #fff3e0, #ffe0b2, #ffcc80, #ffe082);
-            animation: movingGradient 6s ease infinite;
-        }
-
-        /* تبلیغ گوشی با تم متحرک نیلی/بنفش/صورتی مدرن */
-        .ad-phone {
-            background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #fce4ec, #e8eaf6);
-            animation: movingGradient 8s ease infinite;
-        }
+        .ad-car { background: linear-gradient(-45deg, #fff3e0, #ffe0b2, #ffcc80, #ffe082); animation: movingGradient 6s ease infinite; }
+        .ad-phone { background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #fce4ec, #e8eaf6); animation: movingGradient 8s ease infinite; }
 
         .ad-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; text-align: center; font-family: Tahoma, sans-serif; font-weight: bold; }
         .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
@@ -88,15 +85,15 @@
         .ad-content { font-size: 15px; font-weight: bold; color: #000000; }
         .ad-subtext { font-weight: normal; font-size: 12px; color: #222222; display: block; margin-top: 4px; }
 
-        .main-news { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .main-news { max-width: 800px; margin: 20px auto 40px; padding: 0 20px; }
         .news-link { text-decoration: none; color: #000; display: block; text-align: right; margin-bottom: 30px; }
         .news-link:hover .news-headline { text-decoration: underline; }
         
         .front-page-img { width: 100%; height: auto; margin-bottom: 15px; border-bottom: 1px solid #eee; border-radius: 4px; }
         .exclusive-tag { color: #d32f2f; font-weight: bold; font-size: 14px; margin-bottom: 8px; display: block; font-family: Tahoma, sans-serif;}
         
-        .news-headline { font-size: 30px; font-weight: bold; line-height: 1.4; margin-bottom: 15px; text-align: right; }
-        .news-summary { font-size: 17px; color: #333; line-height: 1.8; text-align: justify; }
+        .news-headline { font-size: 28px; font-weight: bold; line-height: 1.4; margin-bottom: 15px; text-align: right; }
+        .news-summary { font-size: 16px; color: #333; line-height: 1.8; text-align: justify; }
         
         .divider { border: 0; border-top: 1px solid #ddd; margin: 40px 0; }
 
@@ -107,6 +104,12 @@
         .pagination a.next-prev { font-weight: bold; padding: 8px 18px; }
 
         footer { text-align: center; font-size: 12px; color: #666; margin-top: 60px; padding: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; }
+
+        /* ریسپانسیو کردن نوار خبر کوتاه برای گوشی */
+        @media (max-width: 480px) {
+            .short-news-bar { flex-direction: column; text-align: center; gap: 8px; padding: 10px; }
+            .short-news-content { font-size: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -129,33 +132,37 @@
         <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۳°C</span></span>
     </div>
 
-    <div class="breaking-news-bar">
-        <span class="breaking-title">🚨 خبر فوری:</span>
-        <span class="breaking-content">یک نفر در سان فیرو به علت شدت گرما بیهوش شد</span>
+    <!-- نوار اخبار کوتاه متحرک -->
+    <div class="short-news-bar">
+        <span class="short-news-label">اخبار کوتاه</span>
+        <span class="short-news-content" id="short-news-text">بیهوش شدن یک شهروند سان فیرو از شدت گرما</span>
+    </div>
+
+    <!-- تبلیغ گالری خودرو -->
+    <div class="ad-container ad-car">
+        <span class="ad-label">تبلیغات</span>
+        <div class="ad-flex">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=200" alt="گالری خودرو" class="ad-thumb">
+            <div class="ad-content">
+                گالری خودرو رانینگ زد (Running ZD)
+                <span class="ad-subtext">آدرس: سان فیرو، خیابان کالرن ۲۲ شمالی</span>
+            </div>
+        </div>
     </div>
 
     <main class="main-news">
         
-        <div class="ad-container ad-car">
-            <span class="ad-label">تبلیغات</span>
-            <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=200" alt="گالری خودرو" class="ad-thumb">
-                <div class="ad-content">
-                    گالری خودرو رانینگ زد (Running ZD)
-                    <span class="ad-subtext">آدرس: سان فیرو، خیابان کالرن ۲۲ شمالی</span>
-                </div>
-            </div>
-        </div>
-
+        <!-- خبر اول (سوریه) -->
         <a href="news/news3.html" class="news-link">
             <article>
-                <img src="images/syria_trump.jpg" alt="Trump Syria News" class="front-page-img">
+                <img src="images/syria_trump.jpg?v=2" alt="Trump Syria News" class="front-page-img">
                 <span class="exclusive-tag">🔴 اختصاصی گلهای رنگارنگ</span>
                 <h2 class="news-headline">پیشنهاد ترامپ برای سرکوب حزب‌الله توسط سوریه؛ ایده‌ای که خاورمیانه را شوکه کرد</h2>
                 <p class="news-summary">در جریان مذاکرات صلح، پرزیدنت ترامپ مکرراً این ایده را مطرح کرد که سوریه می‌تواند به مهار حزب‌الله لبنان کمک کند؛ پیشنهادی که خاطرات تلخ گذشته را در منطقه زنده کرد.</p>
             </article>
         </a>
 
+        <!-- تبلیغ گوشی موبایل -->
         <div class="ad-container ad-phone">
             <span class="ad-label">تبلیغات</span>
             <div class="ad-flex">
@@ -169,9 +176,10 @@
 
         <hr class="divider">
 
+        <!-- خبر دوم (آمازون) -->
         <a href="news/news2.html" class="news-link">
             <article>
-                <img src="images/amazon.jpg" alt="Amazon Prime Delivery" class="front-page-img">
+                <img src="images/amazon.jpg?v=1" alt="Amazon Prime Delivery" class="front-page-img">
                 <h2 class="news-headline">گزارش ویژه: حمل‌ونقل آمازون پرایم در آمریکا؛ از سفارش یک باتری تا یخچال</h2>
                 <p class="news-summary">شبکه حمل‌ونقل Amazon Prime یکی از بزرگ‌ترین و پیشرفته‌ترین سیستم‌های لجستیکی جهان است. این شبکه هر روز میلیون‌ها سفارش را از انبارها به خانه مشتریان در سراسر آمریکا می‌رساند.</p>
             </article>
@@ -190,6 +198,7 @@
 
         <hr class="divider">
 
+        <!-- خبر سوم (معدن ترامپ) -->
         <a href="news/news1.html" class="news-link">
             <article>
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
@@ -198,6 +207,7 @@
             </article>
         </a>
 
+        <!-- صفحه‌بندی -->
         <div class="pagination">
             <a href="index.html" class="active">۱</a>
             <a href="page2.html">۲</a>
@@ -221,14 +231,13 @@
         setInterval(updateTime, 1000);
         updateTime();
 
+        // اسکریپت هواشناسی
         const weatherChunks = [
             "☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۳°C",
             "🌦 لیبرتی سیتی ۲۰°C | ☀️ وای سیتی ۲۶°C | 🌥 کارل سیتی ۱۵°C"
         ];
-        
         let weatherIdx = 0;
         const weatherEl = document.getElementById('live-weather');
-        
         setInterval(() => {
             weatherEl.style.opacity = 0; 
             setTimeout(() => {
@@ -237,6 +246,23 @@
                 weatherEl.style.opacity = 1; 
             }, 500); 
         }, 4000);
+
+        // اسکریپت تغییر اخبار کوتاه (هر 10 ثانیه)
+        const shortNewsList = [
+            "بیهوش شدن یک شهروند سان فیرو از شدت گرما",
+            "رایگان شدن بلیت مترو برای یک هفته در لاسونتراس"
+        ];
+        let shortNewsIdx = 0;
+        const shortNewsEl = document.getElementById('short-news-text');
+        
+        setInterval(() => {
+            shortNewsEl.style.opacity = 0; // محو شدن متن قدیمی
+            setTimeout(() => {
+                shortNewsIdx = (shortNewsIdx + 1) % shortNewsList.length;
+                shortNewsEl.innerText = shortNewsList[shortNewsIdx];
+                shortNewsEl.style.opacity = 1; // ظاهر شدن متن جدید
+            }, 500); // 0.5 ثانیه زمان برای تغییر نرم
+        }, 10000); // 10 ثانیه
     </script>
 </body>
 </html>
