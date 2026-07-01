@@ -26,7 +26,33 @@
         .ticker-bar { font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
         .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
 
-        /* --- استایل جدید، هم‌اندازه و متحرک تبلیغات --- */
+        /* --- نوار جدید و جذاب خبر فوری --- */
+        .breaking-news-bar {
+            background-color: #161616;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid #d32f2f;
+        }
+        .breaking-title {
+            color: #ff3333;
+            font-weight: bold;
+            animation: blink 1.2s infinite alternate;
+            font-family: Tahoma, sans-serif;
+        }
+        .breaking-content {
+            font-weight: bold;
+        }
+        @keyframes blink {
+            0% { opacity: 0.3; transform: scale(0.97); }
+            100% { opacity: 1; transform: scale(1.03); }
+        }
+
+        /* --- انیمیشن حرکت پس‌زمینه رنگی تبلیغات --- */
         @keyframes movingGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -39,18 +65,28 @@
             margin: 30px auto; 
             padding: 15px; 
             border-radius: 12px;
-            /* بکگراند رنگی متحرک با رنگ‌های ملایم جهت خوانایی ۱۰۰٪ متن */
-            background: linear-gradient(-45deg, #e3f2fd, #e8f5e9, #fff3e0, #fce4ec);
-            background-size: 400% 400%;
-            animation: movingGradient 8s ease infinite;
             border: 1px solid rgba(0,0,0,0.08); 
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background-size: 400% 400%;
         }
-        .ad-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; text-align: center; font-family: Tahoma, sans-serif; font-weight: bold; }
+
+        /* تبلیغ گالری خودرو با تم متحرک طلایی/نارنجی لوکس */
+        .ad-car {
+            background: linear-gradient(-45deg, #fff3e0, #ffe0b2, #ffcc80, #ffe082);
+            animation: movingGradient 6s ease infinite;
+        }
+
+        /* تبلیغ گوشی با تم متحرک نیلی/بنفش/صورتی مدرن */
+        .ad-phone {
+            background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #fce4ec, #e8eaf6);
+            animation: movingGradient 8s ease infinite;
+        }
+
+        .ad-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; text-align: center; font-family: Tahoma, sans-serif; font-weight: bold; }
         .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
         .ad-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 2px solid #fff; }
         .ad-content { font-size: 15px; font-weight: bold; color: #000000; }
-        .ad-subtext { font-weight: normal; font-size: 12px; color: #333333; display: block; margin-top: 4px; }
+        .ad-subtext { font-weight: normal; font-size: 12px; color: #222222; display: block; margin-top: 4px; }
 
         .main-news { max-width: 800px; margin: 40px auto; padding: 0 20px; }
         .news-link { text-decoration: none; color: #000; display: block; text-align: right; margin-bottom: 30px; }
@@ -93,19 +129,24 @@
         <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۳°C</span></span>
     </div>
 
-    <div class="ad-container">
-        <span class="ad-label">تبلیغات</span>
-        <div class="ad-flex">
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
-            <div class="ad-content">
-                فروش ویژه گوشی موبایل ای‌پکس (Apex)
-                <span class="ad-subtext">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
-            </div>
-        </div>
+    <div class="breaking-news-bar">
+        <span class="breaking-title">🚨 خبر فوری:</span>
+        <span class="breaking-content">یک نفر در سان فیرو به علت شدت گرما بیهوش شد</span>
     </div>
 
     <main class="main-news">
         
+        <div class="ad-container ad-car">
+            <span class="ad-label">تبلیغات</span>
+            <div class="ad-flex">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=200" alt="گالری خودرو" class="ad-thumb">
+                <div class="ad-content">
+                    گالری خودرو رانینگ زد (Running ZD)
+                    <span class="ad-subtext">آدرس: سان فیرو، خیابان کالرن ۲۲ شمالی</span>
+                </div>
+            </div>
+        </div>
+
         <a href="news/news3.html" class="news-link">
             <article>
                 <img src="images/syria_trump.jpg" alt="Trump Syria News" class="front-page-img">
@@ -115,13 +156,13 @@
             </article>
         </a>
 
-        <div class="ad-container">
+        <div class="ad-container ad-phone">
             <span class="ad-label">تبلیغات</span>
             <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=200" alt="گالری خودرو" class="ad-thumb">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
                 <div class="ad-content">
-                    گالری خودرو رانینگ ای زد (Running AZ)
-                    <span class="ad-subtext">آدرس: سان فیرو، خیابان کالرن ۲۲ شمالی</span>
+                    فروش ویژه گوشی موبایل ای‌پکس (Apex)
+                    <span class="ad-subtext">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
                 </div>
             </div>
         </div>
@@ -136,7 +177,7 @@
             </article>
         </a>
 
-        <div class="ad-container">
+        <div class="ad-container ad-phone">
             <span class="ad-label">تبلیغات</span>
             <div class="ad-flex">
                 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
@@ -182,7 +223,7 @@
 
         const weatherChunks = [
             "☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۳°C",
-            "🌦 لیبرتی سیتی ۲۰°C | ☀️ وای سیتی ۲۶°C | 🌥 کارل سیتی ۱۷°C"
+            "🌦 لیبرتی سیتی ۲۰°C | ☀️ وای سیتی ۲۶°C | 🌥 کارل سیتی ۱۵°C"
         ];
         
         let weatherIdx = 0;
@@ -199,3 +240,4 @@
     </script>
 </body>
 </html>
+
