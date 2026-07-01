@@ -17,6 +17,13 @@
         .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; text-decoration: none; }
         .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
 
+        /* انیمیشن دکمه قرعه‌کشی */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 10px 10px rgba(211, 47, 47, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+
         .ticker-bar { font-size: 13px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 8px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: #333; }
         
         /* استایل مربوط به انیمیشن نرم آب‌وهوا */
@@ -56,9 +63,16 @@
             <a href="index.html" style="text-decoration: none;"><h1 class="site-title">گلهای رنگارنگ</h1></a>
         </div>
         <div class="header-date" id="gregorian-date" dir="ltr"></div>
+        
+        <!-- دکمه ورود به قرعه‌کشی -->
+        <div style="margin-top: 20px; margin-bottom: 10px;">
+            <a href="lottery.html" style="background-color: #d32f2f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; display: inline-block; animation: pulse 1.5s infinite; font-family: Tahoma, sans-serif;">
+                🎁 ورود به قرعه‌کشی بزرگ 🎁
+            </a>
+        </div>
     </header>
 
-    <!-- نوار آپدیت شده و متحرک ساعت و آب‌وهوا -->
+    <!-- نوار متحرک ساعت و آب‌وهوا -->
     <div class="ticker-bar">
         <span>⏱ ساعت: <span id="live-time"></span></span>
         <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۲°C | 🌤 سان آندریاس ۲۱°C | ☁️ سان فییرو ۲۰°C</span></span>
@@ -75,19 +89,20 @@
         </div>
     </div>
 
-    <main class="main-news"> <main class="main-news">
-    <!-- تو اینجا Enter زدی و خبر جدید رو چسبوندی -->
-    <a href="news/news3.html" class="news-link"> 
-       ... (کد خبر سوریه) ...
-    </a>
-    <hr class="divider">
-
-    <!-- این همون خبر آمازون هست که از قبل داشتی -->
-    <a href="news/news2.html" class="news-link"> 
-       ...
-    </a>
-
+    <main class="main-news">
         
+        <!-- خبر اول (اختصاصی سوریه و ترامپ) -->
+        <a href="news/news3.html" class="news-link">
+            <article>
+                <img src="images/syria_trump.jpg" alt="Trump Syria News" class="front-page-img">
+                <h2 class="news-headline">پیشنهاد ترامپ برای سرکوب حزب‌الله توسط سوریه؛ ایده‌ای که خاورمیانه را شوکه کرد</h2>
+                <p class="news-summary">در جریان مذاکرات صلح، پرزیدنت ترامپ مکرراً این ایده را مطرح کرد که سوریه می‌تواند به مهار حزب‌الله لبنان کمک کند؛ پیشنهادی که خاطرات تلخ گذشته را در منطقه زنده کرد.</p>
+            </article>
+        </a>
+
+        <hr class="divider">
+
+        <!-- خبر دوم (آمازون) -->
         <a href="news/news2.html" class="news-link">
             <article>
                 <img src="images/amazon.jpg" alt="Amazon Prime Delivery" class="front-page-img">
@@ -109,6 +124,7 @@
 
         <hr class="divider">
 
+        <!-- خبر سوم (معدن ترامپ) -->
         <a href="news/news1.html" class="news-link">
             <article>
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
@@ -117,6 +133,7 @@
             </article>
         </a>
 
+        <!-- صفحه‌بندی -->
         <div class="pagination">
             <a href="index.html" class="active">۱</a>
             <a href="page2.html">۲</a>
@@ -153,14 +170,13 @@
         
         // هر ۴ ثانیه یک بار تغییر می‌کند
         setInterval(() => {
-            weatherEl.style.opacity = 0; // ابتدا متن را محو می‌کند
+            weatherEl.style.opacity = 0; 
             setTimeout(() => {
                 weatherIdx = (weatherIdx + 1) % weatherChunks.length;
-                weatherEl.innerText = weatherChunks[weatherIdx]; // متن را عوض می‌کند
-                weatherEl.style.opacity = 1; // متن جدید را ظاهر می‌کند
-            }, 500); // نیم ثانیه صبر برای اتمام محو شدن
+                weatherEl.innerText = weatherChunks[weatherIdx]; 
+                weatherEl.style.opacity = 1; 
+            }, 500); 
         }, 4000);
     </script>
 </body>
 </html>
-
