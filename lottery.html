@@ -2,69 +2,277 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>قرعه‌کشی گلهای رنگارنگ</title>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قرعه‌کشی بزرگ گلهای رنگارنگ</title>
+    <!-- اضافه کردن فونت‌ها و کتابخانه Confetti -->
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
     <style>
-        body { margin: 0; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #ffd700; font-family: 'Vazirmatn', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        h1 { font-family: 'Lalezar', cursive; font-size: 45px; margin: 20px; text-shadow: 0 0 10px #000; }
-        
-        .wheel-container { position: relative; width: 300px; height: 300px; margin: 20px; }
-        .wheel { width: 100%; height: 100%; border-radius: 50%; border: 8px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.5); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); position: relative; background: conic-gradient(#ff0000 0% 14%, #0000ff 14% 28%, #ffa500 28% 42%, #008000 42% 57%, #800080 57% 71%, #ffff00 71% 85%, #808080 85% 100%); }
-        
-        .pointer { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 40px solid #d4af37; z-index: 5; }
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --gold: #ffd700;
+            --gold-dark: #b8860b;
+        }
 
-        .input-box { background: rgba(0,0,0,0.6); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #d4af37; }
-        input { padding: 12px; width: 220px; border-radius: 8px; border: none; text-align: center; font-size: 16px; }
-        button { padding: 12px 30px; margin-top: 10px; cursor: pointer; background: #d4af37; border: none; border-radius: 8px; font-weight: bold; font-family: 'Vazirmatn'; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .modal { display: none; position: fixed; top:0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 100; }
-        .modal-content { background: #fff; color: #000; padding: 30px; border-radius: 15px; text-align: center; max-width: 350px; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #3b0764, #1e1b4b, #451a03);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px 10px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- افکت‌های پس‌زمینه (ذرات و آیکون‌ها) --- */
+        .bg-particles { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1; }
+        .floating-icon {
+            position: absolute; font-size: 2rem; opacity: 0.3; filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* --- هدر و تایمر --- */
+        .header { text-align: center; margin-bottom: 30px; z-index: 10; animation: fadeInDown 1s ease-out; }
+        .header h1 {
+            font-family: 'Lalezar', cursive; font-size: clamp(2rem, 5vw, 3.5rem);
+            background: linear-gradient(to right, #ffd700, #fff, #ffd700);
+            -webkit-background-clip: text; color: transparent;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4); margin-bottom: 10px;
+        }
+        .flowers { font-size: 1.5rem; letter-spacing: 15px; animation: pulseGlow 2s infinite alternate; }
+
+        @keyframes pulseGlow { from { text-shadow: 0 0 10px #ff007f; } to { text-shadow: 0 0 20px #ff007f, 0 0 30px #ff007f; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* طراحی شیشه‌ای تایمر */
+        .glass-timer {
+            background: var(--glass-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            padding: 15px 25px; display: flex; gap: 15px; justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); margin-top: 15px;
+        }
+        .time-box { display: flex; flex-direction: column; align-items: center; width: 50px; }
+        .time-box span { font-size: 1.8rem; font-weight: 900; color: var(--gold); text-shadow: 0 2px 5px rgba(0,0,0,0.5); font-family: monospace;}
+        .time-box label { font-size: 0.75rem; color: #ccc; margin-top: 5px; }
+
+        /* --- طراحی سه‌بعدی گردونه --- */
+        .wheel-wrapper {
+            position: relative; width: 320px; height: 320px; margin: 20px 0 40px;
+            border-radius: 50%; box-shadow: 0 0 50px rgba(255, 215, 0, 0.2), inset 0 0 20px rgba(0,0,0,0.8);
+            z-index: 10;
+        }
+        .wheel-pointer {
+            position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 50px; background: linear-gradient(to bottom, #ffe066, #b8860b);
+            clip-path: polygon(50% 100%, 0 0, 100% 0); z-index: 20;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+        }
+        .wheel {
+            width: 100%; height: 100%; border-radius: 50%; border: 8px solid var(--gold-dark);
+            position: relative; overflow: hidden;
+            transition: transform 7s cubic-bezier(0.1, 0.9, 0.2, 1);
+            background: conic-gradient(
+                #ef4444 0deg 51.42deg,    /* قرمز */
+                #3b82f6 51.42deg 102.85deg, /* آبی */
+                #10b981 102.85deg 154.28deg, /* سبز */
+                #f59e0b 154.28deg 205.71deg, /* نارنجی */
+                #8b5cf6 205.71deg 257.14deg, /* بنفش */
+                #64748b 257.14deg 308.57deg, /* خاکستری (پوچ) */
+                #ec4899 308.57deg 360deg     /* صورتی */
+            );
+        }
+        .wheel-segment {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            transform-origin: 50% 50%; display: flex; justify-content: center; align-items: flex-start;
+            padding-top: 25px; font-weight: 900; font-size: 0.9rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            color: #fff; pointer-events: none;
+        }
+        
+        /* تنظیم زوایای متن‌ها برای ۷ بخش (360/7 = 51.42) */
+        .seg-1 { transform: rotate(25.71deg); }
+        .seg-2 { transform: rotate(77.13deg); }
+        .seg-3 { transform: rotate(128.56deg); }
+        .seg-4 { transform: rotate(179.99deg); }
+        .seg-5 { transform: rotate(231.42deg); }
+        .seg-6 { transform: rotate(282.85deg); }
+        .seg-7 { transform: rotate(334.28deg); }
+
+        /* --- فرم ورود کد (Glassmorphism) --- */
+        .glass-panel {
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            padding: 30px; width: 90%; max-width: 400px; text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4); z-index: 10; transition: all 0.3s ease;
+        }
+        .input-group { display: flex; flex-direction: column; gap: 15px; }
+        
+        input {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1); border-radius: 12px;
+            color: #fff; font-size: 1.1rem; text-align: center; text-transform: uppercase;
+            font-family: monospace; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); background: rgba(255,255,255,0.1); }
+        
+        .btn {
+            padding: 15px; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700;
+            font-family: 'Vazirmatn'; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .btn-check { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+        .btn-check:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        
+        .btn-spin { background: linear-gradient(135deg, #ffd700, #f59e0b); color: #000; display: none; box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4); }
+        .btn-spin:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6); }
+        
+        .status-msg { margin-top: 15px; font-size: 0.9rem; font-weight: bold; min-height: 20px; transition: 0.3s; }
+        .text-red { color: #ef4444; } .text-green { color: #10b981; } .text-yellow { color: #facc15; }
+
+        /* --- مودال نتایج --- */
+        .modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+            display: none; justify-content: center; align-items: center; z-index: 100;
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .modal.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px; padding: 40px; width: 90%; max-width: 450px;
+            text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .modal.active .modal-content { transform: scale(1); }
+        .modal-icon { font-size: 4rem; margin-bottom: 15px; animation: bounce 2s infinite; }
+        .modal-title { font-size: 2rem; margin-bottom: 10px; font-family: 'Lalezar'; }
+        .modal-desc { font-size: 1.1rem; color: #cbd5e1; line-height: 1.8; margin-bottom: 25px; }
+        
+        .btn-close {
+            background: rgba(255,255,255,0.1); color: #fff; padding: 12px 30px; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-family: 'Vazirmatn';
+        }
+        .btn-close:hover { background: rgba(255,255,255,0.2); }
+
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        /* افکت لرزش هنگام درخشش و پایان */
+        @keyframes shake {
+            0% { transform: translateX(0); } 25% { transform: translateX(-5px) rotate(-1deg); }
+            50% { transform: translateX(5px) rotate(1deg); } 75% { transform: translateX(-5px) rotate(-1deg); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 400px) {
+            .wheel-wrapper { width: 260px; height: 260px; }
+            .header h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
-    <h1>✨ قرعه‌کشی بزرگ ✨</h1>
-    
-    <div class="wheel-container">
-        <div class="pointer"></div>
-        <div class="wheel" id="wheel"></div>
-    </div>
 
-    <div class="input-box">
-        <input type="text" id="code" placeholder="کد قرعه‌کشی خود را وارد کنید...">
-        <br>
-        <button onclick="spin()">شروع چرخش</button>
-    </div>
+    <!-- بکگراند متحرک آیکون‌ها -->
+    <div class="bg-particles" id="particles"></div>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <h2 id="result-text"></h2>
-            <p id="msg"></p>
-            <button onclick="location.reload()">بستن و خروج</button>
+    <div class="header">
+        <h1>🎉 قرعه‌کشی بزرگ گلهای رنگارنگ 🎉</h1>
+        <div class="flowers">🌸 🌺 🌼 🌷</div>
+        
+        <div class="glass-timer" id="timer-box">
+            <div class="time-box"><span id="days">00</span><label>روز</label></div>
+            <div class="time-box"><span id="hours">00</span><label>ساعت</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>دقیقه</label></div>
+            <div class="time-box"><span id="seconds">00</span><label>ثانیه</label></div>
         </div>
     </div>
 
-    <script>
-        const secretCodes = ["WIN1", "WIN2", "WIN3", "WIN4", "WIN5"]; // کدهای نمونه
-        let used = [];
+    <div class="wheel-wrapper" id="wheel-wrapper">
+        <div class="wheel-pointer"></div>
+        <div class="wheel" id="wheel">
+            <!-- 7 بخش، زاویه هرکدام 51.42 درجه -->
+            <div class="wheel-segment seg-1">🚗 تسلا</div>
+            <div class="wheel-segment seg-2">📱 آیفون ۱۷</div>
+            <div class="wheel-segment seg-3">💵 ۱۰۰ دلار</div>
+            <div class="wheel-segment seg-4">🚲 دوچرخه</div>
+            <div class="wheel-segment seg-5">💵 ۵۰ دلار</div>
+            <div class="wheel-segment seg-6">😔 پوچ</div>
+            <div class="wheel-segment seg-7">💵 ۳۰ دلار</div>
+        </div>
+    </div>
 
-        function spin() {
-            const code = document.getElementById('code').value.toUpperCase();
-            if (!secretCodes.includes(code)) { alert("کد اشتباه است!"); return; }
-            if (used.includes(code)) { alert("این کد قبلاً استفاده شده!"); return; }
-            
-            used.push(code);
-            const wheel = document.getElementById('wheel');
-            const deg = Math.floor(Math.random() * 3600) + 1800;
-            wheel.style.transform = `rotate(${deg}deg)`;
-            
-            setTimeout(() => {
-                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-                document.getElementById('modal').style.display = 'flex';
-                document.getElementById('result-text').innerText = "🎉 تبریک برنده شدید!";
-                document.getElementById('msg').innerText = "برای دریافت جایزه، این کد را به پشتیبانی بفرستید: " + Math.floor(Math.random()*900000);
-            }, 4200);
+    <div class="glass-panel" id="panel">
+        <div class="input-group">
+            <input type="text" id="codeInput" placeholder="کد قرعه‌کشی را وارد کنید" autocomplete="off" spellcheck="false">
+            <button class="btn btn-check" id="checkBtn" onclick="verifyCode()">✅ بررسی کد</button>
+            <button class="btn btn-spin" id="spinBtn" onclick="startSpin()">🎡 شروع چرخش</button>
+        </div>
+        <div class="status-msg" id="statusMsg"></div>
+    </div>
+
+    <!-- مودال نتیجه -->
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <div class="modal-icon" id="modalIcon">🎉</div>
+            <h2 class="modal-title" id="modalTitle">تبریک!</h2>
+            <p class="modal-desc" id="modalDesc">متن جایزه</p>
+            <button class="btn-close" onclick="closeModal()">بستن پنجره</button>
+        </div>
+    </div>
+
+    <!-- فایل‌های صوتی استاندارد -->
+    <audio id="tickSound" src="https://assets.mixkit.co/active_storage/sfx/2073/2073-preview.mp3" preload="auto"></audio>
+    <audio id="winSound" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" preload="auto"></audio>
+    <audio id="loseSound" src="https://assets.mixkit.co/active_storage/sfx/2047/2047-preview.mp3" preload="auto"></audio>
+
+    <script>
+        // --- 1. تولید پس‌زمینه متحرک ---
+        const icons = ['🚗', '💵', '📱', '🚲', '🎁', '⭐', '✨'];
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 25; i++) {
+            let el = document.createElement('div');
+            el.className = 'floating-icon';
+            el.innerText = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 15 + 10) + 's';
+            el.style.animationDelay = (Math.random() * 5) + 's';
+            particlesContainer.appendChild(el);
         }
-    </script>
-</body>
-</html>
+
+        // --- 2. تایمر شمارش معکوس ---
+        let timerActive = true;
+        const endDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000); // 7 روز دیگر از الان
+        
+        const timerInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                timerActive = false;
+                document.getElementById("timer-box").innerHTML = "<h3 style='color:#ef4444; margin:auto;'>قرعه‌کشی به پایان رسیده است</h3>";
+                document.getElementById("panel").style.display = "none";
+                return;
+            }
+
+            document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours").innerText = String(Math.floor((distance % (1Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
