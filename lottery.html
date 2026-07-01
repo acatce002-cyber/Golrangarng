@@ -173,13 +173,13 @@
         </div>
     </div>
 
+    <!-- فایل‌های صوتی با کیفیت بالا برای برد و باخت -->
     <audio id="sndClick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
-    <audio id="sndWin" src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3" preload="auto"></audio>
-    <audio id="sndLose" src="https://assets.mixkit.co/active_storage/sfx/2574/2574-preview.mp3" preload="auto"></audio>
+    <audio id="sndWin" src="https://actions.google.com/sounds/v1/cartoon/cartoon_success_fanfare.ogg" preload="auto"></audio>
+    <audio id="sndLose" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg" preload="auto"></audio>
 
     <script>
-        // تاریخ دقیق برای جلوگیری از خطای مرورگرها (سال، ماه-1، روز، ساعت، دقیقه، ثانیه)
-        // ماه جولای در جاوااسکریپت عدد 6 است (0 تا 11)
+        // --- 1. تایمر معکوس ---
         const targetDate = new Date(2026, 6, 8, 23, 59, 59).getTime();
         
         function updateTimer() {
@@ -205,8 +205,9 @@
         }
         
         setInterval(updateTimer, 1000);
-        updateTimer(); // آپدیت در لحظه باز شدن سایت
+        updateTimer();
 
+        // --- 2. کدهای معتبر ---
         const validCodes = [
             "GRG-0827EE-AGR", "GRG-1A94BD-XPT", "GRG-5C32MZ-KLQ", "GRG-88DF21-JNW", "GRG-7B61PO-YUV",
             "GRG-99AQ43-RRS", "GRG-2M44VB-PLO", "GRG-6X77TY-QWE", "GRG-3Z88UI-NMB", "GRG-4P99LK-JHG",
@@ -214,7 +215,10 @@
             "GRG-2K55ED-CDE", "GRG-4L77RF-VFR", "GRG-6J99TG-BGT", "GRG-8H22YH-NHY", "GRG-3G44UJ-MJU"
         ];
         
-        let usedCodes = [];
+        // --- 3. جلوگیری از استفاده مجدد با رفرش صفحه (ذخیره در حافظه گوشی) ---
+        // سیستم کدهای مصرف شده را از حافظه مرورگر میخواند
+        let usedCodes = JSON.parse(localStorage.getItem('grg_used_codes')) || [];
+        
         let verifiedCode = null;
         let isRotating = false;
 
@@ -240,8 +244,9 @@
                 return;
             }
 
+            // چک کردن اینکه آیا قبلاً این کد در حافظه ثبت شده یا نه
             if (usedCodes.includes(inputVal)) {
-                msgEl.innerText = "⚠️ این کد قبلاً استفاده شده است.";
+                msgEl.innerText = "⚠️ این کد قبلاً استفاده یا منقضی شده است.";
                 msgEl.className = "msg warn";
                 return;
             }
@@ -258,12 +263,18 @@
             if (isRotating || !verifiedCode) return;
             
             isRotating = true;
-            usedCodes.push(verifiedCode); 
             
+            // باطل کردن قطعی کد در حافظه مرورگر
+            usedCodes.push(verifiedCode); 
+            localStorage.setItem('grg_used_codes', JSON.stringify(usedCodes));
+            
+            // ترفند باز کردن قفل مرورگر برای پخش صداها
             try {
+                winSnd.play().then(() => { winSnd.pause(); winSnd.currentTime = 0; }).catch(e=>{});
+                loseSnd.play().then(() => { loseSnd.pause(); loseSnd.currentTime = 0; }).catch(e=>{});
                 clickSnd.currentTime = 0;
                 clickSnd.play();
-            } catch(e) { console.log("صدا غیرفعال است"); }
+            } catch(e) {}
 
             const rand = Math.random() * 100;
             let sliceIdx = 0; 
