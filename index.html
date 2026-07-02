@@ -10,9 +10,9 @@
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; background-color: #ffffff; color: #000000; line-height: 1.6; }
+        body { font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; background-color: #ffffff; color: #000000; line-height: 1.6; overflow-x: hidden; }
         
-        header { text-align: center; padding: 20px 20px 10px; }
+        header { text-align: center; padding: 30px 20px 10px; }
         .logo-title-container { margin-bottom: 15px; }
         .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; text-decoration: none; }
         .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
@@ -44,21 +44,42 @@
             border: 2px solid #fff;
         }
 
-        /* استایل نوار بالای سایت و ساعت مدرن */
-        .ticker-bar { font-size: 14px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 12px 20px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 25px; color: #333; }
+        /* --- استایل نوار اطلاعات (ریسپانسیو شده برای گوشی) --- */
+        .ticker-bar { 
+            font-size: 14px; 
+            background-color: #f8f8f8; 
+            border-bottom: 1px solid #ddd; 
+            padding: 12px 20px; 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 30px; 
+            color: #333; 
+        }
+        
         .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
         
+        /* --- مدل جدید ساعت خبری زنده --- */
         .modern-clock-wrapper { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        
+        @keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+        .live-dot {
+            width: 10px; height: 10px; background-color: #ff3b30; border-radius: 50%;
+            display: inline-block; animation: blink-dot 1.2s infinite; box-shadow: 0 0 8px rgba(255, 59, 48, 0.6);
+        }
+
         .modern-clock {
-            background: #0f172a; 
-            color: #00ffcc; 
-            padding: 4px 12px; 
-            border-radius: 6px; 
-            font-family: 'Courier New', monospace; 
-            font-size: 16px; 
-            font-weight: 900; 
-            letter-spacing: 2px; 
-            box-shadow: inset 0 0 5px rgba(0,255,204,0.3), 0 0 8px rgba(0,255,204,0.2);
+            background: linear-gradient(135deg, #1c1c1e, #2c2c2e); 
+            color: #ffd700; 
+            padding: 4px 16px; 
+            border-radius: 20px; 
+            font-family: Tahoma, monospace; 
+            font-size: 15px; 
+            font-weight: bold; 
+            letter-spacing: 1px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 1px solid #3a3a3c;
             direction: ltr;
             display: inline-block;
         }
@@ -105,8 +126,7 @@
             background-size: 400% 400%;
         }
 
-        /* رنگ‌های متحرک انواع تبلیغات */
-        .ad-sports { background: linear-gradient(-45deg, #00c6ff, #0072ff, #1cb5e0, #000046); animation: movingGradient 5s ease infinite; color: #fff; } /* تبلیغ تجهیزات ورزشی در هدر */
+        .ad-sports { background: linear-gradient(-45deg, #00c6ff, #0072ff, #1cb5e0, #000046); animation: movingGradient 5s ease infinite; color: #fff; } 
         .ad-sports .ad-content, .ad-sports .ad-label, .ad-sports .ad-subtext { color: #fff !important; }
         
         .ad-car { background: linear-gradient(-45deg, #fff3e0, #ffe0b2, #ffcc80, #ffe082); animation: movingGradient 6s ease infinite; }
@@ -140,17 +160,21 @@
 
         footer { text-align: center; font-size: 12px; color: #666; margin-top: 60px; padding: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; }
 
-        @media (max-width: 480px) {
+        /* --- ترفند حل مشکل گوشی (ریسپانسیو) --- */
+        @media (max-width: 768px) {
+            /* ساعت و هواشناسی در گوشی زیر هم مرتب می‌شوند تا به‌هم نریزند */
+            .ticker-bar { flex-direction: column; gap: 10px; padding: 15px 10px; }
             .short-news-bar { flex-direction: column; text-align: center; gap: 8px; padding: 10px; }
             .short-news-content { font-size: 14px; }
             .ad-flex { flex-direction: column; text-align: center; }
+            .weather-text { font-size: 12px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- تبلیغ تجهیزات ورزشی، بالاتر از عنوان سایت -->
+        <!-- تبلیغ تجهیزات ورزشی -->
         <div class="ad-container ad-sports" style="margin-top: 0; margin-bottom: 35px;">
             <span class="ad-label" style="color: #ddd;">تبلیغات</span>
             <div class="ad-flex">
@@ -175,10 +199,12 @@
     </header>
 
     <div class="ticker-bar">
-        <!-- ساعت مدرن نئونی -->
-        <span class="modern-clock-wrapper">ساعت: <span id="live-time" class="modern-clock"></span></span>
+        <!-- ساعت زنده خبری جدید -->
+        <span class="modern-clock-wrapper">
+            <span class="live-dot"></span>
+            <span id="live-time" class="modern-clock"></span>
+        </span>
         
-        <!-- دماها ۳ تا ۵ درجه افزایش یافتند -->
         <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۴°C</span></span>
     </div>
 
@@ -201,7 +227,6 @@
 
     <main class="main-news">
         
-        <!-- خبر 1: بالگرد -->
         <a href="news/news6.html" class="news-link">
             <article>
                 <img src="images/helicopter_crash.jpg" alt="US Helicopter Crash" class="front-page-img">
@@ -225,7 +250,6 @@
 
         <hr class="divider">
 
-        <!-- خبر 2: درگیری ترامپ و ولیعهد سعودی -->
         <a href="news/news5.html" class="news-link">
             <article>
                 <img src="images/saudi_trump.jpg" alt="Saudi and USA" class="front-page-img">
@@ -249,7 +273,6 @@
 
         <hr class="divider">
 
-        <!-- خبر 3: U.S.M.C.A -->
         <a href="news/news4.html" class="news-link">
             <article>
                 <img src="images/usmca.jpg" alt="USMCA Trade Deal" class="front-page-img">
@@ -273,10 +296,9 @@
 
         <hr class="divider">
 
-        <!-- خبر 4: سوریه -->
         <a href="news/news3.html" class="news-link">
             <article>
-                <img src="images/syria_trump.jpg" alt="Trump Syria News" class="front-page-img">
+                <img src="images/syria_trump.jpg?v=2" alt="Trump Syria News" class="front-page-img">
                 <span class="exclusive-tag">🔴 اختصاصی گلهای رنگارنگ</span>
                 <h2 class="news-headline">پیشنهاد ترامپ برای سرکوب حزب‌الله توسط سوریه؛ ایده‌ای که خاورمیانه را شوکه کرد</h2>
                 <p class="news-summary">در جریان مذاکرات صلح، پرزیدنت ترامپ مکرراً این ایده را مطرح کرد که سوریه می‌تواند به مهار حزب‌الله لبنان کمک کند؛ پیشنهادی که خاطرات تلخ گذشته را در منطقه زنده کرد.</p>
@@ -285,10 +307,9 @@
 
         <hr class="divider">
 
-        <!-- خبر 5: گزارش آمازون -->
         <a href="news/news2.html" class="news-link">
             <article>
-                <img src="images/amazon.jpg" alt="Amazon Prime Delivery" class="front-page-img">
+                <img src="images/amazon.jpg?v=1" alt="Amazon Prime Delivery" class="front-page-img">
                 <h2 class="news-headline">گزارش ویژه: حمل‌ونقل آمازون پرایم در آمریکا؛ از سفارش یک باتری تا یخچال</h2>
                 <p class="news-summary">شبکه حمل‌ونقل Amazon Prime یکی از بزرگ‌ترین و پیشرفته‌ترین سیستم‌های لجستیکی جهان است. این شبکه هر روز میلیون‌ها سفارش را از انبارها به خانه مشتریان در سراسر آمریکا می‌رساند.</p>
             </article>
@@ -296,7 +317,6 @@
 
         <hr class="divider">
 
-        <!-- خبر 6: قرارداد معدن ترامپ -->
         <a href="news/news1.html" class="news-link">
             <article>
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
@@ -328,7 +348,6 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // آپدیت دما با افزایش ۳ تا ۵ درجه
         const weatherChunks = [
             "☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۴°C",
             "🌦 لیبرتی سیتی ۲۰°C | ☀️ وای سیتی ۲۶°C | 🌥 کارل سیتی ۱۷°C"
@@ -344,7 +363,6 @@
             }, 500); 
         }, 4000);
 
-        // اضافه شدن خبر کوتاه جدید
         const shortNewsList = [
             "بیهوش شدن یک شهروند سان فیرو از شدت گرما",
             "رایگان شدن بلیت مترو برای یک هفته در لاسونتراس",
