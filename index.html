@@ -89,9 +89,11 @@
             background-size: 400% 400%;
         }
 
+        /* رنگ‌های متحرک انواع تبلیغات */
         .ad-car { background: linear-gradient(-45deg, #fff3e0, #ffe0b2, #ffcc80, #ffe082); animation: movingGradient 6s ease infinite; }
         .ad-phone { background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #fce4ec, #e8eaf6); animation: movingGradient 8s ease infinite; }
         .ad-appliance { background: linear-gradient(-45deg, #e0f7fa, #b2ebf2, #e8f5e9, #c8e6c9); animation: movingGradient 7s ease infinite; }
+        .ad-dental { background: linear-gradient(-45deg, #bbdefb, #81d4fa, #4dd0e1, #b2ebf2); animation: movingGradient 5s ease infinite; } /* تبلیغ دندان‌پزشکی جدید */
 
         .ad-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; text-align: center; font-family: Tahoma, sans-serif; font-weight: bold; }
         .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
@@ -150,19 +152,45 @@
         <span class="short-news-content" id="short-news-text">بیهوش شدن یک شهروند سان فیرو از شدت گرما</span>
     </div>
 
-    <div class="ad-container ad-car">
+    <!-- تبلیغ اول: دندان‌پزشکی (تبلیغ جدید) -->
+    <div class="ad-container ad-dental">
         <span class="ad-label">تبلیغات</span>
         <div class="ad-flex">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=200" alt="گالری خودرو" class="ad-thumb">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=200" alt="دندان‌پزشکی" class="ad-thumb">
             <div class="ad-content">
-                گالری خودرو رانینگ زد (Running ZD)
-                <span class="ad-subtext">آدرس: سان فیرو، خیابان کالرن ۲۲ شمالی</span>
+                کلینیک دندان‌پزشکی تخصصی مروارید
+                <span class="ad-subtext">آدرس: جنوب شهر لوسانتوس، خیابان روین روی</span>
             </div>
         </div>
     </div>
 
     <main class="main-news">
         
+        <!-- خبر 1 (جدیدترین): بالگرد -->
+        <a href="news/news6.html" class="news-link">
+            <article>
+                <img src="images/helicopter_crash.jpg" alt="US Helicopter Crash" class="front-page-img">
+                <span class="exclusive-tag">🔴 اخبار نظامی</span>
+                <h2 class="news-headline">فرود اضطراری بالگرد آمریکایی در دریای عرب؛ یک نظامی مفقود و سه تن زخمی شدند</h2>
+                <p class="news-summary">ارتش ایالات متحده اعلام کرد در پی فرود اضطراری یک بالگرد «ام اچ-60 اس سی هاوک» در دریای عرب، یک نظامی مفقود و سه نفر از خدمه زخمی شدند.</p>
+            </article>
+        </a>
+
+        <!-- تبلیغ دوم: گالری خودرو -->
+        <div class="ad-container ad-car">
+            <span class="ad-label">تبلیغات</span>
+            <div class="ad-flex">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=200" alt="گالری خودرو" class="ad-thumb">
+                <div class="ad-content">
+                    گالری خودرو رانینگ زد (Running ZD)
+                    <span class="ad-subtext">آدرس: سان فیرو، خیابان کالرن ۲۲ شمالی</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- خبر 2: درگیری ترامپ و ولیعهد سعودی -->
         <a href="news/news5.html" class="news-link">
             <article>
                 <img src="images/saudi_trump.jpg" alt="Saudi and USA" class="front-page-img">
@@ -172,6 +200,7 @@
             </article>
         </a>
 
+        <!-- تبلیغ سوم: موبایل -->
         <div class="ad-container ad-phone">
             <span class="ad-label">تبلیغات</span>
             <div class="ad-flex">
@@ -185,6 +214,7 @@
 
         <hr class="divider">
 
+        <!-- خبر 3: U.S.M.C.A -->
         <a href="news/news4.html" class="news-link">
             <article>
                 <img src="images/usmca.jpg" alt="USMCA Trade Deal" class="front-page-img">
@@ -194,6 +224,7 @@
             </article>
         </a>
 
+        <!-- تبلیغ چهارم: لوازم خانگی -->
         <div class="ad-container ad-appliance">
             <span class="ad-label">تبلیغات</span>
             <div class="ad-flex">
@@ -207,6 +238,7 @@
 
         <hr class="divider">
 
+        <!-- خبر 4: سوریه -->
         <a href="news/news3.html" class="news-link">
             <article>
                 <img src="images/syria_trump.jpg?v=2" alt="Trump Syria News" class="front-page-img">
@@ -216,19 +248,9 @@
             </article>
         </a>
 
-        <div class="ad-container ad-phone">
-            <span class="ad-label">تبلیغات</span>
-            <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200" alt="گوشی موبایل" class="ad-thumb">
-                <div class="ad-content">
-                    فروش ویژه گوشی موبایل ای‌پکس (Apex)
-                    <span class="ad-subtext">شعبه مرکزی: شهر لوسانتوس، خیابان M19A</span>
-                </div>
-            </div>
-        </div>
-
         <hr class="divider">
 
+        <!-- خبر 5: گزارش آمازون -->
         <a href="news/news2.html" class="news-link">
             <article>
                 <img src="images/amazon.jpg?v=1" alt="Amazon Prime Delivery" class="front-page-img">
@@ -239,7 +261,7 @@
 
         <hr class="divider">
 
-        <!-- عکس این خبر به همان لینک قبلی برگردانده شد -->
+        <!-- خبر 6: قرارداد معدن ترامپ -->
         <a href="news/news1.html" class="news-link">
             <article>
                 <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
@@ -305,3 +327,4 @@
     </script>
 </body>
 </html>
+
