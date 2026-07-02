@@ -104,6 +104,67 @@
         .msg { margin-top: 12px; font-size: 13px; font-weight: bold; min-height: 20px; }
         .err { color: #ef4444; } .warn { color: #fbbf24; } .succ { color: #10b981; }
 
+        /* --- استایل بخش جدید: لیست برندگان --- */
+        .winners-section {
+            width: 100%;
+            max-width: 360px;
+            margin: 40px auto 20px;
+            text-align: center;
+        }
+        .winners-title {
+            font-family: 'Lalezar', cursive;
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+        }
+        .winners-list {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .winner-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .winner-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .winner-rank {
+            color: #d4af37;
+            font-weight: 900;
+            font-family: Tahoma, sans-serif;
+            font-size: 16px;
+            width: 25px;
+            text-align: right;
+        }
+        .winner-name {
+            color: #6b7280; /* رنگ خاکستری برای حالت خالی */
+            font-family: 'Vazirmatn', sans-serif;
+            flex-grow: 1;
+            text-align: center;
+            font-style: italic;
+        }
+        .winner-prize {
+            color: #555;
+            font-size: 12px;
+            width: 60px;
+            text-align: left;
+        }
+
         .modal {
             display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center;
@@ -124,8 +185,8 @@
         }
         .btn-close:hover { background: #b91c1c; }
         
-        .back-home { margin-top: 20px; font-size: 13px; color: #888888; text-decoration: none; border-bottom: 1px dashed #555; padding-bottom: 2px; }
-        .back-home:hover { color: #fff; border-color: #fff; }
+        .back-home { margin-top: 30px; font-size: 14px; color: #888888; text-decoration: none; border-bottom: 1px dashed #555; padding-bottom: 2px; transition: 0.3s; }
+        .back-home:hover { color: #d4af37; border-color: #d4af37; }
     </style>
 </head>
 <body>
@@ -159,6 +220,63 @@
         <div class="msg" id="msg"></div>
     </div>
 
+    <!-- بخش جدید: 10 جایگاه لیست برندگان جایزه بزرگ -->
+    <div class="winners-section">
+        <h2 class="winners-title">🏆 لیست برندگان جایزه بزرگ 🏆</h2>
+        <div class="winners-list">
+            <div class="winner-item">
+                <span class="winner-rank">۱</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۲</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۳</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۴</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۵</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۶</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۷</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۸</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۹</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+            <div class="winner-item">
+                <span class="winner-rank">۱۰</span>
+                <span class="winner-name">--- خالی ---</span>
+                <span class="winner-prize">-</span>
+            </div>
+        </div>
+    </div>
+
     <a href="index.html" class="back-home">بازگشت به صفحه اصلی</a>
 
     <div class="modal" id="modal">
@@ -173,7 +291,6 @@
         </div>
     </div>
 
-    <!-- فایل‌های صوتی با کیفیت بالا برای برد و باخت -->
     <audio id="sndClick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
     <audio id="sndWin" src="https://actions.google.com/sounds/v1/cartoon/cartoon_success_fanfare.ogg" preload="auto"></audio>
     <audio id="sndLose" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg" preload="auto"></audio>
@@ -215,8 +332,6 @@
             "GRG-2K55ED-CDE", "GRG-4L77RF-VFR", "GRG-6J99TG-BGT", "GRG-8H22YH-NHY", "GRG-3G44UJ-MJU"
         ];
         
-        // --- 3. جلوگیری از استفاده مجدد با رفرش صفحه (ذخیره در حافظه گوشی) ---
-        // سیستم کدهای مصرف شده را از حافظه مرورگر میخواند
         let usedCodes = JSON.parse(localStorage.getItem('grg_used_codes')) || [];
         
         let verifiedCode = null;
@@ -244,7 +359,6 @@
                 return;
             }
 
-            // چک کردن اینکه آیا قبلاً این کد در حافظه ثبت شده یا نه
             if (usedCodes.includes(inputVal)) {
                 msgEl.innerText = "⚠️ این کد قبلاً استفاده یا منقضی شده است.";
                 msgEl.className = "msg warn";
@@ -264,11 +378,9 @@
             
             isRotating = true;
             
-            // باطل کردن قطعی کد در حافظه مرورگر
             usedCodes.push(verifiedCode); 
             localStorage.setItem('grg_used_codes', JSON.stringify(usedCodes));
             
-            // ترفند باز کردن قفل مرورگر برای پخش صداها
             try {
                 winSnd.play().then(() => { winSnd.pause(); winSnd.currentTime = 0; }).catch(e=>{});
                 loseSnd.play().then(() => { loseSnd.pause(); loseSnd.currentTime = 0; }).catch(e=>{});
@@ -328,7 +440,6 @@
 
             if (isWinner) {
                 try { winSnd.currentTime = 0; winSnd.play(); } catch(e) {}
-
                 try { confetti({ particleCount: 140, spread: 80, origin: { y: 0.6 } }); } catch(e) {}
 
                 title.innerText = "🎉 تبریک! شما برنده شدید 🎉";
