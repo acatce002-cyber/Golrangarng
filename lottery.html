@@ -104,7 +104,6 @@
         .msg { margin-top: 12px; font-size: 13px; font-weight: bold; min-height: 20px; }
         .err { color: #ef4444; } .warn { color: #fbbf24; } .succ { color: #10b981; }
 
-        /* --- استایل بخش جدید: لیست برندگان --- */
         .winners-section {
             width: 100%;
             max-width: 360px;
@@ -152,7 +151,7 @@
             text-align: right;
         }
         .winner-name {
-            color: #6b7280; /* رنگ خاکستری برای حالت خالی */
+            color: #6b7280;
             font-family: 'Vazirmatn', sans-serif;
             flex-grow: 1;
             text-align: center;
@@ -220,7 +219,6 @@
         <div class="msg" id="msg"></div>
     </div>
 
-    <!-- بخش جدید: 10 جایگاه لیست برندگان جایزه بزرگ -->
     <div class="winners-section">
         <h2 class="winners-title">🏆 لیست برندگان جایزه بزرگ 🏆</h2>
         <div class="winners-list">
@@ -296,7 +294,6 @@
     <audio id="sndLose" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg" preload="auto"></audio>
 
     <script>
-        // --- 1. تایمر معکوس ---
         const targetDate = new Date(2026, 6, 8, 23, 59, 59).getTime();
         
         function updateTimer() {
@@ -324,7 +321,6 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // --- 2. کدهای معتبر ---
         const validCodes = [
             "GRG-0827EE-AGR", "GRG-1A94BD-XPT", "GRG-5C32MZ-KLQ", "GRG-88DF21-JNW", "GRG-7B61PO-YUV",
             "GRG-99AQ43-RRS", "GRG-2M44VB-PLO", "GRG-6X77TY-QWE", "GRG-3Z88UI-NMB", "GRG-4P99LK-JHG",
@@ -388,24 +384,36 @@
                 clickSnd.play();
             } catch(e) {}
 
+            // تعیین احتمالات جدید قرعه‌کشی (مجموعا 100 درصد)
             const rand = Math.random() * 100;
             let sliceIdx = 0; 
             let prizeText = "";
             let isWinner = true;
 
+            // 1% شانس تسلا
             if (rand < 1) { 
                 sliceIdx = 0; prizeText = "🚗 ماشین لوکس تسلا"; 
-            } else if (rand < 10) { 
-                sliceIdx = 1; prizeText = "📱 گوشی آیفون ۱۷"; 
-            } else if (rand < 30) { 
-                sliceIdx = 2; prizeText = "💵 ۱۰۰ دلار پول نقد"; 
-            } else if (rand < 40) { 
+            } 
+            // 1% شانس دوچرخه
+            else if (rand < 2) { 
                 sliceIdx = 3; prizeText = "🚲 یک دستگاه دوچرخه"; 
-            } else if (rand < 65) { 
+            } 
+            // 5% شانس آیفون ۱۷
+            else if (rand < 7) { 
+                sliceIdx = 1; prizeText = "📱 گوشی آیفون ۱۷"; 
+            } 
+            // 23% شانس مجموع پول نقد (تقسیم بین ۱۰۰، ۵۰ و ۳۰ دلار)
+            else if (rand < 12) { // 5 درصد برای ۱۰۰ دلار
+                sliceIdx = 2; prizeText = "💵 ۱۰۰ دلار پول نقد"; 
+            } 
+            else if (rand < 20) { // 8 درصد برای ۵۰ دلار
                 sliceIdx = 4; prizeText = "💵 ۵۰ دلار پول نقد"; 
-            } else if (rand < 80) { 
+            } 
+            else if (rand < 30) { // 10 درصد برای ۳۰ دلار
                 sliceIdx = 6; prizeText = "💵 ۳۰ دلار پول نقد"; 
-            } else { 
+            } 
+            // 70% شانس پوچ
+            else { 
                 sliceIdx = 5; prizeText = "پوچ"; 
                 isWinner = false; 
             }
