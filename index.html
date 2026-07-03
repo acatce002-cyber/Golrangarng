@@ -198,18 +198,19 @@
     </header>
 
     <div class="ticker-bar">
-        <!-- ساعت زنده خبری جدید -->
+        <!-- ساعت زنده خبری -->
         <span class="modern-clock-wrapper">
             <span class="live-dot"></span>
             <span id="live-time" class="modern-clock"></span>
         </span>
         
-        <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۴°C</span></span>
+        <!-- دماها افزایش یافتند -->
+        <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۶°C | 🌤 سان آندریاس ۲۲°C | ☁️ سان فییرو ۲۷°C</span></span>
     </div>
 
     <div class="short-news-bar">
         <span class="short-news-label">اخبار کوتاه</span>
-        <span class="short-news-content" id="short-news-text">بیهوش شدن یک شهروند سان فیرو از شدت گرما</span>
+        <span class="short-news-content" id="short-news-text">ایالات متحده انتقال دلار به عراق را از سر گرفته است</span>
     </div>
 
     <!-- تبلیغ دندان‌پزشکی -->
@@ -348,8 +349,8 @@
         updateTime();
 
         const weatherChunks = [
-            "☀️ لوسانتوس ۲۴°C | 🌤 سان آندریاس ۱۹°C | ☁️ سان فییرو ۲۴°C",
-            "🌦 لیبرتی سیتی ۲۰°C | ☀️ وای سیتی ۲۶°C | 🌥 کارل سیتی ۱۷°C"
+            "☀️ لوسانتوس ۲۶°C | 🌤 سان آندریاس ۲۲°C | ☁️ سان فییرو ۲۷°C",
+            "🌦 لیبرتی سیتی ۲۲°C | ☀️ وای سیتی ۲۹°C | 🌥 کارل سیتی ۱۹°C"
         ];
         let weatherIdx = 0;
         const weatherEl = document.getElementById('live-weather');
@@ -362,15 +363,12 @@
             }, 500); 
         }, 4000);
 
-        // لیست کامل 7 خبر کوتاه
+        // لیست جدید اخبار کوتاه 
         const shortNewsList = [
-            "بیهوش شدن یک شهروند سان فیرو از شدت گرما",
-            "رایگان شدن بلیت مترو برای یک هفته در لاسونتراس",
-            "قیمت های میوه و لبنیات در لاسونتراس کاهشی شد",
-            "جذب سرمایه گذاری در لاسونتراس به اوج خود رسیده",
             "ایالات متحده انتقال دلار به عراق را از سر گرفته است",
             "ایران پس از مذاکرات دوحه، کانال ارتباطی برای نظارت بر تفاهم‌نامه با آمریکا ایجاد می‌کند",
-            "ترامپ: در مورد کوبا، پس از دهه‌ها و دهه‌ها، به سمت ما می‌آیند"
+            "ترامپ: در مورد کوبا، پس از دهه‌ها و دهه‌ها، به سمت ما می‌آیند",
+            "امروز روز جهانی سوشیال مدیا است"
         ];
         let shortNewsIdx = 0;
         const shortNewsEl = document.getElementById('short-news-text');
@@ -386,4 +384,3 @@
     </script>
 </body>
 </html>
-
