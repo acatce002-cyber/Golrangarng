@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قرعه‌کشی گلهای رنگارنگ</title>
+    <title>لیست برندگان قرعه‌کشی - گلهای رنگارنگ</title>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,17 +17,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 30px 15px;
+            padding: 40px 15px;
             overflow-x: hidden;
         }
 
         h1 {
             font-family: 'Lalezar', cursive;
-            font-size: 36px;
+            font-size: 40px;
             color: #d4af37;
             text-align: center;
-            margin-bottom: 25px;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            margin-bottom: 30px;
+            text-shadow: 0 2px 15px rgba(212, 175, 55, 0.4);
         }
 
         .glass-timer {
@@ -37,480 +36,222 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 12px 20px;
+            padding: 15px 25px;
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
-        .time-box { display: flex; flex-direction: column; align-items: center; min-width: 50px; }
-        .time-box span { font-size: 24px; font-weight: 900; color: #d4af37; font-family: Tahoma, monospace; }
-        .time-box label { font-size: 11px; color: #aaaaaa; margin-top: 4px; }
-
-        .wheel-container { position: relative; width: 310px; height: 310px; margin-bottom: 35px; }
-        .pointer {
-            position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 32px solid #d4af37;
-            z-index: 10; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
-        }
-        .wheel {
-            width: 100%; height: 100%; border-radius: 50%; border: 6px solid #d4af37;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(0,0,0,0.9);
-            position: relative; overflow: hidden;
-            transition: transform 6s cubic-bezier(0.15, 0.85, 0.2, 1);
-            background: conic-gradient(
-                #1a1a1a 0deg 51.42deg, #2a2415 51.42deg 102.85deg, #1a1a1a 102.85deg 154.28deg,
-                #2a2415 154.28deg 205.71deg, #1a1a1a 205.71deg 257.14deg, #2a2415 257.14deg 308.57deg,
-                #1a1a1a 308.57deg 360deg
-            );
-        }
-        .segment {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            transform-origin: 50% 50%; display: flex; justify-content: center;
-            padding-top: 22px; font-weight: bold; font-size: 13px; color: #ffffff;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9); pointer-events: none;
-        }
-        .seg-1 { transform: rotate(25.71deg); } .seg-2 { transform: rotate(77.13deg); } .seg-3 { transform: rotate(128.56deg); }
-        .seg-4 { transform: rotate(179.99deg); } .seg-5 { transform: rotate(231.42deg); } .seg-6 { transform: rotate(282.85deg); }
-        .seg-7 { transform: rotate(334.28deg); }
-
-        .form-panel {
-            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px; padding: 25px; width: 100%; max-width: 360px;
-            text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-        
-        input {
-            width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.15); border-radius: 10px;
-            color: #ffffff; font-size: 16px; text-align: center; text-transform: uppercase;
-            font-family: Tahoma, sans-serif; outline: none; transition: 0.3s; margin-bottom: 15px; letter-spacing: 1px;
-        }
-        input:focus { border-color: #d4af37; box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
-        
-        .btn {
-            width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 16px;
-            font-weight: bold; font-family: 'Vazirmatn'; cursor: pointer; transition: 0.2s; display: block;
-        }
-        .btn-check { background: #2563eb; color: #ffffff; }
-        .btn-check:hover { background: #1d4ed8; }
-        .btn-spin {
-            background: linear-gradient(135deg, #d4af37, #aa8416); color: #000000;
-            display: none; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-        .btn-spin:hover { transform: scale(1.02); }
-        
-        .msg { margin-top: 12px; font-size: 13px; font-weight: bold; min-height: 20px; }
-        .err { color: #ef4444; } .warn { color: #fbbf24; } .succ { color: #10b981; }
+        .time-box { display: flex; flex-direction: column; align-items: center; min-width: 55px; }
+        .time-box span { font-size: 26px; font-weight: 900; color: #ef4444; font-family: Tahoma, monospace; text-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+        .time-box label { font-size: 12px; color: #aaaaaa; margin-top: 5px; }
+        .ended-msg { color: #ef4444; font-size: 18px; font-weight: bold; margin: auto; }
 
         /* --- استایل بخش لیست برندگان --- */
         .winners-section {
             width: 100%;
-            max-width: 360px;
-            margin: 40px auto 20px;
+            max-width: 450px;
             text-align: center;
         }
         .winners-title {
             font-family: 'Lalezar', cursive;
-            font-size: 24px;
+            font-size: 28px;
             color: #d4af37;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
         }
         .winners-list {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 16px;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
         .winner-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 18px;
+            border-radius: 10px;
             transition: 0.3s;
         }
         .winner-item:hover {
-            background: rgba(212, 175, 55, 0.05);
-            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
         }
         .winner-rank {
-            color: #d4af37;
+            color: #ffffff;
+            background: #d4af37;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 900;
             font-family: Tahoma, sans-serif;
-            font-size: 16px;
-            width: 25px;
-            text-align: right;
+            font-size: 14px;
+            color: #000;
         }
         .winner-info {
             flex-grow: 1;
             text-align: center;
             display: flex;
             flex-direction: column;
-            line-height: 1.3;
-        }
-        .winner-name {
-            color: #ffffff;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .winner-phone {
-            color: #888888;
-            font-family: Tahoma, sans-serif;
-            font-size: 11px;
-            direction: ltr;
-        }
-        .winner-prize {
-            color: #10b981; /* رنگ سبز برای جایزه */
-            font-size: 13px;
-            font-weight: bold;
-            width: 75px;
-            text-align: left;
+            line-height: 1.4;
+            padding: 0 10px;
         }
 
-        .modal {
-            display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center;
+        /* انیمیشن طلایی خاموش و روشن شونده برای اسم‌ها */
+        @keyframes flashGold {
+            0% { color: #d4af37; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); opacity: 1; }
+            50% { color: #fef08a; text-shadow: 0 0 15px rgba(254, 240, 138, 1); opacity: 0.4; }
+            100% { color: #d4af37; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); opacity: 1; }
         }
-        .modal-content {
-            background: #18181b; border: 1px solid #d4af37; border-radius: 16px;
-            padding: 30px; width: 90%; max-width: 380px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-        .modal-title { font-size: 26px; color: #d4af37; font-family: 'Lalezar'; margin-bottom: 12px; }
-        .modal-desc { font-size: 15px; line-height: 1.7; margin-bottom: 20px; color: #e4e4e7; }
-        .modal-code {
-            background: #27272a; padding: 10px; font-size: 18px; font-family: monospace; font-weight: bold;
-            border: 1px dashed #d4af37; color: #ffffff; margin-bottom: 20px; letter-spacing: 1px;
-        }
-        .btn-close {
-            background: #dc2626; color: #ffffff; padding: 10px 24px; border: none;
-            border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; font-family: 'Vazirmatn';
-        }
-        .btn-close:hover { background: #b91c1c; }
         
-        .back-home { margin-top: 30px; font-size: 14px; color: #888888; text-decoration: none; border-bottom: 1px dashed #555; padding-bottom: 2px; transition: 0.3s; }
+        .winner-name {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            animation: flashGold 1.5s infinite alternate; /* اعمال انیمیشن */
+        }
+        
+        .winner-phone {
+            color: #9ca3af;
+            font-family: Tahoma, monospace;
+            font-size: 12px;
+            direction: ltr;
+            margin-top: 2px;
+        }
+        .winner-prize {
+            color: #10b981;
+            font-size: 14px;
+            font-weight: bold;
+            width: 80px;
+            text-align: left;
+            text-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+        }
+
+        .back-home { margin-top: 35px; font-size: 15px; color: #888888; text-decoration: none; border-bottom: 1px dashed #555; padding-bottom: 2px; transition: 0.3s; }
         .back-home:hover { color: #d4af37; border-color: #d4af37; }
     </style>
 </head>
 <body>
 
-    <h1>قرعه کشی گلهای رنگارنگ</h1>
+    <h1>نتایج قرعه‌کشی بزرگ</h1>
 
+    <!-- تایمر پایان یافته -->
     <div class="glass-timer" id="timer">
-        <div class="time-box"><span id="days">00</span><label>روز</label></div>
-        <div class="time-box"><span id="hours">00</span><label>ساعت</label></div>
-        <div class="time-box"><span id="minutes">00</span><label>دقیقه</label></div>
-        <div class="time-box"><span id="seconds">00</span><label>ثانیه</label></div>
+        <span class="ended-msg">⏳ قرعه‌کشی به پایان رسید ⏳</span>
     </div>
 
-    <div class="wheel-container">
-        <div class="pointer"></div>
-        <div class="wheel" id="wheel">
-            <div class="segment seg-1">🚗 ماشین تسلا</div>
-            <div class="segment seg-2">📱 آیفون ۱۷</div>
-            <div class="segment seg-3">💵 ۱۰۰ دلار</div>
-            <div class="segment seg-4">🚲 دوچرخه</div>
-            <div class="segment seg-5">💵 ۵۰ دلار</div>
-            <div class="segment seg-6">😔 پوچ</div>
-            <div class="segment seg-7">💵 ۳۰ دلار</div>
-        </div>
-    </div>
-
-    <div class="form-panel">
-        <input type="text" id="codeInput" placeholder="کد قرعه‌کشی خود را وارد کنید" autocomplete="off" spellcheck="false">
-        <button class="btn btn-check" id="checkBtn" onclick="verifyCode()">✅ بررسی کد</button>
-        <button class="btn btn-spin" id="spinBtn" onclick="startSpin()">🎡 چرخاندن گردونه</button>
-        <div class="msg" id="msg"></div>
-    </div>
-
-    <!-- بخش لیست برندگان با اطلاعات واقعی‌تر -->
+    <!-- لیست ۱۰ نفر برنده با نام‌های ترکیبی و شماره آمریکا -->
     <div class="winners-section">
-        <h2 class="winners-title">🏆 لیست برندگان جایزه بزرگ 🏆</h2>
+        <h2 class="winners-title">🏆 لیست برندگان نهایی 🏆</h2>
         <div class="winners-list">
+            
             <div class="winner-item">
                 <span class="winner-rank">۱</span>
                 <div class="winner-info">
-                    <span class="winner-name">Ali Rezaei</span>
-                    <span class="winner-phone">+1 310-****-452</span>
+                    <span class="winner-name">Kian Smith</span>
+                    <span class="winner-phone">+1 212-****-123</span>
                 </div>
-                <span class="winner-prize">تسلا</span>
+                <span class="winner-prize">🚗 تسلا</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۲</span>
                 <div class="winner-info">
-                    <span class="winner-name">John Smith</span>
-                    <span class="winner-phone">+1 212-****-891</span>
+                    <span class="winner-name">Olivia Shirazi</span>
+                    <span class="winner-phone">+1 310-****-456</span>
                 </div>
-                <span class="winner-prize">آیفون ۱۷</span>
+                <span class="winner-prize">📱 آیفون ۱۷</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۳</span>
                 <div class="winner-info">
-                    <span class="winner-name">Sara Moradi</span>
-                    <span class="winner-phone">+1 415-****-112</span>
+                    <span class="winner-name">Liam Moradi</span>
+                    <span class="winner-phone">+1 415-****-789</span>
                 </div>
-                <span class="winner-prize">دوچرخه</span>
+                <span class="winner-prize">🚲 دوچرخه</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۴</span>
                 <div class="winner-info">
-                    <span class="winner-name">Emma Johnson</span>
-                    <span class="winner-phone">+1 617-****-554</span>
+                    <span class="winner-name">Emma Nouri</span>
+                    <span class="winner-phone">+1 617-****-321</span>
                 </div>
-                <span class="winner-prize">آیفون ۱۷</span>
+                <span class="winner-prize">📱 آیفون ۱۷</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۵</span>
                 <div class="winner-info">
-                    <span class="winner-name">Milad Hosseini</span>
-                    <span class="winner-phone">+1 702-****-331</span>
+                    <span class="winner-name">Noah Rostami</span>
+                    <span class="winner-phone">+1 702-****-654</span>
                 </div>
-                <span class="winner-prize">دوچرخه</span>
+                <span class="winner-prize">🚲 دوچرخه</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۶</span>
                 <div class="winner-info">
-                    <span class="winner-name">Michael Williams</span>
-                    <span class="winner-phone">+1 305-****-982</span>
+                    <span class="winner-name">Ava Jackson</span>
+                    <span class="winner-phone">+1 305-****-987</span>
                 </div>
-                <span class="winner-prize">آیفون ۱۷</span>
+                <span class="winner-prize">📱 آیفون ۱۷</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۷</span>
                 <div class="winner-info">
-                    <span class="winner-name">Neda Karimi</span>
-                    <span class="winner-phone">+1 818-****-774</span>
+                    <span class="winner-name">Ali Cooper</span>
+                    <span class="winner-phone">+1 818-****-147</span>
                 </div>
-                <span class="winner-prize">دوچرخه</span>
+                <span class="winner-prize">🚲 دوچرخه</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۸</span>
                 <div class="winner-info">
-                    <span class="winner-name">Sophia Davis</span>
-                    <span class="winner-phone">+1 404-****-229</span>
+                    <span class="winner-name">Sophia Ahmadi</span>
+                    <span class="winner-phone">+1 404-****-258</span>
                 </div>
-                <span class="winner-prize">آیفون ۱۷</span>
+                <span class="winner-prize">📱 آیفون ۱۷</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۹</span>
                 <div class="winner-info">
-                    <span class="winner-name">Amir Ahmadi</span>
-                    <span class="winner-phone">+1 512-****-665</span>
+                    <span class="winner-name">Michael Karimi</span>
+                    <span class="winner-phone">+1 512-****-369</span>
                 </div>
-                <span class="winner-prize">آیفون ۱۷</span>
+                <span class="winner-prize">📱 آیفون ۱۷</span>
             </div>
+            
             <div class="winner-item">
                 <span class="winner-rank">۱۰</span>
                 <div class="winner-info">
-                    <span class="winner-name">David Miller</span>
-                    <span class="winner-phone">+1 206-****-147</span>
+                    <span class="winner-name">Sara Mitchell</span>
+                    <span class="winner-phone">+1 206-****-753</span>
                 </div>
-                <span class="winner-prize">تسلا</span>
+                <span class="winner-prize">🚗 تسلا</span>
             </div>
+
         </div>
     </div>
 
     <a href="index.html" class="back-home">بازگشت به صفحه اصلی</a>
 
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <div class="modal-title" id="modalTitle">تبریک! 🎉</div>
-            <p class="modal-desc" id="modalDesc"></p>
-            <div id="codeContainer" style="display:none;">
-                کد رهگیری اختصاصی شما:
-                <div class="modal-code" id="trackingCode"></div>
-            </div>
-            <button class="btn-close" onclick="closeModal()">بستن پنجره</button>
-        </div>
-    </div>
-
-    <audio id="sndClick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
-    <audio id="sndWin" src="https://actions.google.com/sounds/v1/cartoon/cartoon_success_fanfare.ogg" preload="auto"></audio>
-    <audio id="sndLose" src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg" preload="auto"></audio>
-
-    <script>
-        const targetDate = new Date(2026, 6, 8, 23, 59, 59).getTime();
-        
-        function updateTimer() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance < 0) {
-                document.getElementById("timer").innerHTML = "<h3 style='color:#ef4444; margin:auto;'>مهلت شرکت در قرعه‌کشی پایان یافته است</h3>";
-                document.getElementById("codeInput").disabled = true;
-                document.getElementById("checkBtn").disabled = true;
-                return;
-            }
-
-            let d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let s = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = d < 10 ? '0' + d : d;
-            document.getElementById("hours").innerText = h < 10 ? '0' + h : h;
-            document.getElementById("minutes").innerText = m < 10 ? '0' + m : m;
-            document.getElementById("seconds").innerText = s < 10 ? '0' + s : s;
-        }
-        
-        setInterval(updateTimer, 1000);
-        updateTimer();
-
-        const validCodes = [
-            "GRG-0827EE-AGR", "GRG-1A94BD-XPT", "GRG-5C32MZ-KLQ", "GRG-88DF21-JNW", "GRG-7B61PO-YUV",
-            "GRG-99AQ43-RRS", "GRG-2M44VB-PLO", "GRG-6X77TY-QWE", "GRG-3Z88UI-NMB", "GRG-4P99LK-JHG",
-            "GRG-1W22DS-FDS", "GRG-5Y44XC-VCX", "GRG-7U66MN-BVC", "GRG-9I11ZA-QAZ", "GRG-0O33WS-XSW",
-            "GRG-2K55ED-CDE", "GRG-4L77RF-VFR", "GRG-6J99TG-BGT", "GRG-8H22YH-NHY", "GRG-3G44UJ-MJU"
-        ];
-        
-        let usedCodes = JSON.parse(localStorage.getItem('grg_used_codes')) || [];
-        
-        let verifiedCode = null;
-        let isRotating = false;
-
-        const clickSnd = document.getElementById('sndClick');
-        const winSnd = document.getElementById('sndWin');
-        const loseSnd = document.getElementById('sndLose');
-
-        function verifyCode() {
-            if (isRotating) return;
-            
-            const inputVal = document.getElementById('codeInput').value.trim().toUpperCase();
-            const msgEl = document.getElementById('msg');
-            
-            if (inputVal === "") {
-                msgEl.innerText = "❌ لطفاً کد قرعه‌کشی را وارد کنید.";
-                msgEl.className = "msg err";
-                return;
-            }
-
-            if (!validCodes.includes(inputVal)) {
-                msgEl.innerText = "❌ کد نامعتبر است.";
-                msgEl.className = "msg err";
-                return;
-            }
-
-            if (usedCodes.includes(inputVal)) {
-                msgEl.innerText = "⚠️ این کد قبلاً استفاده یا منقضی شده است.";
-                msgEl.className = "msg warn";
-                return;
-            }
-
-            verifiedCode = inputVal;
-            msgEl.innerText = "✅ کد معتبر است! دکمه چرخاندن برای شما فعال شد.";
-            msgEl.className = "msg succ";
-            
-            document.getElementById('checkBtn').style.display = "none";
-            document.getElementById('spinBtn').style.display = "block";
-        }
-
-        function startSpin() {
-            if (isRotating || !verifiedCode) return;
-            
-            isRotating = true;
-            
-            usedCodes.push(verifiedCode); 
-            localStorage.setItem('grg_used_codes', JSON.stringify(usedCodes));
-            
-            try {
-                winSnd.play().then(() => { winSnd.pause(); winSnd.currentTime = 0; }).catch(e=>{});
-                loseSnd.play().then(() => { loseSnd.pause(); loseSnd.currentTime = 0; }).catch(e=>{});
-                clickSnd.currentTime = 0;
-                clickSnd.play();
-            } catch(e) {}
-
-            const rand = Math.random() * 100;
-            let sliceIdx = 0; 
-            let prizeText = "";
-            let isWinner = true;
-
-            if (rand < 1) { 
-                sliceIdx = 0; prizeText = "🚗 ماشین لوکس تسلا"; 
-            } else if (rand < 2) { 
-                sliceIdx = 3; prizeText = "🚲 یک دستگاه دوچرخه"; 
-            } else if (rand < 7) { 
-                sliceIdx = 1; prizeText = "📱 گوشی آیفون ۱۷"; 
-            } else if (rand < 12) { 
-                sliceIdx = 2; prizeText = "💵 ۱۰۰ دلار پول نقد"; 
-            } else if (rand < 20) { 
-                sliceIdx = 4; prizeText = "💵 ۵۰ دلار پول نقد"; 
-            } else if (rand < 30) { 
-                sliceIdx = 6; prizeText = "💵 ۳۰ دلار پول نقد"; 
-            } else { 
-                sliceIdx = 5; prizeText = "پوچ"; 
-                isWinner = false; 
-            }
-
-            const degreesPerSlice = 360 / 7;
-            const targetAngle = (sliceIdx * degreesPerSlice) + (degreesPerSlice / 2);
-            const finalRotation = 1800 + (360 - targetAngle);
-            
-            const wheelEl = document.getElementById('wheel');
-            wheelEl.style.transform = `rotate(${finalRotation}deg)`;
-
-            setTimeout(() => {
-                showPrizeResult(prizeText, isWinner);
-                isRotating = false;
-                verifiedCode = null;
-                
-                document.getElementById('spinBtn').style.display = "none";
-                document.getElementById('checkBtn').style.display = "block";
-                document.getElementById('codeInput').value = "";
-            }, 6100);
-        }
-
-        function showPrizeResult(prize, isWinner) {
-            const modal = document.getElementById('modal');
-            const title = document.getElementById('modalTitle');
-            const desc = document.getElementById('modalDesc');
-            const codeCont = document.getElementById('codeContainer');
-            const trackCodeEl = document.getElementById('trackingCode');
-            const msgEl = document.getElementById('msg');
-
-            msgEl.innerText = ""; 
-
-            if (isWinner) {
-                try { winSnd.currentTime = 0; winSnd.play(); } catch(e) {}
-                try { confetti({ particleCount: 140, spread: 80, origin: { y: 0.6 } }); } catch(e) {}
-
-                title.innerText = "🎉 تبریک! شما برنده شدید 🎉";
-                title.style.color = "#d4af37";
-                desc.innerHTML = `جایزه شما: <b>${prize}</b><br><br>برای دریافت جایزه خود، لطفاً به پشتیبانی پیام دهید و کد رهگیری زیر را ارسال کنید.`;
-                
-                trackCodeEl.innerText = "TRACK-" + Math.floor(100000 + Math.random() * 900000);
-                codeCont.style.display = "block";
-            } else {
-                try { loseSnd.currentTime = 0; loseSnd.play(); } catch(e) {}
-
-                title.innerText = "متأسفیم! 😔";
-                title.style.color = "#ef4444";
-                desc.innerText = "متأسفانه این بار برنده نشدید. امیدواریم در قرعه‌کشی‌های بعدی گلهای رنگارنگ برنده شوید!";
-                codeCont.style.display = "none";
-            }
-
-            modal.style.display = "flex";
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = "none";
-            
-            document.getElementById('wheel').style.transition = "none";
-            document.getElementById('wheel').style.transform = "rotate(0deg)";
-            setTimeout(() => {
-                document.getElementById('wheel').style.transition = "transform 6s cubic-bezier(0.15, 0.85, 0.2, 1)";
-            }, 50);
-        }
-    </script>
 </body>
 </html>
-
