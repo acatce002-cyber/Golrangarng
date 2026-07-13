@@ -44,95 +44,29 @@
             border: 2px solid #fff;
         }
 
-        /* --- استایل نوار اطلاعات (ریسپانسیو شده برای گوشی) --- */
-        .ticker-bar { 
-            font-size: 14px; 
-            background-color: #f8f8f8; 
-            border-bottom: 1px solid #ddd; 
-            padding: 12px 20px; 
-            display: flex; 
-            flex-direction: row; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 30px; 
-            color: #333; 
-        }
-        
+        .ticker-bar { font-size: 14px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 12px 20px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px; color: #333; }
         .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
         
-        /* --- مدل جدید ساعت خبری زنده --- */
         .modern-clock-wrapper { display: flex; align-items: center; gap: 8px; font-weight: bold; }
-        
         @keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-        .live-dot {
-            width: 10px; height: 10px; background-color: #ff3b30; border-radius: 50%;
-            display: inline-block; animation: blink-dot 1.2s infinite; box-shadow: 0 0 8px rgba(255, 59, 48, 0.6);
-        }
+        .live-dot { width: 10px; height: 10px; background-color: #ff3b30; border-radius: 50%; display: inline-block; animation: blink-dot 1.2s infinite; box-shadow: 0 0 8px rgba(255, 59, 48, 0.6); }
+        .modern-clock { background: linear-gradient(135deg, #1c1c1e, #2c2c2e); color: #ffd700; padding: 4px 16px; border-radius: 20px; font-family: Tahoma, monospace; font-size: 15px; font-weight: bold; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 1px solid #3a3a3c; direction: ltr; display: inline-block; }
 
-        .modern-clock {
-            background: linear-gradient(135deg, #1c1c1e, #2c2c2e); 
-            color: #ffd700; 
-            padding: 4px 16px; 
-            border-radius: 20px; 
-            font-family: Tahoma, monospace; 
-            font-size: 15px; 
-            font-weight: bold; 
-            letter-spacing: 1px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border: 1px solid #3a3a3c;
-            direction: ltr;
-            display: inline-block;
-        }
+        .short-news-bar { background-color: #e53935; margin: 25px auto; max-width: 800px; width: 95%; border-radius: 8px; padding: 12px 15px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .short-news-label { color: #ffffff; font-weight: bold; font-family: Tahoma, sans-serif; font-size: 14px; white-space: nowrap; background: rgba(0,0,0,0.2); padding: 4px 10px; border-radius: 4px; }
+        .short-news-content { color: #000000; font-weight: bold; font-size: 15px; transition: opacity 0.3s ease-in-out; opacity: 1; line-height: 1.4; }
 
-        .short-news-bar {
-            background-color: #e53935;
-            margin: 25px auto; 
-            max-width: 800px;
-            width: 95%;
-            border-radius: 8px;
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .short-news-label {
-            color: #ffffff;
-            font-weight: bold;
-            font-family: Tahoma, sans-serif;
-            font-size: 14px;
-            white-space: nowrap;
-            background: rgba(0,0,0,0.2);
-            padding: 4px 10px;
-            border-radius: 4px;
-        }
-        .short-news-content {
-            color: #000000;
-            font-weight: bold;
-            font-size: 15px;
-            transition: opacity 0.3s ease-in-out;
-            opacity: 1;
-            line-height: 1.4;
-        }
-
-        .ad-container { 
-            max-width: 600px; 
-            width: 95%;
-            margin: 25px auto; 
-            padding: 15px; 
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.08); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            background-size: 400% 400%;
-        }
-
+        .ad-container { max-width: 600px; width: 95%; margin: 25px auto; padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 12px rgba(0,0,0,0.05); background-size: 400% 400%; }
+        
         .ad-sports { background: linear-gradient(-45deg, #00c6ff, #0072ff, #1cb5e0, #000046); animation: movingGradient 5s ease infinite; color: #fff; } 
         .ad-sports .ad-content, .ad-sports .ad-label, .ad-sports .ad-subtext { color: #fff !important; }
-        
         .ad-car { background: linear-gradient(-45deg, #fff3e0, #ffe0b2, #ffcc80, #ffe082); animation: movingGradient 6s ease infinite; }
         .ad-phone { background: linear-gradient(-45deg, #e3f2fd, #f3e5f5, #fce4ec, #e8eaf6); animation: movingGradient 8s ease infinite; }
         .ad-appliance { background: linear-gradient(-45deg, #e0f7fa, #b2ebf2, #e8f5e9, #c8e6c9); animation: movingGradient 7s ease infinite; }
         .ad-dental { background: linear-gradient(-45deg, #bbdefb, #81d4fa, #4dd0e1, #b2ebf2); animation: movingGradient 5s ease infinite; } 
+        /* تبلیغ جدید مسافرتی */
+        .ad-travel { background: linear-gradient(-45deg, #ff9a9e, #fecfef, #ff758c, #ff7eb3); animation: movingGradient 6s ease infinite; color: #fff; } 
+        .ad-travel .ad-content, .ad-travel .ad-label, .ad-travel .ad-subtext { color: #fff !important; }
 
         .ad-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; text-align: center; font-family: Tahoma, sans-serif; font-weight: bold; }
         .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
@@ -143,24 +77,18 @@
         .main-news { max-width: 800px; margin: 20px auto 40px; padding: 0 20px; }
         .news-link { text-decoration: none; color: #000; display: block; text-align: right; margin-bottom: 30px; }
         .news-link:hover .news-headline { text-decoration: underline; }
-        
         .front-page-img { width: 100%; height: auto; margin-bottom: 15px; border-bottom: 1px solid #eee; border-radius: 4px; }
         .exclusive-tag { color: #d32f2f; font-weight: bold; font-size: 14px; margin-bottom: 8px; display: block; font-family: Tahoma, sans-serif;}
-        
         .news-headline { font-size: 28px; font-weight: bold; line-height: 1.4; margin-bottom: 15px; text-align: right; }
         .news-summary { font-size: 16px; color: #333; line-height: 1.8; text-align: justify; }
-        
         .divider { border: 0; border-top: 1px solid #ddd; margin: 40px 0; }
-
         .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 50px 0 20px; }
         .pagination a { text-decoration: none; color: #000; padding: 8px 14px; border: 1px solid #ddd; border-radius: 4px; font-size: 15px; font-family: Tahoma, sans-serif; transition: 0.3s; }
         .pagination a.active { background-color: #000; color: #fff; border-color: #000; cursor: default; }
         .pagination a:hover:not(.active) { background-color: #f4f4f4; }
         .pagination a.next-prev { font-weight: bold; padding: 8px 18px; }
-
         footer { text-align: center; font-size: 12px; color: #666; margin-top: 60px; padding: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; }
 
-        /* --- ترفند حل مشکل گوشی (ریسپانسیو) --- */
         @media (max-width: 768px) {
             .ticker-bar { flex-direction: column; gap: 10px; padding: 15px 10px; }
             .short-news-bar { flex-direction: column; text-align: center; gap: 8px; padding: 10px; }
@@ -198,35 +126,58 @@
     </header>
 
     <div class="ticker-bar">
-        <!-- ساعت زنده خبری -->
         <span class="modern-clock-wrapper">
             <span class="live-dot"></span>
             <span id="live-time" class="modern-clock"></span>
         </span>
         
-        <!-- دماها به صورت متغیر ۲ تا ۳ درجه نوسان پیدا کردند -->
-        <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۸°C | 🌤 سان آندریاس ۲۰°C | ☁️ سان فییرو ۳۰°C</span></span>
+        <!-- هواشناسی با نوسان دما -->
+        <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۹°C | 🌤 سان آندریاس ۲۳°C | ☁️ سان فییرو ۳۱°C</span></span>
     </div>
 
     <div class="short-news-bar">
-        <span class="short-news-label">اخبار کوتاه</span>
+        <span class="short-news-label">اخبار فوری</span>
         <span class="short-news-content" id="short-news-text">سنتکام : اواخر امروز محاصره دریایی ایران رو آغاز خواهیم کرد</span>
     </div>
 
-    <!-- تبلیغ دندان‌پزشکی -->
-    <div class="ad-container ad-dental">
-        <span class="ad-label">تبلیغات</span>
+    <!-- تبلیغ جدید مسافرتی در صفحه اصلی -->
+    <div class="ad-container ad-travel">
+        <span class="ad-label" style="color: #ffe;">تبلیغات ویژه</span>
         <div class="ad-flex">
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=200" alt="دندان‌پزشکی" class="ad-thumb">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=200" alt="آژانس مسافرتی" class="ad-thumb">
             <div class="ad-content">
-                کلینیک دندان‌پزشکی تخصصی مروارید
-                <span class="ad-subtext">آدرس: جنوب شهر لوسانتوس، خیابان روین روی</span>
+                آژانس مسافرتی و گردشگری پرواز آبی
+                <span class="ad-subtext" style="color: #fff0f5;">تورهای ویژه تابستانی با تخفیف‌های استثنایی</span>
             </div>
         </div>
     </div>
 
     <main class="main-news">
         
+        <!-- خبر جدید (خبر 7) -->
+        <a href="news/news7.html" class="news-link">
+            <article>
+                <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=800" alt="Media and Politics" class="front-page-img">
+                <span class="exclusive-tag">🔴 اختصاصی گلهای رنگارنگ</span>
+                <h2 class="news-headline">چرا رسانه‌های آمریکایی در مورد نقش اسرائیل در تصمیم ترامپ برای جنگ سکوت کرده‌اند؟</h2>
+                <p class="news-summary">«گاردین» در مقاله‌ای تند و صریح، به نقد سکوت رسانه‌های بزرگ آمریکا پرداخته و افشا می‌کند که چرا نقش کلیدی اسرائیل در کشاندن دونالد ترامپ به مسیر جنگ، در صدر اخبار قرار نمی‌گیرد.</p>
+            </article>
+        </a>
+
+        <!-- تبلیغ دندان‌پزشکی -->
+        <div class="ad-container ad-dental">
+            <span class="ad-label">تبلیغات</span>
+            <div class="ad-flex">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=200" alt="دندان‌پزشکی" class="ad-thumb">
+                <div class="ad-content">
+                    کلینیک دندان‌پزشکی تخصصی مروارید
+                    <span class="ad-subtext">آدرس: جنوب شهر لوسانتوس، خیابان روین روی</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
         <a href="news/news6.html" class="news-link">
             <article>
                 <img src="images/helicopter_crash.jpg" alt="US Helicopter Crash" class="front-page-img">
@@ -282,49 +233,6 @@
             </article>
         </a>
 
-        <!-- تبلیغ لوازم خانگی -->
-        <div class="ad-container ad-appliance">
-            <span class="ad-label">تبلیغات</span>
-            <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=200" alt="لوازم خانگی" class="ad-thumb">
-                <div class="ad-content">
-                    هایپرمارکت لوازم خانگی لوکس هوم (LuxHome)
-                    <span class="ad-subtext">تخفیف ویژه جشنواره تابستانه | تحویل فوری در سراسر کشور</span>
-                </div>
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <a href="news/news3.html" class="news-link">
-            <article>
-                <img src="images/syria_trump.jpg?v=2" alt="Trump Syria News" class="front-page-img">
-                <span class="exclusive-tag">🔴 اختصاصی گلهای رنگارنگ</span>
-                <h2 class="news-headline">پیشنهاد ترامپ برای سرکوب حزب‌الله توسط سوریه؛ ایده‌ای که خاورمیانه را شوکه کرد</h2>
-                <p class="news-summary">در جریان مذاکرات صلح، پرزیدنت ترامپ مکرراً این ایده را مطرح کرد که سوریه می‌تواند به مهار حزب‌الله لبنان کمک کند؛ پیشنهادی که خاطرات تلخ گذشته را در منطقه زنده کرد.</p>
-            </article>
-        </a>
-
-        <hr class="divider">
-
-        <a href="news/news2.html" class="news-link">
-            <article>
-                <img src="images/amazon.jpg?v=1" alt="Amazon Prime Delivery" class="front-page-img">
-                <h2 class="news-headline">گزارش ویژه: حمل‌ونقل آمازون پرایم در آمریکا؛ از سفارش یک باتری تا یخچال</h2>
-                <p class="news-summary">شبکه حمل‌ونقل Amazon Prime یکی از بزرگ‌ترین و پیشرفته‌ترین سیستم‌های لجستیکی جهان است. این شبکه هر روز میلیون‌ها سفارش را از انبارها به خانه مشتریان در سراسر آمریکا می‌رساند.</p>
-            </article>
-        </a>
-
-        <hr class="divider">
-
-        <a href="news/news1.html" class="news-link">
-            <article>
-                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRoR77bWj1tf_P0KDRSekVF237PnL3jKF1fm9_vjkzX4L6KNR6wZUQpkxCakS_tPjK9dg5ffFN5N0Wqbhk" alt="Donald Trump and his son" class="front-page-img">
-                <h2 class="news-headline">ترامپ یک قرارداد معدنی میلیارد دلاری بست؛ پسرانش در صف سودآوری</h2>
-                <p class="news-summary">هنگامی که هاوارد لوتنیک، وزیر بازرگانی، سپتامبر گذشته با رئیس‌جمهور قزاقستان در هتل سنت رجیس نیویورک دیدار کرد، پرزیدنت ترامپ به صورت تلفنی وارد بحث شد تا این توافق که از اولویت‌های اصلی لوسانتوس بود را نهایی کند.</p>
-            </article>
-        </a>
-
         <div class="pagination">
             <a href="index.html" class="active">۱</a>
             <a href="page2.html">۲</a>
@@ -348,10 +256,9 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // آپدیت دما با نوسان ۲ الی ۳ درجه
         const weatherChunks = [
-            "☀️ لوسانتوس ۲۸°C | 🌤 سان آندریاس ۲۰°C | ☁️ سان فییرو ۳۰°C",
-            "🌦 لیبرتی سیتی ۱۹°C | ☀️ وای سیتی ۳۱°C | 🌥 کارل سیتی ۱۷°C"
+            "☀️ لوسانتوس ۲۹°C | 🌤 سان آندریاس ۲۳°C | ☁️ سان فییرو ۳۱°C",
+            "🌦 لیبرتی سیتی ۲۰°C | ☀️ وای سیتی ۳۲°C | 🌥 کارل سیتی ۱۸°C"
         ];
         let weatherIdx = 0;
         const weatherEl = document.getElementById('live-weather');
@@ -364,7 +271,6 @@
             }, 500); 
         }, 4000);
 
-        // جایگزینی با اخبار کوتاه جدید
         const shortNewsList = [
             "سنتکام : اواخر امروز محاصره دریایی ایران رو آغاز خواهیم کرد",
             "سازمان بین المللی دریانوردی: با اعمال عوارض بر تنگه هرمز مخالف هستیم",
