@@ -1,11 +1,175 @@
-<div class="news-card">
-    <span class="badge" style="background-color: #ff9800; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">اختصاصی گلهای رنگارنگ</span>
-    
-    <!-- در قسمت src آدرس عکس ترامپ را قرار بده -->
-    <img src="trump_corruption.jpg" alt="دادگاه دونالد ترامپ" style="width: 100%; border-radius: 8px; margin-top: 15px; margin-bottom: 10px;">
-    
-    <h3><a href="news8.html" style="color: #b71c1c; text-decoration: none;">پرونده‌های جنجالی و محکومیت‌های میلیاردی؛ نگاهی به دادگاه‌ها و فسادهای مالی دونالد ترامپ</a></h3>
-    
-    <p style="color: #555; font-size: 14px; text-align: justify; margin-top: 10px;">دونالد ترامپ طی سال‌های اخیر با چالش‌ها و محکومیت‌های حقوقی بی‌سابقه‌ای روبه‌رو شده است. از پرداخت بیش از ۴۵۰ میلیون دلار غرامت در پرونده کلاهبرداری مالی نیویورک تا محکومیت کیفری بی‌سابقه در پرونده حق‌السکوت. بررسی‌ها نشان می‌دهد...</p>
-</div>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گلهای رنگارنگ - صفحه اصلی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f4f4f9; color: #222; }
+        
+        /* هدر سایت - عنوان مشکی و وسط */
+        header { 
+            background-color: #ffffff; 
+            text-align: center; 
+            padding: 20px 15px 10px; 
+            border-bottom: 2px solid #e0e0e0;
+        }
+        header h1 { 
+            font-family: 'Lalezar', cursive; 
+            font-size: 42px; 
+            color: black; /* رنگ مشکی طبق درخواست شما */
+            margin: 0;
+        }
 
+        /* نوار زمان و تاریخ */
+        .top-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color: #ffffff;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #555;
+            border-bottom: 1px solid #ddd;
+        }
+        .live-dot {
+            height: 10px;
+            width: 10px;
+            background-color: red;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+        /* نوار اخبار مهم */
+        .breaking-news {
+            background-color: #b71c1c;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .breaking-news .badge {
+            background-color: #ff9800;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 15px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-text {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+            font-size: 15px;
+        }
+        @keyframes ticker { 
+            0% { transform: translateX(100%); } 
+            100% { transform: translateX(-100%); } 
+        }
+
+        /* بخش هواشناسی */
+        .weather-section {
+            background-color: #e0e0e0;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            border-bottom: 2px solid #ccc;
+        }
+        .weather-card {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            min-width: 130px;
+        }
+        .weather-card span.temp { color: #d32f2f; }
+
+        /* محتوای اصلی سایت */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر سایت -->
+    <header>
+        <h1>گلهای رنگارنگ</h1>
+    </header>
+
+    <!-- نوار زمان و تاریخ -->
+    <div class="top-bar">
+        <div>
+            <span class="live-dot"></span>
+            <span id="live-clock">در حال بارگذاری...</span>
+        </div>
+        <div id="current-date">در حال بارگذاری...</div>
+    </div>
+
+    <!-- نوار اخبار مهم -->
+    <div class="breaking-news">
+        <span class="badge">اخبار مهم</span>
+        <div class="ticker-wrap">
+            <div class="ticker-text">
+                العربیه: ایران با تمام پیشنهادات عمان برای ایجاد گذرگاه جدید در تنگه هرمز مخالفت کرده است، هیئت دیپلماتیک عمانی پس از مخالفت های ایران، تهران را ترک کردند
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش هواشناسی -->
+    <div class="weather-section">
+        <div class="weather-card"><span>لوسانتوس</span> <span class="temp">22°C</span></div>
+        <div class="weather-card"><span>سان آندریاس</span> <span class="temp">26°C</span></div>
+        <div class="weather-card"><span>سان فییرو</span> <span class="temp">28°C</span></div>
+        <div class="weather-card"><span>لیبرتی سیتی</span> <span class="temp">33°C</span></div>
+        <div class="weather-card"><span>وای سیتی</span> <span class="temp">23°C</span></div>
+        <div class="weather-card"><span>کارل سیتی</span> <span class="temp">26°C</span></div>
+    </div>
+
+    <!-- بخش اخبار و محتوای سایت -->
+    <div class="container">
+        <!-- می‌توانید کارت‌های خبری خود را در اینجا قرار دهید -->
+    </div>
+
+    <!-- اسکریپت ساعت و تاریخ -->
+    <script>
+        function updateTimeAndDate() {
+            const now = new Date();
+            
+            // تنظیم ساعت
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('live-clock').innerText = now.toLocaleTimeString('fa-IR', timeOptions);
+            
+            // تنظیم تاریخ شمسی
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerText = now.toLocaleDateString('fa-IR', dateOptions);
+        }
+        
+        // اجرای اولیه و سپس تکرار هر یک ثانیه
+        updateTimeAndDate();
+        setInterval(updateTimeAndDate, 1000);
+    </script>
+
+</body>
+</html>
