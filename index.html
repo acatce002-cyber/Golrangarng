@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Vazirmatn', sans-serif; background-color: #f4f4f9; color: #222; }
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f4f4f9; color: #222; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* هدر سایت - عنوان مشکی و وسط */
+        /* هدر سایت */
         header { 
             background-color: #ffffff; 
             text-align: center; 
@@ -19,7 +19,7 @@
         header h1 { 
             font-family: 'Lalezar', cursive; 
             font-size: 42px; 
-            color: black; /* رنگ مشکی طبق درخواست شما */
+            color: black; 
             margin: 0;
         }
 
@@ -27,13 +27,14 @@
         .top-bar {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             background-color: #ffffff;
             padding: 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             color: #555;
             border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
         }
         .live-dot {
             height: 10px;
@@ -46,7 +47,7 @@
         }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
 
-        /* نوار اخبار مهم */
+        /* نوار اخبار مهم (حرکت چپ به راست) */
         .breaking-news {
             background-color: #b71c1c;
             color: white;
@@ -54,6 +55,7 @@
             display: flex;
             align-items: center;
             overflow: hidden;
+            position: relative;
         }
         .breaking-news .badge {
             background-color: #ff9800;
@@ -69,37 +71,41 @@
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
+            position: relative;
         }
         .ticker-text {
             display: inline-block;
-            animation: ticker 30s linear infinite;
+            /* تغییر حرکت از چپ به راست */
+            animation: ticker-ltr 25s linear infinite;
             font-size: 15px;
+            white-space: nowrap;
         }
-        @keyframes ticker { 
-            0% { transform: translateX(100%); } 
-            100% { transform: translateX(-100%); } 
+        @keyframes ticker-ltr { 
+            0% { transform: translateX(-100vw); } 
+            100% { transform: translateX(100vw); } 
         }
 
-        /* بخش هواشناسی */
+        /* بخش هواشناسی (۳ تا ۳ تا) */
         .weather-section {
             background-color: #e0e0e0;
             padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             border-bottom: 2px solid #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
         .weather-card {
             background: white;
-            padding: 8px 15px;
+            padding: 8px 10px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
-            min-width: 130px;
         }
         .weather-card span.temp { color: #d32f2f; }
 
@@ -108,6 +114,82 @@
             max-width: 800px;
             margin: 30px auto;
             padding: 0 15px;
+            flex-grow: 1; /* برای چسبیدن فوتر به پایین */
+            width: 100%;
+        }
+
+        /* استایل کارت خبر */
+        .news-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        .news-card .exclusive-badge {
+            background-color: #ff9800; 
+            color: #fff; 
+            padding: 4px 10px; 
+            border-radius: 4px; 
+            font-size: 12px; 
+            font-weight: bold;
+            display: inline-block;
+        }
+        .news-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .news-card h3 a {
+            color: #b71c1c; 
+            text-decoration: none;
+            font-size: 22px;
+        }
+        .news-card p {
+            color: #555; 
+            font-size: 14px; 
+            text-align: justify; 
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+
+        /* صفحه‌بندی (Pagination) */
+        .pagination {
+            text-align: center;
+            margin: 40px 0;
+            direction: ltr; /* برای قرارگیری درست دکمه بعدی */
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border: 1px solid #ccc;
+            background-color: white;
+            color: #222;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .pagination a.active {
+            background-color: #222;
+            color: white;
+            border-color: #222;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        /* فوتر سایت */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            font-size: 14px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -118,26 +200,28 @@
         <h1>گلهای رنگارنگ</h1>
     </header>
 
-    <!-- نوار زمان و تاریخ -->
+    <!-- نوار زمان و تاریخ (شمسی و میلادی) -->
     <div class="top-bar">
         <div>
             <span class="live-dot"></span>
             <span id="live-clock">در حال بارگذاری...</span>
         </div>
-        <div id="current-date">در حال بارگذاری...</div>
+        <div>
+            <span id="current-date"></span> | <span id="miladi-date" dir="ltr"></span>
+        </div>
     </div>
 
     <!-- نوار اخبار مهم -->
     <div class="breaking-news">
-        <span class="badge">اخبار مهم</span>
+        <span class="badge">اخبار کوتاه</span>
         <div class="ticker-wrap">
             <div class="ticker-text">
-                العربیه: ایران با تمام پیشنهادات عمان برای ایجاد گذرگاه جدید در تنگه هرمز مخالفت کرده است، هیئت دیپلماتیک عمانی پس از مخالفت های ایران، تهران را ترک کردند
+                فوری / هم اکنون تیراندازی نزدیک کنسولگری آمریکا در تورنتوی کانادا
             </div>
         </div>
     </div>
 
-    <!-- بخش هواشناسی -->
+    <!-- بخش هواشناسی (۲ ردیف ۳ تایی) -->
     <div class="weather-section">
         <div class="weather-card"><span>لوسانتوس</span> <span class="temp">22°C</span></div>
         <div class="weather-card"><span>سان آندریاس</span> <span class="temp">26°C</span></div>
@@ -147,10 +231,32 @@
         <div class="weather-card"><span>کارل سیتی</span> <span class="temp">26°C</span></div>
     </div>
 
-    <!-- بخش اخبار و محتوای سایت -->
+    <!-- محتوای اصلی سایت -->
     <div class="container">
-        <!-- می‌توانید کارت‌های خبری خود را در اینجا قرار دهید -->
+        
+        <!-- خبر ۸ -->
+        <div class="news-card">
+            <span class="exclusive-badge">اختصاصی گلهای رنگارنگ</span>
+            <!-- آدرس عکس ترامپ را اینجا قرار دهید -->
+            <img src="trump_corruption.jpg" alt="دادگاه دونالد ترامپ">
+            <h3><a href="news8.html">پرونده‌های جنجالی و محکومیت‌های میلیاردی؛ نگاهی به دادگاه‌ها و فسادهای مالی دونالد ترامپ</a></h3>
+            <p>دونالد ترامپ طی سال‌های اخیر با چالش‌ها و محکومیت‌های حقوقی بی‌سابقه‌ای روبه‌رو شده است. از پرداخت بیش از ۴۵۰ میلیون دلار غرامت در پرونده کلاهبرداری مالی نیویورک تا محکومیت کیفری بی‌سابقه در پرونده حق‌السکوت. بررسی‌ها نشان می‌دهد که...</p>
+        </div>
+
+        <!-- اخبار دیگر سایت شما زیر این قسمت قرار می‌گیرند -->
+        
+        <!-- دکمه‌های شماره صفحات -->
+        <div class="pagination">
+            <a href="page2.html">صفحه بعدی &laquo;</a>
+            <a href="page2.html">۲</a>
+            <a href="index.html" class="active">۱</a>
+        </div>
     </div>
+
+    <!-- فوتر سایت -->
+    <footer>
+        <p>گلهای رنگارنگ &copy; تمامی حقوق محفوظ است</p>
+    </footer>
 
     <!-- اسکریپت ساعت و تاریخ -->
     <script>
@@ -162,11 +268,14 @@
             document.getElementById('live-clock').innerText = now.toLocaleTimeString('fa-IR', timeOptions);
             
             // تنظیم تاریخ شمسی
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').innerText = now.toLocaleDateString('fa-IR', dateOptions);
+            const shamsiOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerText = now.toLocaleDateString('fa-IR', shamsiOptions);
+
+            // تنظیم تاریخ میلادی
+            const miladiOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('miladi-date').innerText = now.toLocaleDateString('en-US', miladiOptions);
         }
         
-        // اجرای اولیه و سپس تکرار هر یک ثانیه
         updateTimeAndDate();
         setInterval(updateTimeAndDate, 1000);
     </script>
