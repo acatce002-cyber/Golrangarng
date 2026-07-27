@@ -3,220 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گلهای رنگارنگ - صفحه اصلی</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-    
+    <title>سایت در حال بروزرسانی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; background-color: #ffffff; color: #000000; line-height: 1.6; overflow-x: hidden; }
-        
-        header { text-align: center; padding: 30px 20px 10px; }
-        .logo-title-container { margin-bottom: 15px; }
-        .site-title { font-size: 52px; font-family: 'Lalezar', cursive; color: #000; text-decoration: none; }
-        .header-date { font-size: 14px; font-family: Arial, sans-serif; border-top: 1px solid #000; border-bottom: 3px solid #000; padding: 8px 0; margin: 0 20px; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
-            50% { transform: scale(1.05); box-shadow: 0 0 10px 10px rgba(211, 47, 47, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        body {
+            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #222;
         }
-
-        @keyframes movingGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .construction-container {
+            background: #ffffff;
+            padding: 50px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            width: 90%;
+            border-top: 8px solid #ffcc00; /* نوار زرد بالای باکس */
         }
-
-        .lottery-btn {
-            background: linear-gradient(-45deg, #d32f2f, #ff1744, #ff5252, #b71c1c);
-            background-size: 400% 400%;
-            animation: movingGradient 4s ease infinite, pulse 1.5s infinite;
-            color: white; 
-            padding: 10px 20px; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            font-size: 18px; 
-            display: inline-block; 
-            font-family: Tahoma, sans-serif;
-            border: 2px solid #fff;
+        .icon {
+            font-size: 90px;
+            margin-bottom: 20px;
         }
-
-        .ticker-bar { font-size: 14px; background-color: #f8f8f8; border-bottom: 1px solid #ddd; padding: 12px 20px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px; color: #333; }
-        .weather-text { transition: opacity 0.5s ease-in-out; opacity: 1; display: inline-block; font-weight: bold; }
-        
-        .modern-clock-wrapper { display: flex; align-items: center; gap: 8px; font-weight: bold; }
-        @keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-        .live-dot { width: 10px; height: 10px; background-color: #ff3b30; border-radius: 50%; display: inline-block; animation: blink-dot 1.2s infinite; box-shadow: 0 0 8px rgba(255, 59, 48, 0.6); }
-        .modern-clock { background: linear-gradient(135deg, #1c1c1e, #2c2c2e); color: #ffd700; padding: 4px 16px; border-radius: 20px; font-family: Tahoma, monospace; font-size: 15px; font-weight: bold; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); border: 1px solid #3a3a3c; direction: ltr; display: inline-block; }
-
-        .short-news-bar { background-color: #e53935; margin: 25px auto; max-width: 800px; width: 95%; border-radius: 8px; padding: 12px 15px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-        .short-news-label { color: #ffffff; font-weight: bold; font-family: Tahoma, sans-serif; font-size: 14px; white-space: nowrap; background: rgba(0,0,0,0.2); padding: 4px 10px; border-radius: 4px; }
-        .short-news-content { color: #000000; font-weight: bold; font-size: 15px; transition: opacity 0.3s ease-in-out; opacity: 1; line-height: 1.4; }
-
-        .ad-container { max-width: 600px; width: 95%; margin: 25px auto; padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 12px rgba(0,0,0,0.05); background-size: 400% 400%; }
-        
-        .ad-sports { background: linear-gradient(-45deg, #00c6ff, #0072ff, #1cb5e0, #000046); animation: movingGradient 5s ease infinite; color: #fff; } 
-        .ad-sports .ad-content, .ad-sports .ad-label, .ad-sports .ad-subtext { color: #fff !important; }
-        .ad-dental { background: linear-gradient(-45deg, #bbdefb, #81d4fa, #4dd0e1, #b2ebf2); animation: movingGradient 5s ease infinite; } 
-        .ad-travel { background: linear-gradient(-45deg, #ff9a9e, #fecfef, #ff758c, #ff7eb3); animation: movingGradient 6s ease infinite; color: #fff; } 
-        .ad-travel .ad-content, .ad-travel .ad-label, .ad-travel .ad-subtext { color: #fff !important; }
-
-        .ad-label { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; text-align: center; font-family: Tahoma, sans-serif; font-weight: bold; }
-        .ad-flex { display: flex; align-items: center; justify-content: center; gap: 15px; text-align: right; }
-        .ad-thumb { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 2px solid #fff; }
-        .ad-content { font-size: 15px; font-weight: bold; color: #000000; }
-        .ad-subtext { font-weight: normal; font-size: 12px; color: #222222; display: block; margin-top: 4px; }
-
-        .main-news { max-width: 800px; margin: 20px auto 40px; padding: 0 20px; }
-        .news-link { text-decoration: none; color: #000; display: block; text-align: right; margin-bottom: 30px; }
-        .news-link:hover .news-headline { text-decoration: underline; }
-        .front-page-img { width: 100%; height: auto; margin-bottom: 15px; border-bottom: 1px solid #eee; border-radius: 4px; }
-        .exclusive-tag { color: #d32f2f; font-weight: bold; font-size: 14px; margin-bottom: 8px; display: block; font-family: Tahoma, sans-serif;}
-        .news-headline { font-size: 28px; font-weight: bold; line-height: 1.4; margin-bottom: 15px; text-align: right; }
-        .news-summary { font-size: 16px; color: #333; line-height: 1.8; text-align: justify; }
-        
-        .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 50px 0 20px; }
-        .pagination a { text-decoration: none; color: #000; padding: 8px 14px; border: 1px solid #ddd; border-radius: 4px; font-size: 15px; font-family: Tahoma, sans-serif; transition: 0.3s; }
-        .pagination a.active { background-color: #000; color: #fff; border-color: #000; cursor: default; }
-        .pagination a:hover:not(.active) { background-color: #f4f4f4; }
-        .pagination a.next-prev { font-weight: bold; padding: 8px 18px; }
-        
-        footer { text-align: center; font-size: 12px; color: #666; margin-top: 60px; padding: 20px; border-top: 1px solid #ddd; font-family: Arial, sans-serif; }
-
-        @media (max-width: 768px) {
-            .ticker-bar { flex-direction: column; gap: 10px; padding: 15px 10px; }
-            .short-news-bar { flex-direction: column; text-align: center; gap: 8px; padding: 10px; }
-            .short-news-content { font-size: 14px; }
-            .ad-flex { flex-direction: column; text-align: center; }
-            .weather-text { font-size: 12px; text-align: center; }
+        h1 {
+            font-size: 32px;
+            color: #d32f2f; /* رنگ قرمز برای جلب توجه */
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+        p {
+            font-size: 20px;
+            color: #555;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        /* نوار هاشور خورده زرد و مشکی (علامت کارگاه) */
+        .warning-tape {
+            height: 15px;
+            background: repeating-linear-gradient(
+                -45deg,
+                #ffcc00,
+                #ffcc00 15px,
+                #222 15px,
+                #222 30px
+            );
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <!-- تبلیغ تجهیزات ورزشی -->
-        <div class="ad-container ad-sports" style="margin-top: 0; margin-bottom: 35px;">
-            <span class="ad-label" style="color: #ddd;">تبلیغات</span>
-            <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=200" alt="تجهیزات ورزشی" class="ad-thumb">
-                <div class="ad-content">
-                    فروشگاه تجهیزات ورزشی فیت‌مکس (FitMax)
-                    <span class="ad-subtext" style="color: #eee;">پیشرفته‌ترین دستگاه‌های بدنسازی و لوازم ورزشی با شرایط نقد و اقساط</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="logo-title-container">
-            <a href="index.html" style="text-decoration: none;"><h1 class="site-title">گلهای رنگارنگ</h1></a>
-        </div>
-        <div class="header-date" id="gregorian-date" dir="ltr"></div>
+    <div class="construction-container">
+        <!-- علامت ساخت و ساز -->
+        <div class="icon">🚧 🛠️</div>
         
-        <div style="margin-top: 20px; margin-bottom: 10px;">
-            <a href="lottery.html" class="lottery-btn">
-                🎁 ورود به قرعه‌کشی بزرگ 🎁
-            </a>
-        </div>
-    </header>
-
-    <div class="ticker-bar">
-        <span class="modern-clock-wrapper">
-            <span class="live-dot"></span>
-            <span id="live-time" class="modern-clock"></span>
-        </span>
+        <!-- پیام اصلی -->
+        <h1>سایت موقتاً از دسترس خارج شد</h1>
         
-        <!-- هواشناسی با نوسان ۳ تا ۳ تا -->
-        <span>♨️ هواشناسی: <span id="live-weather" class="weather-text">☀️ لوسانتوس ۲۲°C | 🌤 سان آندریاس ۲۶°C | ☁️ سان فییرو ۲۸°C</span></span>
+        <!-- پیام زیرین -->
+        <p>به زودی برمی‌گردیم...</p>
+        
+        <!-- نوار هشدار کارگاهی -->
+        <div class="warning-tape"></div>
     </div>
 
-    <div class="short-news-bar">
-        <span class="short-news-label">اخبار فوری</span>
-        <span class="short-news-content" id="short-news-text">فوری / هم اکنون تیراندازی نزدیک کنسولگری آمریکا در تورنتوی کانادا</span>
-    </div>
-
-    <!-- تبلیغ مسافرتی در صفحه اصلی -->
-    <div class="ad-container ad-travel">
-        <span class="ad-label" style="color: #ffe;">تبلیغات ویژه</span>
-        <div class="ad-flex">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=200" alt="آژانس مسافرتی" class="ad-thumb">
-            <div class="ad-content">
-                آژانس مسافرتی و گردشگری پرواز آبی
-                <span class="ad-subtext" style="color: #fff0f5;">تورهای ویژه تابستانی با تخفیف‌های استثنایی</span>
-            </div>
-        </div>
-    </div>
-
-    <main class="main-news">
-        
-        <!-- تنها خبر صفحه اصلی (خبر ۸) -->
-        <a href="news/news8.html" class="news-link">
-            <article>
-                <img src="images/trump_corruption.jpg" alt="پرونده‌های جنجالی ترامپ" class="front-page-img">
-                <span class="exclusive-tag">🔴 اختصاصی گلهای رنگارنگ</span>
-                <h2 class="news-headline">پرونده‌های جنجالی و محکومیت‌های میلیاردی؛ نگاهی به دادگاه‌ها و فسادهای مالی دونالد ترامپ</h2>
-                <p class="news-summary">دونالد ترامپ طی سال‌های اخیر با چالش‌ها و محکومیت‌های حقوقی بی‌سابقه‌ای روبه‌رو شده است. از پرداخت بیش از ۴۵۰ میلیون دلار غرامت در پرونده کلاهبرداری مالی نیویورک تا محکومیت کیفری بی‌سابقه در پرونده حق‌السکوت. بررسی‌ها نشان می‌دهد که...</p>
-            </article>
-        </a>
-
-        <!-- تبلیغ دندان‌پزشکی (در انتهای خبر) -->
-        <div class="ad-container ad-dental">
-            <span class="ad-label">تبلیغات</span>
-            <div class="ad-flex">
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=200" alt="دندان‌پزشکی" class="ad-thumb">
-                <div class="ad-content">
-                    کلینیک دندان‌پزشکی تخصصی مروارید
-                    <span class="ad-subtext">آدرس: جنوب شهر لوسانتوس، خیابان روین روی</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- صفحه‌بندی -->
-        <div class="pagination">
-            <a href="index.html" class="active">۱</a>
-            <a href="page2.html">۲</a>
-            <a href="page2.html" class="next-prev">صفحه بعدی &laquo;</a>
-        </div>
-
-    </main>
-
-    <footer>
-        &copy; 2026 گلهای رنگارنگ
-    </footer>
-
-    <script>
-        // تنظیم تاریخ میلادی
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('gregorian-date').innerText = new Date().toLocaleDateString('en-US', dateOptions);
-
-        // تنظیم ساعت زنده
-        function updateTime() {
-            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            document.getElementById('live-time').innerText = new Date().toLocaleTimeString('fa-IR', timeOptions);
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-
-        // سیستم هواشناسی چرخشی ۳ تا ۳ تا (هر ۳ ثانیه تغییر می‌کند)
-        const weatherChunks = [
-            "☀️ لوسانتوس ۲۲°C | 🌤 سان آندریاس ۲۶°C | ☁️ سان فییرو ۲۸°C",
-            "🔥 لیبرتی سیتی ۳۳°C | ☀️ وای سیتی ۲۳°C | 🌥 کارل سیتی ۲۶°C"
-        ];
-        let weatherIdx = 0;
-        const weatherEl = document.getElementById('live-weather');
-        
-        setInterval(() => {
-            weatherEl.style.opacity = 0; 
-            setTimeout(() => {
-                weatherIdx = (weatherIdx + 1) % weatherChunks.length;
-                weatherEl.innerText = weatherChunks[weatherIdx]; 
-                weatherEl.style.opacity = 1; 
-            }, 500); 
-        }, 3000); 
-        
-    </script>
 </body>
 </html>
-
