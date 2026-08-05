@@ -10,30 +10,38 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
+            /* این دو خط باعث می‌شود فوتر همیشه پایین بماند */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
-            /* بک‌گراند حذف شد و رنگ متن مشکی است */
             background-color: transparent;
             color: black;
             text-align: center;
             padding: 30px 0 20px 0;
         }
         header h1 {
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
             font-size: 32px;
         }
         .datetime-container {
             color: #666;
             font-size: 15px;
             font-family: Arial, sans-serif;
-            /* چپ‌چین کردن برای نمایش درست تاریخ میلادی */
             direction: ltr; 
             display: inline-block;
+        }
+        /* استایل برای فاصله دادن بین تاریخ و ساعت */
+        #date {
+            margin-bottom: 8px;
+            font-weight: bold;
         }
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 0 15px;
+            flex: 1; /* برای اینکه محتوا فضای خالی را پر کند */
         }
         .news-box {
             background-color: white;
@@ -78,39 +86,72 @@
         .read-more:hover {
             background-color: #2980b9;
         }
+        /* استایل پایین سایت (فوتر) */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #eaeaea;
+            color: #555;
+            font-size: 14px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>گلهای رنگارنگ</h1>
-        <!-- محل نمایش تاریخ و ساعت -->
-        <div class="datetime-container" id="clock"></div>
+        <!-- نمایش تاریخ و ساعت در دو خط مجزا -->
+        <div class="datetime-container">
+            <div id="date"></div>
+            <div id="time"></div>
+        </div>
     </header>
 
     <div class="container">
-        <!-- خبر اول -->
+        
+        <!-- خبر دوم (جدیدتر، بالای خبر اول) -->
         <div class="news-box">
-            <!-- آدرس‌دهی به داخل پوشه N1 -->
+            <img src="N2/news2.jpg" alt="مذاکرات ایران و عمان">
+            <div class="news-content">
+                <h2>مذاکرات ایران و عمان درباره ترتیبات مشترک تنگه هرمز</h2>
+                <p>المیادین به نقل از منبع امنیتی-سیاسی ایرانی: مذاکرات ایران و عمان درباره ترتیبات مشترک برای مدیریت تنگه هرمز به مراحل مهمی رسیده است.</p>
+                <a href="N2/news2.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <!-- خبر اول (قدیمی‌تر) -->
+        <div class="news-box">
             <img src="N1/news1.jpg" alt="حادثه بالگرد ترامپ">
             <div class="news-content">
                 <h2>فوری: بالگرد ترامپ در آسمان واشنگتن دچار حادثه ایمنی شد</h2>
                 <p>رسانه‌های عبری گزارش دادند بالگرد دونالد ترامپ، رئیس جمهور آمریکا، روز گذشته هنگام حضور او در بالگرد، در آسمان واشنگتن درگیر یک حادثه ایمنی شد.</p>
-                <!-- آدرس‌دهی به داخل پوشه N1 -->
                 <a href="N1/news1.html" class="read-more">ادامه مطلب</a>
             </div>
         </div>
+
     </div>
 
-    <!-- اسکریپت نمایش تاریخ و ساعت زنده -->
+    <!-- پایین سایت -->
+    <footer>
+        گلهای رنگارنگ 2026 (c)
+    </footer>
+
+    <!-- اسکریپت جاوااسکریپت برای تاریخ و ساعت -->
     <script>
         function updateTime() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            document.getElementById('clock').innerText = now.toLocaleDateString('en-US', options);
+            
+            // تنظیمات تاریخ
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', dateOptions);
+            
+            // تنظیمات ساعت
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('time').innerText = now.toLocaleTimeString('en-US', timeOptions);
         }
         setInterval(updateTime, 1000);
-        updateTime(); // اجرای اولیه برای اینکه یک ثانیه منتظر نماند
+        updateTime(); 
     </script>
 </body>
 </html>
