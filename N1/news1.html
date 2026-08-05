@@ -10,6 +10,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: transparent;
@@ -28,6 +31,7 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1; /* باعث می‌شود اگر متن کم بود، فوتر همچنان پایین بماند */
         }
         .back-link {
             display: inline-block;
@@ -61,6 +65,14 @@
         .news-text p {
             margin-bottom: 15px;
         }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #eaeaea;
+            color: #555;
+            font-size: 14px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -70,20 +82,24 @@
     </header>
 
     <div class="container">
-        <!-- دکمه بازگشت که یک پوشه برمی‌گردد عقب (به فایل اصلی) -->
+        <!-- بازگشت به صفحه اصلی -->
         <a href="../index.html" class="back-link">➔ بازگشت به صفحه اصلی</a>
         
         <h1>فوری: بالگرد ترامپ در آسمان واشنگتن دچار حادثه ایمنی شد</h1>
         
-        <!-- از آنجایی که این فایل و عکس هر دو در پوشه N1 هستند، آدرس عکس مستقیم نوشته می‌شود -->
+        <!-- عکس خبر اول -->
         <img src="news1.jpg" alt="حادثه بالگرد ترامپ" class="main-image">
         
         <div class="news-text">
             <p>▪️ رسانه‌های عبری گزارش دادند بالگرد دونالد ترامپ، رئیس جمهور آمریکا، روز گذشته هنگام حضور او در بالگرد، در آسمان واشنگتن درگیر یک حادثه ایمنی شد.</p>
             <p>▪️ گفته شده در این حادثه هیچ‌کس آسیب ندید. سازمان هوانوردی آمریکا در حال بررسی ابعاد این رویداد است.</p>
         </div>
-        
     </div>
+
+    <!-- پایین سایت -->
+    <footer>
+        گلهای رنگارنگ 2026 (c)
+    </footer>
 
 </body>
 </html>
