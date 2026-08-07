@@ -64,13 +64,16 @@
         .datetime-container {
             color: #666;
             font-size: 15px;
-            font-family: Arial, sans-serif;
-            direction: ltr; 
+            font-family: Tahoma, Arial, sans-serif;
             display: inline-block;
         }
         #date {
             margin-bottom: 5px;
             font-weight: bold;
+        }
+        #time {
+            direction: ltr; 
+            display: inline-block;
         }
         
         .ticker-wrapper {
@@ -148,7 +151,7 @@
                 گروه خبری واتسپ
             </a>
             
-            <!-- دکمه تحلیل بورس که به صفحه bours.html لینک شده است -->
+            <!-- دکمه تحلیل بورس -->
             <a href="bours.html" class="stock-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
@@ -174,7 +177,7 @@
 
     <div class="container">
         
-        <!-- خبر هشتم (جدیدترین) -->
+        <!-- خبر هشتم -->
         <div class="news-box">
             <div class="news-content">
                 <h2>آکسیوس: توافق ایران، عمان و آمریکا در انتظار تأیید نهایی شورای عالی امنیت ملی</h2>
@@ -257,15 +260,24 @@
     <script>
         function updateTime() {
             const now = new Date();
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('date').innerText = now.toLocaleDateString('en-US', dateOptions);
-            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            
+            // تعیین نام فارسی برای ماه‌های میلادی
+            const months = ['ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن', 'ژوئیه', 'آگوست', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'];
+            
+            const dayNumber = now.getDate();
+            const monthName = months[now.getMonth()];
+            const yearNumber = now.getFullYear();
+            
+            // تولید متن تمیز بدون روز هفته به فرمت: 7 آگوست 2026
+            document.getElementById('date').innerText = `${dayNumber} ${monthName} ${yearNumber}`;
+            
+            // تولید ساعت
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
             document.getElementById('time').innerText = now.toLocaleTimeString('en-US', timeOptions);
         }
         setInterval(updateTime, 1000);
         updateTime(); 
 
-        // لیست اخبار کوتاه با خبرهای جدید
         const shortNews = [
             "ترامپ: خیلی‌ها می‌گویند من یکی از بزرگ‌ترین رؤسای‌جمهور تاریخ هستم",
             "المیادین: اطلاعات اولیه حاکی از آن است که نیروهای مسلح یمن یک عملیات جدید را علیه اردوگاه‌های سعودی انجام داده‌اند",
