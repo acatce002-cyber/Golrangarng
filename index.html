@@ -151,12 +151,12 @@
                 گروه خبری واتسپ
             </a>
             
-            <!-- دکمه تحلیل بورس -->
+            <!-- دکمه تحلیل بورس - با استفاده از bdi جهت متن به درستی حفظ می‌شود -->
             <a href="bours.html" class="stock-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
                 </svg>
-                تحلیل اختصاصی بورس (7 Aug 2026)
+                تحلیل اختصاصی بورس <bdi>(7 Aug 2026)</bdi>
             </a>
         </div>
         
@@ -261,15 +261,17 @@
         function updateTime() {
             const now = new Date();
             
-            // تعیین نام فارسی برای ماه‌های میلادی
+            // تعیین نام فارسی برای روزها و ماه‌های میلادی
+            const days = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];
             const months = ['ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن', 'ژوئیه', 'آگوست', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'];
             
+            const dayName = days[now.getDay()];
             const dayNumber = now.getDate();
             const monthName = months[now.getMonth()];
             const yearNumber = now.getFullYear();
             
-            // تولید متن تمیز بدون روز هفته به فرمت: 7 آگوست 2026
-            document.getElementById('date').innerText = `${dayNumber} ${monthName} ${yearNumber}`;
+            // تولید متن تمیز با روز هفته
+            document.getElementById('date').innerText = `${dayName}، ${dayNumber} ${monthName} ${yearNumber}`;
             
             // تولید ساعت
             const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
