@@ -271,8 +271,8 @@
     </footer>
 
     <script>
-        // کد پرداخت معتبر (این رو عوض کن)
-        const VALID_PAYMENT_CODE = "123456";
+        // کد پرداخت معتبر
+        const VALID_PAYMENT_CODE = "GHMD173KJDI";
         
         function submitOrder() {
             // دریافت مقادیر
@@ -324,7 +324,7 @@
                 // نمایش پیام در حال ثبت
                 document.getElementById('loadingMessage').style.display = 'block';
                 
-                // بعد از ۳ ثانیه نمایش پیام موفقیت
+                // بعد از ۱۰ ثانیه نمایش پیام موفقیت
                 setTimeout(() => {
                     document.getElementById('loadingMessage').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
@@ -342,7 +342,7 @@
                     
                     localStorage.setItem('lastOrderInfo', JSON.stringify(orderInfo));
                     
-                }, 3000); // ۳ ثانیه تأخیر
+                }, 10000); // ۱۰ ثانیه تأخیر
                 
             } else {
                 // نمایش خطا
