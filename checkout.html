@@ -93,25 +93,61 @@
         .submit-btn:hover {
             background-color: #219a52;
         }
+        .submit-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        /* پیام در حال ثبت */
+        .loading-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: #fff3cd;
+            border-radius: 10px;
+            border: 1px solid #ffeaa7;
+        }
+        .loading-message h3 {
+            color: #856404;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #e74c3c;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* پیام موفقیت */
         .success-message {
             display: none;
             background-color: #d4edda;
             color: #155724;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
             margin-top: 20px;
             border: 1px solid #c3e6cb;
         }
         .success-message h3 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
+            margin: 0 0 15px 0;
+            font-size: 20px;
         }
         .success-message p {
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
+        
+        /* پیام خطا */
         .error-message {
             display: none;
             background-color: #f8d7da;
@@ -152,17 +188,13 @@
     <div class="container">
         <a href="shop.html" class="back-btn">← بازگشت به فروشگاه</a>
         
+        <!-- فرم اطلاعات -->
         <div class="checkout-form" id="checkoutForm">
             <h2 style="color: #333; font-size: 18px; margin-bottom: 20px;">اطلاعات ارسال سفارش</h2>
             
             <div class="form-group">
-                <label>🌍 کشور</label>
-                <input type="text" id="country" placeholder="مثلاً: ایران" required>
-            </div>
-            
-            <div class="form-group">
                 <label>🏙️ شهر</label>
-                <input type="text" id="city" placeholder="مثلاً: تهران" required>
+                <input type="text" id="city" placeholder="نام شهر" required>
             </div>
             
             <div class="form-group">
@@ -185,6 +217,11 @@
                 <input type="text" id="postalCode" placeholder="کد پستی ۱۰ رقمی" required>
             </div>
             
+            <div class="form-group">
+                <label>📱 شماره تلفن</label>
+                <input type="tel" id="phone" placeholder="مثلاً: 09123456789" required>
+            </div>
+            
             <div class="payment-section">
                 <div class="form-group" style="margin-bottom: 5px;">
                     <label>💳 کد پرداخت</label>
@@ -195,18 +232,37 @@
                 </div>
             </div>
             
-            <button class="submit-btn" onclick="submitOrder()">ثبت نهایی</button>
+            <button class="submit-btn" id="submitBtn" onclick="submitOrder()">ثبت نهایی</button>
             
             <div class="error-message" id="errorMessage">
                 ❌ کد پرداخت اشتباه است!
             </div>
         </div>
         
+        <!-- پیام در حال ثبت -->
+        <div class="loading-message" id="loadingMessage">
+            <h3>⏳ در حال ثبت نهایی سفارش...</h3>
+            <div class="spinner"></div>
+            <p style="color: #856404; font-size: 14px;">لطفاً چند لحظه صبر کنید</p>
+        </div>
+        
+        <!-- پیام موفقیت -->
         <div class="success-message" id="successMessage">
-            <h3>🎉 از خرید شما متشکرم!</h3>
-            <p>سفارش شما در تاریخی که به شما پیامک خواهد شد، ارسال خواهد شد.</p>
-            <p>برای پیگیری بیشتر به پشتیبانی سایت تماس بگیرید.</p>
-            <a href="index.html" style="display: inline-block; margin-top: 15px; color: #155724; font-weight: bold;">بازگشت به صفحه اصلی</a>
+            <h3>🎉 از خرید شما سپاسگزاریم.</h3>
+            <p>
+                سفارش شما با موفقیت ثبت و پرداخت آن تأیید شد.<br>
+                اطلاعات مربوط به زمان ارسال و کد رهگیری، پس از آماده‌سازی و ارسال سفارش برای شما ارسال خواهد شد.
+            </p>
+            <p>
+                لطفاً هنگام تحویل سفارش، کد رهگیری را به مأمور تحویل ارائه دهید.
+            </p>
+            <p>
+                در صورت بروز هرگونه مشکل یا نیاز به پیگیری، لطفاً با واحد پشتیبانی تماس حاصل فرمایید.
+            </p>
+            <p>
+                از اعتماد و همراهی شما سپاسگزاریم.
+            </p>
+            <a href="index.html" style="display: inline-block; margin-top: 20px; color: #155724; font-weight: bold; text-decoration: none; background-color: white; padding: 10px 20px; border-radius: 5px;">بازگشت به صفحه اصلی</a>
         </div>
     </div>
 
@@ -220,22 +276,22 @@
         
         function submitOrder() {
             // دریافت مقادیر
-            const country = document.getElementById('country').value.trim();
             const city = document.getElementById('city').value.trim();
             const street = document.getElementById('street').value.trim();
             const neighborhood = document.getElementById('neighborhood').value.trim();
             const plaque = document.getElementById('plaque').value.trim();
             const postalCode = document.getElementById('postalCode').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const paymentCode = document.getElementById('paymentCode').value.trim();
             
             // بررسی خالی بودن فیلدها
             const fields = [
-                { id: 'country', value: country },
                 { id: 'city', value: city },
                 { id: 'street', value: street },
                 { id: 'neighborhood', value: neighborhood },
                 { id: 'plaque', value: plaque },
                 { id: 'postalCode', value: postalCode },
+                { id: 'phone', value: phone },
                 { id: 'paymentCode', value: paymentCode }
             ];
             
@@ -258,24 +314,35 @@
             
             // بررسی کد پرداخت
             if (paymentCode === VALID_PAYMENT_CODE) {
+                // غیرفعال کردن دکمه
+                document.getElementById('submitBtn').disabled = true;
+                
                 // مخفی کردن فرم
                 document.getElementById('checkoutForm').style.display = 'none';
                 document.getElementById('errorMessage').style.display = 'none';
-                // نمایش پیام موفقیت
-                document.getElementById('successMessage').style.display = 'block';
                 
-                // ذخیره اطلاعات سفارش
-                const orderInfo = {
-                    country: country,
-                    city: city,
-                    street: street,
-                    neighborhood: neighborhood,
-                    plaque: plaque,
-                    postalCode: postalCode,
-                    orderDate: new Date().toLocaleDateString('fa-IR')
-                };
+                // نمایش پیام در حال ثبت
+                document.getElementById('loadingMessage').style.display = 'block';
                 
-                localStorage.setItem('lastOrderInfo', JSON.stringify(orderInfo));
+                // بعد از ۳ ثانیه نمایش پیام موفقیت
+                setTimeout(() => {
+                    document.getElementById('loadingMessage').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // ذخیره اطلاعات سفارش
+                    const orderInfo = {
+                        city: city,
+                        street: street,
+                        neighborhood: neighborhood,
+                        plaque: plaque,
+                        postalCode: postalCode,
+                        phone: phone,
+                        orderDate: new Date().toLocaleDateString('fa-IR')
+                    };
+                    
+                    localStorage.setItem('lastOrderInfo', JSON.stringify(orderInfo));
+                    
+                }, 3000); // ۳ ثانیه تأخیر
                 
             } else {
                 // نمایش خطا
