@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تکمیل خرید - گلهای رنگارنگ</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+            flex: 1;
+        }
+        .checkout-form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: Tahoma, Arial, sans-serif;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #e74c3c;
+            box-shadow: 0 0 5px rgba(231, 76, 60, 0.2);
+        }
+        .form-group input.error {
+            border-color: #e74c3c;
+            background-color: #fff5f5;
+        }
+        .payment-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .payment-note {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .submit-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+        .submit-btn:hover {
+            background-color: #219a52;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        .success-message h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .success-message p {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 10px;
+            border: 1px solid #f5c6cb;
+            font-size: 14px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #eaeaea;
+            color: #555;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛒 تکمیل خرید</h1>
+    </header>
+
+    <div class="container">
+        <a href="shop.html" class="back-btn">← بازگشت به فروشگاه</a>
+        
+        <div class="checkout-form" id="checkoutForm">
+            <h2 style="color: #333; font-size: 18px; margin-bottom: 20px;">اطلاعات ارسال سفارش</h2>
+            
+            <div class="form-group">
+                <label>🌍 کشور</label>
+                <input type="text" id="country" placeholder="مثلاً: ایران" required>
+            </div>
+            
+            <div class="form-group">
+                <label>🏙️ شهر</label>
+                <input type="text" id="city" placeholder="مثلاً: تهران" required>
+            </div>
+            
+            <div class="form-group">
+                <label>🛣️ خیابان</label>
+                <input type="text" id="street" placeholder="نام خیابان" required>
+            </div>
+            
+            <div class="form-group">
+                <label>🏘️ محله</label>
+                <input type="text" id="neighborhood" placeholder="نام محله" required>
+            </div>
+            
+            <div class="form-group">
+                <label>🏠 پلاک</label>
+                <input type="text" id="plaque" placeholder="شماره پلاک" required>
+            </div>
+            
+            <div class="form-group">
+                <label>📮 کد پستی</label>
+                <input type="text" id="postalCode" placeholder="کد پستی ۱۰ رقمی" required>
+            </div>
+            
+            <div class="payment-section">
+                <div class="form-group" style="margin-bottom: 5px;">
+                    <label>💳 کد پرداخت</label>
+                    <input type="text" id="paymentCode" placeholder="کد پرداخت را وارد کنید" required>
+                </div>
+                <div class="payment-note">
+                    ⚠️ کد پرداخت را باید از پشتیبانی واتس‌اپ دریافت کنید
+                </div>
+            </div>
+            
+            <button class="submit-btn" onclick="submitOrder()">ثبت نهایی</button>
+            
+            <div class="error-message" id="errorMessage">
+                ❌ کد پرداخت اشتباه است!
+            </div>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            <h3>🎉 از خرید شما متشکرم!</h3>
+            <p>سفارش شما در تاریخی که به شما پیامک خواهد شد، ارسال خواهد شد.</p>
+            <p>برای پیگیری بیشتر به پشتیبانی سایت تماس بگیرید.</p>
+            <a href="index.html" style="display: inline-block; margin-top: 15px; color: #155724; font-weight: bold;">بازگشت به صفحه اصلی</a>
+        </div>
+    </div>
+
+    <footer>
+        گلهای رنگارنگ 2026 (c) - فروشگاه اختصاصی
+    </footer>
+
+    <script>
+        // کد پرداخت معتبر (این رو عوض کن)
+        const VALID_PAYMENT_CODE = "123456";
+        
+        function submitOrder() {
+            // دریافت مقادیر
+            const country = document.getElementById('country').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const street = document.getElementById('street').value.trim();
+            const neighborhood = document.getElementById('neighborhood').value.trim();
+            const plaque = document.getElementById('plaque').value.trim();
+            const postalCode = document.getElementById('postalCode').value.trim();
+            const paymentCode = document.getElementById('paymentCode').value.trim();
+            
+            // بررسی خالی بودن فیلدها
+            const fields = [
+                { id: 'country', value: country },
+                { id: 'city', value: city },
+                { id: 'street', value: street },
+                { id: 'neighborhood', value: neighborhood },
+                { id: 'plaque', value: plaque },
+                { id: 'postalCode', value: postalCode },
+                { id: 'paymentCode', value: paymentCode }
+            ];
+            
+            let hasError = false;
+            
+            fields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!field.value) {
+                    element.classList.add('error');
+                    hasError = true;
+                } else {
+                    element.classList.remove('error');
+                }
+            });
+            
+            if (hasError) {
+                alert('لطفاً تمام فیلدها را پر کنید!');
+                return;
+            }
+            
+            // بررسی کد پرداخت
+            if (paymentCode === VALID_PAYMENT_CODE) {
+                // مخفی کردن فرم
+                document.getElementById('checkoutForm').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'none';
+                // نمایش پیام موفقیت
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // ذخیره اطلاعات سفارش
+                const orderInfo = {
+                    country: country,
+                    city: city,
+                    street: street,
+                    neighborhood: neighborhood,
+                    plaque: plaque,
+                    postalCode: postalCode,
+                    orderDate: new Date().toLocaleDateString('fa-IR')
+                };
+                
+                localStorage.setItem('lastOrderInfo', JSON.stringify(orderInfo));
+                
+            } else {
+                // نمایش خطا
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('paymentCode').classList.add('error');
+                
+                // مخفی کردن خطا بعد از ۳ ثانیه
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // حذف خطا موقع تایپ
+        document.getElementById('paymentCode').addEventListener('input', function() {
+            this.classList.remove('error');
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
