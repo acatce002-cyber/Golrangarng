@@ -21,17 +21,10 @@
             padding: 20px 0;
             box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
         }
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
-        header p {
-            margin: 5px 0 0 0;
-            font-size: 13px;
-            opacity: 0.9;
-        }
+        header h1 { margin: 0; font-size: 22px; }
+        header p { margin: 5px 0 0 0; font-size: 13px; opacity: 0.9; }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 20px auto;
             padding: 0 15px;
         }
@@ -53,7 +46,6 @@
             border: 1px solid #2a3f5f;
         }
         
-        /* اطلاعات کنسرت */
         .concert-info {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -62,15 +54,8 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        .concert-info h2 {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-        }
-        .concert-info p {
-            margin: 4px 0;
-            font-size: 13px;
-            opacity: 0.95;
-        }
+        .concert-info h2 { margin: 0 0 8px 0; font-size: 18px; }
+        .concert-info p { margin: 4px 0; font-size: 13px; opacity: 0.95; }
         .stats {
             display: flex;
             justify-content: space-around;
@@ -84,10 +69,7 @@
         .stat-value { font-size: 20px; font-weight: bold; }
         .stat-label { font-size: 11px; opacity: 0.9; }
         
-        /* فرم */
-        .form-group {
-            margin-bottom: 15px;
-        }
+        .form-group { margin-bottom: 15px; }
         .form-group label {
             display: block;
             margin-bottom: 5px;
@@ -117,23 +99,23 @@
         }
         .form-group input::placeholder { color: #5a6b8a; }
         
-        /* بخش انتخاب طبقه */
+        /* تب‌های طبقه */
         .floor-tabs {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
         .floor-tab {
             flex: 1;
-            min-width: 120px;
-            padding: 12px;
+            min-width: 100px;
+            padding: 12px 8px;
             background-color: #0f3460;
             border: 2px solid #2a3f5f;
             border-radius: 10px;
             color: #a8b2ff;
             font-family: Tahoma, Arial, sans-serif;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
@@ -192,11 +174,7 @@
             font-size: 11px;
             color: #a8b2ff;
         }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        .legend-item { display: flex; align-items: center; gap: 4px; }
         .legend-color {
             width: 16px;
             height: 16px;
@@ -215,28 +193,28 @@
         .seat-row {
             display: flex;
             justify-content: center;
-            gap: 4px;
-            margin-bottom: 4px;
+            gap: 3px;
+            margin-bottom: 3px;
             min-width: fit-content;
         }
         .row-label {
             color: #a8b2ff;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: bold;
-            width: 30px;
+            width: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
         .seat {
-            width: 22px;
-            height: 22px;
-            border-radius: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 7px;
+            font-size: 6px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
@@ -245,19 +223,17 @@
             font-family: Tahoma, Arial, sans-serif;
             flex-shrink: 0;
         }
-        .seat.vip {
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-        }
+        .seat.vip { background: linear-gradient(135deg, #f39c12, #e67e22); }
         .seat.vip:hover:not(.sold) {
-            transform: scale(1.2);
+            transform: scale(1.25);
             box-shadow: 0 0 8px rgba(243, 156, 18, 0.8);
+            z-index: 10;
         }
-        .seat.normal {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-        }
+        .seat.normal { background: linear-gradient(135deg, #3498db, #2980b9); }
         .seat.normal:hover:not(.sold) {
-            transform: scale(1.2);
+            transform: scale(1.25);
             box-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
+            z-index: 10;
         }
         .seat.selected {
             background: linear-gradient(135deg, #27ae60, #16a085) !important;
@@ -267,17 +243,18 @@
         .seat.sold {
             background-color: #444 !important;
             cursor: not-allowed;
-            opacity: 0.5;
+            opacity: 0.4;
         }
         .floor-title {
             text-align: center;
-            color: #f39c12;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            margin: 12px 0 6px 0;
+            margin: 10px 0 6px 0;
+            padding: 5px;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 5px;
         }
         
-        /* صندلی‌های انتخاب شده */
         .selected-info {
             background-color: #0f3460;
             padding: 12px;
@@ -294,6 +271,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
+            max-height: 150px;
+            overflow-y: auto;
         }
         .selected-seat-tag {
             background: linear-gradient(135deg, #27ae60, #16a085);
@@ -312,6 +291,67 @@
             opacity: 0.8;
         }
         .selected-seat-tag .remove:hover { opacity: 1; }
+        
+        /* کد تخفیف */
+        .discount-section {
+            background-color: #0f3460;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px dashed #f39c12;
+        }
+        .discount-section label {
+            color: #f39c12;
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .discount-row {
+            display: flex;
+            gap: 8px;
+        }
+        .discount-row input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #2a3f5f;
+            border-radius: 8px;
+            background-color: #16213e;
+            color: white;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 13px;
+        }
+        .discount-row input::placeholder { color: #5a6b8a; }
+        .discount-btn {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .discount-btn:hover { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .discount-msg {
+            margin-top: 8px;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .discount-msg.success {
+            background-color: #1b4332;
+            color: #52b788;
+            border: 1px solid #52b788;
+        }
+        .discount-msg.error {
+            background-color: #2d1b1b;
+            color: #ff6b6b;
+            border: 1px solid #e74c3c;
+        }
         
         /* قیمت کل */
         .total-price {
@@ -332,6 +372,12 @@
             font-weight: bold;
             margin-top: 5px;
             text-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+        }
+        .total-price-old {
+            color: #7f8c8d;
+            font-size: 14px;
+            text-decoration: line-through;
+            margin-top: 3px;
         }
         
         .submit-btn {
@@ -358,7 +404,6 @@
             box-shadow: none;
         }
         
-        /* لودینگ */
         .loading-message {
             display: none;
             text-align: center;
@@ -367,11 +412,7 @@
             border-radius: 15px;
             border: 1px solid #2a3f5f;
         }
-        .loading-message h3 {
-            color: #f39c12;
-            margin: 0 0 15px 0;
-            font-size: 18px;
-        }
+        .loading-message h3 { color: #f39c12; margin: 0 0 15px 0; font-size: 18px; }
         .spinner {
             border: 4px solid #2a3f5f;
             border-top: 4px solid #27ae60;
@@ -381,12 +422,8 @@
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         
-        /* بلیت‌ها */
         .ticket-result { display: none; }
         .success-text {
             background: linear-gradient(135deg, #27ae60, #16a085);
@@ -396,34 +433,24 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .success-text h3 {
-            margin: 0 0 10px 0;
-            font-size: 20px;
-        }
-        .success-text p {
-            margin: 5px 0;
-            font-size: 13px;
-            line-height: 1.8;
-        }
+        .success-text h3 { margin: 0 0 10px 0; font-size: 20px; }
+        .success-text p { margin: 5px 0; font-size: 13px; line-height: 1.8; }
         
+        /* بلیت */
         .ticket-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 15px;
-            padding: 20px;
+            padding: 0;
             color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             margin-bottom: 15px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .ticket-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        .ticket-body {
+            padding: 20px;
         }
         .ticket-header {
             text-align: center;
@@ -431,15 +458,8 @@
             padding-bottom: 12px;
             margin-bottom: 12px;
         }
-        .ticket-header h2 {
-            margin: 0;
-            font-size: 17px;
-        }
-        .ticket-header p {
-            margin: 3px 0 0 0;
-            font-size: 12px;
-            opacity: 0.9;
-        }
+        .ticket-header h2 { margin: 0; font-size: 17px; }
+        .ticket-header p { margin: 3px 0 0 0; font-size: 12px; opacity: 0.9; }
         .ticket-detail-item {
             display: flex;
             justify-content: space-between;
@@ -469,16 +489,9 @@
             display: inline-block;
             margin: 8px 0;
         }
-        .qr-code img {
-            display: block;
-            width: 130px;
-            height: 130px;
-        }
-        .scan-note {
-            font-size: 11px;
-            opacity: 0.9;
-            margin-top: 8px;
-        }
+        .qr-code img { display: block; width: 130px; height: 130px; }
+        .scan-note { font-size: 11px; opacity: 0.9; margin-top: 8px; }
+        
         .info-box {
             background-color: #0f3460;
             color: #a8b2ff;
@@ -509,10 +522,11 @@
         }
         
         @media (max-width: 600px) {
-            .seat { width: 18px; height: 18px; font-size: 6px; }
-            .row-label { width: 22px; font-size: 9px; }
-            .seat-row { gap: 3px; }
+            .seat { width: 16px; height: 16px; font-size: 6px; }
+            .row-label { width: 20px; font-size: 8px; }
+            .seat-row { gap: 2px; }
             .stats { flex-direction: column; gap: 8px; }
+            .floor-tab { font-size: 11px; padding: 10px 5px; }
         }
     </style>
 </head>
@@ -524,7 +538,6 @@
     <div class="container">
         <a href="shop.html" class="back-btn">← بازگشت به فروشگاه</a>
         
-        <!-- فرم خرید -->
         <div class="main-card" id="ticketForm">
             
             <div class="concert-info">
@@ -560,7 +573,11 @@
             
             <!-- تب‌های طبقه -->
             <div class="floor-tabs">
-                <button class="floor-tab active" onclick="switchFloor(1, this)">
+                <button class="floor-tab active" onclick="switchFloor(0, this)">
+                    🏟️ همکف
+                    <small>VIP: ۱۷۰$ | عادی: ۷۵$</small>
+                </button>
+                <button class="floor-tab" onclick="switchFloor(1, this)">
                     🏢 طبقه اول
                     <small>VIP: ۱۲۰$ | عادی: ۴۰$</small>
                 </button>
@@ -570,20 +587,19 @@
                 </button>
             </div>
             
-            <!-- نقشه صندلی -->
             <div class="seat-section">
-                <h3>💺 انتخاب صندلی - <span id="currentFloor">طبقه اول</span></h3>
+                <h3>💺 انتخاب صندلی - <span id="currentFloor">همکف</span></h3>
                 
                 <div class="stage">🎤 صحنه کنسرت 🎤</div>
                 
                 <div class="seat-legend">
                     <div class="legend-item">
                         <span class="legend-color legend-vip"></span>
-                        <span>VIP - ۱۲۰$</span>
+                        <span>VIP</span>
                     </div>
                     <div class="legend-item">
                         <span class="legend-color legend-normal"></span>
-                        <span>عادی - ۴۰$</span>
+                        <span>عادی</span>
                     </div>
                     <div class="legend-item">
                         <span class="legend-color legend-selected"></span>
@@ -604,13 +620,23 @@
                 <div class="selected-seats-list" id="selectedSeatsList"></div>
             </div>
             
+            <!-- کد تخفیف -->
+            <div class="discount-section">
+                <label>🎁 کد تخفیف دارید؟</label>
+                <div class="discount-row">
+                    <input type="text" id="discountCode" placeholder="کد تخفیف را وارد کنید">
+                    <button class="discount-btn" onclick="applyDiscount()">اعمال</button>
+                </div>
+                <div class="discount-msg" id="discountMsg"></div>
+            </div>
+            
             <!-- قیمت کل -->
             <div class="total-price">
                 <div class="total-price-label">💰 مبلغ قابل پرداخت:</div>
                 <div class="total-price-value" id="totalPrice">۰ دلار</div>
+                <div class="total-price-old" id="oldPrice" style="display: none;"></div>
             </div>
             
-            <!-- کد پرداخت -->
             <div class="form-group">
                 <label>💳 کد پرداخت</label>
                 <input type="text" id="paymentCode" placeholder="کد پرداخت را وارد کنید" required>
@@ -626,19 +652,18 @@
             </div>
         </div>
         
-        <!-- لودینگ -->
         <div class="loading-message" id="loadingMessage">
             <h3>⏳ در حال صدور بلیت شما...</h3>
             <div class="spinner"></div>
             <p style="color: #a8b2ff; font-size: 14px;">لطفاً چند لحظه صبر کنید</p>
         </div>
         
-        <!-- بلیت‌های نهایی -->
         <div class="ticket-result" id="ticketResult">
             <div class="success-text">
                 <h3>🎉 از خرید شما سپاسگزاریم!</h3>
-                <p>بلیت‌های شما با موفقیت صادر شد.</p>
+                <p>بلیت‌های شما با موفقیت صادر و پرداخت تأیید شد.</p>
                 <p>لطفاً کد QR هر بلیت را در ورودی سالن اسکن کنید.</p>
+                <p>اطلاعات تکمیلی به شماره تلفن شما ارسال خواهد شد.</p>
             </div>
             
             <div id="ticketsContainer"></div>
@@ -657,67 +682,65 @@
 
     <script>
         const VALID_PAYMENT_CODE = "GHMD173KJDI";
-        const VIP_PRICE = 120;
-        const NORMAL_PRICE = 40;
+        let discountApplied = 0; // درصد تخفیف
+        let currentDiscountCode = '';
+        
+        // کدهای تخفیف معتبر
+        const DISCOUNT_CODES = {
+            'GOL10': 10,
+            'VIP20': 20,
+            'WELCOME15': 15,
+            'OFF30': 30
+        };
         
         let selectedSeats = [];
-        let currentFloorNum = 1;
+        let currentFloorNum = 0;
+        
+        // اطلاعات طبقات
+        const FLOORS = {
+            0: { // همکف - بیشترین صندلی
+                name: 'همکف',
+                vip: { rows: 5, seatsPerRow: 16, price: 170 },
+                normal: { rows: 10, seatsPerRow: 20, price: 75 }
+            },
+            1: { // طبقه اول
+                name: 'طبقه اول',
+                vip: { rows: 3, seatsPerRow: 12, price: 120 },
+                normal: { rows: 7, seatsPerRow: 16, price: 40 }
+            },
+            2: { // طبقه دوم
+                name: 'طبقه دوم',
+                vip: { rows: 2, seatsPerRow: 10, price: 120 },
+                normal: { rows: 8, seatsPerRow: 14, price: 40 }
+            }
+        };
         
         // ساخت صندلی‌های یک طبقه
         function createFloor(floorNum) {
             const seatMap = document.getElementById('seatMap');
             seatMap.innerHTML = '';
             
-            // تعریف ردیف‌ها برای هر طبقه
-            const floors = {
-                1: {
-                    vip: { rows: 3, seatsPerRow: 10, price: VIP_PRICE },
-                    normal: { rows: 6, seatsPerRow: 14, price: NORMAL_PRICE }
-                },
-                2: {
-                    vip: { rows: 2, seatsPerRow: 10, price: VIP_PRICE },
-                    normal: { rows: 8, seatsPerRow: 16, price: NORMAL_PRICE }
-                }
-            };
-            
-            const floor = floors[floorNum];
+            const floor = FLOORS[floorNum];
             
             // ===== بخش VIP =====
             const vipTitle = document.createElement('div');
             vipTitle.className = 'floor-title';
             vipTitle.style.color = '#f39c12';
-            vipTitle.innerText = '⭐ بخش VIP - ' + VIP_PRICE + ' دلار';
+            vipTitle.innerText = '⭐ بخش VIP - ' + floor.vip.price + ' دلار';
             seatMap.appendChild(vipTitle);
             
-            let rowIndex = 0;
             for (let r = 0; r < floor.vip.rows; r++) {
                 const rowDiv = document.createElement('div');
                 rowDiv.className = 'seat-row';
                 
-                // برچسب ردیف
                 const rowLabel = document.createElement('div');
                 rowLabel.className = 'row-label';
-                rowLabel.innerText = 'VIP' + (r + 1);
+                rowLabel.innerText = 'V' + (r + 1);
                 rowDiv.appendChild(rowLabel);
                 
                 for (let s = 1; s <= floor.vip.seatsPerRow; s++) {
                     const seatId = `F${floorNum}-V${r + 1}-${s}`;
-                    const btn = document.createElement('button');
-                    btn.className = 'seat vip';
-                    btn.innerText = s;
-                    btn.dataset.seat = seatId;
-                    btn.dataset.price = VIP_PRICE;
-                    btn.dataset.type = 'VIP';
-                    btn.dataset.floor = floorNum;
-                    
-                    // بررسی فروخته شده بودن (۷۰٪)
-                    if (isSold(seatId)) {
-                        btn.classList.add('sold');
-                        btn.disabled = true;
-                    } else {
-                        btn.onclick = () => toggleSeat(btn);
-                    }
-                    
+                    const btn = createSeatBtn(seatId, floor.vip.price, 'VIP', floorNum, s);
                     rowDiv.appendChild(btn);
                 }
                 seatMap.appendChild(rowDiv);
@@ -727,7 +750,7 @@
             const normalTitle = document.createElement('div');
             normalTitle.className = 'floor-title';
             normalTitle.style.color = '#3498db';
-            normalTitle.innerText = '🎫 بخش عادی - ' + NORMAL_PRICE + ' دلار';
+            normalTitle.innerText = '🎫 بخش عادی - ' + floor.normal.price + ' دلار';
             normalTitle.style.marginTop = '15px';
             seatMap.appendChild(normalTitle);
             
@@ -742,36 +765,48 @@
                 
                 for (let s = 1; s <= floor.normal.seatsPerRow; s++) {
                     const seatId = `F${floorNum}-${String.fromCharCode(65 + r)}${s}`;
-                    const btn = document.createElement('button');
-                    btn.className = 'seat normal';
-                    btn.innerText = s;
-                    btn.dataset.seat = seatId;
-                    btn.dataset.price = NORMAL_PRICE;
-                    btn.dataset.type = 'عادی';
-                    btn.dataset.floor = floorNum;
-                    
-                    if (isSold(seatId)) {
-                        btn.classList.add('sold');
-                        btn.disabled = true;
-                    } else {
-                        btn.onclick = () => toggleSeat(btn);
-                    }
-                    
+                    const btn = createSeatBtn(seatId, floor.normal.price, 'عادی', floorNum, s);
                     rowDiv.appendChild(btn);
                 }
                 seatMap.appendChild(rowDiv);
             }
         }
         
-        // تابع تعیین فروخته شده (ثابت بر اساس هش)
+        // ساخت دکمه صندلی
+        function createSeatBtn(seatId, price, type, floorNum, seatNum) {
+            const btn = document.createElement('button');
+            btn.className = 'seat ' + (type === 'VIP' ? 'vip' : 'normal');
+            btn.innerText = seatNum;
+            btn.dataset.seat = seatId;
+            btn.dataset.price = price;
+            btn.dataset.type = type;
+            btn.dataset.floor = floorNum;
+            btn.title = `${seatId} - ${type} - ${price}$`;
+            
+            // بررسی فروخته شده بودن
+            if (isSold(seatId)) {
+                btn.classList.add('sold');
+                btn.disabled = true;
+            } else {
+                btn.onclick = () => toggleSeat(btn);
+            }
+            
+            // اگه قبلاً انتخاب شده
+            if (selectedSeats.find(s => s.id === seatId)) {
+                btn.classList.add('selected');
+            }
+            
+            return btn;
+        }
+        
+        // تابع فروخته شده (فقط ~30٪ فروخته شده که بیشتر صندلی‌ها خالی باشن)
         function isSold(seatId) {
             let hash = 0;
             for (let i = 0; i < seatId.length; i++) {
                 hash = ((hash << 5) - hash) + seatId.charCodeAt(i);
                 hash |= 0;
             }
-            // ۷۰٪ فروخته شده
-            return Math.abs(hash) % 100 < 70;
+            return Math.abs(hash) % 100 < 30; // فقط ۳۰٪ فروخته شده
         }
         
         // تغییر طبقه
@@ -779,7 +814,7 @@
             currentFloorNum = num;
             document.querySelectorAll('.floor-tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById('currentFloor').innerText = num === 1 ? 'طبقه اول' : 'طبقه دوم';
+            document.getElementById('currentFloor').innerText = FLOORS[num].name;
             createFloor(num);
         }
         
@@ -809,12 +844,11 @@
             updateTotalPrice();
         }
         
-        // حذف صندلی از لیست
+        // حذف صندلی
         function removeSeat(seatId) {
             const index = selectedSeats.findIndex(s => s.id === seatId);
             if (index > -1) {
                 selectedSeats.splice(index, 1);
-                // حذف کلاس از دکمه
                 const btn = document.querySelector(`[data-seat="${seatId}"]`);
                 if (btn) btn.classList.remove('selected');
                 updateSelectedInfo();
@@ -822,7 +856,7 @@
             }
         }
         
-        // به‌روزرسانی اطلاعات انتخاب شده
+        // به‌روزرسانی لیست انتخاب شده
         function updateSelectedInfo() {
             const infoDiv = document.getElementById('selectedInfo');
             const listDiv = document.getElementById('selectedSeatsList');
@@ -838,6 +872,7 @@
             listDiv.innerHTML = '';
             
             selectedSeats.forEach(seat => {
+                const floorName = FLOORS[seat.floor].name;
                 const tag = document.createElement('span');
                 tag.className = 'selected-seat-tag';
                 tag.innerHTML = `
@@ -848,10 +883,50 @@
             });
         }
         
+        // اعمال کد تخفیف
+        function applyDiscount() {
+            const codeInput = document.getElementById('discountCode');
+            const msg = document.getElementById('discountMsg');
+            const code = codeInput.value.trim().toUpperCase();
+            
+            msg.style.display = 'block';
+            
+            if (!code) {
+                msg.className = 'discount-msg error';
+                msg.innerText = '❌ لطفاً کد تخفیف را وارد کنید';
+                return;
+            }
+            
+            if (DISCOUNT_CODES[code]) {
+                discountApplied = DISCOUNT_CODES[code];
+                currentDiscountCode = code;
+                msg.className = 'discount-msg success';
+                msg.innerText = `✅ کد تخفیف ${discountApplied}٪ اعمال شد!`;
+                updateTotalPrice();
+            } else {
+                discountApplied = 0;
+                currentDiscountCode = '';
+                msg.className = 'discount-msg error';
+                msg.innerText = '❌ کد تخفیف نامعتبر است';
+                updateTotalPrice();
+            }
+        }
+        
         // به‌روزرسانی قیمت کل
         function updateTotalPrice() {
-            const total = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+            const subtotal = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+            const discount = Math.round(subtotal * discountApplied / 100);
+            const total = subtotal - discount;
+            
             document.getElementById('totalPrice').innerText = total.toLocaleString('fa-IR') + ' دلار';
+            
+            const oldPriceEl = document.getElementById('oldPrice');
+            if (discountApplied > 0) {
+                oldPriceEl.style.display = 'block';
+                oldPriceEl.innerText = `قبلاً: ${subtotal.toLocaleString('fa-IR')} دلار (${discount.toLocaleString('fa-IR')} دلار تخفیف)`;
+            } else {
+                oldPriceEl.style.display = 'none';
+            }
         }
         
         // تولید شماره بلیت
@@ -906,54 +981,62 @@
                         const ticketNum = generateTicketNumber();
                         const qrData = encodeURIComponent(`CONCERT-${ticketNum}-${fullName}-${seat.id}`);
                         const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrData}`;
-                        const floorName = seat.floor == '1' ? 'طبقه اول' : 'طبقه دوم';
+                        const floorName = FLOORS[seat.floor].name;
+                        
+                        // محاسبه قیمت با تخفیف
+                        const priceWithDiscount = discountApplied > 0 
+                            ? Math.round(seat.price * (100 - discountApplied) / 100)
+                            : seat.price;
                         
                         const ticketCard = document.createElement('div');
                         ticketCard.className = 'ticket-card';
                         ticketCard.innerHTML = `
-                            <div class="ticket-header">
-                                <h2>🎵 کنسرت محمد علی‌نیا</h2>
-                                <p>سانتوس هال - لوسانتوس | Sep 11</p>
-                            </div>
-                            <div class="ticket-details">
-                                <div class="ticket-detail-item">
-                                    <span>👤 نام:</span>
-                                    <span class="ticket-detail-value">${fullName}</span>
+                            <div class="ticket-body">
+                                <div class="ticket-header">
+                                    <h2>🎵 کنسرت محمد علی‌نیا</h2>
+                                    <p>سانتوس هال - لوسانتوس | Sep 11</p>
                                 </div>
-                                <div class="ticket-detail-item">
-                                    <span>📱 تلفن:</span>
-                                    <span class="ticket-detail-value">${phone}</span>
+                                <div class="ticket-details">
+                                    <div class="ticket-detail-item">
+                                        <span>👤 نام:</span>
+                                        <span class="ticket-detail-value">${fullName}</span>
+                                    </div>
+                                    <div class="ticket-detail-item">
+                                        <span>📱 تلفن:</span>
+                                        <span class="ticket-detail-value">${phone}</span>
+                                    </div>
+                                    <div class="ticket-detail-item">
+                                        <span>🏢 طبقه:</span>
+                                        <span class="ticket-detail-value">${floorName}</span>
+                                    </div>
+                                    <div class="ticket-detail-item">
+                                        <span>🎟️ نوع بلیت:</span>
+                                        <span class="ticket-detail-value">${seat.type}</span>
+                                    </div>
+                                    <div class="ticket-detail-item">
+                                        <span>💺 صندلی:</span>
+                                        <span class="ticket-detail-value">${seat.id}</span>
+                                    </div>
+                                    <div class="ticket-detail-item">
+                                        <span>💰 قیمت:</span>
+                                        <span class="ticket-detail-value">${priceWithDiscount} دلار</span>
+                                    </div>
                                 </div>
-                                <div class="ticket-detail-item">
-                                    <span>🏢 طبقه:</span>
-                                    <span class="ticket-detail-value">${floorName}</span>
+                                <div class="ticket-code-section">
+                                    <div style="font-size: 11px; opacity: 0.9; margin-bottom: 5px;">شماره بلیت:</div>
+                                    <div class="ticket-number">${ticketNum}</div>
+                                    <div class="qr-code">
+                                        <img src="${qrUrl}" alt="QR Code">
+                                    </div>
+                                    <div class="scan-note">📷 این کد را در ورودی سالن اسکن کنید</div>
                                 </div>
-                                <div class="ticket-detail-item">
-                                    <span>🎟️ نوع بلیت:</span>
-                                    <span class="ticket-detail-value">${seat.type}</span>
-                                </div>
-                                <div class="ticket-detail-item">
-                                    <span>💺 صندلی:</span>
-                                    <span class="ticket-detail-value">${seat.id}</span>
-                                </div>
-                                <div class="ticket-detail-item">
-                                    <span>💰 قیمت:</span>
-                                    <span class="ticket-detail-value">${seat.price} دلار</span>
-                                </div>
-                            </div>
-                            <div class="ticket-code-section">
-                                <div style="font-size: 11px; opacity: 0.9; margin-bottom: 5px;">شماره بلیت:</div>
-                                <div class="ticket-number">${ticketNum}</div>
-                                <div class="qr-code">
-                                    <img src="${qrUrl}" alt="QR Code">
-                                </div>
-                                <div class="scan-note">📷 این کد را در ورودی سالن اسکن کنید</div>
                             </div>
                         `;
                         container.appendChild(ticketCard);
                     });
                     
                     document.getElementById('ticketResult').style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 3000);
                 
             } else {
@@ -971,7 +1054,7 @@
         });
         
         // بارگذاری اولیه
-        createFloor(1);
+        createFloor(0);
     </script>
 </body>
 </html>
