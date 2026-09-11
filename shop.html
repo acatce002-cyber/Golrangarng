@@ -51,7 +51,7 @@
         }
         .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -71,8 +71,8 @@
         }
         .product-image {
             width: 100%;
-            height: 250px;
-            background-color: #f0f0f0;
+            height: 280px;
+            background-color: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,34 +98,38 @@
             color: #333;
             font-size: 16px;
             font-weight: bold;
+            line-height: 1.5;
         }
-        .product-specs {
+        .product-description {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0 0 12px 0;
+        }
+        .ticket-prices {
             background-color: #f8f9fa;
             border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
         }
-        .spec-item {
+        .ticket-price-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 4px 0;
+            padding: 6px 0;
             border-bottom: 1px solid #e9ecef;
-            font-size: 11px;
+            font-size: 13px;
         }
-        .spec-item:last-child {
+        .ticket-price-item:last-child {
             border-bottom: none;
         }
-        .spec-label {
-            color: #666;
-            font-weight: bold;
-            white-space: nowrap;
-            margin-left: 8px;
-        }
-        .spec-value {
+        .ticket-type {
             color: #333;
-            text-align: left;
-            font-size: 11px;
+            font-weight: bold;
+        }
+        .ticket-price {
+            color: #e74c3c;
+            font-weight: bold;
         }
         .product-price {
             color: #e74c3c;
@@ -138,10 +142,10 @@
             background-color: #e74c3c;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: bold;
             width: 100%;
             transition: background-color 0.3s;
@@ -154,93 +158,21 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #f39c12;
+            background-color: #e74c3c;
             color: white;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 15px;
             font-size: 11px;
             font-weight: bold;
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
         }
-        
-        /* مودال سفارش */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            align-items: center;
-            justify-content: center;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
-        .modal-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 15px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            animation: slideIn 0.3s ease;
-        }
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #999;
-            transition: color 0.3s;
-        }
-        .modal-close:hover {
-            color: #333;
-        }
-        .order-code {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 20px 0;
-            color: #e74c3c;
-            direction: ltr;
-        }
-        .whatsapp-link {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-        .whatsapp-link:hover {
-            background-color: #20b858;
-        }
-        .order-note {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.8;
-            margin: 15px 0;
-        }
-        
         footer {
             text-align: center;
             padding: 20px;
@@ -262,7 +194,37 @@
         
         <div class="shop-grid">
             <!-- ========================================== -->
-            <!-- محصول: تیشرت مشکی طرح عقاب -->
+            <!-- کنسرت محمد علی‌نیا -->
+            <!-- ========================================== -->
+            <div class="product-card">
+                <div class="badge">🎵 امشب</div>
+                <div class="product-image">
+                    <img src="products/concert.jpg" alt="کنسرت محمد علی‌نیا">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">🔥 کنسرت محمد علی‌نیا امشب در سالن کنسرت سانتوس هال شهر لوسانتوس</h3>
+                    
+                    <p class="product-description">
+                        📅 تاریخ: Sep 11
+                    </p>
+                    
+                    <div class="ticket-prices">
+                        <div class="ticket-price-item">
+                            <span class="ticket-type">🎟️ بلیت عادی</span>
+                            <span class="ticket-price">۷۵ دلار</span>
+                        </div>
+                        <div class="ticket-price-item">
+                            <span class="ticket-type">⭐ بلیت ویژه</span>
+                            <span class="ticket-price">۱۷۰ دلار</span>
+                        </div>
+                    </div>
+                    
+                    <button class="buy-btn" onclick="window.location.href='concert-ticket.html'">🎫 خرید بلیت</button>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- تیشرت مشکی طرح عقاب -->
             <!-- ========================================== -->
             <div class="product-card">
                 <div class="badge">محصول ویژه</div>
@@ -272,32 +234,18 @@
                 <div class="product-info">
                     <h3 class="product-name">تیشرت مشکی طرح عقاب</h3>
                     
-                    <div class="product-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">🧵 جنس:</span>
-                            <span class="spec-value">۱۰۰% پنبه (Super Cotton)</span>
+                    <div class="ticket-prices">
+                        <div class="ticket-price-item">
+                            <span class="ticket-type">🧵 جنس:</span>
+                            <span class="ticket-price">۱۰۰% پنبه</span>
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-label">🎨 رنگ‌بندی:</span>
-                            <span class="spec-value">مشکی، سفید، خاکستری</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">📏 سایز:</span>
-                            <span class="spec-value">S / M / L / XL / XXL</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">🖨️ نوع چاپ:</span>
-                            <span class="spec-value">دیجیتال مستقیم (DTG)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">💧 شست‌وشو:</span>
-                            <span class="spec-value">آب ۳۰ درجه، پشت‌ورو</span>
+                        <div class="ticket-price-item">
+                            <span class="ticket-type">📏 سایز:</span>
+                            <span class="ticket-price">S تا XXL</span>
                         </div>
                     </div>
                     
-                    <div class="product-price">
-                        ۷۵.۹۹ دلار
-                    </div>
+                    <div class="product-price">۷۵.۹۹ دلار</div>
                     
                     <button class="buy-btn" onclick="window.location.href='checkout.html'">🛒 خرید</button>
                 </div>
@@ -305,72 +253,8 @@
         </div>
     </div>
 
-    <!-- مودال سفارش -->
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h2>✅ سفارش شما ثبت شد!</h2>
-            
-            <div class="order-note">
-                <strong>کد سفارش شما:</strong>
-            </div>
-            
-            <div class="order-code" id="orderCode"></div>
-            
-            <div class="order-note">
-                📱 کد را به پشتیبانی در واتس‌اپ ارسال کنید و خرید را تکمیل کنید.
-                <br><br>
-                📦 بعد از خرید، اطلاعات خود را ارسال کنید. بسته شما آماده و ارسال خواهد شد.
-            </div>
-            
-            <a href="https://wa.me/9891237456789" class="whatsapp-link" target="_blank">
-                ارسال کد به واتس‌اپ
-            </a>
-        </div>
-    </div>
-
     <footer>
         گلهای رنگارنگ 2026 (c) - فروشگاه اختصاصی
     </footer>
-
-    <script>
-        function generateOrderCode() {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let code = '';
-            for (let i = 0; i < 12; i++) {
-                code += characters.charAt(Math.floor(Math.random() * characters.length));
-            }
-            return code;
-        }
-
-        function showOrderModal(productName) {
-            const modal = document.getElementById('orderModal');
-            const orderCode = document.getElementById('orderCode');
-            
-            // تولید کد سفارش
-            const newCode = generateOrderCode();
-            orderCode.innerText = newCode;
-            
-            // نمایش مودال
-            modal.style.display = 'flex';
-            
-            // ذخیره کد در localStorage
-            localStorage.setItem('lastOrderCode', newCode);
-            localStorage.setItem('lastOrderProduct', productName);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('orderModal');
-            modal.style.display = 'none';
-        }
-
-        // بستن مودال با کلیک بیرون
-        window.onclick = function(event) {
-            const modal = document.getElementById('orderModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
