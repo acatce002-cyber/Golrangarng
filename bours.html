@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گزارش بورس آمریکا - گلهای رنگارنگ</title>
+    <title>تحلیل اختصاصی بورس آمریکا - گلهای رنگارنگ</title>
     <style>
+        * { box-sizing: border-box; }
         body {
             font-family: Tahoma, Arial, sans-serif;
             margin: 0;
@@ -13,131 +14,256 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: #333;
         }
         header {
-            background-color: #2c3e50; 
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
+            padding: 30px 20px;
             text-align: center;
-            padding: 30px 0 20px 0;
-            border-bottom: 4px solid #e74c3c; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         header h1 {
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
             font-size: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .header-date {
-            color: #b3c5d7;
-            font-size: 15px;
-            margin-bottom: 5px;
-        }
-        .header-author {
-            color: #ecf0f1;
-            font-size: 14px;
-            font-style: italic;
-        }
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            flex: 1; 
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #3498db;
-            text-decoration: none;
             font-weight: bold;
         }
-        .back-link:hover {
-            color: #2980b9;
+        .header-meta {
+            background-color: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            line-height: 1.8;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        
-        .analysis-text {
-            color: #333;
-            line-height: 1.9;
-            font-size: 16px;
-            text-align: justify;
+        .header-meta .date {
+            font-weight: bold;
+            color: #ffd700;
         }
-        .analysis-text h3 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 8px;
-            margin-top: 35px;
-            font-size: 20px;
+        .header-meta .author {
+            color: #ffd700;
+            font-weight: bold;
         }
-        .analysis-text p {
-            margin-bottom: 15px;
+        .container {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 0 15px;
+            flex: 1;
+            width: 100%;
         }
-        .analysis-text ul {
+        .back-btn {
+            display: inline-block;
             margin-bottom: 20px;
-            padding-right: 20px;
+            color: #2a5298;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
         }
-        .analysis-text li {
+        .back-btn:hover { text-decoration: underline; }
+        
+        /* کارت‌های شاخص */
+        .indices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .index-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-top: 4px solid #27ae60;
+            transition: transform 0.2s;
+        }
+        .index-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+        .index-name {
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
             margin-bottom: 10px;
         }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fdfdfd;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #2c3e50;
-            color: white;
-            padding: 12px;
-            text-align: center;
-        }
-        td {
-            padding: 10px;
-            text-align: center;
+        .index-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3c72;
             direction: ltr;
+            margin-bottom: 8px;
         }
-        .negative-change {
+        .index-change {
+            font-size: 14px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .index-change.negative {
+            color: #e74c3c;
+        }
+        .index-weekly {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        /* محتوای تحلیل */
+        .analysis-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            line-height: 2;
+            font-size: 14px;
+        }
+        .analysis-card h2 {
+            color: #1e3c72;
+            font-size: 19px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+        .analysis-card h3 {
+            color: #2a5298;
+            font-size: 16px;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            padding-right: 10px;
+            border-right: 4px solid #2a5298;
+            padding-right: 12px;
+        }
+        .analysis-card p {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        .analysis-card ul {
+            padding-right: 20px;
+            margin-bottom: 15px;
+        }
+        .analysis-card ul li {
+            margin-bottom: 8px;
+            color: #444;
+            line-height: 1.9;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        .danger {
             color: #e74c3c;
             font-weight: bold;
         }
-        .positive-change {
+        .success {
             color: #27ae60;
             font-weight: bold;
         }
-
-        .highlight-box {
-            background-color: #f8f9fa;
-            border-right: 4px solid #e74c3c;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px 0 0 4px;
+        
+        /* باکس خلاصه */
+        .summary-box {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        .summary-box h3 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            color: #ffd700;
+        }
+        .summary-box ul {
+            padding-right: 20px;
+            margin: 0;
+        }
+        .summary-box li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+            font-size: 13px;
+        }
+        
+        /* جدول */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .data-table th {
+            background-color: #1e3c72;
+            color: white;
+            padding: 10px;
+            text-align: center;
             font-weight: bold;
-            color: #2c3e50;
         }
-        .quote-box {
-            background-color: #eef2f5;
-            border-right: 4px solid #3498db;
-            padding: 15px;
+        .data-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .data-table tr:hover {
+            background-color: #f0f4ff;
+        }
+        .positive { color: #27ae60; font-weight: bold; }
+        .negative { color: #e74c3c; font-weight: bold; }
+        
+        /* هشدار ریسک */
+        .risk-box {
+            background-color: #fff3cd;
+            border-right: 4px solid #f39c12;
+            padding: 15px 20px;
+            border-radius: 8px;
             margin: 20px 0;
-            border-radius: 4px;
-            font-style: italic;
-            color: #34495e;
+            font-size: 13px;
+            line-height: 1.9;
+            color: #856404;
         }
-
+        .risk-box strong {
+            color: #e67e22;
+        }
+        
+        .author-box {
+            background-color: #eef2ff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 13px;
+            color: #2a5298;
+            border: 1px solid #d5dcf5;
+        }
+        .author-box strong {
+            font-size: 14px;
+        }
+        
         footer {
             text-align: center;
             padding: 20px;
             background-color: #eaeaea;
             color: #555;
-            font-size: 14px;
+            font-size: 13px;
             margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 20px; }
+            .header-meta { font-size: 11px; padding: 8px 15px; }
+            .analysis-card { padding: 18px; font-size: 13px; }
+            .index-price { font-size: 20px; }
+            .analysis-card h2 { font-size: 17px; }
+            .analysis-card h3 { font-size: 15px; }
         }
     </style>
 </head>
@@ -145,105 +271,193 @@
 
     <header>
         <h1>📊 گزارش کامل بورس آمریکا</h1>
-        <div class="header-date">جمعه ۴ سپتامبر ۲۰۲۶ ، آخرین بروز رسانی</div>
-        <div class="header-author">اختصاصی تیم گلهای رنگارنگ | نویسنده : محمد امین رادمانی</div>
+        <div class="header-meta">
+            <div>📅 <span class="date">جمعه ۱۲ سپتامبر ۲۰۲۶</span> | آخرین بروزرسانی اختصاصی تیم گلهای رنگارنگ</div>
+            <div>✍️ نویسنده: <span class="author">محمد امین رادمانی</span></div>
+        </div>
     </header>
 
     <div class="container">
-        <a href="index.html" class="back-link">➔ بازگشت به اخبار سایت</a>
-        
-        <div class="analysis-text">
-            
-            <h3>📊 وضعیت بازار در ۴ سپتامبر</h3>
-            <p>بازار روز جمعه تقریباً یک‌دست منفی بود و شاخص‌ها تغییرات زیر را به ثبت رساندند:</p>
+        <a href="index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
 
-            <table>
+        <!-- شاخص‌ها -->
+        <div class="indices-grid">
+            <div class="index-card">
+                <div class="index-name">داو جونز</div>
+                <div class="index-price">52,573.29</div>
+                <div class="index-change">▲ 509 واحد (+۰.۹۸%)</div>
+                <div class="index-weekly">هفتگی: ۱.۵۷٪-</div>
+            </div>
+            <div class="index-card">
+                <div class="index-name">اس‌اند‌پی ۵۰۰</div>
+                <div class="index-price">7,656.98</div>
+                <div class="index-change">▲ 65 واحد (+۰.۸۶%)</div>
+                <div class="index-weekly">هفتگی: ۰.۵۸٪-</div>
+            </div>
+            <div class="index-card">
+                <div class="index-name">نزدک</div>
+                <div class="index-price">26,333.04</div>
+                <div class="index-change">▲ 251 واحد (+۰.۹۶%)</div>
+                <div class="index-weekly">هفتگی: ۰.۶۶٪-</div>
+            </div>
+        </div>
+
+        <!-- تحلیل کامل -->
+        <div class="analysis-card">
+            <h2>🔍 تحلیل جامع بازار سهام آمریکا</h2>
+            
+            <p>
+                بازار سهام ایالات متحده در جلسه معاملاتی روز جمعه ۱۲ سپتامبر ۲۰۲۶، عملکردی مثبت و امیدوارکننده را به ثبت رساند؛ به‌گونه‌ای که هر سه شاخص اصلی وال‌استریت با رشد قابل توجهی مواجه شدند. این در حالی است که در مجموع هفته، شاخص‌ها به دلیل فشارهای تورمی و نگرانی‌های ژئوپلیتیکی، روندی نزولی را تجربه کردند. این تضاد میان عملکرد روزانه و هفتگی، نشان‌دهنده نوسان شدید احساسات سرمایه‌گذاران و سردرگمی بازار در مواجهه با داده‌های متناقض اقتصادی است.
+            </p>
+
+            <p>
+                شاخص <span class="highlight">داو جونز صنعتی</span> با رشد ۵۰۹ واحدی معادل ۰.۹۸ درصد، به سطح ۵۲,۵۷۳.۲۹ واحد رسید. شاخص <span class="highlight">اس‌اند‌پی ۵۰۰</span> نیز با افزایش ۶۵ واحدی (۰.۸۶ درصد) در سطح ۷,۶۵۶.۹۸ واحد بسته شد و شاخص فناوری‌محور <span class="highlight">نزدک</span> با جهش ۲۵۱ واحدی معادل ۰.۹۶ درصد، به ۲۶,۳۳۳.۰۴ واحد رسید. این رشد هماهنگ در هر سه شاخص، نشان‌دهنده بهبود نسبی روحیه سرمایه‌گذاران در پایان هفته بود.
+            </p>
+
+            <h3>📈 عوامل محرک رشد روز جمعه</h3>
+            <p>
+                یکی از مهم‌ترین دلایل رشد روز جمعه، انتشار گزارش‌های مالی مثبت از سوی چند شرکت بزرگ فناوری و همچنین اظهارات امیدوارکننده برخی از اعضای فدرال رزرو درباره احتمال تثبیت نرخ بهره در نشست پیش‌رو بود. سرمایه‌گذاران همچنین به داده‌های اشتغال بخش خصوصی که کمی بهتر از انتظارات بود، واکنش مثبت نشان دادند.
+            </p>
+            <ul>
+                <li><strong>سهام متا (Meta):</strong> با رشد ۲.۸ درصدی، پیشتاز شاخص نزدک بود. این رشد پس از اعلام پیشرفت‌های جدید در مدل‌های هوش مصنوعی این شرکت رخ داد.</li>
+                <li><strong>سهام اپل (Apple):</strong> با افزایش ۱.۹ درصدی، به دلیل استقبال بازار از محصولات جدید معرفی‌شده، عملکرد خوبی داشت.</li>
+                <li><strong>سهام انویدیا (NVIDIA):</strong> با رشد ۱.۵ درصدی، همچنان به عنوان موتور محرک بخش نیمه‌هادی‌ها شناخته می‌شود.</li>
+                <li><strong>بخش انرژی:</strong> با توجه به افزایش قیمت نفت، سهام شرکت‌های انرژی رشد ۱.۲ درصدی را تجربه کردند.</li>
+                <li><strong>بخش بانکی:</strong> سهام بانک‌های بزرگ با امید به بهبود حاشیه سود، رشد متوسط ۱.۱ درصدی داشتند.</li>
+            </ul>
+
+            <h3>📉 عوامل فشار در مجموع هفته</h3>
+            <p>
+                با وجود رشد چشمگیر روز جمعه، بازار در مجموع هفته را نزولی به پایان رساند. دلیل اصلی این امر، انتشار داده‌های تورمی ناامیدکننده در روزهای میانی هفته بود که نگرانی‌ها درباره ادامه سیاست‌های انقباضی فدرال رزرو را تشدید کرد.
+            </p>
+            <ul>
+                <li><strong>شاخص قیمت مصرف‌کننده (CPI):</strong> تورم سالانه در ماه اوت به ۳.۴ درصد رسید که بالاتر از پیش‌بینی ۳.۲ درصدی اقتصاددانان بود.</li>
+                <li><strong>تورم هسته (Core CPI):</strong> که مواد غذایی و انرژی را حذف می‌کند، به ۳.۹ درصد رسید و نشان‌دهنده چسبندگی تورم در بخش خدمات است.</li>
+                <li><strong>شاخص قیمت تولیدکننده (PPI):</strong> نیز با رشد ۰.۴ درصدی ماهانه، بالاتر از انتظار بود.</li>
+                <li><strong>گزارش اشتغال:</strong> اگرچه نرخ بیکاری پایین مانده، اما رشد دستمزدها فشار تورمی را افزایش داده است.</li>
+            </ul>
+
+            <h3>🏦 سیاست پولی فدرال رزرو</h3>
+            <p>
+                با توجه به داده‌های تورمی اخیر، انتظارات بازار درباره اقدام بعدی فدرال رزرو تغییر کرده است. ابزار FedWatch که احتمال تغییرات نرخ بهره را محاسبه می‌کند، اکنون <span class="danger">۸۷ درصد احتمال</span> برای افزایش ۲۵ واحد پایه‌ای نرخ بهره در نشست سپتامبر را نشان می‌دهد. این در حالی است که پیش از انتشار داده‌های تورم، این احتمال حدود ۶۵ درصد بود.
+            </p>
+            <p>
+                جروم پاول، رئیس فدرال رزرو، در اظهاراتی محتاطانه تأکید کرد که بانک مرکزی به داده‌ها وابسته خواهد بود و تصمیم‌گیری بر اساس شرایط اقتصادی پیش‌رو انجام می‌شود. با این حال، برخی اعضای فدرال رزرو مانند کریستوفر والر، خواستار احتیاط بیشتر و توقف موقت افزایش نرخ بهره شده‌اند تا اثرات سیاست‌های قبلی بر اقتصاد نمایان شود.
+            </p>
+
+            <h3>🌍 تنش‌های ژئوپلیتیکی و بازار نفت</h3>
+            <p>
+                یکی از عوامل کلیدی که بازارهای مالی را در هفته گذشته تحت تأثیر قرار داد، افزایش تنش‌های ژئوپلیتیکی در منطقه خاورمیانه بود. گزارش‌ها از درگیری‌های نظامی در تنگه هرمز و تهدیدهای متقابل میان ایران و ایالات متحده، قیمت نفت خام برنت را به بالای <span class="highlight">۹۴ دلار</span> در هر بشکه رساند که بالاترین سطح در شش ماه اخیر است.
+            </p>
+            <p>
+                افزایش قیمت نفت به عنوان یک عامل تورمی‌زا، فشار مضاعفی بر بازار سهام وارد می‌کند؛ زیرا از یک سو هزینه‌های تولید را افزایش می‌دهد و از سوی دیگر، ممکن است فدرال رزرو را به اتخاذ سیاست‌های انقباضی‌تر وادار کند. با این حال، سهام شرکت‌های انرژی از این وضعیت سود می‌برند.
+            </p>
+
+            <h3>💱 بازار اوراق قرضه و نرخ بازده</h3>
+            <p>
+                نرخ بازده اوراق قرضه ده‌ساله خزانه‌داری آمریکا در هفته گذشته با نوسان قابل توجهی همراه بود و در نهایت در سطح <span class="highlight">۴.۴۸ درصد</span> بسته شد. افزایش نرخ بازده، معمولاً فشار نزولی بر قیمت سهام شرکت‌های رشد وارد می‌کند؛ زیرا هزینه سرمایه‌گذاری را بالا می‌برد.
+            </p>
+            <p>
+                منحنی بازده اوراق قرضه همچنان معکوس باقی مانده است؛ به‌طوری که نرخ بازده اوراق دوساله بالاتر از ده‌ساله است. این پدیده تاریخی، معمولاً به عنوان یک سیگنال هشداردهنده از احتمال رکود اقتصادی تلقی می‌شود.
+            </p>
+
+            <h3>💼 عملکرد بخش‌های مختلف بازار</h3>
+            <table class="data-table">
                 <tr>
-                    <th>شاخص</th>
-                    <th>بسته‌شدن</th>
-                    <th>تغییر امروز</th>
+                    <th>بخش</th>
+                    <th>عملکرد هفتگی</th>
                 </tr>
                 <tr>
-                    <td>🔵 S&P 500</td>
-                    <td>7,718.60</td>
-                    <td class="negative-change">-0.38%</td>
+                    <td>⚡ انرژی</td>
+                    <td class="positive">+۳.۲٪</td>
                 </tr>
                 <tr>
-                    <td>🔵 Nasdaq Composite</td>
-                    <td>26,506.99</td>
-                    <td class="negative-change">-0.29%</td>
+                    <td>💊 بهداشت و درمان</td>
+                    <td class="positive">+۱.۱٪</td>
                 </tr>
                 <tr>
-                    <td>🔵 Dow Jones</td>
-                    <td>53,414.25</td>
-                    <td class="negative-change">-0.51%</td>
+                    <td>🏦 مالی و بانکی</td>
+                    <td class="positive">+۰.۷٪</td>
                 </tr>
                 <tr>
-                    <td>🟠 Russell 2000</td>
-                    <td>2,975.65</td>
-                    <td class="positive-change">+0.20%</td>
+                    <td>🛒 مصرفی ضروری</td>
+                    <td class="positive">+۰.۳٪</td>
+                </tr>
+                <tr>
+                    <td>💻 فناوری</td>
+                    <td class="negative">-۱.۸٪</td>
+                </tr>
+                <tr>
+                    <td>🏭 صنعتی</td>
+                    <td class="negative">-۱.۲٪</td>
+                </tr>
+                <tr>
+                    <td>🏠 املاک و مستغلات</td>
+                    <td class="negative">-۲.۴٪</td>
+                </tr>
+                <tr>
+                    <td>🎮 مصرفی اختیاری</td>
+                    <td class="negative">-۱.۵٪</td>
                 </tr>
             </table>
+            <p>
+                همان‌طور که مشاهده می‌شود، بخش‌های دفاعی مانند انرژی و بهداشت عملکرد بهتری داشتند، در حالی که بخش‌های حساس به نرخ بهره مانند املاک و فناوری تحت فشار قرار گرفتند. این الگو نشان‌دهنده چرخش سرمایه‌گذاران به سمت دارایی‌های کم‌ریسک‌تر است.
+            </p>
 
-            <p>با این حال، دلیل اصلی این ریزش بسیار مهم‌تر از میزان درصد آن است.</p>
-
-            <h3>🧠 دلیل اصلی ریزش چه بود؟</h3>
-            <p>گزارش اشتغال آمریکا بسیار قوی‌تر از حد انتظار منتشر شد:</p>
+            <h3>📊 عوامل کلیدی پیش‌رو</h3>
+            <p>
+                سرمایه‌گذاران در هفته‌های آینده باید به چند عامل مهم توجه داشته باشند:
+            </p>
             <ul>
-                <li><strong>ایجاد شغل:</strong> ۱۶۲ هزار شغل جدید در ماه آگوست اضافه شد (در حالی که انتظار بازار حدود ۵۵ تا ۵۶ هزار شغل بود).</li>
-                <li><strong>نرخ بیکاری:</strong> در سطح ۴٫۱٪ باقی ماند.</li>
+                <li><strong>نشست فدرال رزرو (۱۸-۱۹ سپتامبر):</strong> تصمیم درباره نرخ بهره و اظهارات پاول می‌تواند مسیر بازار را تعیین کند.</li>
+                <li><strong>فصل گزارش‌های مالی سه‌ماهه سوم:</strong> که از اوایل اکتبر آغاز می‌شود.</li>
+                <li><strong>داده‌های اشتغال سپتامبر:</strong> که در اوایل اکتبر منتشر می‌شود.</li>
+                <li><strong>تحولات ژئوپلیتیکی:</strong> به ویژه وضعیت تنگه هرمز و مذاکرات بین‌المللی.</li>
+                <li><strong>قیمت نفت:</strong> که مستقیماً بر انتظارات تورمی تأثیر می‌گذارد.</li>
+                <li><strong>انتشارات داده‌های مسکن و تولید ناخالص داخلی.</strong></li>
             </ul>
 
-            <p>در حالت عادی، خبر خوب اقتصادی برابر با خبر خوب برای بورس است؛ اما در شرایط فعلی قضیه برعکس شد:</p>
-            <div class="highlight-box">
-                اقتصاد قوی → نگرانی از تورم → احتمال نرخ بهره بالاتر → بازده اوراق بالاتر → فشار روی سهام
-            </div>
-            <p>احتمال افزایش ۰٫۲۵٪ نرخ بهره توسط فدرال رزرو در نشست سپتامبر، پس از انتشار این گزارش از ۴۹٪ به حدود ۵۸٪ افزایش یافت.</p>
+            <h3>🎯 چشم‌انداز کوتاه‌مدت</h3>
+            <p>
+                با توجه به شرایط فعلی، به نظر می‌رسد بازار سهام آمریکا در کوتاه‌مدت با نوسان بالایی همراه باشد. از یک سو، داده‌های اقتصادی قوی و گزارش‌های مالی خوب شرکت‌ها می‌تواند از بازار حمایت کند و از سوی دیگر، فشارهای تورمی و انتظار برای افزایش نرخ بهره می‌تواند مانع رشد پایدار شود.
+            </p>
+            <p>
+                سطح حمایتی مهم برای شاخص اس‌اند‌پی ۵۰۰ در محدوده <span class="highlight">۷,۵۰۰ واحد</span> و سطح مقاومتی در محدوده <span class="highlight">۷,۷۵۰ واحد</span> قرار دارد. شکست هر یک از این سطوح می‌تواند حرکت بعدی بازار را مشخص کند.
+            </p>
+            <p>
+                سرمایه‌گذاران باید با احتیاط عمل کنند و بر تنوع‌بخشی سبد سرمایه‌گذاری خود تمرکز نمایند. با توجه به شرایط کنونی، بخش‌های دفاعی مانند انرژی، بهداشت و مصرفی ضروری می‌توانند گزینه‌های کم‌ریسک‌تری باشند.
+            </p>
+        </div>
 
-            <h3>💻 عملکرد بخش تکنولوژی و جابه‌جایی سرمایه</h3>
-            <p>نکته کلیدی روز جمعه این بود که سهام تکنولوژی همگی با هم سقوط نکردند:</p>
+        <!-- خلاصه نهایی -->
+        <div class="summary-box">
+            <h3>📌 خلاصه نکات کلیدی</h3>
             <ul>
-                <li><strong>شاخص نیمه‌رساناها:</strong> حدود ۳٫۴٪ رشد کرد که نشان می‌دهد سرمایه‌گذاران همچنان به بخش چیپ‌سازی و هوش مصنوعی (AI) متعهد هستند.</li>
-                <li><strong>Nvidia:</strong> در میان شرکت‌های بزرگ ارزش بازار مثبت باقی ماند.</li>
+                <li>✅ رشد هماهنگ هر سه شاخص اصلی وال‌استریت در روز جمعه</li>
+                <li>⚠️ عملکرد هفتگی نزولی به دلیل داده‌های تورمی ناامیدکننده</li>
+                <li>🔺 احتمال ۸۷ درصدی افزایش نرخ بهره در نشست سپتامبر فدرال رزرو</li>
+                <li>🛢️ قیمت نفت برنت بالای ۹۴ دلار به دلیل تنش‌های ژئوپلیتیکی</li>
+                <li>📉 نرخ بازده اوراق ده‌ساله در سطح ۴.۴۸ درصد</li>
+                <li>🔄 چرخش سرمایه‌گذاران به سمت بخش‌های دفاعی و کم‌ریسک</li>
+                <li>🎯 انتظار نوسان بالا در هفته‌های پیش‌رو</li>
             </ul>
-            <p>در سمت مقابل، فشار فروش روی برخی شرکت‌های بزرگ و خرده‌فروشی شدید بود:</p>
-            <ul>
-                <li><strong>Tesla:</strong> 🔻 حدود ۶٪-</li>
-                <li><strong>Lululemon:</strong> 🔻 حدود ۱۷٪-</li>
-                <li><strong>Adobe:</strong> 🔻 حدود ۶٫۷٪-</li>
-            </ul>
-            <p>بنابراین ریزش جمعه بیشتر ناشی از فشار نرخ بهره و جابه‌جایی سرمایه میان بخش‌ها بود، نه یک وحشت عمومی در بازار.</p>
+        </div>
 
-            <h3>📈 تصویر بزرگ‌تر بازار</h3>
-            <p>با وجود افت روز جمعه، عملکرد کل هفته همچنان پایدار باقی ماند:</p>
-            <ul>
-                <li><strong>S&P 500:</strong> 🔺 حدود ۰٫۱٪+</li>
-                <li><strong>Nasdaq:</strong> 🔺 حدود ۰٫۴٪+</li>
-                <li><strong>Dow Jones:</strong> 🔻 حدود ۰٫۳٪-</li>
-            </ul>
-            <p>همچنین بازدهی شاخص‌ها از ابتدای سال میلادی تاکنون به شرح زیر است:</p>
-            <ul>
-                <li>S&P 500: 🔺 ۱۲٫۸٪+</li>
-                <li>Nasdaq: 🔺 ۱۴٫۰٪+</li>
-                <li>Dow Jones: 🔺 ۱۱٫۱٪+</li>
-                <li>Russell 2000: 🔺 ۱۹٫۹٪+</li>
-            </ul>
+        <!-- هشدار ریسک -->
+        <div class="risk-box">
+            <strong>⚠️ هشدار ریسک:</strong> این گزارش صرفاً جنبه تحلیلی و اطلاع‌رسانی دارد و به هیچ عنوان توصیه سرمایه‌گذاری محسوب نمی‌شود. سرمایه‌گذاران باید با توجه به سطح ریسک‌پذیری خود و مشاوره با متخصصان مالی، تصمیمات سرمایه‌گذاری خود را اتخاذ کنند. بازارهای مالی ذاتاً پرنوسان هستند و احتمال از دست دادن سرمایه وجود دارد.
+        </div>
 
-            <h3>📅 رویداد کلیدی بعدی: گزارش CPI در ۱۱ سپتامبر</h3>
-            <p>شاخص قیمت مصرف‌کننده (CPI) در ۱۱ سپتامبر منتشر می‌شود و مسیر فدرال رزرو را برای نشست ۱۵–۱۶ سپتامبر روشن‌تر خواهد کرد:</p>
-            
-            <p>🟢 <strong>سناریوی CPI پایین‌تر از انتظار:</strong> کاهش احتمال افزایش نرخ بهره ← افت بازده اوراق ← تحریک رشد شاخص Nasdaq و سهام AI</p>
-            <p>🔴 <strong>سناریوی CPI بالاتر از انتظار:</strong> افزایش احتمال نرخ بهره بالاتر ← رشد بازده اوراق ← ایجاد فشار بر Nasdaq، سهام رشد و بخش AI</p>
-
-            <div class="quote-box">
-                🔥 <strong>جمع‌بندی:</strong> وضعیت فعلی بازار «احتیاطی» است و نه «نزولی شدید». ریزش ۴ سپتامبر به‌تنهایی سیگنال خطر بزرگی محسوب نمی‌شود؛ عامل اصلی حساسیت بازار، تصمیمات فدرال رزرو و آمار تورم پیش‌رو است.
-            </div>
-
+        <!-- امضای نویسنده -->
+        <div class="author-box">
+            <strong>✍️ نویسنده: محمد امین رادمانی</strong>
+            <br>
+            تحلیل اختصاصی تیم گلهای رنگارنگ | جمعه ۱۲ سپتامبر ۲۰۲۶
         </div>
     </div>
 
     <footer>
-        گلهای رنگارنگ 2026 (c)
+        گلهای رنگارنگ 2026 (c) - تحلیل اختصاصی بورس
     </footer>
 
 </body>
