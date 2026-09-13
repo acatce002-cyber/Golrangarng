@@ -22,56 +22,53 @@
             position: relative;
         }
         
+        /* دکمه‌های هدر - همه یک اندازه */
         .header-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 15px;
             padding: 0 10px;
         }
         
-        .whatsapp-btn, .stock-btn, .shop-btn {
+        .header-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 6px;
             color: white;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            transition: transform 0.2s;
+            transition: all 0.2s;
+            min-width: 150px;
+            height: 42px;
+            box-sizing: border-box;
+        }
+        
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         .whatsapp-btn { background-color: #25D366; }
-        .whatsapp-btn:hover { background-color: #20b858; transform: scale(1.05); }
+        .whatsapp-btn:hover { background-color: #20b858; }
         
-        .stock-btn { 
-            background-color: #2c3e50; 
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-        .stock-btn:hover { background-color: #1a252f; transform: scale(1.05); }
+        .stock-btn { background-color: #2c3e50; }
+        .stock-btn:hover { background-color: #1a252f; }
         
-        .shop-btn { 
-            background-color: #e74c3c;
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-        .shop-btn:hover { background-color: #c0392b; transform: scale(1.05); }
+        .shop-btn { background-color: #e74c3c; }
+        .shop-btn:hover { background-color: #c0392b; }
 
-        .whatsapp-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-        
-        .stock-btn svg, .shop-btn svg {
+        .header-btn svg {
             width: 16px;
             height: 16px;
             fill: white;
+            flex-shrink: 0;
         }
         
         header h1 {
@@ -93,6 +90,7 @@
             display: inline-block;
         }
         
+        /* نوار اخبار کوتاه */
         .ticker-wrapper {
             max-width: 800px;
             margin: 15px auto 25px auto;
@@ -103,29 +101,49 @@
             align-items: stretch;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            min-height: 50px;
         }
         .ticker-label {
             background-color: #c0392b;
             padding: 10px 15px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             z-index: 2;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
         .ticker-content {
             flex: 1;
             padding: 0 15px;
             display: flex;
             align-items: center;
-            overflow: hidden; 
+            overflow: hidden;
+            position: relative;
+            min-height: 50px;
         }
         #ticker-text {
-            font-size: 14px;
-            line-height: 1.5;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: nowrap;
             width: 100%;
+        }
+        /* متن کوتاه - ثابت */
+        #ticker-text.static {
+            white-space: normal;
+            text-align: center;
+        }
+        /* متن بلند - متحرک از چپ به راست */
+        #ticker-text.scrolling {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollLeftToRight 20s linear infinite;
+            padding-right: 100%;
+        }
+        @keyframes scrollLeftToRight {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         .fade-out {
             opacity: 0 !important;
@@ -160,24 +178,24 @@
 
     <header>
         <div class="header-buttons">
-            <!-- لینک گروه واتساپ -->
-            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-btn" target="_blank">
+            <!-- دکمه واتس‌اپ -->
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="header-btn whatsapp-btn" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
                 </svg>
                 گروه خبری واتسپ
             </a>
             
-            <!-- دکمه تحلیل بورس - کوچیک‌تر -->
-            <a href="bours.html" class="stock-btn">
+            <!-- دکمه تحلیل بورس (بدون تاریخ) -->
+            <a href="bours.html" class="header-btn stock-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
                 </svg>
-                تحلیل اختصاصی بورس <bdi>(5 Sep 2026)</bdi>
+                تحلیل اختصاصی بورس
             </a>
             
             <!-- دکمه فروشگاه -->
-            <a href="shop.html" class="shop-btn">
+            <a href="shop.html" class="header-btn shop-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                     <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
                 </svg>
@@ -202,7 +220,16 @@
 
     <div class="container">
 
-        <!-- خبر جدید (خبر یازدهم) - سی ان ان -->
+        <!-- خبر جدید - کوشنر -->
+        <div class="news-box">
+            <div class="news-content">
+                <h2>🔴 کوشنر: اگر اوکراین تا خط موردنظر پوتین عقب‌نشینی کند، توافق ممکن است</h2>
+                <p>جرد کوشنر گفته اگر اوکراین تا خطی که ولادیمیر پوتین تعیین کرده عقب‌نشینی کند، امکان نهایی شدن توافق وجود دارد؛ اما کی‌یف حاضر به پذیرش این شرط نیست. او همچنین جنگ را «بازی با حاصل جمع منفی» توصیف کرده و گفته در چنین وضعیتی همه طرف‌ها متضرر می‌شوند.</p>
+                <a href="#" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <!-- خبر سی ان ان -->
         <div class="news-box">
             <div class="news-content">
                 <h2>👈سی‌ان‌ان: افزایش چشمگیر ساخت‌وساز در سایت هسته‌ای «کوه کلنگ» در نزدیکی نطنز</h2>
@@ -211,7 +238,7 @@
             </div>
         </div>
         
-        <!-- خبر جدید (خبر دهم) -->
+        <!-- خبر وال استریت ژورنال -->
         <div class="news-box">
             <div class="news-content">
                 <h2>🔰 وال استریت ژورنال: جدی‌تر شدن ایده تغییر رژیم ایران در واشینگتن</h2>
@@ -220,7 +247,7 @@
             </div>
         </div>
 
-        <!-- خبر جدید (خبر نهم) -->
+        <!-- خبر سنتکام -->
         <div class="news-box">
             <div class="news-content">
                 <h2>🔴 سنتکام: درگیری شدید نیروهای آمریکایی و سپاه پاسداران در آب‌های منطقه</h2>
@@ -229,7 +256,7 @@
             </div>
         </div>
 
-        <!-- خبر هشتم -->
+        <!-- خبر آکسیوس -->
         <div class="news-box">
             <div class="news-content">
                 <h2>آکسیوس: توافق ایران، عمان و آمریکا در انتظار تأیید نهایی شورای عالی امنیت ملی</h2>
@@ -238,7 +265,7 @@
             </div>
         </div>
 
-        <!-- خبر هفتم -->
+        <!-- خبر سنا -->
         <div class="news-box">
             <div class="news-content">
                 <h2>تصویب قانون تشدید تحریم‌های روسیه و ایران در مجلس سنای آمریکا</h2>
@@ -247,7 +274,7 @@
             </div>
         </div>
 
-        <!-- خبر ششم -->
+        <!-- خبر پنتاگون -->
         <div class="news-box">
             <div class="news-content">
                 <h2>🔴 پنتاگون جلسه اضطراری برای تأمین تسلیحات برگزار می‌کند</h2>
@@ -256,7 +283,7 @@
             </div>
         </div>
 
-        <!-- خبر پنجم -->
+        <!-- خبر لایحه گالیگو -->
         <div class="news-box">
             <div class="news-content">
                 <h2>🏛 لایحه گالیگو: الزام رضایت والدین برای حساب شبکه‌های اجتماعی افراد زیر ۱۶ سال</h2>
@@ -265,7 +292,7 @@
             </div>
         </div>
 
-        <!-- خبر چهارم -->
+        <!-- خبر الجزیره -->
         <div class="news-box">
             <div class="news-content">
                 <h2>الجزیره: تنها یک یا دو موضوع در مذاکرات ایران و عمان باقی مانده است</h2>
@@ -274,7 +301,7 @@
             </div>
         </div>
 
-        <!-- خبر سوم -->
+        <!-- خبر تنگه هرمز -->
         <div class="news-box">
             <div class="news-content">
                 <h2>نهایی شدن پیش‌نویس توافق درباره تنگه هرمز</h2>
@@ -312,8 +339,6 @@
     <script>
         function updateTime() {
             const now = new Date();
-            
-            // تعیین نام فارسی برای روزها و ماه‌های میلادی
             const days = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];
             const months = ['ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن', 'ژوئیه', 'آگوست', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'];
             
@@ -322,16 +347,15 @@
             const monthName = months[now.getMonth()];
             const yearNumber = now.getFullYear();
             
-            // تولید متن تمیز با روز هفته
             document.getElementById('date').innerText = `${dayName}، ${dayNumber} ${monthName} ${yearNumber}`;
             
-            // تولید ساعت
             const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
             document.getElementById('time').innerText = now.toLocaleTimeString('en-US', timeOptions);
         }
         setInterval(updateTime, 1000);
         updateTime(); 
 
+        // اخبار کوتاه
         const shortNews = [
             "گزارش ها از صدای چند انفجار در تنگه هرمز",
             "رویترز: یک کشتی با پرچم پاناما در آب‌های سرزمینی عراق توسط یک پهپاد هدف قرار گرفت",
@@ -344,16 +368,36 @@
         let currentNewsIndex = 0;
         const tickerElement = document.getElementById('ticker-text');
 
-        tickerElement.innerText = shortNews[currentNewsIndex];
+        // تابع نمایش خبر
+        function showNews(index) {
+            const newsText = shortNews[index];
+            
+            // اگه متن کوتاه باشه (کمتر از ۶۰ کاراکتر) ثابت نمایش بده
+            if (newsText.length < 60) {
+                tickerElement.className = 'static';
+                tickerElement.style.animation = 'none';
+                tickerElement.innerText = newsText;
+            } else {
+                // متن بلند - متحرک
+                tickerElement.className = 'scrolling';
+                tickerElement.innerText = newsText;
+            }
+        }
 
+        // شروع با خبر اول
+        showNews(0);
+
+        // تغییر خودکار هر ۸ ثانیه
         setInterval(() => {
+            // fade out
             tickerElement.classList.add('fade-out');
+            
             setTimeout(() => {
                 currentNewsIndex = (currentNewsIndex + 1) % shortNews.length;
-                tickerElement.innerText = shortNews[currentNewsIndex];
+                showNews(currentNewsIndex);
                 tickerElement.classList.remove('fade-out');
-            }, 500); 
-        }, 4000); 
+            }, 500);
+        }, 8000);
     </script>
 </body>
 </html>
