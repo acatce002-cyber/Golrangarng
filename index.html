@@ -90,7 +90,7 @@
             display: inline-block;
         }
         
-        /* نوار اخبار کوتاه */
+        /* نوار اخبار کوتاه - ساده */
         .ticker-wrapper {
             max-width: 800px;
             margin: 15px auto 25px auto;
@@ -101,7 +101,7 @@
             align-items: stretch;
             overflow: hidden;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            min-height: 50px;
+            min-height: 55px;
         }
         .ticker-label {
             background-color: #c0392b;
@@ -116,37 +116,21 @@
         }
         .ticker-content {
             flex: 1;
-            padding: 0 15px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
             overflow: hidden;
-            position: relative;
-            min-height: 50px;
+            min-height: 55px;
         }
         #ticker-text {
             font-size: 13px;
-            line-height: 1.6;
-            white-space: nowrap;
+            line-height: 1.7;
             width: 100%;
-        }
-        /* متن کوتاه - ثابت */
-        #ticker-text.static {
-            white-space: normal;
-            text-align: center;
-        }
-        /* متن بلند - متحرک از چپ به راست */
-        #ticker-text.scrolling {
-            display: inline-block;
-            white-space: nowrap;
-            animation: scrollLeftToRight 20s linear infinite;
-            padding-right: 100%;
-        }
-        @keyframes scrollLeftToRight {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            text-align: right;
+            transition: opacity 0.4s ease-in-out;
         }
         .fade-out {
-            opacity: 0 !important;
+            opacity: 0;
         }
 
         .container {
@@ -167,7 +151,7 @@
         }
         .news-box img { width: 150px; height: 100px; object-fit: cover; border-radius: 5px; }
         .news-content { width: 100%; }
-        .news-content h2 { margin: 0 0 10px 0; color: #333; font-size: 18px; }
+        .news-content h2 { margin: 0 0 10px 0; color: #333; font-size: 18px; line-height: 1.6; }
         .news-content p { color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 14px; display: inline-block; }
         .read-more:hover { background-color: #2980b9; }
@@ -186,7 +170,7 @@
                 گروه خبری واتسپ
             </a>
             
-            <!-- دکمه تحلیل بورس (بدون تاریخ) -->
+            <!-- دکمه تحلیل بورس -->
             <a href="bours.html" class="header-btn stock-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
@@ -225,7 +209,7 @@
             <div class="news-content">
                 <h2>🔴 کوشنر: اگر اوکراین تا خط موردنظر پوتین عقب‌نشینی کند، توافق ممکن است</h2>
                 <p>جرد کوشنر گفته اگر اوکراین تا خطی که ولادیمیر پوتین تعیین کرده عقب‌نشینی کند، امکان نهایی شدن توافق وجود دارد؛ اما کی‌یف حاضر به پذیرش این شرط نیست. او همچنین جنگ را «بازی با حاصل جمع منفی» توصیف کرده و گفته در چنین وضعیتی همه طرف‌ها متضرر می‌شوند.</p>
-                <a href="#" class="read-more">ادامه مطلب</a>
+                <a href="N1/news11.html" class="read-more">ادامه مطلب</a>
             </div>
         </div>
 
@@ -355,49 +339,30 @@
         setInterval(updateTime, 1000);
         updateTime(); 
 
-        // اخبار کوتاه
+        // اخبار کوتاه جدید
         const shortNews = [
-            "گزارش ها از صدای چند انفجار در تنگه هرمز",
-            "رویترز: یک کشتی با پرچم پاناما در آب‌های سرزمینی عراق توسط یک پهپاد هدف قرار گرفت",
-            "وزیر دفاع پاکستان: تلاش‌های میانجی‌گری میان ایران و آمریکا ادامه دارد",
-            "یک کشتی در شمال غربی بندر رشید در امارات متحده عربی مورد هدف قرار گرفت",
-            "فوری/گزارش ها از حمله پهپادی ایران به یک نفتکش در سواحل دبی، امارات.",
-            "المیادین: عربستان ظرف سه روز بیش از ۱۳۵ حمله هوایی علیه یمن انجام داده است"
+            "ربات‌های نمازخون در عربستان!",
+            "فایننشال تایمز: حوثی ها با کمک هوش مصنوعی تونستن موشک بسازن",
+            "بلومبرگ: از شروع جنگ علیه ایران درآمد روزانه سوپر تانکرها از ۲۱۸ هزار دلار به ۷۸۶ هزار دلار رسیده است.",
+            "اتلانتیک: ترامپ یک تنگه دیگر (باب المندب) از دست داد"
         ];
         
         let currentNewsIndex = 0;
         const tickerElement = document.getElementById('ticker-text');
 
-        // تابع نمایش خبر
-        function showNews(index) {
-            const newsText = shortNews[index];
-            
-            // اگه متن کوتاه باشه (کمتر از ۶۰ کاراکتر) ثابت نمایش بده
-            if (newsText.length < 60) {
-                tickerElement.className = 'static';
-                tickerElement.style.animation = 'none';
-                tickerElement.innerText = newsText;
-            } else {
-                // متن بلند - متحرک
-                tickerElement.className = 'scrolling';
-                tickerElement.innerText = newsText;
-            }
-        }
+        // نمایش خبر اول
+        tickerElement.innerText = shortNews[currentNewsIndex];
 
-        // شروع با خبر اول
-        showNews(0);
-
-        // تغییر خودکار هر ۸ ثانیه
+        // تغییر خودکار هر ۶ ثانیه با fade ملایم
         setInterval(() => {
-            // fade out
             tickerElement.classList.add('fade-out');
             
             setTimeout(() => {
                 currentNewsIndex = (currentNewsIndex + 1) % shortNews.length;
-                showNews(currentNewsIndex);
+                tickerElement.innerText = shortNews[currentNewsIndex];
                 tickerElement.classList.remove('fade-out');
-            }, 500);
-        }, 8000);
+            }, 400);
+        }, 6000);
     </script>
 </body>
 </html>
