@@ -21,15 +21,8 @@
             padding: 20px 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        header p {
-            margin: 8px 0 0 0;
-            font-size: 13px;
-            opacity: 0.9;
-        }
+        header h1 { margin: 0; font-size: 24px; }
+        header p { margin: 8px 0 0 0; font-size: 13px; opacity: 0.9; }
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -43,12 +36,8 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: bold;
-            transition: transform 0.2s;
         }
-        .back-btn:hover {
-            text-decoration: underline;
-            transform: translateX(-5px);
-        }
+        .back-btn:hover { text-decoration: underline; }
         .shop-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -71,8 +60,8 @@
         }
         .product-image {
             width: 100%;
-            height: 280px;
-            background-color: #1a1a1a;
+            height: 250px;
+            background-color: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -84,9 +73,7 @@
             object-fit: cover;
             transition: transform 0.3s;
         }
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
+        .product-card:hover .product-image img { transform: scale(1.05); }
         .product-info {
             padding: 15px;
             flex: 1;
@@ -98,39 +85,151 @@
             color: #333;
             font-size: 16px;
             font-weight: bold;
-            line-height: 1.5;
         }
-        .product-description {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.8;
-            margin: 0 0 12px 0;
-        }
-        .ticket-prices {
+        .product-specs {
             background-color: #f8f9fa;
             border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
         }
-        .ticket-price-item {
+        .spec-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px 0;
+            padding: 4px 0;
             border-bottom: 1px solid #e9ecef;
-            font-size: 13px;
+            font-size: 11px;
         }
-        .ticket-price-item:last-child {
-            border-bottom: none;
+        .spec-item:last-child { border-bottom: none; }
+        .spec-label { color: #666; font-weight: bold; white-space: nowrap; margin-left: 8px; }
+        .spec-value { color: #333; text-align: left; font-size: 11px; }
+        
+        /* بخش انتخاب گزینه‌ها */
+        .options-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
         }
-        .ticket-type {
+        .option-group {
+            margin-bottom: 10px;
+        }
+        .option-group:last-child { margin-bottom: 0; }
+        .option-label {
+            display: block;
             color: #333;
             font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 6px;
         }
-        .ticket-price {
-            color: #e74c3c;
+        .option-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .option-btn {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 11px;
             font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #333;
+            min-width: 40px;
+            text-align: center;
         }
+        .option-btn:hover {
+            border-color: #e74c3c;
+        }
+        .option-btn.selected {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border-color: #e74c3c;
+        }
+        
+        /* انتخاب رنگ با دایره */
+        .color-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .color-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 3px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            padding: 0;
+        }
+        .color-btn:hover {
+            transform: scale(1.15);
+        }
+        .color-btn.selected {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #e74c3c;
+        }
+        .color-btn.black { background-color: #1a1a1a; }
+        .color-btn.white { background-color: #ffffff; border: 3px solid #ccc; }
+        .color-btn.gray { background-color: #808080; }
+        .color-btn.red { background-color: #e74c3c; }
+        .color-btn.blue { background-color: #3498db; }
+        .color-btn.navy { background-color: #1e3a5f; }
+        .color-btn.green { background-color: #27ae60; }
+        
+        /* انتخاب روز ارسال */
+        .delivery-section {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .delivery-label {
+            color: #856404;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .delivery-dates {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+        .delivery-btn {
+            background-color: white;
+            border: 2px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 8px 4px;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #856404;
+            text-align: center;
+        }
+        .delivery-btn:hover {
+            border-color: #f39c12;
+        }
+        .delivery-btn.selected {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            border-color: #f39c12;
+        }
+        .delivery-btn small {
+            display: block;
+            font-size: 9px;
+            opacity: 0.8;
+            margin-top: 2px;
+            font-weight: normal;
+        }
+        
         .product-price {
             color: #e74c3c;
             font-size: 20px;
@@ -145,33 +244,40 @@
             padding: 12px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             width: 100%;
             transition: background-color 0.3s;
             font-family: Tahoma, Arial, sans-serif;
         }
-        .buy-btn:hover {
-            background-color: #c0392b;
+        .buy-btn:hover { background-color: #c0392b; }
+        .buy-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
         }
         .badge {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #e74c3c;
+            background-color: #f39c12;
             color: white;
-            padding: 5px 12px;
+            padding: 5px 10px;
             border-radius: 15px;
             font-size: 11px;
             font-weight: bold;
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .badge.featured {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
             animation: pulse 2s infinite;
         }
+        .badge.hot {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
         footer {
             text-align: center;
@@ -194,32 +300,83 @@
         
         <div class="shop-grid">
             <!-- ========================================== -->
-            <!-- کنسرت محمد علی‌نیا -->
+            <!-- کفش ونس - پیشنهادی -->
             <!-- ========================================== -->
             <div class="product-card">
-                <div class="badge">🎵 امشب</div>
+                <div class="badge featured">⭐ پیشنهادی</div>
                 <div class="product-image">
-                    <img src="products/concert.jpg" alt="کنسرت محمد علی‌نیا">
+                    <img src="products/vans-shoes.jpg" alt="کفش ونس">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">🔥 کنسرت محمد علی‌نیا امشب در سالن کنسرت سانتوس هال شهر لوسانتوس</h3>
+                    <h3 class="product-name">👟 کفش ونس (Vans) - Old Skool</h3>
                     
-                    <p class="product-description">
-                        📅 تاریخ: Sep 11
-                    </p>
-                    
-                    <div class="ticket-prices">
-                        <div class="ticket-price-item">
-                            <span class="ticket-type">🎟️ بلیت عادی</span>
-                            <span class="ticket-price">۷۵ دلار</span>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">🧵 جنس:</span>
+                            <span class="spec-value">چرم + کنواس</span>
                         </div>
-                        <div class="ticket-price-item">
-                            <span class="ticket-type">⭐ بلیت ویژه</span>
-                            <span class="ticket-price">۱۷۰ دلار</span>
+                        <div class="spec-item">
+                            <span class="spec-label">👫 جنسیت:</span>
+                            <span class="spec-value">مردانه و زنانه</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🖨️ کفی:</span>
+                            <span class="spec-value">ضد لغزش</span>
                         </div>
                     </div>
                     
-                    <button class="buy-btn" onclick="window.location.href='concert-ticket.html'">🎫 خرید بلیت</button>
+                    <!-- انتخاب سایز -->
+                    <div class="options-section">
+                        <div class="option-group">
+                            <span class="option-label">📏 انتخاب سایز:</span>
+                            <div class="option-buttons" id="vans-size">
+                                <button class="option-btn" onclick="selectSize('vans', '36', this)">۳۶</button>
+                                <button class="option-btn" onclick="selectSize('vans', '37', this)">۳۷</button>
+                                <button class="option-btn" onclick="selectSize('vans', '38', this)">۳۸</button>
+                                <button class="option-btn" onclick="selectSize('vans', '39', this)">۳۹</button>
+                                <button class="option-btn" onclick="selectSize('vans', '40', this)">۴۰</button>
+                                <button class="option-btn" onclick="selectSize('vans', '41', this)">۴۱</button>
+                                <button class="option-btn" onclick="selectSize('vans', '42', this)">۴۲</button>
+                                <button class="option-btn" onclick="selectSize('vans', '43', this)">۴۳</button>
+                                <button class="option-btn" onclick="selectSize('vans', '44', this)">۴۴</button>
+                                <button class="option-btn" onclick="selectSize('vans', '45', this)">۴۵</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <span class="option-label">🎨 انتخاب رنگ:</span>
+                            <div class="color-buttons" id="vans-color">
+                                <button class="color-btn black" onclick="selectColor('vans', 'مشکی', this)" title="مشکی"></button>
+                                <button class="color-btn white" onclick="selectColor('vans', 'سفید', this)" title="سفید"></button>
+                                <button class="color-btn red" onclick="selectColor('vans', 'قرمز', this)" title="قرمز"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- انتخاب روز ارسال -->
+                    <div class="delivery-section">
+                        <span class="delivery-label">🚚 انتخاب روز ارسال:</span>
+                        <div class="delivery-dates" id="vans-delivery">
+                            <button class="delivery-btn" onclick="selectDelivery('vans', 'شنبه', this)">
+                                شنبه
+                                <small>Sep 14</small>
+                            </button>
+                            <button class="delivery-btn" onclick="selectDelivery('vans', 'یکشنبه', this)">
+                                یکشنبه
+                                <small>Sep 15</small>
+                            </button>
+                            <button class="delivery-btn" onclick="selectDelivery('vans', 'دوشنبه', this)">
+                                دوشنبه
+                                <small>Sep 16</small>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-price">۱۱۹.۹۹ دلار</div>
+                    
+                    <button class="buy-btn" id="vans-buy-btn" onclick="buyProduct('vans', 'کفش ونس', '۱۱۹.۹۹')" disabled>
+                        ابتدا سایز، رنگ و روز ارسال را انتخاب کنید
+                    </button>
                 </div>
             </div>
 
@@ -227,27 +384,75 @@
             <!-- تیشرت مشکی طرح عقاب -->
             <!-- ========================================== -->
             <div class="product-card">
-                <div class="badge">محصول ویژه</div>
+                <div class="badge hot">🔥 ویژه</div>
                 <div class="product-image">
                     <img src="products/eagle-tshirt.jpg" alt="تیشرت مشکی طرح عقاب">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">تیشرت مشکی طرح عقاب</h3>
                     
-                    <div class="ticket-prices">
-                        <div class="ticket-price-item">
-                            <span class="ticket-type">🧵 جنس:</span>
-                            <span class="ticket-price">۱۰۰% پنبه</span>
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">🧵 جنس:</span>
+                            <span class="spec-value">۱۰۰% پنبه</span>
                         </div>
-                        <div class="ticket-price-item">
-                            <span class="ticket-type">📏 سایز:</span>
-                            <span class="ticket-price">S تا XXL</span>
+                        <div class="spec-item">
+                            <span class="spec-label">👫 جنسیت:</span>
+                            <span class="spec-value">مردانه و زنانه</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🖨️ چاپ:</span>
+                            <span class="spec-value">دیجیتال DTG</span>
+                        </div>
+                    </div>
+                    
+                    <!-- انتخاب سایز -->
+                    <div class="options-section">
+                        <div class="option-group">
+                            <span class="option-label">📏 انتخاب سایز:</span>
+                            <div class="option-buttons" id="tshirt-size">
+                                <button class="option-btn" onclick="selectSize('tshirt', 'S', this)">S</button>
+                                <button class="option-btn" onclick="selectSize('tshirt', 'M', this)">M</button>
+                                <button class="option-btn" onclick="selectSize('tshirt', 'L', this)">L</button>
+                                <button class="option-btn" onclick="selectSize('tshirt', 'XL', this)">XL</button>
+                                <button class="option-btn" onclick="selectSize('tshirt', 'XXL', this)">XXL</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <span class="option-label">🎨 انتخاب رنگ:</span>
+                            <div class="color-buttons" id="tshirt-color">
+                                <button class="color-btn black" onclick="selectColor('tshirt', 'مشکی', this)" title="مشکی"></button>
+                                <button class="color-btn white" onclick="selectColor('tshirt', 'سفید', this)" title="سفید"></button>
+                                <button class="color-btn gray" onclick="selectColor('tshirt', 'خاکستری', this)" title="خاکستری"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- انتخاب روز ارسال -->
+                    <div class="delivery-section">
+                        <span class="delivery-label">🚚 انتخاب روز ارسال:</span>
+                        <div class="delivery-dates" id="tshirt-delivery">
+                            <button class="delivery-btn" onclick="selectDelivery('tshirt', 'شنبه', this)">
+                                شنبه
+                                <small>Sep 14</small>
+                            </button>
+                            <button class="delivery-btn" onclick="selectDelivery('tshirt', 'یکشنبه', this)">
+                                یکشنبه
+                                <small>Sep 15</small>
+                            </button>
+                            <button class="delivery-btn" onclick="selectDelivery('tshirt', 'دوشنبه', this)">
+                                دوشنبه
+                                <small>Sep 16</small>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-price">۷۵.۹۹ دلار</div>
                     
-                    <button class="buy-btn" onclick="window.location.href='checkout.html'">🛒 خرید</button>
+                    <button class="buy-btn" id="tshirt-buy-btn" onclick="buyProduct('tshirt', 'تیشرت مشکی طرح عقاب', '۷۵.۹۹')" disabled>
+                        ابتدا سایز، رنگ و روز ارسال را انتخاب کنید
+                    </button>
                 </div>
             </div>
         </div>
@@ -256,5 +461,75 @@
     <footer>
         گلهای رنگارنگ 2026 (c) - فروشگاه اختصاصی
     </footer>
+
+    <script>
+        // ذخیره انتخاب‌ها
+        const selections = {
+            vans: { size: null, color: null, delivery: null },
+            tshirt: { size: null, color: null, delivery: null }
+        };
+        
+        // انتخاب سایز
+        function selectSize(product, size, btn) {
+            // حذف انتخاب قبلی
+            btn.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selections[product].size = size;
+            checkComplete(product);
+        }
+        
+        // انتخاب رنگ
+        function selectColor(product, color, btn) {
+            // حذف انتخاب قبلی
+            btn.parentElement.querySelectorAll('.color-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selections[product].color = color;
+            checkComplete(product);
+        }
+        
+        // انتخاب روز ارسال
+        function selectDelivery(product, day, btn) {
+            // حذف انتخاب قبلی
+            btn.parentElement.querySelectorAll('.delivery-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selections[product].delivery = day;
+            checkComplete(product);
+        }
+        
+        // بررسی کامل بودن انتخاب‌ها
+        function checkComplete(product) {
+            const sel = selections[product];
+            const btn = document.getElementById(product + '-buy-btn');
+            
+            if (sel.size && sel.color && sel.delivery) {
+                btn.disabled = false;
+                btn.innerText = '🛒 افزودن به سبد خرید';
+                btn.style.backgroundColor = '#27ae60';
+            } else {
+                btn.disabled = true;
+                btn.innerText = 'ابتدا سایز، رنگ و روز ارسال را انتخاب کنید';
+                btn.style.backgroundColor = '#95a5a6';
+            }
+        }
+        
+        // خرید
+        function buyProduct(product, productName, price) {
+            const sel = selections[product];
+            
+            // ذخیره اطلاعات در localStorage
+            const orderData = {
+                product: productName,
+                price: price,
+                size: sel.size,
+                color: sel.color,
+                delivery: sel.delivery
+            };
+            
+            localStorage.setItem('currentOrder', JSON.stringify(orderData));
+            
+            // رفتن به صفحه پرداخت
+            window.location.href = 'checkout.html';
+        }
+    </script>
 </body>
 </html>
