@@ -21,21 +21,78 @@
             padding: 20px 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
+        header h1 { margin: 0; font-size: 22px; }
         .container {
             max-width: 600px;
             margin: 20px auto;
             padding: 0 15px;
             flex: 1;
         }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        
+        /* خلاصه سفارش */
+        .order-summary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        .order-summary h2 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .summary-label {
+            opacity: 0.9;
+        }
+        .summary-value {
+            font-weight: bold;
+        }
+        .summary-price {
+            background-color: rgba(255,255,255,0.15);
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
         .checkout-form {
             background-color: white;
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .checkout-form h2 {
+            color: #333;
+            font-size: 17px;
+            margin: 0 0 20px 0;
+            text-align: center;
         }
         .form-group {
             margin-bottom: 18px;
@@ -81,7 +138,7 @@
             background-color: #27ae60;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
@@ -90,15 +147,12 @@
             transition: background-color 0.3s;
             font-family: Tahoma, Arial, sans-serif;
         }
-        .submit-btn:hover {
-            background-color: #219a52;
-        }
+        .submit-btn:hover { background-color: #219a52; }
         .submit-btn:disabled {
             background-color: #95a5a6;
             cursor: not-allowed;
         }
         
-        /* پیام در حال ثبت */
         .loading-message {
             display: none;
             text-align: center;
@@ -121,12 +175,8 @@
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         
-        /* پیام موفقیت */
         .success-message {
             display: none;
             background-color: #d4edda;
@@ -147,7 +197,6 @@
             line-height: 1.8;
         }
         
-        /* پیام خطا */
         .error-message {
             display: none;
             background-color: #f8d7da;
@@ -158,17 +207,6 @@
             margin-top: 10px;
             border: 1px solid #f5c6cb;
             font-size: 14px;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #3498db;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .back-btn:hover {
-            text-decoration: underline;
         }
         footer {
             text-align: center;
@@ -188,9 +226,35 @@
     <div class="container">
         <a href="shop.html" class="back-btn">← بازگشت به فروشگاه</a>
         
+        <!-- خلاصه سفارش -->
+        <div class="order-summary" id="orderSummary">
+            <h2>📦 خلاصه سفارش شما</h2>
+            
+            <div class="summary-item">
+                <span class="summary-label">🛍️ محصول:</span>
+                <span class="summary-value" id="summaryProduct">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">📏 سایز:</span>
+                <span class="summary-value" id="summarySize">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">🎨 رنگ:</span>
+                <span class="summary-value" id="summaryColor">-</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">🚚 روز ارسال:</span>
+                <span class="summary-value" id="summaryDelivery">-</span>
+            </div>
+            
+            <div class="summary-price">
+                💰 مبلغ قابل پرداخت: <span id="summaryPrice">-</span> دلار
+            </div>
+        </div>
+        
         <!-- فرم اطلاعات -->
         <div class="checkout-form" id="checkoutForm">
-            <h2 style="color: #333; font-size: 18px; margin-bottom: 20px;">اطلاعات ارسال سفارش</h2>
+            <h2>اطلاعات ارسال سفارش</h2>
             
             <div class="form-group">
                 <label>🏙️ شهر</label>
@@ -274,8 +338,30 @@
         // کد پرداخت معتبر
         const VALID_PAYMENT_CODE = "GHMD173KJDI";
         
+        // بارگذاری اطلاعات سفارش از localStorage
+        function loadOrderSummary() {
+            const orderData = localStorage.getItem('currentOrder');
+            
+            if (orderData) {
+                const order = JSON.parse(orderData);
+                
+                document.getElementById('summaryProduct').innerText = order.product || '-';
+                document.getElementById('summarySize').innerText = order.size || '-';
+                document.getElementById('summaryColor').innerText = order.color || '-';
+                document.getElementById('summaryDelivery').innerText = order.delivery || '-';
+                document.getElementById('summaryPrice').innerText = order.price || '-';
+            } else {
+                // اگه سفارشی نبود، پیام بده
+                document.getElementById('summaryProduct').innerText = 'سفارشی ثبت نشده';
+                document.getElementById('summarySize').innerText = '-';
+                document.getElementById('summaryColor').innerText = '-';
+                document.getElementById('summaryDelivery').innerText = '-';
+                document.getElementById('summaryPrice').innerText = '۰';
+            }
+        }
+        
+        // ثبت سفارش
         function submitOrder() {
-            // دریافت مقادیر
             const city = document.getElementById('city').value.trim();
             const street = document.getElementById('street').value.trim();
             const neighborhood = document.getElementById('neighborhood').value.trim();
@@ -284,7 +370,6 @@
             const phone = document.getElementById('phone').value.trim();
             const paymentCode = document.getElementById('paymentCode').value.trim();
             
-            // بررسی خالی بودن فیلدها
             const fields = [
                 { id: 'city', value: city },
                 { id: 'street', value: street },
@@ -296,7 +381,6 @@
             ];
             
             let hasError = false;
-            
             fields.forEach(field => {
                 const element = document.getElementById(field.id);
                 if (!field.value) {
@@ -312,19 +396,13 @@
                 return;
             }
             
-            // بررسی کد پرداخت
             if (paymentCode === VALID_PAYMENT_CODE) {
-                // غیرفعال کردن دکمه
                 document.getElementById('submitBtn').disabled = true;
-                
-                // مخفی کردن فرم
                 document.getElementById('checkoutForm').style.display = 'none';
+                document.getElementById('orderSummary').style.display = 'none';
                 document.getElementById('errorMessage').style.display = 'none';
-                
-                // نمایش پیام در حال ثبت
                 document.getElementById('loadingMessage').style.display = 'block';
                 
-                // بعد از ۱۰ ثانیه نمایش پیام موفقیت
                 setTimeout(() => {
                     document.getElementById('loadingMessage').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
@@ -342,25 +420,24 @@
                     
                     localStorage.setItem('lastOrderInfo', JSON.stringify(orderInfo));
                     
-                }, 10000); // ۱۰ ثانیه تأخیر
+                }, 10000); // ۱۰ ثانیه
                 
             } else {
-                // نمایش خطا
                 document.getElementById('errorMessage').style.display = 'block';
                 document.getElementById('paymentCode').classList.add('error');
-                
-                // مخفی کردن خطا بعد از ۳ ثانیه
                 setTimeout(() => {
                     document.getElementById('errorMessage').style.display = 'none';
                 }, 3000);
             }
         }
         
-        // حذف خطا موقع تایپ
         document.getElementById('paymentCode').addEventListener('input', function() {
             this.classList.remove('error');
             document.getElementById('errorMessage').style.display = 'none';
         });
+        
+        // بارگذاری در شروع
+        loadOrderSummary();
     </script>
 </body>
 </html>
