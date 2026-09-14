@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیاست حفظ حریم خصوصی - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #856404;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .section-number {
+            background-color: #c0392b;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0;
+            flex: 1;
+        }
+        .section-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .section-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .section-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 14px;
+            line-height: 2;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        .info-box a {
+            color: #c0392b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .tv-channel-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-right: 4px solid #c0392b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .tv-channel-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 6px 0;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .tv-channel-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        
+        .services-list {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-right: 4px solid #2c3e50;
+        }
+        .services-list h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 16px;
+            border: none;
+            padding: 0;
+        }
+        .services-list ul {
+            padding-right: 20px;
+            margin: 0;
+        }
+        .services-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 4px;
+        }
+        
+        .related-pages {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #c0392b;
+        }
+        .related-pages h3 {
+            margin: 0 0 20px 0;
+            color: #c0392b;
+            font-size: 17px;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #eee;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.15);
+        }
+        .related-card .rc-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .related-card .rc-desc {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.7;
+            display: block;
+        }
+        
+        .final-note {
+            background-color: #f8f9fa;
+            border-right: 4px solid #95a5a6;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 2;
+            text-align: justify;
+            font-style: italic;
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .section-header { flex-wrap: wrap; }
+            .related-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر: GRG + سیاست حفظ حریم خصوصی -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">سیاست حفظ حریم خصوصی</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>🔒 سیاست حفظ حریم خصوصی</h1>
+            
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: ۱۴ سپتامبر ۲۰۲۶
+            </div>
+            
+            <div class="page-intro">
+                به <strong>Golhaye Rangarang (گل‌های رنگارنگ)</strong> خوش آمدید.
+                <br><br>
+                گل‌های رنگارنگ یک مجموعه رسانه‌ای و دیجیتال مستقر در ایالت خیالی لاسونتراس، ایالات متحده آمریکا است که خدمات و محتوای خود را از طریق وب‌سایت خبری بین‌المللی، بخش اخبار محلی، کانال خبری واتس‌اپ، چهار شبکه تلویزیونی و فروشگاه اینترنتی پوشاک ارائه می‌کند.
+                <br><br>
+                حفظ حریم خصوصی کاربران، مخاطبان، مشتریان و بازدیدکنندگان برای ما اهمیت دارد. این سیاست توضیح می‌دهد که چه اطلاعاتی ممکن است هنگام استفاده از خدمات گل‌های رنگارنگ جمع‌آوری شود، چگونه از این اطلاعات استفاده می‌کنیم، چه زمانی ممکن است اطلاعات با اشخاص ثالث به اشتراک گذاشته شود و شما چه حقوق و انتخاب‌هایی در رابطه با اطلاعات خود دارید.
+                <br><br>
+                با استفاده از وب‌سایت‌ها، برنامه‌ها، خدمات دیجیتال یا سایر سرویس‌های گل‌های رنگارنگ، شما با شرایط توضیح داده‌شده در این سیاست موافقت می‌کنید؛ با این حال، در مواردی که قانون رضایت جداگانه‌ای را الزامی بداند، رضایت مطابق الزامات قانونی دریافت خواهد شد.
+            </div>
+            
+            <!-- ۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱</span>
+                    <h3 class="section-title">دامنه این سیاست</h3>
+                </div>
+                <p class="section-description">
+                    این سیاست حفظ حریم خصوصی برای خدمات و بخش‌های مختلف مجموعه گل‌های رنگارنگ اعمال می‌شود، از جمله:
+                </p>
+                <ul class="section-list">
+                    <li>وب‌سایت اصلی Golhaye Rangarang</li>
+                    <li>بخش اخبار بین‌المللی</li>
+                    <li>بخش اخبار ایالت لاسونتراس</li>
+                    <li>اخبار محلی و منطقه‌ای</li>
+                    <li>کانال خبری واتس‌اپ گل‌های رنگارنگ</li>
+                    <li>سرویس‌های آنلاین چهار شبکه تلویزیونی</li>
+                    <li>پخش زنده ویدئو و برنامه‌های تلویزیونی</li>
+                    <li>فروشگاه اینترنتی پوشاک گل‌های رنگارنگ</li>
+                    <li>حساب‌های کاربری و خدمات مرتبط</li>
+                    <li>فرم‌های تماس و عضویت</li>
+                    <li>خبرنامه‌های ایمیلی</li>
+                    <li>سرویس‌های دیجیتال و تعاملی وابسته به مجموعه</li>
+                </ul>
+                <p class="section-description">
+                    این سیاست ممکن است برای سرویس‌هایی که تحت مالکیت یا کنترل اشخاص ثالث هستند اعمال نشود. چنین سرویس‌هایی ممکن است سیاست حفظ حریم خصوصی مستقل خود را داشته باشند.
+                </p>
+            </div>
+            
+            <!-- ۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲</span>
+                    <h3 class="section-title">اطلاعاتی که ممکن است جمع‌آوری کنیم</h3>
+                </div>
+                <p class="section-description">
+                    بسته به نحوه استفاده شما از خدمات گل‌های رنگارنگ، ممکن است انواع مختلفی از اطلاعات جمع‌آوری شود.
+                </p>
+                <p class="section-description"><strong>اطلاعاتی که مستقیماً ارائه می‌کنید</strong></p>
+                <p class="section-description">
+                    هنگامی که با ما تعامل می‌کنید، ممکن است اطلاعاتی را مستقیماً در اختیار ما قرار دهید. برای مثال:
+                </p>
+                <ul class="section-list">
+                    <li>نام و نام خانوادگی</li>
+                    <li>آدرس ایمیل</li>
+                    <li>شماره تلفن</li>
+                    <li>اطلاعات حساب کاربری</li>
+                    <li>اطلاعات مربوط به سفارش</li>
+                    <li>آدرس ارسال کالا</li>
+                    <li>اطلاعات صورتحساب</li>
+                    <li>پیام‌ها و درخواست‌های ارسال‌شده به تیم پشتیبانی</li>
+                    <li>اطلاعاتی که در فرم‌های سایت وارد می‌کنید</li>
+                    <li>اطلاعات مربوط به عضویت در خبرنامه</li>
+                    <li>بازخوردها و نظرات</li>
+                    <li>اطلاعاتی که هنگام شرکت در مسابقات یا رویدادهای آنلاین ارائه می‌کنید</li>
+                </ul>
+                <p class="section-description">
+                    ما تلاش می‌کنیم تنها اطلاعاتی را جمع‌آوری کنیم که برای ارائه سرویس موردنظر یا اهداف قانونی و تجاری مشروع موردنیاز است.
+                </p>
+            </div>
+            
+            <!-- ۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۳</span>
+                    <h3 class="section-title">اطلاعات خرید از فروشگاه</h3>
+                </div>
+                <p class="section-description">
+                    اگر از فروشگاه اینترنتی گل‌های رنگارنگ خرید کنید، ممکن است اطلاعاتی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>نام خریدار</li>
+                    <li>آدرس ارسال</li>
+                    <li>شماره تماس</li>
+                    <li>ایمیل</li>
+                    <li>محصولات خریداری‌شده</li>
+                    <li>تاریخ سفارش</li>
+                    <li>مبلغ سفارش</li>
+                    <li>وضعیت پرداخت</li>
+                    <li>اطلاعات مربوط به بازگشت یا تعویض کالا</li>
+                </ul>
+                <p class="section-description">
+                    جمع‌آوری شود. اطلاعات کامل کارت بانکی یا اطلاعات حساس پرداخت ممکن است مستقیماً توسط ارائه‌دهندگان خدمات پرداخت پردازش شود و الزاماً در سیستم‌های گل‌های رنگارنگ ذخیره نشود.
+                </p>
+            </div>
+            
+            <!-- ۴ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۴</span>
+                    <h3 class="section-title">اطلاعاتی که به صورت خودکار جمع‌آوری می‌شود</h3>
+                </div>
+                <p class="section-description">
+                    هنگام بازدید از وب‌سایت یا استفاده از برخی خدمات دیجیتال، ممکن است بعضی اطلاعات به صورت خودکار ثبت شود. این اطلاعات می‌تواند شامل موارد زیر باشد:
+                </p>
+                <ul class="section-list">
+                    <li>آدرس IP</li>
+                    <li>نوع دستگاه</li>
+                    <li>سیستم‌عامل</li>
+                    <li>نوع مرورگر</li>
+                    <li>زبان مرورگر</li>
+                    <li>زمان ورود به سایت</li>
+                    <li>صفحات مشاهده‌شده</li>
+                    <li>لینک‌هایی که از طریق آن‌ها وارد سایت شده‌اید</li>
+                    <li>مدت زمان استفاده از برخی صفحات</li>
+                    <li>اطلاعات مربوط به عملکرد سایت</li>
+                    <li>خطاهای فنی</li>
+                    <li>اطلاعات مربوط به تعامل با محتوای ویدئویی</li>
+                    <li>داده‌های مربوط به کوکی‌ها و فناوری‌های مشابه</li>
+                </ul>
+                <p class="section-description">
+                    این اطلاعات می‌تواند برای امنیت، تحلیل عملکرد، رفع خطا و بهبود خدمات استفاده شود.
+                </p>
+            </div>
+            
+            <!-- ۵ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۵</span>
+                    <h3 class="section-title">کوکی‌ها و فناوری‌های مشابه</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ از کوکی‌ها و فناوری‌های مشابه برای اهداف مختلف استفاده می‌کند. این فناوری‌ها ممکن است برای:
+                </p>
+                <ul class="section-list">
+                    <li>عملکرد صحیح وب‌سایت</li>
+                    <li>امنیت</li>
+                    <li>ذخیره تنظیمات</li>
+                    <li>تحلیل ترافیک</li>
+                    <li>شخصی‌سازی محتوا</li>
+                    <li>عملکرد فروشگاه</li>
+                    <li>نمایش و اندازه‌گیری تبلیغات</li>
+                    <li>بهبود تجربه کاربری</li>
+                </ul>
+                <p class="section-description">
+                    مورد استفاده قرار گیرند. برای اطلاعات کامل‌تر درباره کوکی‌ها، لطفاً صفحه <a href="cookies.html" style="color: #c0392b; font-weight: bold;">Manage Cookies</a> گل‌های رنگارنگ را مطالعه کنید.
+                </p>
+            </div>
+            
+            <!-- ۶ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۶</span>
+                    <h3 class="section-title">چگونه از اطلاعات استفاده می‌کنیم؟</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ ممکن است اطلاعات جمع‌آوری‌شده را برای اهداف زیر استفاده کند:
+                </p>
+                <ul class="section-list">
+                    <li><strong>ارائه خدمات:</strong> برای ارائه اخبار، ویدئوها، خدمات دیجیتال، حساب کاربری و سایر امکانات.</li>
+                    <li><strong>بهبود محصولات:</strong> برای بررسی عملکرد وب‌سایت و ایجاد قابلیت‌های جدید.</li>
+                    <li><strong>شخصی‌سازی:</strong> برای نمایش محتوا یا تنظیماتی که ممکن است برای کاربر مرتبط‌تر باشند.</li>
+                    <li><strong>امنیت:</strong> برای شناسایی فعالیت‌های غیرمجاز، سوءاستفاده، حملات سایبری و سایر تهدیدهای امنیتی.</li>
+                    <li><strong>ارتباط با کاربران:</strong> برای پاسخ دادن به پیام‌ها، درخواست‌های پشتیبانی و پرسش‌های کاربران.</li>
+                    <li><strong>سفارش‌های فروشگاه:</strong> برای پردازش، ارسال، مدیریت و پشتیبانی سفارش‌های ثبت‌شده.</li>
+                    <li><strong>اطلاع‌رسانی:</strong> برای ارسال خبرنامه‌ها، اعلان‌ها یا اطلاعات مربوط به خدمات، در صورت مجاز بودن.</li>
+                    <li><strong>تحلیل:</strong> برای بررسی نحوه استفاده کاربران از خدمات و بهبود عملکرد مجموعه.</li>
+                    <li><strong>الزامات قانونی:</strong> برای رعایت قوانین، مقررات، دستورات قضایی و درخواست‌های قانونی معتبر.</li>
+                </ul>
+            </div>
+            
+            <!-- ۷ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۷</span>
+                    <h3 class="section-title">اطلاعات مربوط به اخبار</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ یک مجموعه خبری است. کاربران ممکن است با اخبار، گزارش‌ها، ویدئوها، نظرات و محتوای تولیدشده توسط خبرنگاران و همکاران مجموعه تعامل داشته باشند.
+                </p>
+                <p class="section-description">
+                    صرف مشاهده یک خبر به این معنا نیست که گل‌های رنگارنگ درباره عقاید، دیدگاه‌ها یا شخصیت کاربر نتیجه‌گیری می‌کند.
+                </p>
+                <p class="section-description">
+                    داده‌های آماری مربوط به بازدید و تعامل با اخبار ممکن است برای درک بهتر علایق عمومی مخاطبان و بهبود ارائه محتوا استفاده شود.
+                </p>
+            </div>
+            
+            <!-- ۸ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۸</span>
+                    <h3 class="section-title">اخبار محلی لاسونتراس</h3>
+                </div>
+                <p class="section-description">
+                    بخش اخبار محلی گل‌های رنگارنگ بر رویدادهای منطقه‌ای، جامعه محلی، کسب‌وکارها، حمل‌ونقل، آب‌وهوا، ورزش، فرهنگ و سایر موضوعات مرتبط با لاسونتراس تمرکز دارد.
+                </p>
+                <p class="section-description">
+                    اطلاعات مربوط به تعامل کاربران با این بخش ممکن است برای تحلیل میزان استفاده از سرویس‌های محلی و بهبود پوشش خبری مورد استفاده قرار گیرد.
+                </p>
+            </div>
+            
+            <!-- ۹ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۹</span>
+                    <h3 class="section-title">کانال واتس‌اپ</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ ممکن است اخبار فوری و مطالب منتخب را از طریق کانال رسمی واتس‌اپ منتشر کند.
+                </p>
+                <p class="section-description">
+                    استفاده از واتس‌اپ تابع شرایط، سیاست‌های حریم خصوصی و فناوری‌های خود واتس‌اپ است.
+                </p>
+                <p class="section-description">
+                    گل‌های رنگارنگ کنترل مستقیمی بر نحوه پردازش اطلاعات توسط واتس‌اپ ندارد و کاربران باید برای اطلاع از نحوه پردازش اطلاعات در آن سرویس، سیاست‌های مربوط به خود واتس‌اپ را مطالعه کنند.
+                </p>
+            </div>
+            
+            <!-- ۱۰ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۰</span>
+                    <h3 class="section-title">شبکه‌های تلویزیونی</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ دارای چهار شبکه تلویزیونی است:
+                </p>
+                
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 1</p>
+                    <p class="tv-channel-desc">اخبار و رویدادهای مهم داخلی و بین‌المللی.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 2</p>
+                    <p class="tv-channel-desc">اخبار محلی و منطقه‌ای لاسونتراس.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 3</p>
+                    <p class="tv-channel-desc">اقتصاد، فناوری، کسب‌وکار و بازارها.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 4</p>
+                    <p class="tv-channel-desc">ورزش، فرهنگ، سرگرمی و برنامه‌های ویژه.</p>
+                </div>
+                
+                <p class="section-description">
+                    استفاده از سرویس‌های آنلاین مرتبط با این شبکه‌ها ممکن است شامل پردازش اطلاعات فنی و آماری مربوط به پخش ویدئو باشد.
+                </p>
+            </div>
+            
+            <!-- ۱۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۱</span>
+                    <h3 class="section-title">اشتراک‌گذاری اطلاعات</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ اطلاعات شخصی کاربران را به صورت عمومی برای فروش عرضه نمی‌کند. با این حال، ممکن است اطلاعات در شرایط مشخصی با ارائه‌دهندگان خدمات مورداعتماد به اشتراک گذاشته شود. این موارد می‌تواند شامل:
+                </p>
+                <ul class="section-list">
+                    <li>شرکت‌های ارائه‌دهنده خدمات میزبانی</li>
+                    <li>ارائه‌دهندگان خدمات پرداخت</li>
+                    <li>شرکت‌های ارسال و تحویل کالا</li>
+                    <li>سرویس‌های امنیتی</li>
+                    <li>ارائه‌دهندگان خدمات تحلیلی</li>
+                    <li>سرویس‌های ایمیل</li>
+                    <li>ارائه‌دهندگان خدمات فنی</li>
+                    <li>ارائه‌دهندگان تبلیغات</li>
+                    <li>مشاوران حرفه‌ای</li>
+                    <li>مراجع قانونی</li>
+                </ul>
+                <p class="section-description">
+                    باشد. این اشخاص تنها در حدی که برای ارائه خدمات یا انجام وظایف مشخص موردنیاز باشد، ممکن است به اطلاعات دسترسی داشته باشند.
+                </p>
+            </div>
+            
+            <!-- ۱۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۲</span>
+                    <h3 class="section-title">فروش اطلاعات شخصی</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ اطلاعات شخصی کاربران را به منظور فروش مستقیم اطلاعات شخصی آن‌ها به اشخاص ثالث عرضه نمی‌کند.
+                </p>
+                <p class="section-description">
+                    با این حال، برخی فناوری‌های تبلیغاتی یا تحلیلی ممکن است طبق قوانین قابل اجرا در برخی حوزه‌های قضایی، «اشتراک‌گذاری» یا «فروش» اطلاعات تلقی شوند.
+                </p>
+                <p class="section-description">
+                    در صورت اعمال چنین قوانینی، کاربران واجد شرایط می‌توانند از حقوق قانونی مربوط به انتخاب‌های حریم خصوصی خود استفاده کنند.
+                </p>
+            </div>
+            
+            <!-- ۱۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۳</span>
+                    <h3 class="section-title">امنیت اطلاعات</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ اقدامات فنی و سازمانی معقولی را برای محافظت از اطلاعات در برابر:
+                </p>
+                <ul class="section-list">
+                    <li>دسترسی غیرمجاز</li>
+                    <li>افشای غیرمجاز</li>
+                    <li>تغییر</li>
+                    <li>از بین رفتن</li>
+                    <li>سوءاستفاده</li>
+                </ul>
+                <p class="section-description">
+                    اتخاذ می‌کند. با وجود این، هیچ سیستم اینترنتی یا روش انتقال اطلاعاتی نمی‌تواند امنیت کامل را تضمین کند. بنابراین، نمی‌توانیم امنیت مطلق اطلاعات ارسال‌شده از طریق اینترنت را تضمین کنیم.
+                </p>
+            </div>
+            
+            <!-- ۱۴ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۴</span>
+                    <h3 class="section-title">نگهداری اطلاعات</h3>
+                </div>
+                <p class="section-description">
+                    اطلاعات شخصی تا زمانی نگهداری می‌شود که برای هدفی که برای آن جمع‌آوری شده، ارائه خدمات، انجام تعهدات قراردادی، حل اختلافات، امنیت یا رعایت الزامات قانونی موردنیاز باشد.
+                </p>
+                <p class="section-description">
+                    مدت نگهداری ممکن است بسته به نوع اطلاعات متفاوت باشد. برای مثال، اطلاعات مربوط به سفارش‌های فروشگاه ممکن است برای مدت لازم جهت حسابداری، خدمات مشتری، گارانتی، بازگشت کالا و الزامات قانونی نگهداری شود.
+                </p>
+            </div>
+            
+            <!-- ۱۵ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۵</span>
+                    <h3 class="section-title">حذف اطلاعات</h3>
+                </div>
+                <p class="section-description">
+                    در شرایطی که قانون اجازه دهد، کاربران ممکن است درخواست حذف اطلاعات شخصی خود را ارائه کنند.
+                </p>
+                <p class="section-description">
+                    پس از دریافت درخواست معتبر، گل‌های رنگارنگ درخواست را بررسی می‌کند و در صورت وجود مبنای قانونی برای حذف، اطلاعات مربوطه را حذف یا ناشناس‌سازی خواهد کرد.
+                </p>
+                <p class="section-description">
+                    برخی اطلاعات ممکن است به دلیل الزامات قانونی، امنیتی یا مالی برای مدت مشخصی نگهداری شوند.
+                </p>
+            </div>
+            
+            <!-- ۱۶ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۶</span>
+                    <h3 class="section-title">حقوق کاربران</h3>
+                </div>
+                <p class="section-description">
+                    بسته به محل اقامت شما و قوانین قابل اجرا، ممکن است حقوقی مانند موارد زیر داشته باشید:
+                </p>
+                <ul class="section-list">
+                    <li>درخواست دسترسی به اطلاعات شخصی</li>
+                    <li>درخواست اصلاح اطلاعات نادرست</li>
+                    <li>درخواست حذف اطلاعات</li>
+                    <li>دریافت نسخه‌ای از برخی اطلاعات</li>
+                    <li>اعتراض به برخی روش‌های پردازش</li>
+                    <li>محدود کردن برخی پردازش‌ها</li>
+                    <li>لغو رضایت در مواردی که پردازش بر اساس رضایت انجام می‌شود</li>
+                    <li>مدیریت ارتباطات تبلیغاتی</li>
+                    <li>مدیریت کوکی‌ها</li>
+                </ul>
+                <p class="section-description">
+                    برخی درخواست‌ها ممکن است مشمول محدودیت‌های قانونی باشند.
+                </p>
+            </div>
+            
+            <!-- ۱۷ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۷</span>
+                    <h3 class="section-title">حقوق حریم خصوصی ایالت‌ها</h3>
+                </div>
+                <p class="section-description">
+                    قوانین برخی ایالت‌های ایالات متحده حقوق بیشتری را برای ساکنان خود در زمینه حریم خصوصی فراهم می‌کنند.
+                </p>
+                <p class="section-description">
+                    در صورت اعمال قانون مربوطه، گل‌های رنگارنگ تلاش می‌کند درخواست‌های معتبر کاربران را مطابق الزامات همان قانون بررسی و پاسخ دهد.
+                </p>
+                <p class="section-description">
+                    ممکن است برای جلوگیری از افشای اطلاعات به شخصی غیر از صاحب اطلاعات، در برخی موارد نیاز به تأیید هویت درخواست‌کننده باشد.
+                </p>
+            </div>
+            
+            <!-- ۱۸ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۸</span>
+                    <h3 class="section-title">کودکان</h3>
+                </div>
+                <p class="section-description">
+                    خدمات گل‌های رنگارنگ برای مخاطبان عمومی طراحی شده است. ما آگاهانه قصد نداریم اطلاعات شخصی کودکان را برخلاف الزامات قوانین قابل اجرا جمع‌آوری کنیم.
+                </p>
+                <p class="section-description">
+                    اگر والدین یا سرپرستان قانونی معتقدند اطلاعات یک کودک بدون مجوز مناسب جمع‌آوری شده است، می‌توانند با ما تماس بگیرند تا موضوع بررسی شود.
+                </p>
+                <p class="section-description">
+                    در صورت لزوم، اقدامات مناسب برای حذف اطلاعات انجام خواهد شد.
+                </p>
+            </div>
+            
+            <!-- ۱۹ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۹</span>
+                    <h3 class="section-title">لینک‌های اشخاص ثالث</h3>
+                </div>
+                <p class="section-description">
+                    وب‌سایت گل‌های رنگارنگ ممکن است شامل لینک‌هایی به وب‌سایت‌ها یا سرویس‌های دیگر باشد. این وب‌سایت‌ها ممکن است متعلق به شرکت‌ها یا سازمان‌هایی باشند که تحت کنترل گل‌های رنگارنگ نیستند.
+                </p>
+                <p class="section-description">
+                    پس از ورود به یک وب‌سایت شخص ثالث، سیاست حفظ حریم خصوصی آن سرویس بر نحوه پردازش اطلاعات شما حاکم خواهد بود.
+                </p>
+                <p class="section-description">
+                    توصیه می‌کنیم قبل از ارائه اطلاعات شخصی به هر سرویس خارجی، سیاست حفظ حریم خصوصی آن را مطالعه کنید.
+                </p>
+            </div>
+            
+            <!-- ۲۰ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۰</span>
+                    <h3 class="section-title">تبلیغات</h3>
+                </div>
+                <p class="section-description">
+                    ممکن است گل‌های رنگارنگ از تبلیغات برای پشتیبانی مالی از فعالیت‌های رسانه‌ای خود استفاده کند. تبلیغات ممکن است در وب‌سایت، ویدئوها، سرویس‌های دیجیتال یا سایر محصولات مجموعه نمایش داده شوند.
+                </p>
+                <p class="section-description">
+                    برخی تبلیغات ممکن است توسط شرکت‌های تبلیغاتی شخص ثالث ارائه شوند. این شرکت‌ها ممکن است از کوکی‌ها یا فناوری‌های مشابه برای اندازه‌گیری عملکرد تبلیغات یا ارائه تبلیغات مرتبط‌تر استفاده کنند.
+                </p>
+                <p class="section-description">
+                    کاربران می‌توانند برخی از این فناوری‌ها را از طریق تنظیمات کوکی یا ابزارهای ارائه‌شده توسط سرویس مربوطه مدیریت کنند.
+                </p>
+            </div>
+            
+            <!-- ۲۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۱</span>
+                    <h3 class="section-title">خبرنامه‌ها و ایمیل</h3>
+                </div>
+                <p class="section-description">
+                    اگر در خبرنامه گل‌های رنگارنگ ثبت‌نام کنید، ممکن است ایمیل‌هایی درباره اخبار، گزارش‌های ویژه، برنامه‌های تلویزیونی یا سایر خدمات دریافت کنید.
+                </p>
+                <p class="section-description">
+                    در صورت وجود گزینه لغو اشتراک، می‌توانید هر زمان که بخواهید دریافت ایمیل‌های تبلیغاتی یا خبرنامه‌ای را متوقف کنید.
+                </p>
+                <p class="section-description">
+                    لغو اشتراک از خبرنامه‌ها لزوماً به معنای توقف تمام ارتباطات ضروری مربوط به سفارش‌ها یا حساب کاربری نیست.
+                </p>
+            </div>
+            
+            <!-- ۲۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۲</span>
+                    <h3 class="section-title">فروشگاه اینترنتی</h3>
+                </div>
+                <p class="section-description">
+                    فروشگاه گل‌های رنگارنگ ممکن است اطلاعات مربوط به سفارش، پرداخت، ارسال، بازگشت و پشتیبانی مشتری را پردازش کند.
+                </p>
+                <p class="section-description">
+                    اطلاعات پرداخت ممکن است توسط شرکت‌های متخصص پرداخت پردازش شود.
+                </p>
+                <p class="section-description">
+                    گل‌های رنگارنگ تلاش می‌کند اطلاعات مشتریان را فقط در محدوده موردنیاز برای انجام سفارش، ارائه خدمات و رعایت الزامات قانونی پردازش کند.
+                </p>
+            </div>
+            
+            <!-- ۲۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۳</span>
+                    <h3 class="section-title">انتقال بین‌المللی اطلاعات</h3>
+                </div>
+                <p class="section-description">
+                    از آنجا که اینترنت یک شبکه جهانی است، برخی خدمات‌دهندگان گل‌های رنگارنگ ممکن است در خارج از محل اقامت شما فعالیت کنند.
+                </p>
+                <p class="section-description">
+                    در چنین شرایطی، اطلاعات ممکن است مطابق قوانین قابل اجرا به کشور یا حوزه قضایی دیگری منتقل یا در آنجا پردازش شود.
+                </p>
+                <p class="section-description">
+                    ما تلاش می‌کنیم برای چنین انتقال‌هایی، اقدامات حفاظتی مناسب را در مواردی که قانون الزام می‌کند، به کار بگیریم.
+                </p>
+            </div>
+            
+            <!-- ۲۴ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۴</span>
+                    <h3 class="section-title">اطلاعات مربوط به خبرنگاران و منابع خبری</h3>
+                </div>
+                <p class="section-description">
+                    فعالیت خبری ممکن است شامل دریافت اطلاعات از منابع، خبرنگاران، شاهدان، کارشناسان و سایر افراد باشد.
+                </p>
+                <p class="section-description">
+                    گل‌های رنگارنگ در موارد مناسب ممکن است برای حفظ استقلال روزنامه‌نگاری و حفاظت از منابع خبری، اطلاعات مربوط به منابع را مطابق اصول حرفه‌ای و قوانین قابل اجرا محرمانه نگه دارد.
+                </p>
+                <p class="section-description">
+                    این بخش ممکن است تحت قوانین و استانداردهای ویژه روزنامه‌نگاری قرار گیرد.
+                </p>
+            </div>
+            
+            <!-- ۲۵ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۵</span>
+                    <h3 class="section-title">تغییرات این سیاست</h3>
+                </div>
+                <p class="section-description">
+                    ممکن است این سیاست حفظ حریم خصوصی در آینده تغییر کند. دلایل تغییر می‌تواند شامل:
+                </p>
+                <ul class="section-list">
+                    <li>تغییر قوانین</li>
+                    <li>اضافه شدن خدمات جدید</li>
+                    <li>تغییر فناوری</li>
+                    <li>تغییر ساختار مجموعه</li>
+                    <li>اضافه شدن سرویس‌های جدید</li>
+                    <li>تغییر روش‌های پردازش اطلاعات</li>
+                </ul>
+                <p class="section-description">
+                    باشد. نسخه جدید این سیاست با تاریخ به‌روزرسانی در همین صفحه منتشر خواهد شد.
+                </p>
+                <p class="section-description">
+                    ادامه استفاده از خدمات پس از انتشار تغییرات، در مواردی که قانون اجازه دهد، به معنای ادامه استفاده مطابق سیاست به‌روزشده خواهد بود.
+                </p>
+            </div>
+            
+            <!-- ۲۶ - تماس -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۶</span>
+                    <h3 class="section-title">تماس با ما</h3>
+                </div>
+                <p class="section-description">
+                    اگر درباره این سیاست، نحوه پردازش اطلاعات یا حقوق حریم خصوصی خود سؤال دارید، می‌توانید از طریق بخش Contact Us با تیم گل‌های رنگارنگ تماس بگیرید.
+                </p>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📞 تماس با گل‌های رنگارنگ</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+            </div>
+            
+            <!-- بخش‌های اصلی -->
+            <div class="services-list">
+                <h3>🏢 بخش‌های مجموعه:</h3>
+                <ul>
+                    <li>📰 Golhaye Rangarang News</li>
+                    <li>🏘️ Las Ontras Local News</li>
+                    <li>💬 Rangarang WhatsApp News</li>
+                    <li>📺 Rangarang TV 1</li>
+                    <li>📺 Rangarang TV 2</li>
+                    <li>📺 Rangarang TV 3</li>
+                    <li>📺 Rangarang TV 4</li>
+                    <li>🛍️ Rangarang Online Store</li>
+                </ul>
+            </div>
+            
+            <!-- صفحات مرتبط -->
+            <div class="related-pages">
+                <h3>🔗 صفحات مرتبط</h3>
+                <div class="related-grid">
+                    <a href="privacy.html" class="related-card">
+                        <span class="rc-title">Privacy Policy</span>
+                        <span class="rc-desc">سیاست حفظ حریم خصوصی</span>
+                    </a>
+                    <a href="cookies.html" class="related-card">
+                        <span class="rc-title">Manage Cookies</span>
+                        <span class="rc-desc">مدیریت کوکی‌ها و فناوری‌های مشابه</span>
+                    </a>
+                    <a href="terms.html" class="related-card">
+                        <span class="rc-title">Terms of Use</span>
+                        <span class="rc-desc">شرایط استفاده از خدمات</span>
+                    </a>
+                    <a href="accessibility.html" class="related-card">
+                        <span class="rc-title">Accessibility</span>
+                        <span class="rc-desc">دسترسی‌پذیری</span>
+                    </a>
+                    <a href="about.html" class="related-card">
+                        <span class="rc-title">Contact Us</span>
+                        <span class="rc-desc">تماس با گل‌های رنگارنگ</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- یادداشت پایانی -->
+            <div class="final-note">
+                📝 این سند صرفاً جهت اطلاع‌رسانی درباره نحوه طراحی و استفاده از خدمات گل‌های رنگارنگ تهیه شده است.
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+</body>
+</html>
