@@ -71,7 +71,7 @@
             box-shadow: 0 4px 15px rgba(192, 57, 43, 0.25);
         }
         .stat-card .stat-number {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
             margin-bottom: 5px;
             font-family: Georgia, serif;
@@ -82,54 +82,113 @@
             opacity: 0.95;
         }
         
-        .award-box {
-            background-color: #fff3cd;
+        .award-card {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
             border-right: 4px solid #f39c12;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-size: 14px;
-            line-height: 1.9;
-            color: #856404;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            box-shadow: 0 2px 8px rgba(243, 156, 18, 0.15);
         }
-        .award-box strong { color: #e67e22; }
+        .award-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .award-content h4 {
+            margin: 0 0 5px 0;
+            color: #856404;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .award-content p {
+            margin: 0;
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.7;
+        }
         
         .founder-card {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            gap: 18px;
             background-color: #f8f9fa;
-            padding: 18px;
-            border-radius: 12px;
-            margin: 15px 0;
+            padding: 22px;
+            border-radius: 14px;
+            margin: 18px 0;
             border-right: 4px solid #c0392b;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .founder-avatar {
-            width: 55px;
-            height: 55px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             background: linear-gradient(135deg, #c0392b, #e74c3c);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: bold;
             font-family: Georgia, serif;
             flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
         }
         .founder-info h3 {
-            margin: 0 0 5px 0;
-            color: #1a1a1a;
-            font-size: 16px;
+            margin: 0 0 6px 0;
+            color: #c0392b;
+            font-size: 17px;
             border: none;
             padding: 0;
+            font-weight: bold;
+        }
+        .founder-info .founder-role {
+            display: inline-block;
+            background-color: #c0392b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         .founder-info p {
             margin: 0;
             font-size: 13px;
-            color: #666;
-            line-height: 1.7;
+            color: #555;
+            line-height: 1.9;
+            text-align: justify;
+        }
+        
+        .tv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .tv-channel {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 18px 15px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+            box-shadow: 0 3px 10px rgba(192, 57, 43, 0.25);
+        }
+        .tv-channel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.4);
+        }
+        .tv-channel .tv-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .tv-channel .tv-name {
+            font-size: 13px;
+            font-weight: bold;
         }
         
         .quote-block {
@@ -147,18 +206,34 @@
         .thank-you {
             background: linear-gradient(135deg, #c0392b, #e74c3c);
             color: white;
-            padding: 25px;
-            border-radius: 12px;
+            padding: 30px 25px;
+            border-radius: 14px;
             text-align: center;
             margin-top: 30px;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 2;
             box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
         }
-        .thank-you strong {
+        .thank-you .thank-title {
             display: block;
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .thank-you .thank-subtitle {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        @media (max-width: 600px) {
+            .tv-grid { grid-template-columns: 1fr; }
+            .founder-card { flex-direction: column; text-align: center; }
+            .founder-avatar { margin: 0 auto; }
+            .stat-card .stat-number { font-size: 22px; }
         }
     </style>
 </head>
@@ -167,7 +242,7 @@
     <div class="header-row">
         <a href="../index.html" class="brand-block">
             <div class="brand-grg">GRG</div>
-            <div class="brand-name">گلهای رنگارنگ</div>
+            <div class="brand-name">درباره ما</div>
         </a>
     </div>
 
@@ -180,11 +255,11 @@
             </div>
             
             <p>
-                <strong>گل‌های رنگارنگ</strong> یک رسانه خبری مستقل و بین‌المللی است که فعالیت خود را از سال ۲۰۱۹ در یک گروه واتس‌اپی کوچک با پوشش اخبار محلی شهر لوسانتوس، در ایالات متحده آمریکا آغاز کرد. آنچه امروز به عنوان یکی از بزرگ‌ترین و معتبرترین شبکه‌های خبری جهان شناخته می‌شود، روزگاری با دو نفر و یک ایده بزرگ شروع شد: <strong>رساندن حقیقت به گوش مردم، بدون سانسور و بدون ترس.</strong>
+                <strong>گل‌های رنگارنگ</strong> یک رسانه خبری مستقل و بین‌المللی است که فعالیت خود را از سال ۲۰۱۹ در یک گروه واتس‌اپی کوچک با پوشش اخبار محلی شهر لوسانتوس، در ایالت لاسونتراس آمریکا آغاز کرد. آنچه امروز به عنوان یکی از بزرگ‌ترین و معتبرترین شبکه‌های خبری جهان شناخته می‌شود، روزگاری با دو نفر و یک ایده بزرگ شروع شد: <strong>رساندن حقیقت به گوش مردم، بدون سانسور و بدون ترس.</strong>
             </p>
             
             <p>
-                در طول کمتر از یک دهه، این مجموعه از یک گروه خبری ساده در واتس‌اپ به یک امپراتوری رسانه‌ای چندلایه تبدیل شده است که در شهرهای مختلف آمریکا شعبه دارد، در سراسر جهان خبرنگاران اختصاصی تربیت کرده و امروز به عنوان یکی از تأثیرگذارترین منابع خبری در عرصه سیاست، اقتصاد، ورزش و فرهنگ شناخته می‌شود.
+                در طول کمتر از یک دهه، این مجموعه از یک گروه خبری ساده در واتس‌اپ به یک امپراتوری رسانه‌ای چندلایه تبدیل شده است که در شهرهای مختلف آمریکا شعبه دارد، در سراسر جهان خبرنگاران اختصاصی تربیت کرده و امروز به عنوان یکی از تأثیرگذارترین منابع خبری در عرصه سیاست، اقتصاد، ورزش و فرهنگ شناخته می‌شود. بخش بزرگی از شهروندان ایالت لاسونتراس از طرفداران پروپاقرص گل‌های رنگارنگ هستند و اخبار بدون سانسور و دقیق خود را از طریق شبکه تلویزیونی و رادیو این مجموعه دریافت می‌کنند.
             </p>
             
             <h2>📊 نگاهی به اعداد و آمار</h2>
@@ -214,14 +289,14 @@
                 <div class="timeline-item">
                     <span class="timeline-year">۲۰۱۹</span>
                     <p class="timeline-text">
-                        <strong>آغاز فعالیت:</strong> گل‌های رنگارنگ با یک گروه کوچک واتس‌اپی در شهر لوسانتوس آمریکا کار خود را آغاز کرد. تمرکز اولیه بر پوشش اخبار محلی بود و اولین خبرنگار این مجموعه، آقای <strong>حامد صادقیان</strong> بود که با تلاش بی‌وقفه پایه‌های این برند را بنا نهاد.
+                        <strong>آغاز فعالیت:</strong> گل‌های رنگارنگ با یک گروه کوچک واتس‌اپی در شهر لوسانتوس آمریکا کار خود را آغاز کرد. تمرکز اولیه بر پوشش اخبار محلی بود و اولین خبرنگار این مجموعه، آقای <strong>حامد صادقیان</strong> بود که با تلاش بی‌وقفه پایه‌های این برند را بنا نهاد. در آن سال‌ها، گل‌های رنگارنگ تنها یک گروه واتس‌اپی و یک ایستگاه رادیویی کوچک داشت، اما برنامه‌های خبری و تحلیلی متعددی با اجرای <strong>حامد صادقیان</strong> روی آنتن می‌رفت که به سرعت محبوبیت زیادی پیدا کرد.
                     </p>
                 </div>
                 
                 <div class="timeline-item">
                     <span class="timeline-year">۲۰۲۰-۲۰۲۱</span>
                     <p class="timeline-text">
-                        <strong>گسترش اولیه:</strong> با استقبال بی‌نظیر مخاطبان، تیم کوچک دو نفره به تدریج بزرگ‌تر شد و خبرنگاران جدیدی به این مجموعه پیوستند. پوشش اخبار از سطح محلی به سطح ملی گسترش یافت.
+                        <strong>گسترش اولیه:</strong> با استقبال بی‌نظیر مخاطبان، تیم کوچک دو نفره به تدریج بزرگ‌تر شد و خبرنگاران جدیدی به این مجموعه پیوستند. پوشش اخبار از سطح محلی به سطح ملی گسترش یافت و اولین جوایز بین‌المللی به دست آمد.
                     </p>
                 </div>
                 
@@ -235,14 +310,14 @@
                 <div class="timeline-item">
                     <span class="timeline-year">۲۰۲۴</span>
                     <p class="timeline-text">
-                        <strong>افتخار ملی:</strong> گل‌های رنگارنگ به عنوان <strong>بهترین خبرگزاری آمریکا</strong> انتخاب شد و جایزه معتبر «امی» را از آنِ خود کرد. این موفقیت نقطه عطفی در تاریخ این مجموعه بود.
+                        <strong>افتخار ملی و تنوع محصولات:</strong> گل‌های رنگارنگ به عنوان <strong>بهترین خبرگزاری آمریکا</strong> انتخاب شد و جایزه معتبر «امی» را از آنِ خود کرد. همچنین در همین سال، فروشگاه پوشاک با برند اختصاصی گل‌های رنگارنگ رسماً آغاز به کار کرد.
                     </p>
                 </div>
                 
                 <div class="timeline-item">
                     <span class="timeline-year">۲۰۲۵-۲۰۲۶</span>
                     <p class="timeline-text">
-                        <strong>تبدیل به یک برند جهانی:</strong> افتتاح شعبه‌های جدید در شهرهای <strong>سان فیرو</strong> و <strong>لسترسیتی</strong>، استخدام تیم حرفه‌ای ۴۲ نفره، راه‌اندازی فروشگاه پوشاک با برند اختصاصی، و حضور خبرنگاران در سراسر جهان.
+                        <strong>تبدیل به یک برند جهانی:</strong> افتتاح شعبه‌های جدید در شهرهای <strong>سان فیرو</strong> و <strong>لسترسیتی</strong>، استخدام تیم حرفه‌ای ۴۲ نفره، و حضور خبرنگاران در سراسر جهان. امروز گل‌های رنگارنگ به یکی از بزرگ‌ترین شبکه‌های خبری جهان تبدیل شده است.
                     </p>
                 </div>
             </div>
@@ -250,15 +325,16 @@
             <h2>👥 بنیان‌گذاران و مالکان اصلی</h2>
             
             <p>
-                گل‌های رنگارنگ توسط دو نفر که امروز مالکان اصلی این برند محسوب می‌شوند، پایه‌گذاری شد:
+                گل‌های رنگارنگ توسط دو نفر که امروز مالکان اصلی این برند محسوب می‌شوند و زحمات زیادی برای رشد و شکوفایی این مجموعه کشیده‌اند، پایه‌گذاری شد:
             </p>
             
             <div class="founder-card">
                 <div class="founder-avatar">ح</div>
                 <div class="founder-info">
                     <h3>حامد صادقیان</h3>
+                    <span class="founder-role">بنیان‌گذار | فرماندار ایالت لاسونتراس</span>
                     <p>
-                        بنیان‌گذار و اولین خبرنگار گل‌های رنگارنگ. ایشان با تعهد و پشتکار خود، مسیر رشد این مجموعه را هموار کردند. آقای صادقیان در دوران فعالیت خبرنگاری خود، <strong>سه بار موفق به دریافت جوایز بزرگ دینا در خبرگزاری</strong> شدند. ایشان به دلیل مشغله‌های کاری گسترده، ادامه فعالیت خبرنگاری خود را متوقف کردند اما همچنان به عنوان مالک اصلی و راهبر استراتژیک این برند فعالیت می‌کنند.
+                        بنیان‌گذار و اولین خبرنگار گل‌های رنگارنگ. ایشان با تعهد و پشتکار خود، مسیر رشد این مجموعه را هموار کردند. آقای صادقیان در دوران فعالیت خبرنگاری خود، <strong>جوایز متعدد بین‌المللی</strong> از جمله جایزه پولیتزر، پیبادی و جورج پولک را دریافت کردند. ایشان در حال حاضر <strong>فرماندار ایالت لاسونتراس</strong> هستند و پیش‌تر رئیس گارد ملی و سخنگو و معاون اول فرمانداری لاسونتراس بوده‌اند.
                     </p>
                 </div>
             </div>
@@ -267,35 +343,99 @@
                 <div class="founder-avatar">م</div>
                 <div class="founder-info">
                     <h3>محمد علی‌نیا</h3>
+                    <span class="founder-role">هم‌بنیان‌گذار | فرماندار پیشین لاسونتراس</span>
                     <p>
-                        هم‌بنیان‌گذار و مالک اصلی گل‌های رنگارنگ. ایشان نقش کلیدی در گسترش این مجموعه به یک شبکه خبری بین‌المللی داشته‌اند و امروز نیز به عنوان یکی از مدیران ارشد، مسیر رشد گل‌های رنگارنگ را هدایت می‌کنند.
+                        هم‌بنیان‌گذار و مالک اصلی گل‌های رنگارنگ. ایشان نقش کلیدی در گسترش این مجموعه به یک شبکه خبری بین‌المللی داشته‌اند. آقای علی‌نیا <strong>فرماندار پیشین ایالت لاسونتراس</strong> بوده‌اند و همچنین <strong>رئیس کل گارد ملی</strong> نیز بوده‌اند و تا به امروز در این سمت باقی هستند. ایشان پیش‌تر <strong>رئیس اداره پلیس</strong> نیز بوده‌اند.
                     </p>
                 </div>
             </div>
             
-            <h2>🏆 افتخارات و جوایز</h2>
+            <h2>🏆 افتخارات و جوایز تیم</h2>
             
             <p>
-                در طول سال‌های فعالیت، گل‌های رنگارنگ و تیم آن بارها مورد تقدیر و تحسین قرار گرفته‌اند:
+                تیم گل‌های رنگارنگ در طول سال‌های فعالیت خود موفق به دریافت معتبرترین جوایز خبرنگاری جهان شده است:
             </p>
             
-            <div class="award-box">
-                🏅 <strong>حامد صادقیان</strong> — سه بار برنده جایزه بزرگ «دینا» در حوزه خبرگزاری
+            <div class="award-card">
+                <span class="award-icon">🏅</span>
+                <div class="award-content">
+                    <h4>حامد صادقیان — بنیان‌گذار</h4>
+                    <p>
+                        🏆 جایزه پولیتزر (Pulitzer Prize) سال ۲۰۲۰<br>
+                        🏆 جایزه پیبادی (Peabody Awards) سال ۲۰۱۹<br>
+                        🏆 جایزه جورج پولک (George Polk Awards) سال ۲۰۲۰
+                    </p>
+                </div>
             </div>
             
-            <div class="award-box">
-                🏅 <strong>سارا تهماسب</strong> — بهترین خبرنگار گل‌های رنگارنگ
+            <div class="award-card">
+                <span class="award-icon">🏅</span>
+                <div class="award-content">
+                    <h4>آناهیتا بهرامی — خبرنگار ارشد</h4>
+                    <p>
+                        🏆 جایزه پولیتزر (Pulitzer Prize) سال‌های ۲۰۲۲، ۲۰۲۳ و ۲۰۲۵<br>
+                        🏆 جایزه جرالد لوب (Gerald Loeb Awards) سال ۲۰۲۵
+                    </p>
+                </div>
             </div>
             
-            <div class="award-box">
-                🏅 <strong>آناهیتا بهرامی</strong> — بهترین خبرنگار گل‌های رنگارنگ
+            <div class="award-card">
+                <span class="award-icon">🏅</span>
+                <div class="award-content">
+                    <h4>سارا تهماسبی — خبرنگار ارشد</h4>
+                    <p>
+                        🏆 جایزه پولیتزر (Pulitzer Prize) سال‌های ۲۰۲۲، ۲۰۲۳ و ۲۰۲۵
+                    </p>
+                </div>
             </div>
             
-            <div class="award-box">
-                🏆 <strong>گل‌های رنگارنگ</strong> — بهترین خبرگزاری آمریکا در سال ۲۰۲۴ (جایزه امی)
+            <div class="award-card">
+                <span class="award-icon">🏅</span>
+                <div class="award-content">
+                    <h4>رضا ملکی — ادمین واتس‌اپ</h4>
+                    <p>
+                        🏆 جایزه پیبادی (Peabody Awards) سال ۲۰۲۳<br>
+                        🏆 جایزه ادوارد مورو (Edward R. Murrow Awards) سال ۲۰۲۴
+                    </p>
+                </div>
             </div>
             
-            <h2>🛍️ فعالیت‌های تجاری و رسانه‌ای</h2>
+            <div class="award-card">
+                <span class="award-icon">🏆</span>
+                <div class="award-content">
+                    <h4>گل‌های رنگارنگ — بهترین خبرگزاری آمریکا</h4>
+                    <p>
+                        🏆 جایزه امی (Emmy) سال ۲۰۲۴ به عنوان بهترین خبرگزاری آمریکا
+                    </p>
+                </div>
+            </div>
+            
+            <h2>📺 شبکه‌های تلویزیونی</h2>
+            
+            <p>
+                گل‌های رنگارنگ دارای <strong>چهار شبکه تلویزیونی اختصاصی</strong> است که هر یک به حوزه خاصی اختصاص دارد:
+            </p>
+            
+            <div class="tv-grid">
+                <div class="tv-channel">
+                    <span class="tv-icon">📰</span>
+                    <div class="tv-name">شبکه خبری</div>
+                </div>
+                <div class="tv-channel">
+                    <span class="tv-icon">🎬</span>
+                    <div class="tv-name">شبکه مستند</div>
+                </div>
+                <div class="tv-channel">
+                    <span class="tv-icon">⚽</span>
+                    <div class="tv-name">شبکه ورزشی</div>
+                </div>
+                <div class="tv-channel">
+                    <span class="tv-icon">🎥</span>
+                    <div class="tv-name">شبکه فیلم و سریال</div>
+                </div>
+            </div>
+            
+            <h2>🛍️ فعالیت‌های تجاری</h2>
             
             <p>
                 گل‌های رنگارنگ امروز صرفاً یک مجموعه خبری نیست؛ بلکه یک برند چندوجهی است که در حوزه‌های مختلف فعالیت می‌کند:
@@ -303,16 +443,16 @@
             
             <ul>
                 <li>
-                    <strong>فروشگاه پوشاک با برند اختصاصی:</strong> گل‌های رنگارنگ دارای یک فروشگاه پوشاک با برند خود است که محصولات آن شامل تی‌شرت، کلاه، لباس‌های ورزشی و اکسسوری‌های اختصاصی است.
+                    <strong>فروشگاه پوشاک با برند اختصاصی:</strong> از سال <strong>۲۰۲۴</strong>، گل‌های رنگارنگ فروشگاه پوشاک با برند خود را راه‌اندازی کرده است که محصولات آن شامل تی‌شرت، کلاه، لباس‌های ورزشی و اکسسوری‌های اختصاصی است.
                 </li>
                 <li>
-                    <strong>شبکه تلویزیونی:</strong> این مجموعه دارای یک شبکه تلویزیونی اختصاصی است که به پخش زنده رویدادهای مهم، به‌ویژه بازی‌های فوتبال، می‌پردازد.
+                    <strong>شبکه‌های تلویزیونی چهارگانه:</strong> پخش اخبار، مستند، ورزش و سرگرمی به صورت ۲۴ ساعته.
+                </li>
+                <li>
+                    <strong>ایستگاه رادیویی:</strong> پخش زنده برنامه‌های خبری و تحلیلی که از سال‌های اولیه فعالیت این مجموعه آغاز شده است.
                 </li>
                 <li>
                     <strong>شبکه جهانی خبرنگاران:</strong> گل‌های رنگارنگ در سراسر دنیا خبرنگار دارد و اخبار را از منابع دست اول پوشش می‌دهد.
-                </li>
-                <li>
-                    <strong>فعالیت سیاسی و تحلیلی:</strong> این رسانه در حوزه سیاست و تحلیل‌های سیاسی نیز فعال است و بارها تحلیل‌های آن توسط رسانه‌های بین‌المللی بازنشر شده است.
                 </li>
             </ul>
             
@@ -333,7 +473,7 @@
             <h2>🌍 امروز و آینده</h2>
             
             <p>
-                امروز، در سال ۲۰۲۶، گل‌های رنگارنگ با ارزش برآوردی <strong>۳ میلیارد دلار</strong>، یکی از تأثیرگذارترین برندهای خبری جهان به شمار می‌رود. با ۴۲ کارمند فداکار، سه شعبه فعال در لوسانتوس، سان فیرو و لسترسیتی، و شبکه‌ای از خبرنگاران در سراسر دنیا، این مجموعه همچنان به رشد خود ادامه می‌دهد.
+                امروز، در سال ۲۰۲۶، گل‌های رنگارنگ با ارزش برآوردی <strong>۳ میلیارد دلار</strong>، یکی از تأثیرگذارترین برندهای خبری جهان به شمار می‌رود. با ۴۲ کارمند فداکار، سه شعبه فعال در لوسانتوس، سان فیرو و لسترسیتی، چهار شبکه تلویزیونی، و شبکه‌ای از خبرنگاران در سراسر دنیا، این مجموعه همچنان به رشد خود ادامه می‌دهد.
             </p>
             
             <p>
@@ -341,10 +481,9 @@
             </p>
             
             <div class="thank-you">
-                <strong>🙏 از همراهی شما سپاسگزاریم</strong>
-                گل‌های رنگارنگ بدون اعتماد و همراهی شما مخاطبان عزیز، هرگز نمی‌توانست به این جایگاه برسد. از تمام کسانی که در این مسیر پرفراز و نشیب همراه ما بودند، صمیمانه تشکر می‌کنیم.
-                <br><br>
-                <strong>با احترام — تیم گل‌های رنگارنگ</strong>
+                <span class="thank-title">🙏 از همراهی شما سپاسگزاریم</span>
+                گل‌های رنگارنگ بدون اعتماد و همراهی شما مخاطبان عزیز، هرگز نمی‌توانست به این جایگاه برسد. از تمام کسانی که در این مسیر پرفراز و نشیب همراه ما بودند — به ویژه شهروندان ایالت لاسونتراس — صمیمانه تشکر می‌کنیم.
+                <span class="thank-subtitle">با احترام — تیم گل‌های رنگارنگ</span>
             </div>
         </div>
     </div>
