@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سقوط سهام هوش مصنوعی - گلهای رنگارنگ</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold; font-style: normal; font-display: swap;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f4f4f9;
+            display: flex; flex-direction: column;
+            min-height: 100vh; color: #333;
+        }
+        
+        .header-row {
+            max-width: 800px; width: 100%;
+            margin: 18px auto 10px auto; padding: 0 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .menu-btn {
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+        }
+        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
+        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        .brand-block {
+            display: flex; flex-direction: column; line-height: 1.1;
+            text-decoration: none; cursor: pointer; transition: opacity 0.2s;
+        }
+        .brand-block:hover { opacity: 0.8; }
+        .brand-grg { font-size: 20px; font-weight: bold; color: #c0392b; letter-spacing: 3px; font-family: Georgia, serif; }
+        .brand-name { font-size: 10px; color: #666; font-family: 'IRANSans', sans-serif; }
+        
+        .menu-dropdown {
+            max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+        }
+        .menu-dropdown.open { max-height: 500px; }
+        .menu-inner {
+            background-color: white; border-radius: 10px; padding: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 8px; border: 1px solid #eee;
+        }
+        .menu-dropdown a {
+            display: block; padding: 10px 15px; color: #333; text-decoration: none;
+            font-size: 14px; border-radius: 8px; transition: all 0.2s;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .menu-dropdown a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 20px; }
+        .menu-category {
+            font-size: 11px; color: #999; padding: 10px 15px 5px 15px;
+            font-weight: bold; border-top: 1px solid #f0f0f0; margin-top: 5px;
+        }
+        .menu-category:first-child { border-top: none; margin-top: 0; }
+        
+        .container {
+            max-width: 800px; width: 100%;
+            margin: 10px auto 20px auto; padding: 0 15px;
+            flex: 1;
+        }
+        
+        .news-article {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+        
+        .article-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 12px;
+            color: #888;
+            font-family: 'IRANSans', sans-serif;
+            flex-wrap: wrap;
+        }
+        .meta-badge {
+            background-color: #c0392b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .meta-item { display: flex; align-items: center; gap: 5px; }
+        
+        .article-title {
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin: 0 0 18px 0;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .article-author-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #f0f0f0;
+            flex-wrap: wrap;
+        }
+        .author-info { display: flex; align-items: center; gap: 10px; }
+        .author-avatar {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px; font-weight: bold;
+            font-family: Georgia, serif; flex-shrink: 0;
+        }
+        .author-details { display: flex; flex-direction: column; gap: 2px; }
+        .author-name { font-size: 13px; color: #333; font-weight: bold; }
+        .author-time { font-size: 11px; color: #999; }
+        .article-time-badge {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 11px; color: #888;
+            background-color: #f8f8f8;
+            padding: 5px 12px; border-radius: 12px;
+            font-family: 'IRANSans', sans-serif;
+            margin-right: auto;
+        }
+        
+        .article-body p {
+            font-size: 15px;
+            line-height: 2.1;
+            text-align: justify;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .article-body .lead-paragraph {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a1a1a;
+            background-color: #f8f9fa;
+            padding: 18px 20px;
+            border-right: 4px solid #c0392b;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .article-body h3 {
+            color: #c0392b;
+            font-size: 17px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-right: 12px;
+            border-right: 4px solid #c0392b;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .article-body .quote-box {
+            background-color: #f8f9fa;
+            border-right: 4px solid #2c3e50;
+            padding: 18px 22px;
+            margin: 25px 0;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 2;
+            font-family: 'IRANSans', sans-serif;
+            font-style: italic;
+        }
+        
+        .article-body .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        /* جدول شاخص‌ها */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 25px 0;
+        }
+        .market-card {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border-right: 4px solid #e74c3c;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.15);
+        }
+        .market-name {
+            font-size: 13px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .market-change {
+            font-size: 22px;
+            color: #c0392b;
+            font-weight: bold;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        .article-tags {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #eef2ff;
+            color: #2a5298;
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 12px;
+            margin-left: 6px;
+            margin-bottom: 6px;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .back-home-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            max-width: 800px; margin: 20px auto 30px auto; padding: 14px 25px;
+            background-color: white; color: #c0392b; text-decoration: none;
+            border-radius: 12px; font-size: 15px; font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            border: 2px solid #c0392b; transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .back-home-btn:hover {
+            background-color: #c0392b; color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+        }
+        .back-btn-wrapper { max-width: 800px; margin: 0 auto; padding: 0 15px; }
+        
+        footer {
+            background-color: #000000;
+            padding: 30px 15px 25px 15px;
+            margin-top: auto;
+        }
+        .footer-links {
+            max-width: 800px; margin: 0 auto 25px auto;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .footer-row {
+            display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 20px 30px;
+        }
+        .footer-row a {
+            color: #ffffff; text-decoration: none; font-size: 12px;
+            font-family: 'IRANSans', sans-serif; transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .footer-row a:hover { color: #ff6b6b; text-decoration: underline; }
+        .footer-row a.about-link { font-weight: bold; color: #ffd700; }
+        .footer-row a.about-link:hover { color: #ffed4e; }
+        
+        .follow-section {
+            max-width: 800px; margin: 0 auto 25px auto;
+            padding-top: 20px; border-top: 1px solid #333; text-align: center;
+        }
+        .follow-title {
+            color: #ffffff; font-size: 14px; font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .whatsapp-channel-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: #25D366; color: white; text-decoration: none;
+            padding: 10px 22px; border-radius: 25px;
+            font-size: 14px; font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-channel-btn:hover {
+            background-color: #20b858; transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
+        .footer-copyright {
+            max-width: 800px; margin: 0 auto; text-align: center;
+            padding-top: 20px; border-top: 1px solid #333;
+            color: #ffffff; font-size: 12px; line-height: 2;
+        }
+        .footer-copyright p { margin: 5px 0; }
+        .footer-copyright .network { font-size: 11px; color: #aaaaaa; margin-top: 8px; }
+        
+        @media (max-width: 600px) {
+            .news-article { padding: 20px; }
+            .article-title { font-size: 19px; }
+            .article-body p { font-size: 14px; line-height: 2; }
+            .article-body .lead-paragraph { font-size: 14px; padding: 14px 16px; }
+            .article-body h3 { font-size: 15px; }
+            .footer-row { gap: 12px 18px; }
+            .footer-row a { font-size: 11px; }
+            .market-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-row">
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">تکنولوژی</div>
+        </a>
+    </div>
+
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <a href="../index.html">🏠 صفحه اصلی</a>
+            <a href="../bours.html">📊 تحلیل اختصاصی بورس</a>
+            <a href="../shop.html">🛍️ فروشگاه</a>
+            <div class="menu-category">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 واتس‌اپ</a>
+            <a href="../pages/about.html">ℹ️ درباره ما</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="news-article">
+            
+            <div class="article-meta-top">
+                <span class="meta-badge">تکنولوژی</span>
+                <span class="meta-item">⏱ ۷ دقیقه مطالعه</span>
+            </div>
+            
+            <h1 class="article-title">سقوط سهام مرتبط با هوش مصنوعی پس از درخواست مدیران ارشد صنعت برای کاهش سرعت توسعه این فناوری</h1>
+            
+            <div class="article-author-row">
+                <div class="author-info">
+                    <div class="author-avatar">آ</div>
+                    <div class="author-details">
+                        <span class="author-name">آناهیتا بهرامی</span>
+                        <span class="author-time">📅 دوشنبه ۱۴ سپتامبر ۲۰۲۶ | ۱ ساعت پیش</span>
+                    </div>
+                </div>
+                <span class="article-time-badge">🕐 ساعت انتشار: ۱۴:۳۰</span>
+            </div>
+            
+            <div class="article-body">
+                <p class="lead-paragraph">
+                    لندن - سهام مرتبط با هوش مصنوعی روز دوشنبه سقوط کرد، پس از آنکه مدیران ارشد برخی از شرکت‌های توسعه‌دهنده پیشرفته‌ترین مدل‌های هوش مصنوعی خواستار کاهش سرعت توسعه این فناوری برای فراهم کردن امکان اعمال حفاظ‌های بیشتر شدند.
+                </p>
+                
+                <div class="market-grid">
+                    <div class="market-card">
+                        <div class="market-name">📉 نزدک (Nasdaq)</div>
+                        <div class="market-change">-۱.۵٪</div>
+                    </div>
+                    <div class="market-card">
+                        <div class="market-name">📉 سافتبانک ژاپن</div>
+                        <div class="market-change">-۱۱٪</div>
+                    </div>
+                    <div class="market-card">
+                        <div class="market-name">📉 کاسپی کره</div>
+                        <div class="market-change">-۳.۳٪</div>
+                    </div>
+                    <div class="market-card">
+                        <div class="market-name">📉 ASML هلند</div>
+                        <div class="market-change">-۶٪</div>
+                    </div>
+                </div>
+                
+                <p>
+                    آتی‌های نزدک ۱.۵ درصد کاهش یافت و تحت تأثیر افت پیش از بازار شرکت‌های تراشه‌سازی انویدیا و اینتل قرار گرفت. سهام سافتبانک که در OpenAI سازنده ChatGPT سرمایه‌گذاری کرده، در ژاپن نزدیک به ۱۱ درصد پایین‌تر بسته شد. شاخص کاسپی کره جنوبی ۳.۳ درصد سقوط کرد که تحت تأثیر افت ۶.۴ درصدی شرکت تراشه‌ساز SK Hynix بود. در اروپا، شرکت هلندی تولیدکننده نیمه‌هادی ASML ۶ درصد کاهش یافت.
+                </p>
+                
+                <p>
+                    این حرکت‌های نزولی پس از آن رخ داد که داریو آمودئی، مدیرعامل Anthropic، شرکت پشت چت‌بات هوش مصنوعی Claude، در مقاله‌ای طولانی که در X به اشتراک گذاشت، خواستار کاهش سرعت پیشرفت این فناوری شد.
+                </p>
+                
+                <div class="quote-box">
+                    «هوش مصنوعی خطراتی به همراه دارد و چون فناوری بسیار قدرتمندی است، این خطرات جدی هستند. از جمله خطر از دست دادن کنترل بر سیستم‌های هوش مصنوعی، سوءاستفاده از هوش مصنوعی برای حملات سایبری و بیوتروریسم، و اختلال اقتصادی جدی.»
+                    <div style="text-align: left; margin-top: 10px; font-weight: bold; font-style: normal; font-size: 13px;">— داریو آمودئی، مدیرعامل Anthropic</div>
+                </div>
+                
+                <p>
+                    او افزود که توسعه‌دهندگان باید سرعت پیشرفت فناوری را طوری تنظیم کنند که «پیشگیری از خطر زمان کافی برای همگام شدن داشته باشد.»
+                </p>
+                
+                <div class="quote-box">
+                    «ما باید سرعت بهبود قابلیت‌های مدل‌های هوش مصنوعی را کاهش دهیم. پیشرفت همچنان سریع به نظر خواهد رسید، و ما باید از زمانی که به دست می‌آوریم عاقلانه استفاده کنیم.»
+                    <div style="text-align: left; margin-top: 10px; font-weight: bold; font-style: normal; font-size: 13px;">— داریو آمودئی</div>
+                </div>
+                
+                <p>
+                    هم سم آلتمن، مدیرعامل OpenAI، و هم ایلان ماسک که xAI را اداره می‌کند، در پست‌هایی در X اعلام کردند که با آمودئی موافق هستند.
+                </p>
+                
+                <h3>📊 تهدید برای ارزش‌گذاری هوش مصنوعی</h3>
+                
+                <p>
+                    به گفته نیل ویلسون، استراتژیست بریتانیایی در بانک سرمایه‌گذاری Saxo، خطرات ناشی از کاهش سرعت توسعه پیشرو هوش مصنوعی، توجیه سرمایه‌گذاری این فناوری را تهدید می‌کند.
+                </p>
+                
+                <p>
+                    او در یادداشتی در روز دوشنبه نوشت که اگر شرکت‌های مرتبط با هوش مصنوعی «کاهش چشمگیر در توسعه را هماهنگ کنند و حفاظ‌هایی ایجاد کنند»، تحلیلگران «به دنبال ارزیابی تأثیر احتمالی بر سود و ارزش‌گذاری‌ها خواهند بود».
+                </p>
+                
+                <h3>⚠️ نگرانی‌ها درباره بدهی شرکت‌های هوش مصنوعی</h3>
+                
+                <p>
+                    همچنین نگرانی‌هایی درباره سطوح فزاینده بدهی در میان شرکت‌های هوش مصنوعی وجود دارد، شرکت‌هایی که مبالغ عظیمی برای ساخت مراکز داده‌ای که برای زیرساخت هوش مصنوعی نیاز دارند، وام می‌گیرند.
+                </p>
+                
+                <p>
+                    بانک تسویه‌حساب‌های بین‌المللی (BIS)، که نماینده بانک‌های مرکزی است، در بررسی سه‌ماهه اخیر خود در روز دوشنبه اعلام کرد که روند صعودی ناشی از هوش مصنوعی در بازارهای سهام جهانی در ماه‌های اخیر «متزلزل» شده است، «در حالی که نشانه‌های فزاینده‌ای از آسیب‌پذیری در بخش فناوری مشاهده می‌شود».
+                </p>
+                
+                <p>
+                    این نهاد خاطرنشان کرد: «افزایش نگرانی‌ها درباره سودآوری آینده سرمایه‌گذاری‌های چشمگیر در هوش مصنوعی و پایداری حاشیه‌های سود بزرگ، ناشی از اهرم فزاینده شرکت‌های بزرگ فناوری آمریکایی بود.»
+                </p>
+                
+                <div class="article-tags">
+                    <span class="tag">#هوش_مصنوعی</span>
+                    <span class="tag">#تکنولوژی</span>
+                    <span class="tag">#بازار_سهام</span>
+                    <span class="tag">#آنتروپیک</span>
+                    <span class="tag">#OpenAI</span>
+                    <span class="tag">#نزدک</span>
+                    <span class="tag">#انویدیا</span>
+                    <span class="tag">#DeepSeek</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../news2.html" class="back-home-btn">← بازگشت به صفحه اخبار</a>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="../pages/terms.html">Terms of Use</a>
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="../pages/adchoices.html">Ad Choices</a>
+                <a href="../pages/accessibility.html">Accessibility & CC</a>
+                <a href="../pages/newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="../pages/transcripts.html">Transcripts</a>
+                <a href="../pages/sitemap.html">Sitemap</a>
+                <a href="../pages/about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
