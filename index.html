@@ -200,7 +200,7 @@
             transition: max-height 0.4s ease;
         }
         .menu-dropdown.open {
-            max-height: 500px;
+            max-height: 700px;
         }
         .menu-inner {
             background-color: white;
@@ -236,6 +236,29 @@
         .menu-category:first-child {
             border-top: none;
             margin-top: 0;
+        }
+        
+        /* دسته‌بندی چرخشی */
+        .category-scroll {
+            max-height: 130px;
+            overflow-y: auto;
+            padding: 4px 0;
+            scrollbar-width: thin;
+            scrollbar-color: #c0392b #f0f0f0;
+        }
+        .category-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .category-scroll::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb {
+            background: #c0392b;
+            border-radius: 3px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb:hover {
+            background: #a93226;
         }
         
         /* ============================ */
@@ -343,23 +366,25 @@
         .footer-links {
             max-width: 800px;
             margin: 0 auto 20px auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-        .footer-col {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 14px;
         }
-        .footer-col a {
-            color: #555;
+        .footer-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+        }
+        .footer-row a {
+            color: #333;
             text-decoration: none;
             font-size: 12px;
             font-family: 'IRANSans', sans-serif;
             transition: color 0.2s;
+            white-space: nowrap;
         }
-        .footer-col a:hover {
+        .footer-row a:hover {
             color: #c0392b;
             text-decoration: underline;
         }
@@ -390,16 +415,14 @@
             .ad-slogan { font-size: 11px; padding: 4px 12px; }
             .news-box { flex-direction: column; align-items: flex-start; }
             .news-box img { width: 100%; height: 180px; }
-            .footer-links { grid-template-columns: 1fr; gap: 20px; }
-            .footer-col { align-items: center; }
+            .footer-row { gap: 12px 18px; }
+            .footer-row a { font-size: 11px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ============================ -->
-    <!-- تبلیغ بالای سایت            -->
-    <!-- ============================ -->
+    <!-- تبلیغ بالای سایت -->
     <div class="top-ad-wrapper">
         <div class="top-ad">
             <a href="https://www.heinz.com" target="_blank">
@@ -415,9 +438,7 @@
         </div>
     </div>
 
-    <!-- ============================ -->
-    <!-- هدر: منو + برند             -->
-    <!-- ============================ -->
+    <!-- هدر: منو + برند -->
     <div class="header-row">
         <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
             <span></span>
@@ -437,24 +458,34 @@
             <a href="shop.html">🛍️ فروشگاه</a>
             
             <div class="menu-category">📂 دسته‌بندی اخبار</div>
-            <a href="#">🏛 اخبار سیاسی</a>
-            <a href="#">💰 اخبار اقتصادی</a>
-            <a href="#">⚔️ اخبار نظامی</a>
-            <a href="#">🌍 اخبار بین‌الملل</a>
-            <a href="#">⚡ اخبار انرژی</a>
+            <div class="category-scroll">
+                <a href="#">🏛 اخبار سیاسی</a>
+                <a href="#">💰 اخبار اقتصادی</a>
+                <a href="#">⚔️ اخبار نظامی</a>
+                <a href="#">🌍 اخبار بین‌الملل</a>
+                <a href="#">⚡ اخبار انرژی</a>
+                <a href="#">🔬 اخبار علمی</a>
+                <a href="#">💻 اخبار فناوری</a>
+                <a href="#">🏥 اخبار سلامت</a>
+                <a href="#">⚽ اخبار ورزشی</a>
+                <a href="#">🎬 اخبار فرهنگی و هنری</a>
+                <a href="#">🎓 اخبار آموزشی</a>
+                <a href="#">🌦️ اخبار محیط زیست</a>
+                <a href="#">🚔 اخبار حوادث</a>
+                <a href="#">✈️ اخبار گردشگری</a>
+                <a href="#">📱 اخبار شبکه‌های اجتماعی</a>
+            </div>
             
             <div class="menu-category">📱 ما را دنبال کنید</div>
             <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 واتس‌اپ</a>
             
-            <div class="menu-category">📞 با ما در ارتباط باشید</div>
-            <a href="#">✉️ تماس با پشتیبانی</a>
-            <a href="#">📧 ایمیل</a>
+            <div class="menu-category">📞 درباره گلهای رنگارنگ</div>
+            <a href="#">ℹ️ درباره ما</a>
+            <a href="#">✉️ پشتیبانی</a>
         </div>
     </div>
 
-    <!-- ============================ -->
-    <!-- اخبار کوتاه                 -->
-    <!-- ============================ -->
+    <!-- اخبار کوتاه -->
     <div class="short-news-block">
         <div class="short-news-inner">
             <div class="short-news-title">اخبار کوتاه</div>
@@ -466,9 +497,7 @@
         </div>
     </div>
 
-    <!-- ============================ -->
-    <!-- خبرها                        -->
-    <!-- ============================ -->
+    <!-- خبرها -->
     <div class="container">
 
         <div class="news-box">
@@ -592,30 +621,28 @@
 
     </div>
 
-    <!-- ============================ -->
-    <!-- فوتر                        -->
-    <!-- ============================ -->
+    <!-- فوتر -->
     <footer>
         <div class="footer-links">
-            <div class="footer-col">
+            <div class="footer-row">
                 <a href="#">Terms of Use</a>
                 <a href="#">Privacy Policy</a>
-                <a href="#">Manage Cookies+</a>
+                <a href="#">+Manage Cookies</a>
             </div>
-            <div class="footer-col">
+            <div class="footer-row">
                 <a href="#">Ad Choices</a>
                 <a href="#">Accessibility & CC</a>
                 <a href="#">About</a>
-            </div>
-            <div class="footer-col">
                 <a href="#">Newsletters</a>
+            </div>
+            <div class="footer-row">
                 <a href="#">Transcripts</a>
                 <a href="#">Sitemap</a>
             </div>
         </div>
         <div class="copyright">
-            <p>۲۰۲۶ (c) گلهای رنگارنگ - متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
-            <p class="network">شبکه خبر سان آندریاس ۲۰۱۹ (c)</p>
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
         </div>
     </footer>
 
