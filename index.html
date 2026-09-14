@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>گلهای رنگارنگ</title>
-    <!-- فونت ایران سنس -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         @font-face {
@@ -22,6 +21,7 @@
             font-display: swap;
         }
         
+        * { box-sizing: border-box; }
         body {
             font-family: 'IRANSans', Tahoma, Arial, sans-serif;
             margin: 0;
@@ -30,307 +30,274 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-        }
-        header {
-            background-color: transparent;
-            color: black;
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
+            color: #333;
         }
         
-        .header-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-            padding: 0 10px;
-        }
-        
-        .header-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            color: white;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            transition: all 0.2s;
-            min-width: 150px;
-            height: 42px;
-            box-sizing: border-box;
-            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
-        }
-        
-        .header-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        
-        .whatsapp-btn { background-color: #25D366; }
-        .whatsapp-btn:hover { background-color: #20b858; }
-        
-        .stock-btn { background-color: #2c3e50; }
-        .stock-btn:hover { background-color: #1a252f; }
-        
-        .shop-btn { background-color: #e74c3c; }
-        .shop-btn:hover { background-color: #c0392b; }
-
-        .header-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: white;
-            flex-shrink: 0;
-        }
-        
-        header h1 {
-            margin: 0 0 10px 0;
-            font-size: 32px;
-        }
-        .datetime-container {
-            color: #666;
-            font-size: 15px;
-            display: inline-block;
-        }
-        #date {
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        #time {
-            direction: ltr; 
-            display: inline-block;
-        }
-        
-        /* نوار اخبار کوتاه */
-        .ticker-wrapper {
+        /* ============================ */
+        /* تبلیغ بالای سایت            */
+        /* ============================ */
+        .top-ad-wrapper {
             max-width: 800px;
-            margin: 15px auto 15px auto;
-            background-color: #e74c3c;
-            color: white;
-            border-radius: 6px;
-            display: flex;
-            align-items: stretch;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            min-height: 55px;
-        }
-        .ticker-label {
-            background-color: #c0392b;
-            padding: 10px 15px;
-            font-weight: bold;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            z-index: 2;
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-        .ticker-content {
-            flex: 1;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            min-height: 55px;
-        }
-        #ticker-text {
-            font-size: 13px;
-            line-height: 1.7;
             width: 100%;
-            text-align: right;
-            transition: opacity 0.4s ease-in-out;
-        }
-        .fade-out {
-            opacity: 0;
-        }
-
-        /* ============================================ */
-        /* تبلیغات Heinz - طراحی پوستری سه‌بعدی        */
-        /* ============================================ */
-        .ad-banner {
-            max-width: 800px;
-            margin: 0 auto 30px auto;
+            margin: 15px auto 0 auto;
             padding: 0 15px;
-            perspective: 1500px;
         }
-        .ad-content {
+        .top-ad {
             position: relative;
-            display: block;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(192, 57, 43, 0.15) 0%, transparent 50%),
-                linear-gradient(135deg, #ffffff 0%, #fdf2e9 50%, #fadbd8 100%);
-            border-radius: 22px;
-            padding: 35px 30px;
-            text-decoration: none;
+            width: 100%;
+            height: 130px;
+            border-radius: 14px;
             overflow: hidden;
+            box-shadow: 0 6px 22px rgba(192, 57, 43, 0.25);
             border: 3px solid #c0392b;
-            box-shadow: 
-                0 20px 40px rgba(192, 57, 43, 0.25),
-                0 8px 16px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            transform-style: preserve-3d;
-            transform: rotateX(2deg) rotateY(-2deg);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .ad-content::before {
-            content: '';
+        .top-ad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4);
+        }
+        .top-ad a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-decoration: none;
+        }
+        .ad-bg {
             position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.55;
+            z-index: 1;
         }
-        .ad-content::after {
-            content: 'AD';
-            position: absolute;
-            top: 12px;
-            left: 15px;
-            font-size: 9px;
-            color: white;
-            background-color: #c0392b;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        .ad-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.25) 100%);
+            padding: 10px 20px;
         }
-        .ad-content:hover {
-            transform: rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.01);
-            box-shadow: 
-                0 30px 60px rgba(192, 57, 43, 0.35),
-                0 15px 30px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        }
-        
-        .ad-inner {
+        .ad-brand-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            transform-style: preserve-3d;
-        }
-        
-        /* متن */
-        .ad-text {
-            flex: 1;
-            text-align: right;
-            transform: translateZ(30px);
+            gap: 15px;
+            margin-bottom: 6px;
         }
         .ad-brand {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 52px;
+            font-family: Georgia, serif;
+            font-size: 34px;
             font-weight: bold;
-            letter-spacing: 8px;
             color: #c0392b;
-            line-height: 1;
-            margin-bottom: 8px;
-            text-shadow: 
-                3px 3px 0 rgba(192, 57, 43, 0.15),
-                6px 6px 12px rgba(192, 57, 43, 0.2);
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.9), 0 0 15px rgba(255,255,255,0.8);
         }
-        .ad-brand-fa {
-            font-family: 'IRANSans', Tahoma, sans-serif;
-            font-size: 22px;
+        .ad-grg {
+            font-family: 'IRANSans', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #c0392b;
+            padding: 4px 12px;
+            border-radius: 6px;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .ad-slogan {
+            font-family: 'IRANSans', sans-serif;
+            font-size: 14px;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 12px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        .ad-slogan-fa {
-            display: inline-block;
-            font-family: 'IRANSans', Tahoma, sans-serif;
-            font-size: 15px;
-            font-weight: bold;
-            color: #856404;
-            background: linear-gradient(135deg, #fff3cd, #ffe9a8);
-            padding: 10px 22px;
-            border-radius: 25px;
-            border: 2px solid #ffd700;
-            box-shadow: 
-                0 4px 10px rgba(255, 215, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            position: relative;
-        }
-        .ad-slogan-fa::before {
-            content: '❝';
-            position: absolute;
-            top: -8px;
-            right: 8px;
-            font-size: 20px;
-            color: #c0392b;
-            opacity: 0.5;
+            background-color: rgba(255, 243, 205, 0.95);
+            padding: 5px 18px;
+            border-radius: 20px;
+            border: 1px solid #ffd700;
         }
         
-        /* عکس سه‌بعدی */
-        .ad-image {
-            flex-shrink: 0;
-            width: 180px;
-            height: 200px;
+        /* ============================ */
+        /* هدر: منو + برند             */
+        /* ============================ */
+        .header-row {
+            max-width: 800px;
+            width: 100%;
+            margin: 18px auto 10px auto;
+            padding: 0 15px;
             display: flex;
             align-items: center;
+            gap: 10px;
+        }
+        .menu-btn {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            position: relative;
-            transform: translateZ(50px);
-            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 0;
+            flex-shrink: 0;
         }
-        .ad-image::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 15px;
-            background: radial-gradient(ellipse, rgba(0,0,0,0.25), transparent 70%);
-            filter: blur(8px);
-            border-radius: 50%;
-            z-index: 0;
+        .menu-btn:hover {
+            border-color: #c0392b;
+            background-color: #fff5f5;
         }
-        .ad-image img {
-            max-height: 190px;
-            max-width: 170px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            position: relative;
-            z-index: 1;
-            filter: 
-                drop-shadow(0 15px 25px rgba(192, 57, 43, 0.4))
-                drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            transform: rotate(-2deg);
+        .menu-btn span {
+            display: block;
+            width: 22px;
+            height: 3px;
+            background-color: #333;
+            border-radius: 3px;
+            transition: all 0.3s;
         }
-        .ad-content:hover .ad-image {
-            transform: translateZ(70px) rotateY(-8deg);
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
         }
-        .ad-content:hover .ad-image img {
-            transform: rotate(-5deg) scale(1.08);
-            filter: 
-                drop-shadow(0 25px 35px rgba(192, 57, 43, 0.5))
-                drop-shadow(0 10px 15px rgba(0, 0, 0, 0.25));
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .brand-grg {
+            font-size: 20px;
+            font-weight: bold;
+            color: #c0392b;
+            letter-spacing: 3px;
+            font-family: Georgia, serif;
+        }
+        .brand-name {
+            font-size: 10px;
+            color: #666;
+            font-family: 'IRANSans', sans-serif;
         }
         
-        /* خط تزئینی */
-        .ad-divider {
-            width: 3px;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, #c0392b, transparent);
-            flex-shrink: 0;
-            opacity: 0.4;
-            border-radius: 3px;
+        /* منوی بازشو */
+        .menu-dropdown {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
         }
-
+        .menu-dropdown.open {
+            max-height: 500px;
+        }
+        .menu-inner {
+            background-color: white;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 8px;
+            border: 1px solid #eee;
+        }
+        .menu-dropdown a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .menu-dropdown a:hover {
+            background-color: #fff5f5;
+            color: #c0392b;
+            padding-right: 20px;
+        }
+        .menu-category {
+            font-size: 11px;
+            color: #999;
+            padding: 10px 15px 5px 15px;
+            font-weight: bold;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 5px;
+        }
+        .menu-category:first-child {
+            border-top: none;
+            margin-top: 0;
+        }
+        
+        /* ============================ */
+        /* اخبار کوتاه                 */
+        /* ============================ */
+        .short-news-block {
+            max-width: 800px;
+            width: 100%;
+            margin: 15px auto;
+            padding: 0 15px;
+        }
+        .short-news-inner {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-right: 4px solid #e74c3c;
+        }
+        .short-news-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .short-news-title::before {
+            content: '📢';
+        }
+        .short-news-inner ul {
+            margin: 0;
+            padding-right: 20px;
+            list-style: none;
+        }
+        .short-news-inner li {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.9;
+            padding: 6px 0;
+            border-bottom: 1px dashed #eee;
+            position: relative;
+            padding-right: 18px;
+        }
+        .short-news-inner li:last-child {
+            border-bottom: none;
+        }
+        .short-news-inner li::before {
+            content: '●';
+            color: #e74c3c;
+            position: absolute;
+            right: 0;
+            font-size: 10px;
+            top: 10px;
+        }
+        
+        /* ============================ */
+        /* خبرها                        */
+        /* ============================ */
         .container {
             max-width: 800px;
+            width: 100%;
             margin: 0 auto 20px auto;
             padding: 0 15px;
             flex: 1; 
@@ -344,106 +311,168 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            position: relative;
+        }
+        .news-topic {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 11px;
+            color: #c0392b;
+            font-weight: bold;
+            background-color: #fff5f5;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid #fadbd8;
         }
         .news-box img { width: 150px; height: 100px; object-fit: cover; border-radius: 5px; }
-        .news-content { width: 100%; }
-        .news-content h2 { margin: 0 0 10px 0; color: #333; font-size: 18px; line-height: 1.6; }
+        .news-content { width: 100%; padding-top: 15px; }
+        .news-content h2 { margin: 0 0 10px 0; color: #333; font-size: 17px; line-height: 1.6; }
         .news-content p { color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 14px; display: inline-block; }
+        .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 13px; display: inline-block; }
         .read-more:hover { background-color: #2980b9; }
-        footer { text-align: center; padding: 20px; background-color: #eaeaea; color: #555; font-size: 14px; margin-top: 20px; }
+        
+        /* ============================ */
+        /* فوتر                        */
+        /* ============================ */
+        footer {
+            background-color: #eaeaea;
+            padding: 25px 15px 20px 15px;
+            margin-top: 20px;
+        }
+        .footer-links {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .footer-col a {
+            color: #555;
+            text-decoration: none;
+            font-size: 12px;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: #c0392b;
+            text-decoration: underline;
+        }
+        .copyright {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 18px;
+            border-top: 1px solid #d5d5d5;
+            color: #666;
+            font-size: 12px;
+            line-height: 2;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .copyright p {
+            margin: 5px 0;
+        }
+        .copyright .network {
+            font-size: 11px;
+            color: #888;
+            margin-top: 8px;
+        }
         
         @media (max-width: 600px) {
-            .ad-banner { perspective: 1000px; }
-            .ad-content {
-                padding: 25px 20px;
-                transform: rotateX(1deg) rotateY(-1deg);
-            }
-            .ad-inner {
-                flex-direction: column-reverse;
-                gap: 15px;
-            }
-            .ad-divider { display: none; }
-            .ad-text { text-align: center; }
-            .ad-brand { font-size: 38px; letter-spacing: 5px; }
-            .ad-brand-fa { font-size: 17px; }
-            .ad-slogan-fa { font-size: 12px; padding: 8px 16px; }
-            .ad-image {
-                width: 140px;
-                height: 160px;
-            }
-            .ad-image img {
-                max-height: 150px;
-                max-width: 130px;
-            }
+            .top-ad { height: 110px; }
+            .ad-brand { font-size: 26px; letter-spacing: 3px; }
+            .ad-grg { font-size: 14px; padding: 3px 8px; }
+            .ad-slogan { font-size: 11px; padding: 4px 12px; }
+            .news-box { flex-direction: column; align-items: flex-start; }
+            .news-box img { width: 100%; height: 180px; }
+            .footer-links { grid-template-columns: 1fr; gap: 20px; }
+            .footer-col { align-items: center; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-buttons">
-            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="header-btn whatsapp-btn" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-                </svg>
-                گروه خبری واتسپ
+    <!-- ============================ -->
+    <!-- تبلیغ بالای سایت            -->
+    <!-- ============================ -->
+    <div class="top-ad-wrapper">
+        <div class="top-ad">
+            <a href="https://www.heinz.com" target="_blank">
+                <img src="products/heinz.jpg" alt="Heinz Ketchup" class="ad-bg" onerror="this.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';this.style.opacity='1';">
+                <div class="ad-overlay">
+                    <div class="ad-brand-row">
+                        <span class="ad-brand">HEINZ</span>
+                        <span class="ad-grg">GRG</span>
+                    </div>
+                    <div class="ad-slogan">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</div>
+                </div>
             </a>
-            
-            <a href="bours.html" class="header-btn stock-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
-                </svg>
-                تحلیل اختصاصی بورس
-            </a>
-            
-            <a href="shop.html" class="header-btn shop-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
-                </svg>
-                فروشگاه
-            </a>
-        </div>
-        
-        <h1>گلهای رنگارنگ</h1>
-        
-        <div class="datetime-container">
-            <div id="date"></div>
-            <div id="time"></div>
-        </div>
-    </header>
-
-    <div class="ticker-wrapper">
-        <div class="ticker-label">اخبار کوتاه</div>
-        <div class="ticker-content">
-            <div id="ticker-text"></div>
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- تبلیغات Heinz - طراحی پوستری سه‌بعدی        -->
-    <!-- ============================================ -->
-    <div class="ad-banner">
-        <a href="https://www.heinz.com" target="_blank" class="ad-content">
-            <div class="ad-inner">
-                <div class="ad-text">
-                    <div class="ad-brand">HEINZ</div>
-                    <div class="ad-brand-fa">سس کچاب هاینز</div>
-                    <div class="ad-slogan-fa">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</div>
-                </div>
-                <div class="ad-divider"></div>
-                <div class="ad-image">
-                    <!-- عکس خودت رو اینجا بذار -->
-                    <img src="products/heinz.jpg" alt="سس کچاب هاینز" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Heinz_Tomato_Ketchup_%281%29.jpg/240px-Heinz_Tomato_Ketchup_%281%29.jpg'">
-                </div>
-            </div>
-        </a>
+    <!-- ============================ -->
+    <!-- هدر: منو + برند             -->
+    <!-- ============================ -->
+    <div class="header-row">
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">گلهای رنگارنگ</div>
+        </div>
     </div>
 
+    <!-- منوی بازشو -->
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <a href="bours.html">📊 تحلیل اختصاصی بورس</a>
+            <a href="shop.html">🛍️ فروشگاه</a>
+            
+            <div class="menu-category">📂 دسته‌بندی اخبار</div>
+            <a href="#">🏛 اخبار سیاسی</a>
+            <a href="#">💰 اخبار اقتصادی</a>
+            <a href="#">⚔️ اخبار نظامی</a>
+            <a href="#">🌍 اخبار بین‌الملل</a>
+            <a href="#">⚡ اخبار انرژی</a>
+            
+            <div class="menu-category">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 واتس‌اپ</a>
+            
+            <div class="menu-category">📞 با ما در ارتباط باشید</div>
+            <a href="#">✉️ تماس با پشتیبانی</a>
+            <a href="#">📧 ایمیل</a>
+        </div>
+    </div>
+
+    <!-- ============================ -->
+    <!-- اخبار کوتاه                 -->
+    <!-- ============================ -->
+    <div class="short-news-block">
+        <div class="short-news-inner">
+            <div class="short-news-title">اخبار کوتاه</div>
+            <ul>
+                <li>ترامپ: ایرانی‌ها با کمبود سوخت مواجه هستند.</li>
+                <li>قیمت هر بشکه نفت به ۱۰۸ دلار رسید.</li>
+                <li>مایک جانسون، رئیس مجلس نمایندگان آمریکا، درباره ترامپ: ترامپ ایده‌پرداز فوق‌العاده‌ای است.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================ -->
+    <!-- خبرها                        -->
+    <!-- ============================ -->
     <div class="container">
 
-        <!-- خبر جدید - نفت (خبر ۱۴) -->
         <div class="news-box">
+            <div class="news-topic">| اقتصادی</div>
             <div class="news-content">
                 <h2>🛢️ رویترز: قیمت نفت بیش از ۲٪ افزایش یافت؛ برنت به ۱۰۶.۷۲ دلار رسید</h2>
                 <p>قیمت نفت روز دوشنبه بیش از ۲٪ افزایش یافت و قیمت برنت به ۱۰۶.۷۲ دلار و نفت WTI به ۱۰۲.۱۵ دلار در هر بشکه رسید؛ هم‌زمان تشدید حملات در خاورمیانه نگرانی‌ها درباره اختلال در عرضه را افزایش داده است.</p>
@@ -451,8 +480,8 @@
             </div>
         </div>
 
-        <!-- خبر کوشنر (خبر ۱۱) -->
         <div class="news-box">
+            <div class="news-topic">| بین‌الملل</div>
             <div class="news-content">
                 <h2>🔴 کوشنر: اگر اوکراین تا خط موردنظر پوتین عقب‌نشینی کند، توافق ممکن است</h2>
                 <p>جرد کوشنر گفته اگر اوکراین تا خطی که ولادیمیر پوتین تعیین کرده عقب‌نشینی کند، امکان نهایی شدن توافق وجود دارد؛ اما کی‌یف حاضر به پذیرش این شرط نیست. او همچنین جنگ را «بازی با حاصل جمع منفی» توصیف کرده و گفته در چنین وضعیتی همه طرف‌ها متضرر می‌شوند.</p>
@@ -460,17 +489,17 @@
             </div>
         </div>
 
-        <!-- خبر سی ان ان -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <div class="news-content">
                 <h2>👈سی‌ان‌ان: افزایش چشمگیر ساخت‌وساز در سایت هسته‌ای «کوه کلنگ» در نزدیکی نطنز</h2>
                 <p>تحلیل تصاویر ماهواره‌ای شبکه CNN نشان می‌دهد که ساخت‌وساز در سایت هسته‌ای «کوه کلنگ» (Pickaxe Mountain) در نزدیکی نطنز، که در عمق زمین قرار دارد، افزایش چشمگیری داشته.</p>
                 <a href="N1/news10.html" class="read-more">ادامه مطلب</a>
             </div>
         </div>
-        
-        <!-- خبر وال استریت ژورنال -->
+
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <div class="news-content">
                 <h2>🔰 وال استریت ژورنال: جدی‌تر شدن ایده تغییر رژیم ایران در واشینگتن</h2>
                 <p>وال استریت ژورنال در گزارشی اعلام کرد ایده تغییر رژیم ایران دوباره در واشینگتن جدی شده است، زیرا توافق و همزیستی دیگر ممکن به نظر نمی‌رسد و ترکیب فشار اقتصادی و محاصره دریایی می‌تواند به پیروزی ختم شود.</p>
@@ -478,8 +507,8 @@
             </div>
         </div>
 
-        <!-- خبر سنتکام -->
         <div class="news-box">
+            <div class="news-topic">| نظامی</div>
             <div class="news-content">
                 <h2>🔴 سنتکام: درگیری شدید نیروهای آمریکایی و سپاه پاسداران در آب‌های منطقه</h2>
                 <p>فرماندهی مرکزی ایالات متحده (CENTCOM) اعلام کرد نیروهای آمریکایی به سه نفتکش حامل نفت خام ایران حمله کردند؛ هم‌زمان سپاه پاسداران موشک‌های بالستیک به سمت دو ناو جنگی آمریکا شلیک کرد.</p>
@@ -487,8 +516,8 @@
             </div>
         </div>
 
-        <!-- خبر آکسیوس -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <div class="news-content">
                 <h2>آکسیوس: توافق ایران، عمان و آمریکا در انتظار تأیید نهایی شورای عالی امنیت ملی</h2>
                 <p>باراک راوید، خبرنگار آکسیوس، به نقل از یک دیپلمات از کشور میانجی گزارش داد که مذاکره‌کنندگان ایرانی در انتظار تأیید نهایی شورای عالی امنیت ملی درباره توافق پیشِ‌رو با عمان و آمریکا هستند.</p>
@@ -496,8 +525,8 @@
             </div>
         </div>
 
-        <!-- خبر سنا -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <div class="news-content">
                 <h2>تصویب قانون تشدید تحریم‌های روسیه و ایران در مجلس سنای آمریکا</h2>
                 <p>مجلس سنای آمریکا قانون تشدید تحریم های روسیه و ایران به نام لیندسی گراهام رو با ۸۶ رأی موافق در برابر ۱۱ رأی مخالف تصویب کرد.</p>
@@ -505,8 +534,8 @@
             </div>
         </div>
 
-        <!-- خبر پنتاگون -->
         <div class="news-box">
+            <div class="news-topic">| نظامی</div>
             <div class="news-content">
                 <h2>🔴 پنتاگون جلسه اضطراری برای تأمین تسلیحات برگزار می‌کند</h2>
                 <p>شبکه ان‌بی‌سی نیوز : وزارت جنگ ایالات متحده پس از تماس تلفنی خشمگین دونالد ترامپ با معاون پیت هگست، قرار است یک جلسه اضطراری مختص به کمبود تسلیحات برگزار کند.</p>
@@ -514,8 +543,8 @@
             </div>
         </div>
 
-        <!-- خبر لایحه گالیگو -->
         <div class="news-box">
+            <div class="news-topic">| بین‌الملل</div>
             <div class="news-content">
                 <h2>🏛 لایحه گالیگو: الزام رضایت والدین برای حساب شبکه‌های اجتماعی افراد زیر ۱۶ سال</h2>
                 <p>سناتور روبن گالیگو در حال معرفی قانونی است که پلتفرم‌های شبکه‌های اجتماعی را ملزم می‌کند تا پیش از ایجاد یا تداوم فعالیت حساب کاربری برای کاربران زیر ۱۶ سال، رضایت والدین را دریافت کنند.</p>
@@ -523,8 +552,8 @@
             </div>
         </div>
 
-        <!-- خبر الجزیره -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <div class="news-content">
                 <h2>الجزیره: تنها یک یا دو موضوع در مذاکرات ایران و عمان باقی مانده است</h2>
                 <p>تنها یک یا دو موضوع در مذاکرات ایران و عمان حل نشده باقی مانده است و این مسائل به نظر نمی‌رسد چندان پیچیده باشند.</p>
@@ -532,8 +561,8 @@
             </div>
         </div>
 
-        <!-- خبر تنگه هرمز -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <div class="news-content">
                 <h2>نهایی شدن پیش‌نویس توافق درباره تنگه هرمز</h2>
                 <p>👈خبرگزاری آسوشیتدپرس: مذاکره‌کنندگان ایران و عمان پیش‌نویس توافق درباره تنگه هرمز را نهایی کرده‌اند؛ اقدامی که می‌تواند یک نقطه عطف احتمالی در بن‌بست مربوط به این مسیر حیاتی نفتی و کشتیرانی باشد.</p>
@@ -541,8 +570,8 @@
             </div>
         </div>
 
-        <!-- خبر دوم -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <img src="N1/news2.jpg" alt="مذاکرات ایران و عمان">
             <div class="news-content">
                 <h2>مذاکرات ایران و عمان درباره ترتیبات مشترک تنگه هرمز</h2>
@@ -551,8 +580,8 @@
             </div>
         </div>
 
-        <!-- خبر اول -->
         <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
             <img src="N1/news1.jpg" alt="حادثه بالگرد ترامپ">
             <div class="news-content">
                 <h2>فوری: بالگرد ترامپ در آسمان واشنگتن دچار حادثه ایمنی شد</h2>
@@ -563,49 +592,40 @@
 
     </div>
 
+    <!-- ============================ -->
+    <!-- فوتر                        -->
+    <!-- ============================ -->
     <footer>
-        گلهای رنگارنگ 2026 (c)
+        <div class="footer-links">
+            <div class="footer-col">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Manage Cookies+</a>
+            </div>
+            <div class="footer-col">
+                <a href="#">Ad Choices</a>
+                <a href="#">Accessibility & CC</a>
+                <a href="#">About</a>
+            </div>
+            <div class="footer-col">
+                <a href="#">Newsletters</a>
+                <a href="#">Transcripts</a>
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>۲۰۲۶ (c) گلهای رنگارنگ - متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">شبکه خبر سان آندریاس ۲۰۱۹ (c)</p>
+        </div>
     </footer>
 
     <script>
-        function updateTime() {
-            const now = new Date();
-            const days = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];
-            const months = ['ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن', 'ژوئیه', 'آگوست', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'];
-            
-            const dayName = days[now.getDay()];
-            const dayNumber = now.getDate();
-            const monthName = months[now.getMonth()];
-            const yearNumber = now.getFullYear();
-            
-            document.getElementById('date').innerText = `${dayName}، ${dayNumber} ${monthName} ${yearNumber}`;
-            
-            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            document.getElementById('time').innerText = now.toLocaleTimeString('en-US', timeOptions);
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
         }
-        setInterval(updateTime, 1000);
-        updateTime(); 
-
-        const shortNews = [
-            "ترامپ: ایرانی‌ها با کمبود سوخت مواجه هستند.",
-            "قیمت هر بشکه نفت به ۱۰۸ دلار رسید",
-            "مایک جانسون، رئیس مجلس نمایندگان آمریکا، درباره ترامپ: ترامپ ایده‌پرداز فوق‌العاده‌ای است."
-        ];
-        
-        let currentNewsIndex = 0;
-        const tickerElement = document.getElementById('ticker-text');
-
-        tickerElement.innerText = shortNews[currentNewsIndex];
-
-        setInterval(() => {
-            tickerElement.classList.add('fade-out');
-            
-            setTimeout(() => {
-                currentNewsIndex = (currentNewsIndex + 1) % shortNews.length;
-                tickerElement.innerText = shortNews[currentNewsIndex];
-                tickerElement.classList.remove('fade-out');
-            }, 400);
-        }, 6000);
     </script>
 </body>
 </html>
