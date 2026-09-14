@@ -9,406 +9,170 @@
         @font-face {
             font-family: 'IRANSans';
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+            font-weight: normal; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'IRANSans';
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
+            font-weight: bold; font-style: normal; font-display: swap;
         }
-        
         * { box-sizing: border-box; }
         body {
             font-family: 'IRANSans', Tahoma, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: #f4f4f9;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            color: #333;
+            display: flex; flex-direction: column;
+            min-height: 100vh; color: #333;
         }
         
-        /* تبلیغ بالای سایت */
-        .top-ad-wrapper {
-            max-width: 800px;
-            width: 100%;
-            margin: 15px auto 0 auto;
-            padding: 0 15px;
-        }
+        /* تبلیغ */
+        .top-ad-wrapper { max-width: 800px; width: 100%; margin: 15px auto 0 auto; padding: 0 15px; }
         .top-ad {
-            position: relative;
-            width: 100%;
-            height: 130px;
-            border-radius: 14px;
-            overflow: hidden;
+            position: relative; width: 100%; height: 130px;
+            border-radius: 14px; overflow: hidden;
             box-shadow: 0 6px 22px rgba(192, 57, 43, 0.25);
             border: 3px solid #c0392b;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .top-ad:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4);
-        }
-        .top-ad a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            text-decoration: none;
-        }
-        .ad-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.55;
-            z-index: 1;
-        }
+        .top-ad:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4); }
+        .top-ad a { display: block; width: 100%; height: 100%; position: relative; text-decoration: none; }
+        .ad-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; z-index: 1; }
         .ad-overlay {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            position: relative; z-index: 2; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center;
             background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.25) 100%);
             padding: 10px 20px;
         }
-        .ad-brand-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 6px;
-        }
+        .ad-brand-row { display: flex; align-items: center; gap: 15px; margin-bottom: 6px; }
         .ad-brand {
-            font-family: Georgia, serif;
-            font-size: 34px;
-            font-weight: bold;
-            color: #c0392b;
+            font-family: Georgia, serif; font-size: 34px; font-weight: bold; color: #c0392b;
             letter-spacing: 5px;
             text-shadow: 2px 2px 4px rgba(255,255,255,0.9), 0 0 15px rgba(255,255,255,0.8);
         }
         .ad-grg {
-            font-family: 'IRANSans', sans-serif;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background-color: #c0392b;
-            padding: 4px 12px;
-            border-radius: 6px;
-            letter-spacing: 2px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            font-family: 'IRANSans', sans-serif; font-size: 18px; font-weight: bold; color: white;
+            background-color: #c0392b; padding: 4px 12px; border-radius: 6px;
+            letter-spacing: 2px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
         .ad-slogan {
-            font-family: 'IRANSans', sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            color: #2c3e50;
+            font-family: 'IRANSans', sans-serif; font-size: 14px; font-weight: bold; color: #2c3e50;
             background-color: rgba(255, 243, 205, 0.95);
-            padding: 5px 18px;
-            border-radius: 20px;
-            border: 1px solid #ffd700;
+            padding: 5px 18px; border-radius: 20px; border: 1px solid #ffd700;
         }
         
         /* هدر */
         .header-row {
-            max-width: 800px;
-            width: 100%;
-            margin: 18px auto 10px auto;
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            max-width: 800px; width: 100%;
+            margin: 18px auto 10px auto; padding: 0 15px;
+            display: flex; align-items: center; gap: 10px;
         }
         .menu-btn {
-            background-color: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            width: 42px;
-            height: 42px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            transition: all 0.2s;
-            padding: 0;
-            flex-shrink: 0;
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
         }
-        .menu-btn:hover {
-            border-color: #c0392b;
-            background-color: #fff5f5;
-        }
-        .menu-btn span {
-            display: block;
-            width: 22px;
-            height: 3px;
-            background-color: #333;
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-        .menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-        }
-        .menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-        }
+        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
+        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
         .brand-block {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-            text-decoration: none;
-            cursor: pointer;
-            transition: opacity 0.2s;
+            display: flex; flex-direction: column; line-height: 1.1;
+            text-decoration: none; cursor: pointer; transition: opacity 0.2s;
         }
-        .brand-block:hover {
-            opacity: 0.8;
-        }
-        .brand-grg {
-            font-size: 20px;
-            font-weight: bold;
-            color: #c0392b;
-            letter-spacing: 3px;
-            font-family: Georgia, serif;
-        }
-        .brand-name {
-            font-size: 10px;
-            color: #666;
-            font-family: 'IRANSans', sans-serif;
-        }
+        .brand-block:hover { opacity: 0.8; }
+        .brand-grg { font-size: 20px; font-weight: bold; color: #c0392b; letter-spacing: 3px; font-family: Georgia, serif; }
+        .brand-name { font-size: 10px; color: #666; font-family: 'IRANSans', sans-serif; }
         
-        /* منوی بازشو */
+        /* منو */
         .menu-dropdown {
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
+            max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
         }
-        .menu-dropdown.open {
-            max-height: 800px;
-        }
+        .menu-dropdown.open { max-height: 800px; }
         .menu-inner {
-            background-color: white;
-            border-radius: 10px;
-            padding: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 8px;
-            border: 1px solid #eee;
+            background-color: white; border-radius: 10px; padding: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 8px; border: 1px solid #eee;
         }
         .menu-dropdown a {
-            display: block;
-            padding: 10px 15px;
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            border-radius: 8px;
-            transition: all 0.2s;
+            display: block; padding: 10px 15px; color: #333; text-decoration: none;
+            font-size: 14px; border-radius: 8px; transition: all 0.2s;
             font-family: 'IRANSans', sans-serif;
         }
-        .menu-dropdown a:hover {
-            background-color: #fff5f5;
-            color: #c0392b;
-            padding-right: 20px;
-        }
+        .menu-dropdown a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 20px; }
         .menu-category {
-            font-size: 11px;
-            color: #999;
-            padding: 10px 15px 5px 15px;
-            font-weight: bold;
-            border-top: 1px solid #f0f0f0;
-            margin-top: 5px;
+            font-size: 11px; color: #999; padding: 10px 15px 5px 15px;
+            font-weight: bold; border-top: 1px solid #f0f0f0; margin-top: 5px;
         }
-        .menu-category:first-child {
-            border-top: none;
-            margin-top: 0;
-        }
+        .menu-category:first-child { border-top: none; margin-top: 0; }
         
-        /* دسته‌بندی بازشو */
         .category-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            color: #333;
-            font-size: 14px;
-            font-family: 'IRANSans', sans-serif;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s;
-            font-weight: bold;
-            user-select: none;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 15px; color: #333; font-size: 14px;
+            font-family: 'IRANSans', sans-serif; cursor: pointer;
+            border-radius: 8px; transition: all 0.2s; font-weight: bold; user-select: none;
         }
-        .category-toggle:hover {
-            background-color: #fff5f5;
-            color: #c0392b;
-        }
-        .category-toggle .arrow {
-            font-size: 12px;
-            transition: transform 0.3s;
-            color: #c0392b;
-        }
-        .category-toggle.open .arrow {
-            transform: rotate(180deg);
-        }
-        .category-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            padding-right: 15px;
-        }
-        .category-list.open {
-            max-height: 600px;
-        }
-        .category-list a {
-            padding: 8px 20px;
-            font-size: 13px;
-            color: #555;
-        }
-        .category-list a:hover {
-            background-color: #fff5f5;
-            color: #c0392b;
-            padding-right: 25px;
-        }
+        .category-toggle:hover { background-color: #fff5f5; color: #c0392b; }
+        .category-toggle .arrow { font-size: 12px; transition: transform 0.3s; color: #c0392b; }
+        .category-toggle.open .arrow { transform: rotate(180deg); }
+        .category-list { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding-right: 15px; }
+        .category-list.open { max-height: 600px; }
+        .category-list a { padding: 8px 20px; font-size: 13px; color: #555; }
+        .category-list a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 25px; }
         
         /* سرچ */
-        .search-wrapper {
-            max-width: 800px;
-            width: 100%;
-            margin: 15px auto 10px auto;
-            padding: 0 15px;
-        }
-        .search-box {
-            position: relative;
-            width: 100%;
-        }
+        .search-wrapper { max-width: 800px; width: 100%; margin: 15px auto 10px auto; padding: 0 15px; }
+        .search-box { position: relative; width: 100%; }
         .search-box input {
-            width: 100%;
-            padding: 12px 45px 12px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 14px;
-            font-family: 'IRANSans', sans-serif;
-            background-color: white;
-            transition: all 0.3s;
-            color: #333;
+            width: 100%; padding: 12px 45px 12px 20px;
+            border: 2px solid #e0e0e0; border-radius: 25px;
+            font-size: 14px; font-family: 'IRANSans', sans-serif;
+            background-color: white; transition: all 0.3s; color: #333;
         }
-        .search-box input:focus {
-            outline: none;
-            border-color: #c0392b;
-            box-shadow: 0 0 10px rgba(192, 57, 43, 0.15);
-        }
-        .search-box input::placeholder {
-            color: #bbb;
-        }
+        .search-box input:focus { outline: none; border-color: #c0392b; box-shadow: 0 0 10px rgba(192, 57, 43, 0.15); }
+        .search-box input::placeholder { color: #bbb; }
         .search-box .search-icon {
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-            color: #c0392b;
-            pointer-events: none;
+            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+            font-size: 16px; color: #c0392b; pointer-events: none;
         }
         
         /* اخبار کوتاه */
-        .short-news-block {
-            max-width: 800px;
-            width: 100%;
-            margin: 15px auto;
-            padding: 0 15px;
-        }
+        .short-news-block { max-width: 800px; width: 100%; margin: 15px auto; padding: 0 15px; }
         .short-news-inner {
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-right: 4px solid #e74c3c;
+            background-color: white; border-radius: 10px; padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-right: 4px solid #e74c3c;
         }
         .short-news-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #c0392b;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 14px; font-weight: bold; color: #c0392b;
+            margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
         }
-        .short-news-title::before {
-            content: '📢';
-        }
-        .short-news-inner ul {
-            margin: 0;
-            padding-right: 20px;
-            list-style: none;
-        }
+        .short-news-title::before { content: '📢'; }
+        .short-news-inner ul { margin: 0; padding-right: 20px; list-style: none; }
         .short-news-inner li {
-            font-size: 13px;
-            color: #333;
-            line-height: 1.9;
-            padding: 6px 0;
-            border-bottom: 1px dashed #eee;
-            position: relative;
-            padding-right: 18px;
+            font-size: 13px; color: #333; line-height: 1.9;
+            padding: 6px 0; border-bottom: 1px dashed #eee;
+            position: relative; padding-right: 18px;
         }
-        .short-news-inner li:last-child {
-            border-bottom: none;
-        }
+        .short-news-inner li:last-child { border-bottom: none; }
         .short-news-inner li::before {
-            content: '●';
-            color: #e74c3c;
-            position: absolute;
-            right: 0;
-            font-size: 10px;
-            top: 10px;
+            content: '●'; color: #e74c3c;
+            position: absolute; right: 0; font-size: 10px; top: 10px;
         }
         
         /* خبرها */
-        .container {
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto 20px auto;
-            padding: 0 15px;
-            flex: 1; 
-        }
+        .container { max-width: 800px; width: 100%; margin: 0 auto 20px auto; padding: 0 15px; flex: 1; }
         .news-box {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
+            background-color: white; padding: 20px; margin-bottom: 20px;
+            border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex; align-items: center; gap: 20px; position: relative;
         }
         .news-topic {
-            position: absolute;
-            top: 12px;
-            right: 15px;
-            font-size: 11px;
-            color: #c0392b;
-            font-weight: bold;
-            background-color: #fff5f5;
-            padding: 3px 10px;
-            border-radius: 12px;
-            border: 1px solid #fadbd8;
+            position: absolute; top: 12px; right: 15px;
+            font-size: 11px; color: #c0392b; font-weight: bold;
+            background-color: #fff5f5; padding: 3px 10px;
+            border-radius: 12px; border: 1px solid #fadbd8;
         }
         .news-box img { width: 150px; height: 100px; object-fit: cover; border-radius: 5px; }
         .news-content { width: 100%; padding-top: 15px; }
@@ -417,63 +181,70 @@
         .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 13px; display: inline-block; }
         .read-more:hover { background-color: #2980b9; }
         
-        /* ============================ */
-        /* فوتر                        */
-        /* ============================ */
-        footer {
-            background-color: #eaeaea;
-            padding: 25px 15px 0 15px;
-            margin-top: 20px;
+        /* صفحه‌بندی */
+        .pagination {
+            max-width: 800px; width: 100%; margin: 20px auto 30px auto;
+            padding: 0 15px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
         }
-        .footer-links {
-            max-width: 800px;
-            margin: 0 auto 20px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .footer-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px 30px;
-        }
-        .footer-row a {
-            color: #333;
-            text-decoration: none;
-            font-size: 12px;
+        .pagination a, .pagination span {
+            display: flex; align-items: center; justify-content: center;
+            min-width: 44px; height: 44px;
+            border-radius: 10px;
             font-family: 'IRANSans', sans-serif;
-            transition: color 0.2s;
-            white-space: nowrap;
+            font-size: 15px; font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+            padding: 0 14px;
         }
-        .footer-row a:hover {
+        .page-num {
+            background-color: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+        .page-num:hover {
+            border-color: #c0392b;
             color: #c0392b;
-            text-decoration: underline;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.15);
+        }
+        .page-num.active {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            border-color: #c0392b;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+        }
+        .page-arrow {
+            background-color: white;
+            color: #c0392b;
+            border: 2px solid #e0e0e0;
+        }
+        .page-arrow:hover {
+            background-color: #c0392b;
+            color: white;
+            border-color: #c0392b;
         }
         
-        /* بخش پایین فوتر - سیاه کامل */
+        /* فوتر */
+        footer { background-color: #eaeaea; padding: 25px 15px 0 15px; margin-top: auto; }
+        .footer-links { max-width: 800px; margin: 0 auto 20px auto; display: flex; flex-direction: column; gap: 14px; }
+        .footer-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px 30px; }
+        .footer-row a {
+            color: #333; text-decoration: none; font-size: 12px;
+            font-family: 'IRANSans', sans-serif; transition: color 0.2s; white-space: nowrap;
+        }
+        .footer-row a:hover { color: #c0392b; text-decoration: underline; }
         .footer-bottom {
-            background-color: #000000;
-            padding: 20px 15px;
-            margin: 20px -15px 0 -15px;
-            text-align: center;
+            background-color: #000000; padding: 20px 15px;
+            margin: 20px -15px 0 -15px; text-align: center;
         }
         .footer-bottom .copyright {
-            max-width: 800px;
-            margin: 0 auto;
-            color: #ffffff;
-            font-size: 12px;
-            line-height: 2;
+            max-width: 800px; margin: 0 auto;
+            color: #ffffff; font-size: 12px; line-height: 2;
             font-family: 'IRANSans', sans-serif;
         }
-        .footer-bottom .copyright p {
-            margin: 5px 0;
-        }
-        .footer-bottom .copyright .network {
-            font-size: 11px;
-            color: #cccccc;
-            margin-top: 8px;
-        }
+        .footer-bottom .copyright p { margin: 5px 0; }
+        .footer-bottom .copyright .network { font-size: 11px; color: #cccccc; margin-top: 8px; }
         
         @media (max-width: 600px) {
             .top-ad { height: 110px; }
@@ -484,12 +255,13 @@
             .news-box img { width: 100%; height: 180px; }
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
+            .pagination a, .pagination span { min-width: 38px; height: 38px; font-size: 13px; padding: 0 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- تبلیغ بالای سایت -->
+    <!-- تبلیغ -->
     <div class="top-ad-wrapper">
         <div class="top-ad">
             <a href="https://www.heinz.com" target="_blank">
@@ -505,12 +277,10 @@
         </div>
     </div>
 
-    <!-- هدر: منو + برند -->
+    <!-- هدر -->
     <div class="header-row">
         <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
         <a href="index.html" class="brand-block">
             <div class="brand-grg">GRG</div>
@@ -518,10 +288,9 @@
         </a>
     </div>
 
-    <!-- منوی بازشو -->
+    <!-- منو -->
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
-            <!-- سرچ -->
             <div class="search-wrapper" style="margin: 0 0 10px 0; padding: 0;">
                 <div class="search-box">
                     <input type="text" placeholder="search GRG..." id="searchInput">
@@ -532,7 +301,6 @@
             <a href="bours.html">📊 تحلیل اختصاصی بورس</a>
             <a href="shop.html">🛍️ فروشگاه</a>
             
-            <!-- دسته‌بندی بازشو -->
             <div class="category-toggle" onclick="toggleCategories(this)">
                 <span>📂 دسته‌بندی اخبار</span>
                 <span class="arrow">▼</span>
@@ -564,8 +332,8 @@
         </div>
     </div>
 
-    <!-- سرچ (زیر هدر، قبل از خبرها) -->
-    <div class="search-wrapper" id="mainSearch">
+    <!-- سرچ -->
+    <div class="search-wrapper">
         <div class="search-box">
             <input type="text" placeholder="search GRG..." id="mainSearchInput">
             <span class="search-icon">🔍</span>
@@ -584,7 +352,7 @@
         </div>
     </div>
 
-    <!-- خبرها -->
+    <!-- خبرها - صفحه ۱ -->
     <div class="container">
 
         <div class="news-box">
@@ -641,71 +409,14 @@
             </div>
         </div>
 
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <div class="news-content">
-                <h2>تصویب قانون تشدید تحریم‌های روسیه و ایران در مجلس سنای آمریکا</h2>
-                <p>مجلس سنای آمریکا قانون تشدید تحریم های روسیه و ایران به نام لیندسی گراهام رو با ۸۶ رأی موافق در برابر ۱۱ رأی مخالف تصویب کرد.</p>
-                <a href="N1/news7.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
+    </div>
 
-        <div class="news-box">
-            <div class="news-topic">| نظامی</div>
-            <div class="news-content">
-                <h2>🔴 پنتاگون جلسه اضطراری برای تأمین تسلیحات برگزار می‌کند</h2>
-                <p>شبکه ان‌بی‌سی نیوز : وزارت جنگ ایالات متحده پس از تماس تلفنی خشمگین دونالد ترامپ با معاون پیت هگست، قرار است یک جلسه اضطراری مختص به کمبود تسلیحات برگزار کند.</p>
-                <a href="N1/news6.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| بین‌الملل</div>
-            <div class="news-content">
-                <h2>🏛 لایحه گالیگو: الزام رضایت والدین برای حساب شبکه‌های اجتماعی افراد زیر ۱۶ سال</h2>
-                <p>سناتور روبن گالیگو در حال معرفی قانونی است که پلتفرم‌های شبکه‌های اجتماعی را ملزم می‌کند تا پیش از ایجاد یا تداوم فعالیت حساب کاربری برای کاربران زیر ۱۶ سال، رضایت والدین را دریافت کنند.</p>
-                <a href="N1/news5.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <div class="news-content">
-                <h2>الجزیره: تنها یک یا دو موضوع در مذاکرات ایران و عمان باقی مانده است</h2>
-                <p>تنها یک یا دو موضوع در مذاکرات ایران و عمان حل نشده باقی مانده است و این مسائل به نظر نمی‌رسد چندان پیچیده باشند.</p>
-                <a href="N1/news4.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <div class="news-content">
-                <h2>نهایی شدن پیش‌نویس توافق درباره تنگه هرمز</h2>
-                <p>👈خبرگزاری آسوشیتدپرس: مذاکره‌کنندگان ایران و عمان پیش‌نویس توافق درباره تنگه هرمز را نهایی کرده‌اند؛ اقدامی که می‌تواند یک نقطه عطف احتمالی در بن‌بست مربوط به این مسیر حیاتی نفتی و کشتیرانی باشد.</p>
-                <a href="N1/news3.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <img src="N1/news2.jpg" alt="مذاکرات ایران و عمان">
-            <div class="news-content">
-                <h2>مذاکرات ایران و عمان درباره ترتیبات مشترک تنگه هرمز</h2>
-                <p>المیادین به نقل از منبع امنیتی-سیاسی ایرانی: مذاکرات ایران و عمان درباره ترتیبات مشترک برای مدیریت تنگه هرمز به مراحل مهمی رسیده است.</p>
-                <a href="N1/news2.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <img src="N1/news1.jpg" alt="حادثه بالگرد ترامپ">
-            <div class="news-content">
-                <h2>فوری: بالگرد ترامپ در آسمان واشنگتن دچار حادثه ایمنی شد</h2>
-                <p>رسانه‌های عبری گزارش دادند بالگرد دونالد ترامپ، رئیس جمهور آمریکا، روز گذشته هنگام حضور او در بالگرد، در آسمان واشنگتن درگیر یک حادثه ایمنی شد.</p>
-                <a href="N1/news1.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
+    <!-- صفحه‌بندی -->
+    <div class="pagination">
+        <a href="news2.html" class="page-arrow" title="صفحه بعد">‹ بعدی</a>
+        <span class="page-num active">۱</span>
+        <a href="news2.html" class="page-num">۲</a>
+        <a href="news2.html" class="page-arrow" title="صفحه بعد">بعدی ›</a>
     </div>
 
     <!-- فوتر -->
@@ -727,8 +438,6 @@
                 <a href="#">Sitemap</a>
             </div>
         </div>
-        
-        <!-- بخش پایین فوتر - سیاه کامل -->
         <div class="footer-bottom">
             <div class="copyright">
                 <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
@@ -744,7 +453,6 @@
             btn.classList.toggle('active');
             dropdown.classList.toggle('open');
         }
-        
         function toggleCategories(element) {
             const list = document.getElementById('categoryList');
             element.classList.toggle('open');
