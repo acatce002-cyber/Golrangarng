@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انتخاب‌های تبلیغاتی - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .section-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .section-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .section-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        /* کارت سرویس‌ها */
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .service-item {
+            background-color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-right: 3px solid #c0392b;
+            font-size: 13px;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .service-item:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 3px 10px rgba(192, 57, 43, 0.1);
+        }
+        
+        /* کارت‌های ویژه */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #856404;
+            line-height: 2;
+            text-align: justify;
+        }
+        .highlight-box strong {
+            color: #e67e22;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 2;
+            text-align: justify;
+        }
+        
+        /* چک‌باکس‌های تنظیمات */
+        .preferences-form {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #c0392b;
+        }
+        .preferences-form h3 {
+            margin: 0 0 20px 0;
+            color: #c0392b;
+            font-size: 18px;
+            text-align: center;
+            border: none;
+            padding: 0;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background-color: white;
+            border-radius: 8px;
+            border: 2px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            color: #333;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .checkbox-item:hover {
+            border-color: #c0392b;
+            background-color: #fff5f5;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #c0392b;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .save-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #27ae60, #16a085);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+        .save-btn:hover {
+            background: linear-gradient(135deg, #219a52, #148f77);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.5);
+        }
+        
+        /* کارت شبکه‌های تلویزیونی */
+        .tv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .tv-channel {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(192, 57, 43, 0.25);
+            transition: transform 0.2s;
+        }
+        .tv-channel:hover {
+            transform: translateY(-3px);
+        }
+        .tv-channel .tv-name {
+            font-family: Georgia, serif;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        /* دکمه‌های حریم خصوصی */
+        .privacy-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .privacy-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: white;
+            color: #c0392b;
+            border: 2px solid #c0392b;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            font-family: Georgia, serif;
+            transition: all 0.3s;
+            direction: ltr;
+        }
+        .privacy-btn:hover {
+            background-color: #c0392b;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+        }
+        
+        /* اطلاعات تماس */
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        
+        /* پیام پایانی */
+        .final-message {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .final-message h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        .final-message p {
+            color: white;
+            font-size: 14px;
+            line-height: 2;
+            margin: 8px 0;
+        }
+        .final-message .tagline {
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .service-list { grid-template-columns: 1fr; }
+            .tv-grid { grid-template-columns: 1fr; }
+            .privacy-buttons { flex-direction: column; }
+            .privacy-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">انتخاب‌های تبلیغاتی</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>📢 انتخاب‌ها و تنظیمات تبلیغاتی</h1>
+            
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: سپتامبر ۲۰۲۶
+            </div>
+            
+            <div class="page-intro">
+                در <strong>Golhaye Rangarang Media Network</strong>، تبلیغات به ما کمک می‌کند تا بخش قابل‌توجهی از خدمات خبری، محتوای محلی، برنامه‌های تلویزیونی و سایر خدمات دیجیتال خود را ارائه کنیم.
+                <br><br>
+                این صفحه توضیح می‌دهد که تبلیغات در خدمات گل‌های رنگارنگ چگونه کار می‌کند، چه اطلاعاتی ممکن است برای نمایش تبلیغات مرتبط استفاده شود و شما چگونه می‌توانید انتخاب‌های تبلیغاتی خود را مدیریت کنید.
+            </div>
+            
+            <!-- تبلیغات در گلهای رنگارنگ -->
+            <div class="section">
+                <h3 class="section-title">📺 تبلیغات در گل‌های رنگارنگ</h3>
+                <p class="section-description">
+                    ممکن است در برخی از خدمات ما تبلیغات نمایش داده شود، از جمله:
+                </p>
+                <div class="service-list">
+                    <div class="service-item">📰 Golhaye Rangarang News</div>
+                    <div class="service-item">🏘️ Las Ontras Local News</div>
+                    <div class="service-item">📺 Rangarang TV 1</div>
+                    <div class="service-item">📺 Rangarang TV 2</div>
+                    <div class="service-item">📺 Rangarang TV 3</div>
+                    <div class="service-item">📺 Rangarang TV 4</div>
+                    <div class="service-item">📧 Newsletterها</div>
+                    <div class="service-item">🛍️ Rangarang Online Store</div>
+                </div>
+                <p class="section-description">
+                    تبلیغات ممکن است توسط Golhaye Rangarang Media Network یا شرکای تبلیغاتی و فناوری‌های تبلیغاتی شخص ثالث ارائه شوند.
+                </p>
+            </div>
+            
+            <!-- Personalized Advertising -->
+            <div class="section">
+                <h3 class="section-title">🎯 تبلیغات شخصی‌سازی‌شده چیست؟</h3>
+                <p class="section-description">
+                    تبلیغات شخصی‌سازی‌شده، تبلیغاتی است که بر اساس برخی اطلاعات مربوط به فعالیت یا علایق احتمالی کاربر، مرتبط‌تر انتخاب می‌شوند.
+                </p>
+                <p class="section-description">
+                    برای مثال، ممکن است یک سیستم تبلیغاتی با استفاده از اطلاعاتی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>صفحاتی که مشاهده کرده‌اید</li>
+                    <li>موضوعاتی که بیشتر با آن‌ها تعامل داشته‌اید</li>
+                    <li>نوع دستگاه و مرورگر</li>
+                    <li>منطقه عمومی</li>
+                    <li>تعامل قبلی با یک تبلیغ</li>
+                    <li>اطلاعات مربوط به یک جلسه مرور</li>
+                    <li>شناسه‌های تبلیغاتی یا فناوری‌های مشابه</li>
+                </ul>
+                <p class="section-description">
+                    تشخیص دهد که چه نوع تبلیغی احتمالاً برای شما مرتبط‌تر است. این به معنی دانستن هویت واقعی شما در هر مورد نیست.
+                </p>
+                <p class="section-description">
+                    ما تلاش می‌کنیم استفاده از اطلاعات برای اهداف تبلیغاتی را مطابق با سیاست‌های حریم خصوصی و انتخاب‌های شما مدیریت کنیم.
+                </p>
+            </div>
+            
+            <!-- Your Ad Choices -->
+            <div class="section">
+                <h3 class="section-title">⚙️ انتخاب‌های شما</h3>
+                <p class="section-description">
+                    شما می‌توانید در بسیاری از موارد انتخاب کنید که تبلیغات شخصی‌سازی‌شده برای شما استفاده نشود.
+                </p>
+                <p class="section-description">
+                    انتخاب <strong>Opt Out of Personalized Advertising</strong> معمولاً به این معنی است که تبلیغات همچنان ممکن است نمایش داده شوند، اما تبلیغات بر اساس فعالیت قبلی شما کمتر شخصی‌سازی خواهند شد.
+                </p>
+                
+                <div class="highlight-box">
+                    <strong>⚠️ توجه مهم:</strong> غیرفعال کردن تبلیغات شخصی‌سازی‌شده به معنی حذف کامل تبلیغات نیست.
+                    <br><br>
+                    برای مثال، ممکن است همچنان تبلیغاتی مانند موارد زیر ببینید:
+                    <ul class="section-list" style="margin-top: 10px;">
+                        <li>تبلیغات عمومی</li>
+                        <li>تبلیغات مرتبط با محتوای همان صفحه</li>
+                        <li>تبلیغات مربوط به منطقه عمومی شما</li>
+                        <li>تبلیغات غیرشخصی‌سازی‌شده</li>
+                        <li>تبلیغات مربوط به محصولات و خدمات گل‌های رنگارنگ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Manage Advertising Preferences -->
+            <div class="section">
+                <h3 class="section-title">🛠️ مدیریت تنظیمات تبلیغاتی</h3>
+                <p class="section-description">
+                    شما می‌توانید تنظیمات تبلیغاتی خود را از طریق ابزارهای موجود در وب‌سایت مدیریت کنید. در صورت فعال بودن این قابلیت، گزینه‌هایی مانند موارد زیر ممکن است در اختیار شما قرار بگیرد:
+                </p>
+            </div>
+            
+            <div class="preferences-form">
+                <h3>⚙️ Advertising Preferences</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="personalized" checked>
+                        <span>Allow Personalized Advertising</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="limit-personalized">
+                        <span>Limit Personalized Advertising</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="ad-cookies" checked>
+                        <span>Allow Advertising Cookies</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="reject-ad-cookies">
+                        <span>Reject Advertising Cookies</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="measurement-cookies" checked>
+                        <span>Allow Measurement Cookies</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="manage-partners">
+                        <span>Manage Advertising Partners</span>
+                    </label>
+                </div>
+                <button class="save-btn" onclick="savePreferences()">✅ ذخیره تنظیمات</button>
+            </div>
+            
+            <!-- Advertising Cookies -->
+            <div class="section">
+                <h3 class="section-title">🍪 کوکی‌های تبلیغاتی</h3>
+                <p class="section-description">
+                    برخی از تبلیغات و فناوری‌های تبلیغاتی ممکن است از Cookie یا فناوری‌های مشابه استفاده کنند. این فناوری‌ها می‌توانند برای اهدافی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>نمایش تبلیغات</li>
+                    <li>محدود کردن تعداد نمایش یک تبلیغ</li>
+                    <li>اندازه‌گیری عملکرد تبلیغات</li>
+                    <li>تشخیص تعامل با تبلیغات</li>
+                    <li>جلوگیری از نمایش مکرر یک تبلیغ</li>
+                    <li>گزارش‌گیری آماری</li>
+                    <li>بهبود کمپین‌های تبلیغاتی</li>
+                </ul>
+                <p class="section-description">
+                    استفاده شوند. شما می‌توانید برخی از این فناوری‌ها را از طریق <a href="cookies.html" style="color: #c0392b; font-weight: bold;">Manage Cookies</a> مدیریت کنید.
+                </p>
+            </div>
+            
+            <!-- Contextual Advertising -->
+            <div class="section">
+                <h3 class="section-title">📄 Contextual Advertising</h3>
+                <p class="section-description">
+                    همه تبلیغات ما لزوماً شخصی‌سازی‌شده نیستند.
+                </p>
+                <p class="section-description">
+                    در Contextual Advertising، تبلیغ ممکن است بر اساس محتوای صفحه‌ای که در حال مشاهده آن هستید انتخاب شود، نه بر اساس سابقه فعالیت شما.
+                </p>
+                <p class="section-description">
+                    برای مثال، در یک مقاله درباره فناوری ممکن است تبلیغی مرتبط با یک محصول یا سرویس فناوری نمایش داده شود.
+                </p>
+                <p class="section-description">
+                    این نوع تبلیغات می‌تواند بدون استفاده از تاریخچه گسترده فعالیت شما نیز انجام شود.
+                </p>
+            </div>
+            
+            <!-- Advertising Partners -->
+            <div class="section">
+                <h3 class="section-title">🤝 شرکای تبلیغاتی</h3>
+                <p class="section-description">
+                    ممکن است برای ارائه، اندازه‌گیری یا بهینه‌سازی تبلیغات با شرکت‌های شخص ثالث همکاری کنیم.
+                </p>
+                <p class="section-description">
+                    این شرکت‌ها ممکن است فناوری‌هایی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>Cookies</li>
+                    <li>Pixels</li>
+                    <li>SDKs</li>
+                    <li>Advertising IDs</li>
+                    <li>Similar Technologies</li>
+                </ul>
+                <p class="section-description">
+                    را مورد استفاده قرار دهند. شرکای تبلیغاتی باید مطابق توافقات و الزامات مربوط به خدمات تبلیغاتی خود عمل کنند. فهرست شرکای فعال ممکن است در طول زمان تغییر کند.
+                </p>
+            </div>
+            
+            <!-- Do Not Sell -->
+            <div class="section">
+                <h3 class="section-title">🚫 Do Not Sell or Share My Personal Information</h3>
+                <p class="section-description">
+                    در صورتی که قوانین مربوط به حریم خصوصی در حوزه قضایی شما چنین حقی را فراهم کنند، ممکن است بتوانید درخواست کنید که برخی اطلاعات شخصی شما برای اهدافی که در قوانین مربوطه تعریف شده‌اند، فروخته یا به اشتراک گذاشته نشود.
+                </p>
+                <p class="section-description">
+                    این گزینه ممکن است با عنوان‌هایی مانند:
+                </p>
+                <ul class="section-list">
+                    <li><strong>Do Not Sell or Share My Personal Information</strong></li>
+                    <li><strong>Your Privacy Choices</strong></li>
+                </ul>
+                <p class="section-description">
+                    نمایش داده شود. در صورت ارائه این گزینه، می‌توانید از طریق لینک یا ابزار مربوطه درخواست خود را ثبت کنید.
+                </p>
+            </div>
+            
+            <!-- Global Privacy Control -->
+            <div class="section">
+                <h3 class="section-title">🌐 Global Privacy Control</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ ممکن است از سیگنال‌های حریم خصوصی مورد پشتیبانی مرورگرها، از جمله <strong>Global Privacy Control (GPC)</strong>، در مواردی که از نظر فنی و قانونی قابل اجرا باشد، پشتیبانی کند.
+                </p>
+                <p class="section-description">
+                    در صورت شناسایی یک سیگنال معتبر، ممکن است تنظیمات مربوط به فروش یا اشتراک‌گذاری اطلاعات مطابق الزامات قانونی قابل اجرا اعمال شود.
+                </p>
+                <p class="section-description">
+                    عملکرد این قابلیت ممکن است بسته به مرورگر، دستگاه و حوزه قضایی متفاوت باشد.
+                </p>
+            </div>
+            
+            <!-- Advertising on Rangarang TV -->
+            <div class="section">
+                <h3 class="section-title">📺 تبلیغات در شبکه‌های تلویزیونی</h3>
+                <p class="section-description">
+                    تبلیغات در شبکه‌های گل‌های رنگارنگ ممکن است به روش‌های مختلفی ارائه شود:
+                </p>
+                
+                <div class="tv-grid">
+                    <div class="tv-channel">
+                        <div class="tv-name">Rangarang TV 1</div>
+                    </div>
+                    <div class="tv-channel">
+                        <div class="tv-name">Rangarang TV 2</div>
+                    </div>
+                    <div class="tv-channel">
+                        <div class="tv-name">Rangarang TV 3</div>
+                    </div>
+                    <div class="tv-channel">
+                        <div class="tv-name">Rangarang TV 4</div>
+                    </div>
+                </div>
+                
+                <p class="section-description">
+                    این روش‌ها می‌توانند شامل موارد زیر باشند:
+                </p>
+                <ul class="section-list">
+                    <li>تبلیغات سنتی تلویزیونی</li>
+                    <li>تبلیغات اسپانسرشیپ</li>
+                    <li>تبلیغات داخل برنامه</li>
+                    <li>تبلیغات دیجیتال</li>
+                    <li>تبلیغات مبتنی بر محتوای برنامه</li>
+                    <li>تبلیغات مبتنی بر منطقه</li>
+                    <li>تبلیغات متصل به سرویس‌های دیجیتال</li>
+                </ul>
+                <p class="section-description">
+                    در صورت استفاده از فناوری‌های تبلیغاتی دیجیتال، ممکن است گزینه‌های جداگانه‌ای برای مدیریت تبلیغات در دستگاه یا سرویس مورد استفاده شما وجود داشته باشد.
+                </p>
+            </div>
+            
+            <!-- Advertising on WhatsApp -->
+            <div class="section">
+                <h3 class="section-title">💬 تبلیغات در واتس‌اپ</h3>
+                <p class="section-description">
+                    Rangarang WhatsApp News ممکن است برای ارتباط با مخاطبان و ارسال اخبار مورد استفاده قرار گیرد.
+                </p>
+                <p class="section-description">
+                    کانال‌های WhatsApp ممکن است تحت قوانین، تنظیمات و فناوری‌های خود WhatsApp فعالیت کنند.
+                </p>
+                <p class="section-description">
+                    عضویت یا تعامل با کانال WhatsApp به این معنی نیست که شما لزوماً تبلیغات شخصی‌سازی‌شده دریافت خواهید کرد.
+                </p>
+                <p class="section-description">
+                    برای کنترل تجربه تبلیغاتی خود در WhatsApp، ممکن است لازم باشد تنظیمات مربوط به حساب و برنامه WhatsApp را نیز بررسی کنید.
+                </p>
+            </div>
+            
+            <!-- Advertising in Newsletters -->
+            <div class="section">
+                <h3 class="section-title">📧 تبلیغات در خبرنامه‌ها</h3>
+                <p class="section-description">
+                    Newsletterهای گل‌های رنگارنگ ممکن است شامل تبلیغات یا محتوای اسپانسرشده باشند.
+                </p>
+                <p class="section-description">
+                    ممکن است بتوانیم اطلاعاتی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>باز شدن ایمیل</li>
+                    <li>کلیک روی لینک</li>
+                    <li>تعامل با محتوای Newsletter</li>
+                </ul>
+                <p class="section-description">
+                    را برای اندازه‌گیری عملکرد Newsletter بررسی کنیم.
+                </p>
+                <p class="section-description">
+                    شما می‌توانید هر زمان که بخواهید از طریق گزینه <strong>Unsubscribe</strong> در انتهای ایمیل، دریافت Newsletter را متوقف کنید.
+                </p>
+            </div>
+            
+            <!-- Advertising in Online Store -->
+            <div class="section">
+                <h3 class="section-title">🛍️ تبلیغات در فروشگاه اینترنتی</h3>
+                <p class="section-description">
+                    Rangarang Online Store ممکن است تبلیغات یا پیشنهادهای تجاری مربوط به محصولات، تخفیف‌ها و خدمات فروشگاه نمایش دهد. این موارد می‌توانند شامل:
+                </p>
+                <ul class="section-list">
+                    <li>محصولات جدید</li>
+                    <li>تخفیف‌ها</li>
+                    <li>پیشنهادهای ویژه</li>
+                    <li>محصولات مرتبط</li>
+                    <li>کمپین‌های فصلی</li>
+                    <li>پیشنهادهای تبلیغاتی</li>
+                </ul>
+                <p class="section-description">
+                    باشند. تنظیمات تبلیغاتی سایت خبری لزوماً تمام تنظیمات مربوط به فروشگاه را تغییر نمی‌دهد.
+                </p>
+            </div>
+            
+            <!-- Third-Party Advertising -->
+            <div class="section">
+                <h3 class="section-title">🌐 تبلیغات شخص ثالث</h3>
+                <p class="section-description">
+                    هنگامی که تبلیغات توسط یک شرکت شخص ثالث ارائه می‌شود، آن شرکت ممکن است اطلاعات محدودی را مستقیماً از مرورگر یا دستگاه شما دریافت کند.
+                </p>
+                <p class="section-description">
+                    این اطلاعات ممکن است برای مواردی مانند نمایش یا اندازه‌گیری تبلیغات استفاده شود.
+                </p>
+                <p class="section-description">
+                    گل‌های رنگارنگ کنترل کاملی بر فناوری‌های شرکت‌های مستقل ندارد. به همین دلیل توصیه می‌کنیم علاوه بر تنظیمات ما، تنظیمات حریم خصوصی مرورگر، دستگاه و سرویس‌های شخص ثالث مورد استفاده خود را نیز بررسی کنید.
+                </p>
+            </div>
+            
+            <!-- Turning Off Advertising Cookies -->
+            <div class="section">
+                <h3 class="section-title">🔕 غیرفعال کردن کوکی‌های تبلیغاتی</h3>
+                <p class="section-description">
+                    اگر Advertising Cookies را غیرفعال کنید:
+                </p>
+                <ul class="section-list">
+                    <li>ممکن است تبلیغات همچنان نمایش داده شوند.</li>
+                    <li>ممکن است تبلیغات کمتر مرتبط باشند.</li>
+                    <li>ممکن است تعداد تبلیغات الزاماً کاهش پیدا نکند.</li>
+                    <li>برخی تنظیمات ممکن است فقط روی همان مرورگر یا دستگاه اعمال شوند.</li>
+                    <li>حذف Cookies ممکن است تنظیمات قبلی شما را پاک کند.</li>
+                </ul>
+                <p class="section-description">
+                    به همین دلیل، پس از حذف Cookies ممکن است دوباره از شما خواسته شود انتخاب‌های تبلیغاتی خود را مشخص کنید.
+                </p>
+            </div>
+            
+            <!-- Device and Browser Settings -->
+            <div class="section">
+                <h3 class="section-title">📱 تنظیمات دستگاه و مرورگر</h3>
+                <p class="section-description">
+                    علاوه بر تنظیمات گل‌های رنگارنگ، می‌توانید از ابزارهای داخلی مرورگر یا دستگاه خود برای مدیریت برخی فناوری‌های تبلیغاتی استفاده کنید. این تنظیمات می‌توانند شامل:
+                </p>
+                <ul class="section-list">
+                    <li>مسدود کردن Third-Party Cookies</li>
+                    <li>حذف Cookies</li>
+                    <li>محدود کردن Tracking</li>
+                    <li>فعال کردن Privacy Controls</li>
+                    <li>محدود کردن Advertising IDs</li>
+                    <li>استفاده از Private Browsing</li>
+                </ul>
+                <p class="section-description">
+                    باشند. عملکرد این گزینه‌ها در مرورگرها و دستگاه‌های مختلف متفاوت است.
+                </p>
+            </div>
+            
+            <!-- Your Choices Do Not Affect News Access -->
+            <div class="info-box">
+                <strong>📰 انتخاب‌های شما بر دسترسی به اخبار تأثیر نمی‌گذارد:</strong>
+                <br><br>
+                تا حد امکان، انتخاب شما برای محدود کردن تبلیغات شخصی‌سازی‌شده نباید مانع دسترسی شما به محتوای عمومی خبری گل‌های رنگارنگ شود.
+                <br><br>
+                با این حال، برخی خدمات یا قابلیت‌های خاص ممکن است برای عملکرد صحیح خود به Cookie یا فناوری مشابه نیاز داشته باشند. در چنین مواردی، ممکن است بعضی قابلیت‌ها پس از غیرفعال کردن فناوری‌های خاص به‌درستی کار نکنند.
+            </div>
+            
+            <!-- Children and Advertising -->
+            <div class="section">
+                <h3 class="section-title">👶 کودکان و تبلیغات</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ آگاهانه برای کودکان خردسال تبلیغات شخصی‌سازی‌شده بر اساس اطلاعات شخصی آن‌ها ارائه نمی‌کند، مگر در مواردی که قانون مربوطه اجازه دهد و سازوکارهای لازم وجود داشته باشد.
+                </p>
+                <p class="section-description">
+                    اگر فکر می‌کنید اطلاعات مربوط به یک کودک به‌طور نادرست برای اهداف تبلیغاتی جمع‌آوری شده است، می‌توانید با ما تماس بگیرید.
+                </p>
+            </div>
+            
+            <!-- Changes to Ad Choices -->
+            <div class="section">
+                <h3 class="section-title">🔄 تغییرات در Ad Choices</h3>
+                <p class="section-description">
+                    ممکن است فناوری‌های تبلیغاتی، شرکای تبلیغاتی یا قوانین مربوط به تبلیغات در طول زمان تغییر کنند. به همین دلیل ممکن است:
+                </p>
+                <ul class="section-list">
+                    <li>شرکای تبلیغاتی جدید اضافه شوند.</li>
+                    <li>برخی شرکای قبلی حذف شوند.</li>
+                    <li>روش‌های تبلیغاتی تغییر کنند.</li>
+                    <li>گزینه‌های جدید کنترل حریم خصوصی اضافه شوند.</li>
+                    <li>تنظیمات Ad Choices به‌روزرسانی شوند.</li>
+                </ul>
+                <p class="section-description">
+                    هرگونه تغییر مهم در این صفحه یا سیاست‌های مرتبط، در صورت لزوم از طریق وب‌سایت یا روش‌های مناسب به اطلاع کاربران خواهد رسید.
+                </p>
+            </div>
+            
+            <!-- Questions About Advertising -->
+            <div class="section">
+                <h3 class="section-title">❓ سؤالی درباره تبلیغات دارید؟</h3>
+                <p class="section-description">
+                    اگر درباره تبلیغات، تبلیغات شخصی‌سازی‌شده، Cookies یا انتخاب‌های حریم خصوصی خود سؤال دارید، می‌توانید با تیم Privacy & Advertising ما تماس بگیرید.
+                </p>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📞 تماس با ما</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+            </div>
+            
+            <!-- دکمه‌های حریم خصوصی -->
+            <div class="privacy-buttons">
+                <a href="privacy.html" class="privacy-btn">Privacy Policy</a>
+                <a href="cookies.html" class="privacy-btn">Manage Cookies</a>
+                <a href="#" class="privacy-btn">Your Privacy Choices</a>
+                <a href="terms.html" class="privacy-btn">Terms of Use</a>
+                <a href="accessibility.html" class="privacy-btn">Accessibility</a>
+                <a href="about.html" class="privacy-btn">Contact Us</a>
+            </div>
+            
+            <!-- پیام پایانی -->
+            <div class="final-message">
+                <h3>💪 انتخاب‌های تبلیغاتی شما مهم است</h3>
+                <p>
+                    گل‌های رنگارنگ تلاش می‌کند میان ارائه یک تجربه خبری مناسب، حفظ حریم خصوصی کاربران و تأمین منابع مالی لازم برای تولید محتوای خبری تعادل برقرار کند.
+                </p>
+                <p>
+                    شما می‌توانید انتخاب کنید که تا چه اندازه تبلیغات شخصی‌سازی‌شده برای شما استفاده شود.
+                </p>
+                <p class="tagline">
+                    خبر برای همه. انتخاب‌های حریم خصوصی برای شما.
+                </p>
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, #27ae60, #16a085); color: white; padding: 15px 30px; border-radius: 12px; font-size: 14px; font-weight: bold; box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4); z-index: 9999; transition: transform 0.4s ease; font-family: 'IRANSans', Tahoma, sans-serif;">✅ تنظیمات شما ذخیره شد</div>
+
+    <script>
+        function savePreferences() {
+            const prefs = {
+                personalized: document.getElementById('personalized').checked,
+                limitPersonalized: document.getElementById('limit-personalized').checked,
+                adCookies: document.getElementById('ad-cookies').checked,
+                rejectAdCookies: document.getElementById('reject-ad-cookies').checked,
+                measurementCookies: document.getElementById('measurement-cookies').checked,
+                managePartners: document.getElementById('manage-partners').checked,
+                date: new Date().toISOString()
+            };
+            
+            localStorage.setItem('adPreferences', JSON.stringify(prefs));
+            
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(100px)';
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
