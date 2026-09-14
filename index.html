@@ -161,69 +161,32 @@
             position: absolute; right: 0; font-size: 10px; top: 10px;
         }
         
-        /* خبرها */
-        .container { max-width: 800px; width: 100%; margin: 0 auto 20px auto; padding: 0 15px; flex: 1; }
-        .news-box {
-            background-color: white; padding: 20px; margin-bottom: 20px;
-            border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex; align-items: center; gap: 20px; position: relative;
+        /* دکمه اخبار */
+        .go-news-wrapper {
+            max-width: 800px; width: 100%;
+            margin: 20px auto 30px auto; padding: 0 15px;
         }
-        .news-topic {
-            position: absolute; top: 12px; right: 15px;
-            font-size: 11px; color: #c0392b; font-weight: bold;
-            background-color: #fff5f5; padding: 3px 10px;
-            border-radius: 12px; border: 1px solid #fadbd8;
-        }
-        .news-box img { width: 150px; height: 100px; object-fit: cover; border-radius: 5px; }
-        .news-content { width: 100%; padding-top: 15px; }
-        .news-content h2 { margin: 0 0 10px 0; color: #333; font-size: 17px; line-height: 1.6; }
-        .news-content p { color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 13px; display: inline-block; }
-        .read-more:hover { background-color: #2980b9; }
-        
-        /* صفحه‌بندی */
-        .pagination {
-            max-width: 800px; width: 100%; margin: 20px auto 30px auto;
-            padding: 0 15px;
-            display: flex; justify-content: center; align-items: center; gap: 8px;
-        }
-        .pagination a, .pagination span {
-            display: flex; align-items: center; justify-content: center;
-            min-width: 44px; height: 44px;
-            border-radius: 10px;
-            font-family: 'IRANSans', sans-serif;
-            font-size: 15px; font-weight: bold;
-            text-decoration: none;
-            transition: all 0.2s;
-            padding: 0 14px;
-        }
-        .page-num {
-            background-color: white;
-            color: #333;
-            border: 2px solid #e0e0e0;
-        }
-        .page-num:hover {
-            border-color: #c0392b;
-            color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.15);
-        }
-        .page-num.active {
+        .go-news-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
             background: linear-gradient(135deg, #c0392b, #e74c3c);
-            color: white;
-            border-color: #c0392b;
-            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+            color: white; text-decoration: none;
+            padding: 20px 25px; border-radius: 14px;
+            font-size: 17px; font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+            transition: all 0.3s;
+            border: 2px solid #c0392b;
         }
-        .page-arrow {
-            background-color: white;
-            color: #c0392b;
-            border: 2px solid #e0e0e0;
+        .go-news-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.5);
+            background: linear-gradient(135deg, #a93226, #c0392b);
         }
-        .page-arrow:hover {
-            background-color: #c0392b;
-            color: white;
-            border-color: #c0392b;
+        .go-news-btn .arrow-icon {
+            font-size: 22px;
+            transition: transform 0.3s;
         }
+        .go-news-btn:hover .arrow-icon { transform: translateX(-5px); }
         
         /* فوتر */
         footer { background-color: #eaeaea; padding: 25px 15px 0 15px; margin-top: auto; }
@@ -251,11 +214,8 @@
             .ad-brand { font-size: 26px; letter-spacing: 3px; }
             .ad-grg { font-size: 14px; padding: 3px 8px; }
             .ad-slogan { font-size: 11px; padding: 4px 12px; }
-            .news-box { flex-direction: column; align-items: flex-start; }
-            .news-box img { width: 100%; height: 180px; }
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
-            .pagination a, .pagination span { min-width: 38px; height: 38px; font-size: 13px; padding: 0 10px; }
         }
     </style>
 </head>
@@ -352,71 +312,12 @@
         </div>
     </div>
 
-    <!-- خبرها - صفحه ۱ -->
-    <div class="container">
-
-        <div class="news-box">
-            <div class="news-topic">| اقتصادی</div>
-            <div class="news-content">
-                <h2>🛢️ رویترز: قیمت نفت بیش از ۲٪ افزایش یافت؛ برنت به ۱۰۶.۷۲ دلار رسید</h2>
-                <p>قیمت نفت روز دوشنبه بیش از ۲٪ افزایش یافت و قیمت برنت به ۱۰۶.۷۲ دلار و نفت WTI به ۱۰۲.۱۵ دلار در هر بشکه رسید؛ هم‌زمان تشدید حملات در خاورمیانه نگرانی‌ها درباره اختلال در عرضه را افزایش داده است.</p>
-                <a href="N1/news14.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| بین‌الملل</div>
-            <div class="news-content">
-                <h2>🔴 کوشنر: اگر اوکراین تا خط موردنظر پوتین عقب‌نشینی کند، توافق ممکن است</h2>
-                <p>جرد کوشنر گفته اگر اوکراین تا خطی که ولادیمیر پوتین تعیین کرده عقب‌نشینی کند، امکان نهایی شدن توافق وجود دارد؛ اما کی‌یف حاضر به پذیرش این شرط نیست. او همچنین جنگ را «بازی با حاصل جمع منفی» توصیف کرده و گفته در چنین وضعیتی همه طرف‌ها متضرر می‌شوند.</p>
-                <a href="N1/news11.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <div class="news-content">
-                <h2>👈سی‌ان‌ان: افزایش چشمگیر ساخت‌وساز در سایت هسته‌ای «کوه کلنگ» در نزدیکی نطنز</h2>
-                <p>تحلیل تصاویر ماهواره‌ای شبکه CNN نشان می‌دهد که ساخت‌وساز در سایت هسته‌ای «کوه کلنگ» (Pickaxe Mountain) در نزدیکی نطنز، که در عمق زمین قرار دارد، افزایش چشمگیری داشته.</p>
-                <a href="N1/news10.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <div class="news-content">
-                <h2>🔰 وال استریت ژورنال: جدی‌تر شدن ایده تغییر رژیم ایران در واشینگتن</h2>
-                <p>وال استریت ژورنال در گزارشی اعلام کرد ایده تغییر رژیم ایران دوباره در واشینگتن جدی شده است، زیرا توافق و همزیستی دیگر ممکن به نظر نمی‌رسد و ترکیب فشار اقتصادی و محاصره دریایی می‌تواند به پیروزی ختم شود.</p>
-                <a href="N1/news10.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| نظامی</div>
-            <div class="news-content">
-                <h2>🔴 سنتکام: درگیری شدید نیروهای آمریکایی و سپاه پاسداران در آب‌های منطقه</h2>
-                <p>فرماندهی مرکزی ایالات متحده (CENTCOM) اعلام کرد نیروهای آمریکایی به سه نفتکش حامل نفت خام ایران حمله کردند؛ هم‌زمان سپاه پاسداران موشک‌های بالستیک به سمت دو ناو جنگی آمریکا شلیک کرد.</p>
-                <a href="N1/news9.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-        <div class="news-box">
-            <div class="news-topic">| سیاسی</div>
-            <div class="news-content">
-                <h2>آکسیوس: توافق ایران، عمان و آمریکا در انتظار تأیید نهایی شورای عالی امنیت ملی</h2>
-                <p>باراک راوید، خبرنگار آکسیوس، به نقل از یک دیپلمات از کشور میانجی گزارش داد که مذاکره‌کنندگان ایرانی در انتظار تأیید نهایی شورای عالی امنیت ملی درباره توافق پیشِ‌رو با عمان و آمریکا هستند.</p>
-                <a href="N1/news8.html" class="read-more">ادامه مطلب</a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- صفحه‌بندی -->
-    <div class="pagination">
-        <a href="news2.html" class="page-arrow" title="صفحه بعد">‹ بعدی</a>
-        <span class="page-num active">۱</span>
-        <a href="news2.html" class="page-num">۲</a>
-        <a href="news2.html" class="page-arrow" title="صفحه بعد">بعدی ›</a>
+    <!-- دکمه رفتن به اخبار -->
+    <div class="go-news-wrapper">
+        <a href="news2.html" class="go-news-btn">
+            <span>📰 مشاهده همه اخبار</span>
+            <span class="arrow-icon">←</span>
+        </a>
     </div>
 
     <!-- فوتر -->
