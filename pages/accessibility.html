@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دسترسی‌پذیری و زیرنویس - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-right: 4px solid #3498db;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+        }
+        .section-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #3498db;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .section-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .section-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        /* کارت‌های CC و امکانات */
+        .cc-box {
+            background: linear-gradient(135deg, #ffffff, #f0f7ff);
+            border-right: 4px solid #3498db;
+            padding: 20px 22px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .cc-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-family: Georgia, serif;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        .cc-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            text-align: justify;
+        }
+        
+        /* منوی پخش‌کننده */
+        .player-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 18px 0;
+        }
+        .player-option {
+            background-color: white;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #3498db;
+            font-family: Georgia, serif;
+            direction: ltr;
+            transition: all 0.2s;
+        }
+        .player-option:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* شبکه‌های تلویزیونی */
+        .tv-channel-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-right: 4px solid #3498db;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+        }
+        .tv-channel-card:hover {
+            transform: translateX(-3px);
+        }
+        .tv-channel-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #3498db;
+            margin: 0 0 6px 0;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .tv-channel-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0;
+        }
+        
+        /* هشدار */
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #856404;
+            line-height: 2;
+            text-align: justify;
+        }
+        .warning-box strong {
+            color: #e67e22;
+        }
+        
+        /* دکمه Contact */
+        .contact-accessibility {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+        }
+        .contact-accessibility h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-accessibility p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-accessibility .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        .accessibility-btn {
+            display: inline-block;
+            background-color: white;
+            color: #3498db;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+            font-family: Georgia, serif;
+        }
+        .accessibility-btn:hover {
+            background-color: #f0f7ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* اطلاعات تماس */
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        .contact-box .tagline {
+            font-style: italic;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+        
+        /* صفحات مرتبط */
+        .related-pages {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #3498db;
+        }
+        .related-pages h3 {
+            margin: 0 0 20px 0;
+            color: #3498db;
+            font-size: 17px;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #eee;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.15);
+        }
+        .related-card .rc-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .related-card .rc-desc {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.7;
+            display: block;
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .related-grid { grid-template-columns: 1fr; }
+            .player-menu { flex-direction: column; }
+            .player-option { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">دسترسی‌پذیری و زیرنویس</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>♿ دسترسی‌پذیری و زیرنویس</h1>
+            
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: ۱۴ سپتامبر ۲۰۲۶
+            </div>
+            
+            <div class="page-intro">
+                در <strong>گل‌های رنگارنگ (Golhaye Rangarang)</strong> تلاش می‌کنیم اخبار، برنامه‌های تلویزیونی، ویدئوها، گزارش‌ها و خدمات دیجیتال ما برای بیشترین تعداد ممکن از مخاطبان قابل دسترسی باشد.
+                <br><br>
+                دسترسی آسان به اطلاعات خبری برای همه کاربران، صرف‌نظر از نحوه استفاده آن‌ها از اینترنت یا دستگاه‌های دیجیتال، بخش مهمی از خدمات ماست.
+                <br><br>
+                این صفحه توضیح می‌دهد که گل‌های رنگارنگ چه امکاناتی برای دسترسی‌پذیری ارائه می‌کند و چگونه می‌توانید از قابلیت‌های <strong>Closed Captioning (CC)</strong>، زیرنویس و سایر ابزارهای دسترسی استفاده کنید.
+            </div>
+            
+            <!-- دسترسی‌پذیری در گلهای رنگارنگ -->
+            <div class="section">
+                <h3 class="section-title">♿ دسترسی‌پذیری در گل‌های رنگارنگ</h3>
+                <p class="section-description">
+                    امکانات دسترسی‌پذیری گل‌های رنگارنگ می‌تواند بخش‌های مختلف مجموعه را پوشش دهد، از جمله:
+                </p>
+                <ul class="section-list">
+                    <li>وب‌سایت خبری گل‌های رنگارنگ</li>
+                    <li>اخبار محلی لاسونتراس</li>
+                    <li>ویدئوهای خبری</li>
+                    <li>پخش زنده</li>
+                    <li>چهار شبکه تلویزیونی</li>
+                    <li>برنامه‌های ضبط‌شده</li>
+                    <li>گزارش‌های ویژه</li>
+                    <li>فروشگاه اینترنتی</li>
+                    <li>محتوای متنی و تصویری</li>
+                </ul>
+                <p class="section-description">
+                    ما به صورت مداوم در تلاش هستیم تجربه استفاده از خدمات خود را برای کاربران مختلف بهبود دهیم.
+                </p>
+            </div>
+            
+            <!-- Closed Captions چیست؟ -->
+            <div class="section">
+                <h3 class="section-title">📺 Closed Captions چیست؟</h3>
+                <div class="cc-box">
+                    <div class="cc-badge">CC</div>
+                    <p class="cc-text">
+                        <strong>Closed Captions (CC)</strong> یا زیرنویس بسته، متنی است که همزمان با پخش ویدئو یا برنامه تلویزیونی روی صفحه نمایش داده می‌شود.
+                    </p>
+                </div>
+                <p class="section-description">
+                    Closed Captions می‌تواند علاوه بر گفت‌وگوها، اطلاعات دیگری مانند:
+                </p>
+                <ul class="section-list">
+                    <li>صدای محیط</li>
+                    <li>موسیقی</li>
+                    <li>افکت‌های صوتی</li>
+                    <li>صدای زنگ تلفن</li>
+                    <li>تشویق تماشاگران</li>
+                    <li>هشدارها</li>
+                    <li>نام گوینده یا سخنران</li>
+                </ul>
+                <p class="section-description">
+                    را نیز در صورت نیاز نمایش دهد. این قابلیت به‌خصوص برای افرادی که ناشنوا یا کم‌شنوا هستند طراحی شده است، اما هر کاربری می‌تواند از آن استفاده کند.
+                </p>
+            </div>
+            
+            <!-- فعال کردن CC -->
+            <div class="section">
+                <h3 class="section-title">🔘 فعال کردن CC در ویدئوها</h3>
+                <p class="section-description">
+                    در ویدئوهای پشتیبانی‌شده، می‌توانید با انتخاب گزینه <strong>CC</strong> زیرنویس را فعال کنید.
+                </p>
+                <p class="section-description">
+                    در برخی پخش‌کننده‌ها ممکن است گزینه‌های زیر نیز در دسترس باشند:
+                </p>
+                <div class="player-menu">
+                    <span class="player-option">⚙ Settings</span>
+                    <span class="player-option">Subtitles</span>
+                    <span class="player-option">Captions</span>
+                    <span class="player-option">Audio</span>
+                    <span class="player-option">Playback</span>
+                </div>
+                <p class="section-description">
+                    گزینه‌های موجود ممکن است بسته به دستگاه، مرورگر، برنامه یا نوع محتوای موردنظر متفاوت باشند.
+                </p>
+            </div>
+            
+            <!-- زیرنویس در شبکه‌های تلویزیونی -->
+            <div class="section">
+                <h3 class="section-title">📡 زیرنویس در شبکه‌های تلویزیونی</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ چهار شبکه تلویزیونی دارد:
+                </p>
+                
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 1</p>
+                    <p class="tv-channel-desc">اخبار و رویدادهای مهم داخلی و بین‌المللی.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 2</p>
+                    <p class="tv-channel-desc">اخبار محلی و منطقه‌ای لاسونتراس.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 3</p>
+                    <p class="tv-channel-desc">اقتصاد، فناوری و کسب‌وکار.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 4</p>
+                    <p class="tv-channel-desc">ورزش، فرهنگ و سرگرمی.</p>
+                </div>
+                
+                <p class="section-description">
+                    در برنامه‌ها و پخش‌هایی که Closed Captions ارائه می‌شود، علامت <strong>CC</strong> در رابط پخش قابل مشاهده خواهد بود.
+                </p>
+                <p class="section-description">
+                    در برخی برنامه‌های زنده، ممکن است زیرنویس با چند ثانیه تأخیر نسبت به صدا نمایش داده شود.
+                </p>
+            </div>
+            
+            <!-- زیرنویس در پخش زنده -->
+            <div class="section">
+                <h3 class="section-title">📻 زیرنویس در پخش زنده</h3>
+                <p class="section-description">
+                    در برنامه‌های زنده، زیرنویس ممکن است توسط سیستم‌های خودکار، اپراتورهای زیرنویس زنده یا سایر فناوری‌های مرتبط تولید شود.
+                </p>
+                <p class="section-description">
+                    به دلیل ماهیت پخش زنده، ممکن است:
+                </p>
+                <ul class="section-list">
+                    <li>زیرنویس با تأخیر نمایش داده شود؛</li>
+                    <li>بعضی کلمات اشتباه تشخیص داده شوند؛</li>
+                    <li>بخشی از گفت‌وگو از دست برود؛</li>
+                    <li>زیرنویس برای مدت کوتاهی قطع شود.</li>
+                </ul>
+                <p class="section-description">
+                    تیم فنی و محتوایی گل‌های رنگارنگ تلاش می‌کند کیفیت زیرنویس‌های زنده را تا حد امکان حفظ کند.
+                </p>
+            </div>
+            
+            <!-- زبان‌های زیرنویس -->
+            <div class="section">
+                <h3 class="section-title">🌐 زبان‌های زیرنویس</h3>
+                <p class="section-description">
+                    بسته به نوع برنامه و پلتفرم، ممکن است زیرنویس در یک یا چند زبان ارائه شود.
+                </p>
+                <p class="section-description">
+                    زبان اصلی محتوای تلویزیونی و خبری گل‌های رنگارنگ ممکن است انگلیسی باشد. در برخی محتوای ویژه ممکن است زبان‌های اضافی نیز ارائه شوند.
+                </p>
+                <p class="section-description">
+                    در صورت وجود چند زبان، گزینه زبان موردنظر در منوی <strong>Subtitles / Captions</strong> نمایش داده خواهد شد.
+                </p>
+            </div>
+            
+            <!-- Transcript -->
+            <div class="section">
+                <h3 class="section-title">📄 Transcript</h3>
+                <p class="section-description">
+                    برای برخی گزارش‌ها و ویدئوهای خبری، ممکن است متن کامل یا خلاصه‌ای از محتوای گفتاری نیز ارائه شود.
+                </p>
+                <p class="section-description">
+                    این متن می‌تواند به کاربران کمک کند:
+                </p>
+                <ul class="section-list">
+                    <li>محتوای ویدئو را بدون صدا دنبال کنند؛</li>
+                    <li>بخش خاصی از گزارش را پیدا کنند؛</li>
+                    <li>اطلاعات را راحت‌تر مطالعه کنند؛</li>
+                    <li>از ابزارهای کمکی برای خواندن محتوا استفاده کنند.</li>
+                </ul>
+                <p class="section-description">
+                    ترنسکریپت ممکن است برای همه ویدئوها در دسترس نباشد.
+                </p>
+            </div>
+            
+            <!-- سازگاری با صفحه‌خوان‌ها -->
+            <div class="section">
+                <h3 class="section-title">🔊 سازگاری با صفحه‌خوان‌ها</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ تلاش می‌کند ساختار وب‌سایت را به گونه‌ای طراحی کند که با فناوری‌های کمکی مانند Screen Readers سازگار باشد.
+                </p>
+                <p class="section-description">این موضوع می‌تواند شامل:</p>
+                <ul class="section-list">
+                    <li>ساختار مناسب عنوان‌ها</li>
+                    <li>متن جایگزین تصاویر</li>
+                    <li>برچسب‌گذاری عناصر تعاملی</li>
+                    <li>ترتیب منطقی حرکت بین عناصر</li>
+                    <li>لینک‌های قابل تشخیص</li>
+                    <li>فرم‌های قابل استفاده</li>
+                    <li>پیام‌های واضح برای خطاها</li>
+                </ul>
+                <p class="section-description">باشد.</p>
+            </div>
+            
+            <!-- متن جایگزین تصاویر -->
+            <div class="section">
+                <h3 class="section-title">🖼️ متن جایگزین تصاویر</h3>
+                <p class="section-description">
+                    در موارد مناسب، تصاویر خبری و تصاویر موجود در صفحات می‌توانند دارای <strong>Alternative Text (Alt Text)</strong> باشند.
+                </p>
+                <p class="section-description">
+                    Alt Text توضیح کوتاهی از محتوای تصویر است که می‌تواند توسط صفحه‌خوان‌ها خوانده شود.
+                </p>
+                <p class="section-description">
+                    برای تصاویر تزئینی، ممکن است متن جایگزین خالی یا مناسب استفاده شود تا از ایجاد اطلاعات غیرضروری برای کاربران جلوگیری شود.
+                </p>
+            </div>
+            
+            <!-- اندازه متن -->
+            <div class="section">
+                <h3 class="section-title">🔤 اندازه متن</h3>
+                <p class="section-description">
+                    کاربران می‌توانند با استفاده از قابلیت‌های مرورگر یا دستگاه خود اندازه متن را افزایش دهند.
+                </p>
+                <p class="section-description">
+                    در طراحی سایت تلاش می‌شود بزرگ‌نمایی محتوا باعث از بین رفتن اطلاعات اصلی یا عملکردهای مهم نشود.
+                </p>
+                <p class="section-description">
+                    با این حال، نحوه نمایش محتوا ممکن است بسته به مرورگر، سیستم‌عامل و اندازه صفحه متفاوت باشد.
+                </p>
+            </div>
+            
+            <!-- کنتراست و خوانایی -->
+            <div class="section">
+                <h3 class="section-title">🎨 کنتراست و خوانایی</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ تلاش می‌کند متن‌ها، دکمه‌ها و عناصر مهم رابط کاربری دارای کنتراست و خوانایی مناسب باشند.
+                </p>
+                <p class="section-description">این موضوع شامل:</p>
+                <ul class="section-list">
+                    <li>متن‌های خبری</li>
+                    <li>تیترها</li>
+                    <li>دکمه‌ها</li>
+                    <li>لینک‌ها</li>
+                    <li>فرم‌ها</li>
+                    <li>منوها</li>
+                    <li>کنترل‌های ویدئو</li>
+                </ul>
+                <p class="section-description">می‌شود.</p>
+            </div>
+            
+            <!-- استفاده بدون ماوس -->
+            <div class="section">
+                <h3 class="section-title">⌨️ استفاده بدون ماوس</h3>
+                <p class="section-description">
+                    تا حد امکان، قابلیت‌های اصلی وب‌سایت باید با استفاده از صفحه‌کلید نیز قابل دسترسی باشند.
+                </p>
+                <p class="section-description">
+                    کاربر می‌تواند در بخش‌های مختلف سایت با استفاده از کلیدهای صفحه‌کلید حرکت کند و عناصر تعاملی را انتخاب کند.
+                </p>
+                <p class="section-description">
+                    برخی قابلیت‌های پیچیده یا سرویس‌های شخص ثالث ممکن است رفتار متفاوتی داشته باشند.
+                </p>
+            </div>
+            
+            <!-- دسترسی‌پذیری ویدئو -->
+            <div class="section">
+                <h3 class="section-title">▶️ دسترسی‌پذیری ویدئو</h3>
+                <p class="section-description">
+                    پخش‌کننده ویدئوی گل‌های رنگارنگ می‌تواند شامل کنترل‌هایی مانند:
+                </p>
+                <div class="player-menu">
+                    <span class="player-option">Play / Pause</span>
+                    <span class="player-option">Volume</span>
+                    <span class="player-option">CC</span>
+                    <span class="player-option">Subtitles</span>
+                    <span class="player-option">Settings</span>
+                    <span class="player-option">Fullscreen</span>
+                </div>
+                <p class="section-description">
+                    باشد. در دستگاه‌های مختلف، ظاهر و محل این گزینه‌ها ممکن است متفاوت باشد.
+                </p>
+            </div>
+            
+            <!-- حالت تمام‌صفحه -->
+            <div class="section">
+                <h3 class="section-title">🖥️ حالت تمام‌صفحه</h3>
+                <p class="section-description">
+                    برای برخی ویدئوها امکان استفاده از حالت <strong>Fullscreen</strong> وجود دارد.
+                </p>
+                <p class="section-description">
+                    حالت تمام‌صفحه می‌تواند برای برخی کاربران تجربه خواندن زیرنویس و مشاهده محتوای ویدئویی را آسان‌تر کند.
+                </p>
+                <p class="section-description">
+                    برای فعال کردن این حالت، گزینه Fullscreen را در پخش‌کننده انتخاب کنید.
+                </p>
+            </div>
+            
+            <!-- کاربران دارای اختلالات شنوایی -->
+            <div class="section">
+                <h3 class="section-title">🦻 کاربران دارای اختلالات شنوایی</h3>
+                <p class="section-description">
+                    Closed Captions برای کمک به کاربران ناشنوا یا کم‌شنوا یکی از مهم‌ترین قابلیت‌های دسترسی‌پذیری گل‌های رنگارنگ است.
+                </p>
+                <p class="section-description">
+                    در برنامه‌هایی که CC ارائه می‌شود، زیرنویس می‌تواند گفت‌وگو و در صورت امکان اطلاعات صوتی مهم را نمایش دهد.
+                </p>
+                <p class="section-description">
+                    در صورت مشاهده خطا یا مشکل در زیرنویس، کاربران می‌توانند آن را از طریق بخش تماس با ما گزارش کنند.
+                </p>
+            </div>
+            
+            <!-- کاربران دارای اختلالات بینایی -->
+            <div class="section">
+                <h3 class="section-title">👁️ کاربران دارای اختلالات بینایی</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ تلاش می‌کند محتوای سایت با فناوری‌های کمکی مانند Screen Readerها قابل استفاده باشد.
+                </p>
+                <p class="section-description">
+                    همچنین استفاده از قابلیت‌های بزرگ‌نمایی سیستم‌عامل، اندازه متن و تنظیمات نمایشگر می‌تواند به کاربران کمک کند.
+                </p>
+            </div>
+            
+            <!-- کاربران دارای حساسیت به صدا -->
+            <div class="section">
+                <h3 class="section-title">🔉 کاربران دارای حساسیت به صدا</h3>
+                <p class="section-description">
+                    برخی ویدئوها یا برنامه‌ها ممکن است شامل صداهای بلند یا تغییر ناگهانی حجم صدا باشند.
+                </p>
+                <p class="section-description">
+                    در پخش‌کننده ویدئو می‌توانید از کنترل Volume برای تنظیم صدا استفاده کنید.
+                </p>
+                <p class="section-description">
+                    در صورت پشتیبانی دستگاه، کاربران می‌توانند از تنظیمات سیستم‌عامل برای مدیریت صدای دستگاه استفاده کنند.
+                </p>
+            </div>
+            
+            <!-- محتوای دارای هشدار -->
+            <div class="warning-box">
+                <strong>⚠️ محتوای دارای هشدار:</strong> برخی گزارش‌های خبری ممکن است حاوی تصاویر یا صداهایی باشند که برای برخی مخاطبان نامناسب یا ناراحت‌کننده باشند. در چنین مواردی، گل‌های رنگارنگ تلاش می‌کند هشدارهای محتوایی مناسب را در صورت لزوم ارائه کند.
+            </div>
+            
+            <!-- دسترسی‌پذیری فروشگاه -->
+            <div class="section">
+                <h3 class="section-title">🛍️ دسترسی‌پذیری فروشگاه اینترنتی</h3>
+                <p class="section-description">
+                    فروشگاه اینترنتی گل‌های رنگارنگ نیز تلاش می‌کند برای کاربران مختلف قابل استفاده باشد. این موارد می‌تواند شامل:
+                </p>
+                <ul class="section-list">
+                    <li>مشاهده محصولات</li>
+                    <li>جست‌وجوی کالا</li>
+                    <li>انتخاب اندازه و مدل</li>
+                    <li>افزودن به سبد خرید</li>
+                    <li>تکمیل سفارش</li>
+                    <li>مشاهده اطلاعات محصول</li>
+                </ul>
+                <p class="section-description">
+                    باشد. توضیحات محصولات باید تا حد امکان واضح و قابل خواندن باشند.
+                </p>
+            </div>
+            
+            <!-- گزارش مشکل -->
+            <div class="section">
+                <h3 class="section-title">📝 گزارش مشکل دسترسی‌پذیری</h3>
+                <p class="section-description">
+                    اگر هنگام استفاده از وب‌سایت، ویدئوها، شبکه‌های تلویزیونی یا فروشگاه با مشکلی مواجه شدید، می‌توانید آن را به ما اطلاع دهید.
+                </p>
+                <p class="section-description">
+                    لطفاً در صورت امکان اطلاعات زیر را ارسال کنید:
+                </p>
+                <ul class="section-list">
+                    <li>صفحه یا بخش موردنظر</li>
+                    <li>نوع مشکل</li>
+                    <li>دستگاه مورد استفاده</li>
+                    <li>مرورگر یا برنامه</li>
+                    <li>سیستم‌عامل</li>
+                    <li>توضیح کوتاه درباره مشکل</li>
+                    <li>در صورت امکان، تصویر یا ویدئوی مشکل</li>
+                </ul>
+                <p class="section-description">
+                    این اطلاعات به تیم ما کمک می‌کند مشکل را سریع‌تر بررسی کند.
+                </p>
+            </div>
+            
+            <!-- درخواست کمک -->
+            <div class="section">
+                <h3 class="section-title">🆘 درخواست کمک</h3>
+                <p class="section-description">
+                    اگر برای دسترسی به یک گزارش، ویدئو یا بخش خاصی از سایت به کمک نیاز دارید، می‌توانید با تیم گل‌های رنگارنگ تماس بگیرید.
+                </p>
+                <p class="section-description">
+                    ما تلاش می‌کنیم درخواست‌های مرتبط با دسترسی‌پذیری را در اولویت بررسی قرار دهیم.
+                </p>
+            </div>
+            
+            <!-- فناوری‌های مورد استفاده -->
+            <div class="section">
+                <h3 class="section-title">🛠️ فناوری‌های مورد استفاده</h3>
+                <p class="section-description">
+                    تجربه دسترسی‌پذیری ممکن است بسته به موارد زیر متفاوت باشد:
+                </p>
+                <ul class="section-list">
+                    <li>مرورگر</li>
+                    <li>سیستم‌عامل</li>
+                    <li>تلفن همراه</li>
+                    <li>رایانه</li>
+                    <li>تلویزیون هوشمند</li>
+                    <li>دستگاه پخش</li>
+                    <li>فناوری کمکی</li>
+                    <li>سرویس شخص ثالث</li>
+                </ul>
+                <p class="section-description">
+                    ما تلاش می‌کنیم سازگاری گسترده‌ای ایجاد کنیم، اما نمی‌توانیم سازگاری کامل با تمام دستگاه‌ها و فناوری‌های موجود را تضمین کنیم.
+                </p>
+            </div>
+            
+            <!-- تعهد ما به بهبود مستمر -->
+            <div class="section">
+                <h3 class="section-title">💪 تعهد ما به بهبود مستمر</h3>
+                <p class="section-description">
+                    دسترسی‌پذیری یک فرآیند مداوم است. گل‌های رنگارنگ به دنبال شناسایی مشکلات، دریافت بازخورد کاربران و بهبود تجربه دسترسی‌پذیری در سرویس‌های خود است.
+                </p>
+                <p class="section-description">
+                    ممکن است در آینده قابلیت‌های جدیدی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>گزینه‌های بیشتر برای زیرنویس</li>
+                    <li>کنترل‌های بهتر ویدئو</li>
+                    <li>پشتیبانی از زبان‌های بیشتر</li>
+                    <li>بهبود سازگاری با Screen Reader</li>
+                    <li>کنترل‌های نمایش پیشرفته‌تر</li>
+                </ul>
+                <p class="section-description">
+                    به خدمات اضافه شوند.
+                </p>
+            </div>
+            
+            <!-- تماس با Accessibility -->
+            <div class="contact-accessibility">
+                <h3>📞 تماس درباره Accessibility</h3>
+                <p>برای گزارش مشکل یا ارائه پیشنهاد درباره دسترسی‌پذیری:</p>
+                <p class="brand-name-en">Accessibility Support</p>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+                <a href="about.html" class="accessibility-btn">[ Contact Accessibility Support ]</a>
+                <p style="margin-top: 15px; font-size: 12px; opacity: 0.9;">
+                    لطفاً در موضوع پیام عبارت <strong>Accessibility</strong> را درج کنید تا درخواست شما راحت‌تر به تیم مربوطه ارسال شود.
+                </p>
+            </div>
+            
+            <!-- صفحات مرتبط -->
+            <div class="related-pages">
+                <h3>🔗 صفحات مرتبط</h3>
+                <div class="related-grid">
+                    <a href="privacy.html" class="related-card">
+                        <span class="rc-title">Privacy Policy</span>
+                        <span class="rc-desc">سیاست حفظ حریم خصوصی</span>
+                    </a>
+                    <a href="cookies.html" class="related-card">
+                        <span class="rc-title">Manage Cookies</span>
+                        <span class="rc-desc">مدیریت کوکی‌ها</span>
+                    </a>
+                    <a href="terms.html" class="related-card">
+                        <span class="rc-title">Terms of Use</span>
+                        <span class="rc-desc">شرایط استفاده</span>
+                    </a>
+                    <a href="newsletters.html" class="related-card">
+                        <span class="rc-title">Newsletters</span>
+                        <span class="rc-desc">خبرنامه‌ها</span>
+                    </a>
+                    <a href="about.html" class="related-card">
+                        <span class="rc-title">Contact Us</span>
+                        <span class="rc-desc">تماس با گل‌های رنگارنگ</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📺 گل‌های رنگارنگ</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>اخبار محلی لاسونتراس | اخبار آمریکا | اخبار جهان | تلویزیون | ورزش | اقتصاد | فرهنگ</p>
+                <p style="font-family: Georgia, serif; direction: ltr;">Rangarang TV 1 · Rangarang TV 2 · Rangarang TV 3 · Rangarang TV 4</p>
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+</body>
+</html>
