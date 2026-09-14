@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خبرنامه‌ها - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #856404;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .section-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .section-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .section-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        /* کارت خبرنامه */
+        .newsletter-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .newsletter-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.15);
+        }
+        .newsletter-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .newsletter-subtitle {
+            font-size: 13px;
+            color: #2c3e50;
+            font-weight: bold;
+            margin: 0 0 12px 0;
+        }
+        .newsletter-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .newsletter-list {
+            padding-right: 20px;
+            margin: 10px 0;
+        }
+        .newsletter-list li {
+            font-size: 12px;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 3px;
+        }
+        .newsletter-frequency {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        /* فرم ثبت‌نام */
+        .subscribe-form {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px solid #c0392b;
+        }
+        .subscribe-form h3 {
+            margin: 0 0 20px 0;
+            color: #c0392b;
+            font-size: 18px;
+            text-align: center;
+            border: none;
+            padding: 0;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #c0392b;
+            box-shadow: 0 0 10px rgba(192, 57, 43, 0.15);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 8px;
+            border: 2px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            color: #333;
+        }
+        .checkbox-item:hover {
+            border-color: #c0392b;
+            background-color: #fff5f5;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #c0392b;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .subscribe-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #27ae60, #16a085);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+        .subscribe-btn:hover {
+            background: linear-gradient(135deg, #219a52, #148f77);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.5);
+        }
+        
+        /* هشدار Breaking News */
+        .breaking-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3); }
+            50% { box-shadow: 0 8px 25px rgba(192, 57, 43, 0.5); }
+        }
+        .breaking-box .breaking-label {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        .breaking-box .breaking-text {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        /* جعبه Email Preferences */
+        .preferences-box {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .preferences-box p {
+            font-size: 14px;
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+            line-height: 1.9;
+        }
+        .preferences-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .preferences-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* تلویزیون */
+        .tv-channel-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-right: 4px solid #c0392b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .tv-channel-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 6px 0;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .tv-channel-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0;
+        }
+        
+        /* اطلاعات تماس */
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        .contact-box .tagline {
+            font-style: italic;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+        
+        /* صفحات مرتبط */
+        .related-pages {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #c0392b;
+        }
+        .related-pages h3 {
+            margin: 0 0 20px 0;
+            color: #c0392b;
+            font-size: 17px;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #eee;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.15);
+        }
+        .related-card .rc-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .related-card .rc-desc {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.7;
+            display: block;
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #27ae60, #16a085);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+            z-index: 9999;
+            transition: transform 0.4s ease;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">خبرنامه‌ها</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>📧 خبرنامه‌های گل‌های رنگارنگ</h1>
+            
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: ۱۴ سپتامبر ۲۰۲۶
+            </div>
+            
+            <div class="page-intro">
+                <strong>خبرها را از دست ندهید.</strong>
+                <br><br>
+                با عضویت در خبرنامه‌های گل‌های رنگارنگ (Golhaye Rangarang)، می‌توانید مهم‌ترین اخبار، گزارش‌های ویژه، رویدادهای محلی لاسونتراس، اخبار بین‌المللی، برنامه‌های تلویزیونی و مطالب منتخب تحریریه را مستقیماً در صندوق ورودی ایمیل خود دریافت کنید.
+                <br><br>
+                گل‌های رنگارنگ تلاش می‌کند خبرنامه‌ها را به شکلی طراحی کند که اطلاعات مهم را بدون نیاز به جست‌وجوی مداوم در وب‌سایت در اختیار شما قرار دهد.
+            </div>
+            
+            <h2>📬 انتخاب خبرنامه مورد علاقه شما</h2>
+            <p class="section-description">شما می‌توانید یک یا چند خبرنامه را انتخاب کنید.</p>
+            
+            <!-- Top Stories -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">📰 Top Stories</h3>
+                <p class="newsletter-subtitle">مهم‌ترین اخبار روز</p>
+                <p class="newsletter-desc">منتخبی از مهم‌ترین خبرهای منتشرشده توسط تحریریه گل‌های رنگارنگ. این خبرنامه می‌تواند شامل:</p>
+                <ul class="newsletter-list">
+                    <li>مهم‌ترین اخبار داخلی</li>
+                    <li>رویدادهای بین‌المللی</li>
+                    <li>خبرهای فوری</li>
+                    <li>گزارش‌های مهم</li>
+                    <li>تحولات سیاسی و اجتماعی</li>
+                    <li>اخبار اقتصادی</li>
+                    <li>مطالب ویژه تحریریه</li>
+                </ul>
+                <p class="newsletter-desc">باشد.</p>
+                <span class="newsletter-frequency">📅 دفعات ارسال: روزانه</span>
+            </div>
+            
+            <!-- World News -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">🌎 World News</h3>
+                <p class="newsletter-subtitle">اخبار جهان</p>
+                <p class="newsletter-desc">آخرین تحولات مهم در سراسر جهان، انتخاب‌شده توسط تیم بین‌الملل گل‌های رنگارنگ. موضوعات می‌تواند شامل:</p>
+                <ul class="newsletter-list">
+                    <li>سیاست بین‌الملل</li>
+                    <li>اقتصاد جهانی</li>
+                    <li>بحران‌های بین‌المللی</li>
+                    <li>فناوری</li>
+                    <li>علم</li>
+                    <li>تغییرات اقلیمی</li>
+                    <li>رویدادهای مهم جهانی</li>
+                </ul>
+                <p class="newsletter-desc">باشد.</p>
+                <span class="newsletter-frequency">📅 دفعات ارسال: روزانه</span>
+            </div>
+            
+            <!-- Las Ontras Local -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">🇺🇸 Las Ontras Local</h3>
+                <p class="newsletter-subtitle">اخبار محلی لاسونتراس</p>
+                <p class="newsletter-desc">اگر می‌خواهید از اتفاقات اطراف خود باخبر باشید، این خبرنامه برای شماست. خبرنامه Las Ontras Local می‌تواند شامل:</p>
+                <ul class="newsletter-list">
+                    <li>اخبار محلی</li>
+                    <li>رویدادهای شهری</li>
+                    <li>حمل‌ونقل</li>
+                    <li>مدارس و دانشگاه‌ها</li>
+                    <li>کسب‌وکارهای محلی</li>
+                    <li>ورزش محلی</li>
+                    <li>فرهنگ و رویدادهای اجتماعی</li>
+                    <li>اطلاعیه‌های مهم</li>
+                    <li>گزارش‌های اختصاصی خبرنگاران محلی</li>
+                </ul>
+                <p class="newsletter-desc">باشد.</p>
+                <span class="newsletter-frequency">📅 روزانه یا در صورت انتشار خبر مهم</span>
+            </div>
+            
+            <!-- Business & Economy -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">💰 Business & Economy</h3>
+                <p class="newsletter-subtitle">اقتصاد و کسب‌وکار</p>
+                <p class="newsletter-desc">منتخبی از مهم‌ترین اخبار اقتصادی و تجاری. شامل:</p>
+                <ul class="newsletter-list">
+                    <li>بازارهای مالی</li>
+                    <li>شرکت‌ها</li>
+                    <li>اقتصاد آمریکا</li>
+                    <li>اقتصاد جهانی</li>
+                    <li>فناوری‌های مالی</li>
+                    <li>کسب‌وکارهای نوآور</li>
+                    <li>کارآفرینی</li>
+                    <li>گزارش‌های اقتصادی</li>
+                </ul>
+                <span class="newsletter-frequency">📅 دفعات ارسال: روزانه</span>
+            </div>
+            
+            <!-- Technology -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">💻 Technology</h3>
+                <p class="newsletter-subtitle">فناوری</p>
+                <p class="newsletter-desc">جدیدترین اخبار دنیای فناوری، اینترنت، هوش مصنوعی، نرم‌افزار، سخت‌افزار و شرکت‌های فناوری.</p>
+                <span class="newsletter-frequency">📅 دفعات ارسال: چند بار در هفته</span>
+            </div>
+            
+            <!-- Sports -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">⚽ Sports</h3>
+                <p class="newsletter-subtitle">ورزش</p>
+                <p class="newsletter-desc">مهم‌ترین اخبار ورزشی، نتایج، رویدادهای مهم و گزارش‌های منتخب ورزشی. این خبرنامه می‌تواند شامل اخبار:</p>
+                <ul class="newsletter-list">
+                    <li>فوتبال</li>
+                    <li>بسکتبال</li>
+                    <li>تنیس</li>
+                    <li>ورزش‌های آمریکایی</li>
+                    <li>مسابقات بین‌المللی</li>
+                    <li>ورزشکاران</li>
+                    <li>رویدادهای بزرگ ورزشی</li>
+                </ul>
+                <p class="newsletter-desc">باشد.</p>
+                <span class="newsletter-frequency">📅 روزانه یا در روزهای مسابقات مهم</span>
+            </div>
+            
+            <!-- Culture & Entertainment -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">🎬 Culture & Entertainment</h3>
+                <p class="newsletter-subtitle">فرهنگ و سرگرمی</p>
+                <p class="newsletter-desc">اخبار و مطالب منتخب درباره:</p>
+                <ul class="newsletter-list">
+                    <li>فیلم و تلویزیون</li>
+                    <li>موسیقی</li>
+                    <li>هنر</li>
+                    <li>فرهنگ</li>
+                    <li>کتاب</li>
+                    <li>رویدادهای فرهنگی</li>
+                    <li>برنامه‌های تلویزیونی گل‌های رنگارنگ</li>
+                </ul>
+                <span class="newsletter-frequency">📅 دفعات ارسال: چند بار در هفته</span>
+            </div>
+            
+            <!-- Rangarang TV -->
+            <div class="newsletter-card">
+                <h3 class="newsletter-name">📺 Rangarang TV</h3>
+                <p class="newsletter-subtitle">آنچه در تلویزیون می‌بینید</p>
+                <p class="newsletter-desc">با این خبرنامه از برنامه‌های ویژه چهار شبکه تلویزیونی گل‌های رنگارنگ مطلع شوید.</p>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 1</p>
+                    <p class="tv-channel-desc">اخبار و رویدادهای مهم</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 2</p>
+                    <p class="tv-channel-desc">اخبار محلی لاسونتراس</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 3</p>
+                    <p class="tv-channel-desc">اقتصاد و فناوری</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 4</p>
+                    <p class="tv-channel-desc">ورزش، فرهنگ و سرگرمی</p>
+                </div>
+                <p class="newsletter-desc">خبرنامه می‌تواند شامل برنامه‌های ویژه، مصاحبه‌ها، پخش‌های مهم و جدول برنامه‌های منتخب باشد.</p>
+                <span class="newsletter-frequency">📅 دفعات ارسال: هفتگی</span>
+            </div>
+            
+            <!-- خبرنامه ویژه -->
+            <div class="section">
+                <h3 class="section-title">⭐ خبرنامه ویژه</h3>
+                <p class="section-description">
+                    گاهی اوقات گل‌های رنگارنگ خبرنامه‌های ویژه‌ای برای رویدادهای مهم منتشر می‌کند. این خبرنامه‌ها ممکن است در زمان‌هایی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>انتخابات</li>
+                    <li>رویدادهای بزرگ جهانی</li>
+                    <li>بحران‌های مهم</li>
+                    <li>انتخابات محلی</li>
+                    <li>رویدادهای ورزشی بزرگ</li>
+                    <li>رویدادهای فناوری</li>
+                    <li>اخبار فوری</li>
+                </ul>
+                <p class="section-description">
+                    فعال شوند. خبرنامه‌های ویژه ممکن است تعداد بیشتری ایمیل نسبت به خبرنامه‌های عادی ارسال کنند.
+                </p>
+            </div>
+            
+            <!-- فرم عضویت -->
+            <div class="subscribe-form">
+                <h3>📝 همین حالا عضو شوید</h3>
+                
+                <div class="form-group">
+                    <label>📧 آدرس ایمیل</label>
+                    <input type="email" id="emailInput" placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                    <label>📬 انتخاب خبرنامه‌ها</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="top-stories">
+                            <span>📰 Top Stories - مهم‌ترین اخبار روز</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="world-news">
+                            <span>🌎 World News - اخبار جهان</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="las-ontras">
+                            <span>🇺🇸 Las Ontras Local - اخبار محلی لاسونتراس</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="business">
+                            <span>💰 Business & Economy - اقتصاد و کسب‌وکار</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="technology">
+                            <span>💻 Technology - فناوری</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="sports">
+                            <span>⚽ Sports - ورزش</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="culture">
+                            <span>🎬 Culture & Entertainment - فرهنگ و سرگرمی</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="rangarang-tv">
+                            <span>📺 Rangarang TV - خبرنامه تلویزیونی</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="online-store">
+                            <span>🛍️ Rangarang Online Store - خبرنامه فروشگاه</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="subscribe-btn" onclick="subscribe()">✅ Subscribe to Newsletters</button>
+            </div>
+            
+            <!-- تأیید ایمیل -->
+            <div class="section">
+                <h3 class="section-title">✉️ تأیید ایمیل</h3>
+                <p class="section-description">
+                    برای محافظت از کاربران و جلوگیری از ثبت‌نام ناخواسته، ممکن است گل‌های رنگارنگ از شما بخواهد آدرس ایمیل خود را تأیید کنید.
+                </p>
+                <p class="section-description">
+                    در این حالت، یک ایمیل تأیید برای شما ارسال خواهد شد. پس از تأیید، عضویت شما فعال می‌شود.
+                </p>
+            </div>
+            
+            <!-- چند ایمیل دریافت خواهم کرد -->
+            <div class="section">
+                <h3 class="section-title">📨 چند ایمیل دریافت خواهم کرد؟</h3>
+                <p class="section-description">
+                    تعداد ایمیل‌ها به خبرنامه‌ای که انتخاب کرده‌اید بستگی دارد. برخی خبرنامه‌ها ممکن است روزانه ارسال شوند، در حالی که برخی دیگر فقط چند بار در هفته یا هفته‌ای یک بار ارسال می‌شوند.
+                </p>
+                <p class="section-description">
+                    در صورت وقوع یک رویداد خبری مهم، ممکن است گل‌های رنگارنگ یک <strong>Breaking News Alert</strong> نیز ارسال کند.
+                </p>
+                <p class="section-description">
+                    هدف ما ارسال اطلاعات مفید است، نه پر کردن صندوق ورودی شما.
+                </p>
+            </div>
+            
+            <!-- Breaking News Alerts -->
+            <div class="breaking-box">
+                <div class="breaking-label">⚡ BREAKING NEWS</div>
+                <div class="breaking-text">
+                    در شرایط خاص، ممکن است برای مشترکانی که دریافت هشدارهای خبری را فعال کرده‌اند، ایمیل فوری ارسال شود.
+                    <br><br>
+                    این هشدارها برای رویدادهایی طراحی شده‌اند که از نظر تحریریه اهمیت بالایی دارند.
+                    <br><br>
+                    این نوع ایمیل‌ها ممکن است خارج از برنامه معمول خبرنامه‌ها ارسال شوند.
+                </div>
+            </div>
+            
+            <!-- لغو اشتراک -->
+            <div class="section">
+                <h3 class="section-title">🚫 لغو اشتراک</h3>
+                <p class="section-description">
+                    هر زمان که بخواهید می‌توانید اشتراک خود را لغو کنید. در پایین هر خبرنامه، گزینه‌ای مانند:
+                </p>
+                <ul class="section-list">
+                    <li>Unsubscribe</li>
+                    <li>Manage Email Preferences</li>
+                </ul>
+                <p class="section-description">
+                    قرار خواهد داشت. با انتخاب Unsubscribe می‌توانید دریافت آن خبرنامه را متوقف کنید.
+                </p>
+                <p class="section-description">
+                    لغو اشتراک از یک خبرنامه، لزوماً باعث حذف شما از تمام خبرنامه‌های دیگر نمی‌شود.
+                </p>
+            </div>
+            
+            <!-- مدیریت تنظیمات -->
+            <div class="section">
+                <h3 class="section-title">⚙️ مدیریت تنظیمات ایمیل</h3>
+                <p class="section-description">
+                    اگر نمی‌خواهید به طور کامل از خبرنامه‌ها خارج شوید، می‌توانید تنظیمات خود را تغییر دهید. برای مثال، می‌توانید:
+                </p>
+                <ul class="section-list">
+                    <li>خبرنامه‌های خاصی را حذف کنید؛</li>
+                    <li>خبرنامه‌های دیگری را فعال کنید؛</li>
+                    <li>تعداد ایمیل‌های دریافتی را کاهش دهید؛</li>
+                    <li>دریافت هشدارهای فوری را مدیریت کنید؛</li>
+                    <li>تنظیمات ایمیل خود را تغییر دهید.</li>
+                </ul>
+            </div>
+            
+            <div class="preferences-box">
+                <p>⚙️ <strong>Email Preferences</strong> — تنظیمات ایمیل خود را مدیریت کنید</p>
+                <a href="#" class="preferences-btn" onclick="managePreferences()">Manage Your Preferences</a>
+            </div>
+            
+            <!-- چرا ایمیل ارسال می‌کنیم -->
+            <div class="section">
+                <h3 class="section-title">❓ چرا گل‌های رنگارنگ ایمیل ارسال می‌کند؟</h3>
+                <p class="section-description">
+                    ایمیل‌های خبرنامه برای ارائه محتوای خبری و اطلاعات مرتبط با خدمات گل‌های رنگارنگ استفاده می‌شوند. ممکن است ایمیل‌ها شامل:
+                </p>
+                <ul class="section-list">
+                    <li>تیترهای خبری</li>
+                    <li>خلاصه اخبار</li>
+                    <li>لینک به گزارش کامل</li>
+                    <li>تصاویر خبری</li>
+                    <li>ویدئو</li>
+                    <li>گزارش‌های اختصاصی</li>
+                    <li>برنامه‌های تلویزیونی</li>
+                    <li>رویدادهای ویژه</li>
+                    <li>پیشنهادهای مرتبط با خدمات گل‌های رنگارنگ</li>
+                </ul>
+                <p class="section-description">باشند.</p>
+            </div>
+            
+            <!-- حریم خصوصی -->
+            <div class="section">
+                <h3 class="section-title">🔐 حریم خصوصی و اطلاعات شما</h3>
+                <p class="section-description">
+                    هنگام ثبت‌نام در خبرنامه، آدرس ایمیل شما برای مدیریت اشتراک و ارسال خبرنامه مورد استفاده قرار می‌گیرد. اطلاعات مربوط به اشتراک خبرنامه ممکن است شامل:
+                </p>
+                <ul class="section-list">
+                    <li>آدرس ایمیل</li>
+                    <li>خبرنامه‌های انتخاب‌شده</li>
+                    <li>زمان ثبت‌نام</li>
+                    <li>وضعیت اشتراک</li>
+                    <li>تنظیمات دریافت ایمیل</li>
+                </ul>
+                <p class="section-description">
+                    باشد. برای اطلاعات بیشتر درباره نحوه پردازش اطلاعات شخصی، لطفاً <a href="privacy.html" style="color: #c0392b; font-weight: bold;">Privacy Policy</a> گل‌های رنگارنگ را مطالعه کنید.
+                </p>
+            </div>
+            
+            <!-- آیا ایمیل من فروخته می‌شود -->
+            <div class="section">
+                <h3 class="section-title">🔒 آیا ایمیل من فروخته می‌شود؟</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ آدرس ایمیل مشترکان را برای فروش مستقیم به اشخاص ثالث ارائه نمی‌کند.
+                </p>
+                <p class="section-description">
+                    ممکن است برای ارسال و مدیریت خبرنامه‌ها از سرویس‌دهندگان فنی استفاده شود. این سرویس‌دهندگان تنها در محدوده لازم برای ارائه خدمات مربوطه ممکن است به اطلاعات دسترسی داشته باشند.
+                </p>
+            </div>
+            
+            <!-- محتوای تبلیغاتی -->
+            <div class="section">
+                <h3 class="section-title">📢 محتوای تبلیغاتی</h3>
+                <p class="section-description">
+                    برخی خبرنامه‌ها ممکن است شامل تبلیغات یا محتوای حمایت‌شده باشند. محتوای حمایت‌شده در صورت لزوم با برچسب مناسب از محتوای تحریریه جدا خواهد شد.
+                </p>
+                <p class="section-description">
+                    وجود یک تبلیغ در خبرنامه به معنای تأیید محصول یا شرکت تبلیغ‌شده توسط تحریریه گل‌های رنگارنگ نیست، مگر اینکه به‌طور مشخص اعلام شده باشد.
+                </p>
+            </div>
+            
+            <!-- خبرنامه فروشگاه -->
+            <div class="section">
+                <h3 class="section-title">🛍️ خبرنامه فروشگاه</h3>
+                <p class="section-description">
+                    مشترکان می‌توانند در صورت فعال بودن این گزینه، خبرنامه‌های مربوط به Rangarang Online Store را نیز دریافت کنند. این خبرنامه‌ها ممکن است شامل:
+                </p>
+                <ul class="section-list">
+                    <li>محصولات جدید</li>
+                    <li>مجموعه‌های جدید پوشاک</li>
+                    <li>تخفیف‌ها</li>
+                    <li>پیشنهادهای ویژه</li>
+                    <li>اطلاعیه‌های فروشگاه</li>
+                    <li>بازگشت محصولات به موجودی</li>
+                </ul>
+                <p class="section-description">
+                    باشند. عضویت در خبرنامه فروشگاه جدا از خبرنامه‌های خبری خواهد بود و کاربر می‌تواند آن را به صورت مستقل مدیریت کند.
+                </p>
+            </div>
+            
+            <!-- خبرنامه‌های تلویزیونی -->
+            <div class="section">
+                <h3 class="section-title">📺 خبرنامه‌های تلویزیونی</h3>
+                <p class="section-description">
+                    مشترکان می‌توانند اخبار مربوط به چهار شبکه گل‌های رنگارنگ را نیز دریافت کنند.
+                </p>
+                
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 1</p>
+                    <p class="tv-channel-desc">اخبار و رویدادهای مهم.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 2</p>
+                    <p class="tv-channel-desc">اخبار محلی لاسونتراس.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 3</p>
+                    <p class="tv-channel-desc">اقتصاد، فناوری و کسب‌وکار.</p>
+                </div>
+                <div class="tv-channel-card">
+                    <p class="tv-channel-name">Rangarang TV 4</p>
+                    <p class="tv-channel-desc">ورزش، فرهنگ و سرگرمی.</p>
+                </div>
+                
+                <p class="section-description">
+                    ممکن است برای برنامه‌های ویژه، پخش زنده یا رویدادهای مهم، اطلاعیه‌های جداگانه ارسال شود.
+                </p>
+            </div>
+            
+            <!-- مشکلات دریافت ایمیل -->
+            <div class="section">
+                <h3 class="section-title">⚠️ مشکلات دریافت ایمیل</h3>
+                <p class="section-description">
+                    اگر خبرنامه را دریافت نمی‌کنید، ابتدا موارد زیر را بررسی کنید:
+                </p>
+                <ul class="section-list">
+                    <li>پوشه Spam یا Junk را بررسی کنید.</li>
+                    <li>مطمئن شوید آدرس ایمیل را درست وارد کرده‌اید.</li>
+                    <li>آدرس ارسال‌کننده گل‌های رنگارنگ را به فهرست مخاطبان خود اضافه کنید.</li>
+                    <li>تنظیمات ایمیل خود را بررسی کنید.</li>
+                    <li>در صورت نیاز، دوباره در خبرنامه ثبت‌نام کنید.</li>
+                </ul>
+                <p class="section-description">
+                    اگر مشکل ادامه داشت، از طریق <a href="about.html" style="color: #c0392b; font-weight: bold;">Contact Us</a> با تیم پشتیبانی تماس بگیرید.
+                </p>
+            </div>
+            
+            <!-- تغییر آدرس ایمیل -->
+            <div class="section">
+                <h3 class="section-title">📧 تغییر آدرس ایمیل</h3>
+                <p class="section-description">
+                    برای تغییر آدرس ایمیل، ممکن است لازم باشد اشتراک فعلی خود را لغو کرده و با آدرس جدید ثبت‌نام کنید.
+                </p>
+                <p class="section-description">
+                    در برخی سرویس‌ها ممکن است امکان تغییر مستقیم آدرس از طریق صفحه Email Preferences وجود داشته باشد.
+                </p>
+            </div>
+            
+            <!-- سن و شرایط عضویت -->
+            <div class="section">
+                <h3 class="section-title">👤 سن و شرایط عضویت</h3>
+                <p class="section-description">
+                    خبرنامه‌های گل‌های رنگارنگ برای مخاطبان عمومی طراحی شده‌اند.
+                </p>
+                <p class="section-description">
+                    کاربران باید هنگام ثبت‌نام، اطلاعات صحیح ارائه کنند و در صورت وجود محدودیت سنی یا قانونی، شرایط مربوطه را رعایت کنند.
+                </p>
+            </div>
+            
+            <!-- تغییرات در سرویس خبرنامه -->
+            <div class="section">
+                <h3 class="section-title">🔄 تغییرات در سرویس خبرنامه</h3>
+                <p class="section-description">
+                    گل‌های رنگارنگ ممکن است در آینده:
+                </p>
+                <ul class="section-list">
+                    <li>خبرنامه جدیدی اضافه کند؛</li>
+                    <li>یک خبرنامه را متوقف کند؛</li>
+                    <li>تعداد ارسال‌ها را تغییر دهد؛</li>
+                    <li>نام یا موضوع یک خبرنامه را تغییر دهد؛</li>
+                    <li>ساختار خبرنامه‌ها را به‌روزرسانی کند.</li>
+                </ul>
+                <p class="section-description">
+                    در صورت تغییرات مهم، ممکن است اطلاع‌رسانی مناسب انجام شود.
+                </p>
+            </div>
+            
+            <!-- با گلهای رنگارنگ در ارتباط باشید -->
+            <div class="section">
+                <h3 class="section-title">💬 با گل‌های رنگارنگ در ارتباط باشید</h3>
+                <p class="section-description">
+                    چه بخواهید مهم‌ترین خبرهای جهان را دنبال کنید، چه بخواهید بدانید در لاسونتراس چه اتفاقی افتاده، چه به اقتصاد، فناوری، ورزش یا برنامه‌های تلویزیونی علاقه داشته باشید، خبرنامه‌های گل‌های رنگارنگ به شما کمک می‌کنند مهم‌ترین مطالب را در زمان مناسب دریافت کنید.
+                </p>
+            </div>
+            
+            <!-- فرم پایانی -->
+            <div class="subscribe-form">
+                <h3>🎯 همین حالا عضو شوید</h3>
+                
+                <div class="form-group">
+                    <label>📧 Email Address</label>
+                    <input type="email" id="finalEmailInput" placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                    <label>📬 انتخاب خبرنامه:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="top-stories">
+                            <span>📰 Top Stories</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="world-news">
+                            <span>🌎 World News</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="las-ontras">
+                            <span>🇺🇸 Las Ontras Local</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="business">
+                            <span>💰 Business & Economy</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="technology">
+                            <span>💻 Technology</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="sports">
+                            <span>⚽ Sports</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="culture">
+                            <span>🎬 Culture & Entertainment</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="rangarang-tv">
+                            <span>📺 Rangarang TV</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="online-store">
+                            <span>🛍️ Rangarang Online Store</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="subscribe-btn" onclick="subscribeFinal()">✅ Subscribe to Newsletters</button>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📞 با گل‌های رنگارنگ در ارتباط باشید</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+                <p class="tagline">
+                    اخبار محلی. اخبار جهان. گزارش‌های اختصاصی.<br>
+                    گل‌های رنگارنگ، خبر را به شما می‌رساند.
+                </p>
+            </div>
+            
+            <!-- صفحات مرتبط -->
+            <div class="related-pages">
+                <h3>🔗 صفحات مرتبط</h3>
+                <div class="related-grid">
+                    <a href="privacy.html" class="related-card">
+                        <span class="rc-title">Privacy Policy</span>
+                        <span class="rc-desc">سیاست حفظ حریم خصوصی</span>
+                    </a>
+                    <a href="cookies.html" class="related-card">
+                        <span class="rc-title">Manage Cookies</span>
+                        <span class="rc-desc">مدیریت کوکی‌ها</span>
+                    </a>
+                    <a href="terms.html" class="related-card">
+                        <span class="rc-title">Terms of Use</span>
+                        <span class="rc-desc">شرایط استفاده</span>
+                    </a>
+                    <a href="about.html" class="related-card">
+                        <span class="rc-title">Contact Us</span>
+                        <span class="rc-desc">تماس با گل‌های رنگارنگ</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        ✅ ثبت‌نام شما با موفقیت انجام شد
+    </div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        function subscribe() {
+            const email = document.getElementById('emailInput').value.trim();
+            const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
+            
+            if (!email) {
+                alert('لطفاً آدرس ایمیل خود را وارد کنید!');
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('لطفاً آدرس ایمیل معتبر وارد کنید!');
+                return;
+            }
+            
+            if (checkboxes.length === 0) {
+                alert('لطفاً حداقل یک خبرنامه انتخاب کنید!');
+                return;
+            }
+            
+            const selected = Array.from(checkboxes).map(cb => cb.value);
+            localStorage.setItem('newsletterSubscription', JSON.stringify({
+                email: email,
+                newsletters: selected,
+                date: new Date().toISOString()
+            }));
+            
+            showToast('✅ ثبت‌نام شما با موفقیت انجام شد. لطفاً ایمیل خود را تأیید کنید.');
+        }
+        
+        function subscribeFinal() {
+            const email = document.getElementById('finalEmailInput').value.trim();
+            const checkboxes = document.querySelectorAll('.subscribe-form:last-of-type input[type="checkbox"]:checked');
+            
+            if (!email) {
+                alert('لطفاً آدرس ایمیل خود را وارد کنید!');
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('لطفاً آدرس ایمیل معتبر وارد کنید!');
+                return;
+            }
+            
+            if (checkboxes.length === 0) {
+                alert('لطفاً حداقل یک خبرنامه انتخاب کنید!');
+                return;
+            }
+            
+            const selected = Array.from(checkboxes).map(cb => cb.value);
+            localStorage.setItem('newsletterSubscription', JSON.stringify({
+                email: email,
+                newsletters: selected,
+                date: new Date().toISOString()
+            }));
+            
+            showToast('✅ ثبت‌نام شما با موفقیت انجام شد. لطفاً ایمیل خود را تأیید کنید.');
+        }
+        
+        function managePreferences() {
+            showToast('⚙️ در حال بارگذاری تنظیمات ایمیل...');
+        }
+    </script>
+
+</body>
+</html>
