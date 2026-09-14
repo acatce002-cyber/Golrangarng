@@ -33,9 +33,7 @@
             color: #333;
         }
         
-        /* ============================ */
-        /* تبلیغ بالای سایت            */
-        /* ============================ */
+        /* تبلیغ بالای سایت */
         .top-ad-wrapper {
             max-width: 800px;
             width: 100%;
@@ -122,9 +120,7 @@
             border: 1px solid #ffd700;
         }
         
-        /* ============================ */
-        /* هدر: منو + برند             */
-        /* ============================ */
+        /* هدر */
         .header-row {
             max-width: 800px;
             width: 100%;
@@ -175,6 +171,12 @@
             display: flex;
             flex-direction: column;
             line-height: 1.1;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .brand-block:hover {
+            opacity: 0.8;
         }
         .brand-grg {
             font-size: 20px;
@@ -200,7 +202,7 @@
             transition: max-height 0.4s ease;
         }
         .menu-dropdown.open {
-            max-height: 700px;
+            max-height: 800px;
         }
         .menu-inner {
             background-color: white;
@@ -238,32 +240,94 @@
             margin-top: 0;
         }
         
-        /* دسته‌بندی چرخشی */
-        .category-scroll {
-            max-height: 130px;
-            overflow-y: auto;
-            padding: 4px 0;
-            scrollbar-width: thin;
-            scrollbar-color: #c0392b #f0f0f0;
+        /* دسته‌بندی بازشو */
+        .category-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            color: #333;
+            font-size: 14px;
+            font-family: 'IRANSans', sans-serif;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: bold;
+            user-select: none;
         }
-        .category-scroll::-webkit-scrollbar {
-            width: 6px;
+        .category-toggle:hover {
+            background-color: #fff5f5;
+            color: #c0392b;
         }
-        .category-scroll::-webkit-scrollbar-track {
-            background: #f0f0f0;
-            border-radius: 3px;
+        .category-toggle .arrow {
+            font-size: 12px;
+            transition: transform 0.3s;
+            color: #c0392b;
         }
-        .category-scroll::-webkit-scrollbar-thumb {
-            background: #c0392b;
-            border-radius: 3px;
+        .category-toggle.open .arrow {
+            transform: rotate(180deg);
         }
-        .category-scroll::-webkit-scrollbar-thumb:hover {
-            background: #a93226;
+        .category-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding-right: 15px;
+        }
+        .category-list.open {
+            max-height: 600px;
+        }
+        .category-list a {
+            padding: 8px 20px;
+            font-size: 13px;
+            color: #555;
+        }
+        .category-list a:hover {
+            background-color: #fff5f5;
+            color: #c0392b;
+            padding-right: 25px;
         }
         
-        /* ============================ */
-        /* اخبار کوتاه                 */
-        /* ============================ */
+        /* سرچ */
+        .search-wrapper {
+            max-width: 800px;
+            width: 100%;
+            margin: 15px auto 10px auto;
+            padding: 0 15px;
+        }
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: 'IRANSans', sans-serif;
+            background-color: white;
+            transition: all 0.3s;
+            color: #333;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #c0392b;
+            box-shadow: 0 0 10px rgba(192, 57, 43, 0.15);
+        }
+        .search-box input::placeholder {
+            color: #bbb;
+        }
+        .search-box .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #c0392b;
+            pointer-events: none;
+        }
+        
+        /* اخبار کوتاه */
         .short-news-block {
             max-width: 800px;
             width: 100%;
@@ -315,9 +379,7 @@
             top: 10px;
         }
         
-        /* ============================ */
-        /* خبرها                        */
-        /* ============================ */
+        /* خبرها */
         .container {
             max-width: 800px;
             width: 100%;
@@ -360,7 +422,7 @@
         /* ============================ */
         footer {
             background-color: #eaeaea;
-            padding: 25px 15px 20px 15px;
+            padding: 25px 15px 0 15px;
             margin-top: 20px;
         }
         .footer-links {
@@ -388,23 +450,28 @@
             color: #c0392b;
             text-decoration: underline;
         }
-        .copyright {
+        
+        /* بخش پایین فوتر - سیاه کامل */
+        .footer-bottom {
+            background-color: #000000;
+            padding: 20px 15px;
+            margin: 20px -15px 0 -15px;
+            text-align: center;
+        }
+        .footer-bottom .copyright {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
-            padding-top: 18px;
-            border-top: 1px solid #d5d5d5;
-            color: #666;
+            color: #ffffff;
             font-size: 12px;
             line-height: 2;
             font-family: 'IRANSans', sans-serif;
         }
-        .copyright p {
+        .footer-bottom .copyright p {
             margin: 5px 0;
         }
-        .copyright .network {
+        .footer-bottom .copyright .network {
             font-size: 11px;
-            color: #888;
+            color: #cccccc;
             margin-top: 8px;
         }
         
@@ -445,20 +512,32 @@
             <span></span>
             <span></span>
         </button>
-        <div class="brand-block">
+        <a href="index.html" class="brand-block">
             <div class="brand-grg">GRG</div>
             <div class="brand-name">گلهای رنگارنگ</div>
-        </div>
+        </a>
     </div>
 
     <!-- منوی بازشو -->
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
+            <!-- سرچ -->
+            <div class="search-wrapper" style="margin: 0 0 10px 0; padding: 0;">
+                <div class="search-box">
+                    <input type="text" placeholder="search GRG..." id="searchInput">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+            
             <a href="bours.html">📊 تحلیل اختصاصی بورس</a>
             <a href="shop.html">🛍️ فروشگاه</a>
             
-            <div class="menu-category">📂 دسته‌بندی اخبار</div>
-            <div class="category-scroll">
+            <!-- دسته‌بندی بازشو -->
+            <div class="category-toggle" onclick="toggleCategories(this)">
+                <span>📂 دسته‌بندی اخبار</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="category-list" id="categoryList">
                 <a href="#">🏛 اخبار سیاسی</a>
                 <a href="#">💰 اخبار اقتصادی</a>
                 <a href="#">⚔️ اخبار نظامی</a>
@@ -479,9 +558,17 @@
             <div class="menu-category">📱 ما را دنبال کنید</div>
             <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 واتس‌اپ</a>
             
-            <div class="menu-category">📞 درباره گلهای رنگارنگ</div>
+            <div class="menu-category">📞 درباره ما و پشتیبانی</div>
             <a href="#">ℹ️ درباره ما</a>
             <a href="#">✉️ پشتیبانی</a>
+        </div>
+    </div>
+
+    <!-- سرچ (زیر هدر، قبل از خبرها) -->
+    <div class="search-wrapper" id="mainSearch">
+        <div class="search-box">
+            <input type="text" placeholder="search GRG..." id="mainSearchInput">
+            <span class="search-icon">🔍</span>
         </div>
     </div>
 
@@ -640,9 +727,13 @@
                 <a href="#">Sitemap</a>
             </div>
         </div>
-        <div class="copyright">
-            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
-            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        
+        <!-- بخش پایین فوتر - سیاه کامل -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+                <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+            </div>
         </div>
     </footer>
 
@@ -652,6 +743,12 @@
             const dropdown = document.getElementById('menuDropdown');
             btn.classList.toggle('active');
             dropdown.classList.toggle('open');
+        }
+        
+        function toggleCategories(element) {
+            const list = document.getElementById('categoryList');
+            element.classList.toggle('open');
+            list.classList.toggle('open');
         }
     </script>
 </body>
