@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت کوکی‌ها - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .cookie-intro {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #856404;
+            text-align: justify;
+        }
+        
+        .cookie-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cookie-card:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .cookie-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .cookie-icon {
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+        .cookie-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0;
+            flex: 1;
+        }
+        .cookie-badge {
+            background-color: #c0392b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .cookie-badge.optional {
+            background-color: #27ae60;
+        }
+        .cookie-description {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0;
+            text-align: justify;
+        }
+        
+        .choice-section {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px 20px;
+            margin: 30px 0;
+            border: 2px solid #c0392b;
+            text-align: center;
+        }
+        .choice-section h3 {
+            margin: 0 0 15px 0;
+            color: #c0392b;
+            font-size: 18px;
+            border: none;
+            padding: 0;
+        }
+        .choice-section p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .cookie-btn {
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            min-width: 130px;
+        }
+        .cookie-btn.accept-all {
+            background: linear-gradient(135deg, #27ae60, #16a085);
+            color: white;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+        .cookie-btn.accept-all:hover {
+            background: linear-gradient(135deg, #219a52, #148f77);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(39, 174, 96, 0.5);
+        }
+        .cookie-btn.reject-all {
+            background-color: white;
+            color: #c0392b;
+            border-color: #c0392b;
+        }
+        .cookie-btn.reject-all:hover {
+            background-color: #c0392b;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .cookie-btn.manage {
+            background-color: white;
+            color: #2c3e50;
+            border-color: #2c3e50;
+        }
+        .cookie-btn.manage:hover {
+            background-color: #2c3e50;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .cookie-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #27ae60, #16a085);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+            z-index: 9999;
+            transition: transform 0.4s ease;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+        }
+        .cookie-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .privacy-note {
+            background-color: #e7f3ff;
+            border-right: 4px solid #3498db;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.9;
+            text-align: justify;
+        }
+        .privacy-note a {
+            color: #c0392b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .privacy-note a:hover {
+            text-decoration: underline;
+        }
+        
+        .brand-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+        .brand-footer .brand-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 6px;
+        }
+        .brand-footer .brand-location {
+            font-size: 13px;
+            color: #777;
+        }
+        
+        @media (max-width: 600px) {
+            .cookie-buttons { flex-direction: column; }
+            .cookie-btn { width: 100%; }
+            .cookie-header { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">مدیریت کوکی‌ها</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>🍪 مدیریت کوکی‌ها</h1>
+            
+            <div class="cookie-intro">
+                در <strong>گل‌های رنگارنگ</strong> از کوکی‌ها و فناوری‌های مشابه برای ارائه تجربه‌ای بهتر، ایمن‌تر و شخصی‌سازی‌شده به کاربران استفاده می‌کنیم.
+                <br><br>
+                شما می‌توانید انتخاب کنید که کدام نوع کوکی‌ها در هنگام استفاده از وب‌سایت و خدمات گل‌های رنگارنگ فعال باشند.
+            </div>
+            
+            <!-- کوکی‌های ضروری -->
+            <div class="cookie-card">
+                <div class="cookie-header">
+                    <span class="cookie-icon">🔒</span>
+                    <h3 class="cookie-title">کوکی‌های ضروری</h3>
+                    <span class="cookie-badge">ضروری</span>
+                </div>
+                <p class="cookie-description">
+                    این کوکی‌ها برای عملکرد صحیح وب‌سایت ضروری هستند و بدون آن‌ها برخی از قابلیت‌های اصلی سایت کار نخواهند کرد. این کوکی‌ها قابل غیرفعال کردن نیستند.
+                </p>
+            </div>
+            
+            <!-- کوکی‌های عملکردی -->
+            <div class="cookie-card">
+                <div class="cookie-header">
+                    <span class="cookie-icon">⚙️</span>
+                    <h3 class="cookie-title">کوکی‌های عملکردی</h3>
+                    <span class="cookie-badge optional">اختیاری</span>
+                </div>
+                <p class="cookie-description">
+                    به ما کمک می‌کنند نحوه استفاده کاربران از وب‌سایت را بهتر درک کنیم و عملکرد، سرعت و قابلیت‌های سایت را بهبود دهیم.
+                </p>
+            </div>
+            
+            <!-- کوکی‌های شخصی‌سازی -->
+            <div class="cookie-card">
+                <div class="cookie-header">
+                    <span class="cookie-icon">🎨</span>
+                    <h3 class="cookie-title">کوکی‌های شخصی‌سازی</h3>
+                    <span class="cookie-badge optional">اختیاری</span>
+                </div>
+                <p class="cookie-description">
+                    این کوکی‌ها می‌توانند برای ارائه محتوای مرتبط‌تر، پیشنهادهای شخصی‌سازی‌شده و تجربه‌ای متناسب با علایق شما استفاده شوند.
+                </p>
+            </div>
+            
+            <!-- کوکی‌های تبلیغاتی -->
+            <div class="cookie-card">
+                <div class="cookie-header">
+                    <span class="cookie-icon">📢</span>
+                    <h3 class="cookie-title">کوکی‌های تبلیغاتی</h3>
+                    <span class="cookie-badge optional">اختیاری</span>
+                </div>
+                <p class="cookie-description">
+                    ممکن است برای نمایش تبلیغات مرتبط‌تر و اندازه‌گیری عملکرد کمپین‌های تبلیغاتی مورد استفاده قرار گیرند.
+                </p>
+            </div>
+            
+            <!-- بخش انتخاب -->
+            <div class="choice-section">
+                <h3>انتخاب شما</h3>
+                <p>
+                    شما می‌توانید همه کوکی‌های غیرضروری را بپذیرید، رد کنید یا تنظیمات دلخواه خود را انتخاب کنید. تنظیمات شما در مرورگر ذخیره خواهد شد.
+                </p>
+                <div class="cookie-buttons">
+                    <button class="cookie-btn accept-all" onclick="acceptAll()">✅ پذیرش همه</button>
+                    <button class="cookie-btn reject-all" onclick="rejectAll()">❌ رد همه</button>
+                    <button class="cookie-btn manage" onclick="manageSettings()">⚙️ مدیریت تنظیمات</button>
+                </div>
+            </div>
+            
+            <!-- لینک حریم خصوصی -->
+            <div class="privacy-note">
+                🔒 برای اطلاعات بیشتر درباره نحوه جمع‌آوری و استفاده از اطلاعات، لطفاً <a href="privacy.html">سیاست حفظ حریم خصوصی گل‌های رنگارنگ</a> را مطالعه کنید.
+            </div>
+            
+            <!-- امضای برند -->
+            <div class="brand-footer">
+                <div class="brand-name">🌷 گل‌های رنگارنگ — اخبار محلی، ملی و بین‌المللی</div>
+                <div class="brand-location">لاسونتراس، ایالات متحده آمریکا</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <!-- پیام پس از انتخاب -->
+    <div class="cookie-toast" id="cookieToast">
+        ✅ تنظیمات شما ذخیره شد
+    </div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('cookieToast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+        
+        function acceptAll() {
+            localStorage.setItem('cookieSettings', JSON.stringify({
+                essential: true,
+                functional: true,
+                personalization: true,
+                advertising: true,
+                date: new Date().toISOString()
+            }));
+            showToast('✅ همه کوکی‌ها پذیرفته شدند');
+        }
+        
+        function rejectAll() {
+            localStorage.setItem('cookieSettings', JSON.stringify({
+                essential: true,
+                functional: false,
+                personalization: false,
+                advertising: false,
+                date: new Date().toISOString()
+            }));
+            showToast('❌ کوکی‌های غیرضروری رد شدند');
+        }
+        
+        function manageSettings() {
+            showToast('⚙️ تنظیمات پیشرفته به‌زودی...');
+            // بعداً می‌تونی یه modal اضافه کنی برای انتخاب دقیق هر کوکی
+        }
+    </script>
+
+</body>
+</html>
