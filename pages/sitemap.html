@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقشه سایت - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        
+        .sitemap-section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px 22px;
+            margin-bottom: 20px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sitemap-section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .sitemap-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .sitemap-subtitle {
+            font-size: 12px;
+            color: #777;
+            margin: 0 0 15px 0;
+            font-style: italic;
+            direction: ltr;
+            text-align: right;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .link-item {
+            display: block;
+            padding: 9px 14px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            border-right: 3px solid #e0e0e0;
+            transition: all 0.2s;
+            direction: ltr;
+            text-align: right;
+        }
+        .link-item:hover {
+            background-color: #fff5f5;
+            color: #c0392b;
+            border-right-color: #c0392b;
+            padding-right: 20px;
+            box-shadow: 0 2px 8px rgba(192, 57, 43, 0.1);
+        }
+        
+        /* زیربخش‌های تلویزیون */
+        .tv-subsection {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 18px;
+            margin: 12px 0;
+            border-right: 3px solid #3498db;
+        }
+        .tv-subsection-title {
+            font-family: Georgia, serif;
+            font-size: 15px;
+            font-weight: bold;
+            color: #3498db;
+            margin: 0 0 4px 0;
+            direction: ltr;
+            text-align: right;
+        }
+        .tv-subsection-desc {
+            font-size: 12px;
+            color: #777;
+            margin: 0 0 10px 0;
+            direction: ltr;
+            text-align: right;
+        }
+        
+        /* اطلاعات تماس */
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        .contact-box .tagline {
+            font-style: italic;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+        
+        /* جعبه Important Site Pages */
+        .important-pages {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border: 2px solid #f39c12;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .important-pages h3 {
+            color: #856404;
+            font-size: 17px;
+            margin: 0 0 15px 0;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+        .important-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .important-link {
+            display: block;
+            padding: 12px 15px;
+            background-color: white;
+            color: #856404;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid #ffeaa7;
+            transition: all 0.3s;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .important-link:hover {
+            background-color: #f39c12;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .link-grid { grid-template-columns: 1fr; }
+            .important-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">نقشه سایت</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>🗺️ نقشه سایت</h1>
+            
+            <div class="page-intro">
+                به <strong>Golhaye Rangarang Media Network</strong> خوش آمدید.
+                <br><br>
+                این صفحه فهرست بخش‌های اصلی وب‌سایت و خدمات آنلاین گل‌های رنگارنگ را در اختیار شما قرار می‌دهد تا بتوانید به‌سرعت به بخش موردنظر خود دسترسی پیدا کنید.
+            </div>
+            
+            <!-- Golhaye Rangarang News -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📰 Golhaye Rangarang News</h3>
+                <p class="sitemap-subtitle">Main News Platform</p>
+                <div class="link-grid">
+                    <a href="../index.html" class="link-item">Home</a>
+                    <a href="../news2.html" class="link-item">Latest News</a>
+                    <a href="#" class="link-item">Breaking News</a>
+                    <a href="#" class="link-item">Top Stories</a>
+                    <a href="#" class="link-item">World News</a>
+                    <a href="#" class="link-item">U.S. News</a>
+                    <a href="#" class="link-item">Las Ontras News</a>
+                    <a href="#" class="link-item">Politics</a>
+                    <a href="#" class="link-item">Business & Economy</a>
+                    <a href="#" class="link-item">Technology</a>
+                    <a href="#" class="link-item">Science</a>
+                    <a href="#" class="link-item">Health</a>
+                    <a href="#" class="link-item">Sports</a>
+                    <a href="#" class="link-item">Culture & Entertainment</a>
+                    <a href="#" class="link-item">Lifestyle</a>
+                    <a href="#" class="link-item">Travel</a>
+                    <a href="#" class="link-item">Weather</a>
+                    <a href="#" class="link-item">Investigations</a>
+                    <a href="#" class="link-item">Special Reports</a>
+                    <a href="#" class="link-item">Photo Reports</a>
+                    <a href="#" class="link-item">Video</a>
+                    <a href="#" class="link-item">Podcasts</a>
+                    <a href="#" class="link-item">Opinion</a>
+                    <a href="#" class="link-item">Editorials</a>
+                    <a href="#" class="link-item">Fact Check</a>
+                </div>
+            </div>
+            
+            <!-- Las Ontras Local News -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📍 Las Ontras Local News</h3>
+                <p class="sitemap-subtitle">اخبار و گزارش‌های محلی ایالت Las Ontras</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Las Ontras Local News</a>
+                    <a href="#" class="link-item">Latest Local News</a>
+                    <a href="#" class="link-item">Breaking Local News</a>
+                    <a href="#" class="link-item">Local Politics</a>
+                    <a href="#" class="link-item">Local Government</a>
+                    <a href="#" class="link-item">Crime & Public Safety</a>
+                    <a href="#" class="link-item">Education</a>
+                    <a href="#" class="link-item">Health</a>
+                    <a href="#" class="link-item">Business</a>
+                    <a href="#" class="link-item">Transportation</a>
+                    <a href="#" class="link-item">Weather</a>
+                    <a href="#" class="link-item">Community</a>
+                    <a href="#" class="link-item">Events</a>
+                    <a href="#" class="link-item">Local Sports</a>
+                    <a href="#" class="link-item">Local Culture</a>
+                    <a href="#" class="link-item">Neighborhoods</a>
+                    <a href="#" class="link-item">Local Investigations</a>
+                    <a href="#" class="link-item">Local Video</a>
+                </div>
+            </div>
+            
+            <!-- World News -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🌎 World News</h3>
+                <p class="sitemap-subtitle">Global Coverage</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">North America</a>
+                    <a href="#" class="link-item">Latin America</a>
+                    <a href="#" class="link-item">Europe</a>
+                    <a href="#" class="link-item">Middle East</a>
+                    <a href="#" class="link-item">Asia</a>
+                    <a href="#" class="link-item">Africa</a>
+                    <a href="#" class="link-item">International Politics</a>
+                    <a href="#" class="link-item">International Business</a>
+                    <a href="#" class="link-item">Global Economy</a>
+                    <a href="#" class="link-item">World Events</a>
+                </div>
+            </div>
+            
+            <!-- U.S. News -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🇺🇸 U.S. News</h3>
+                <p class="sitemap-subtitle">National Coverage</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">National News</a>
+                    <a href="#" class="link-item">U.S. Politics</a>
+                    <a href="#" class="link-item">Federal Government</a>
+                    <a href="#" class="link-item">Congress</a>
+                    <a href="#" class="link-item">Supreme Court</a>
+                    <a href="#" class="link-item">Economy</a>
+                    <a href="#" class="link-item">Business</a>
+                    <a href="#" class="link-item">Education</a>
+                    <a href="#" class="link-item">Public Safety</a>
+                    <a href="#" class="link-item">Immigration</a>
+                    <a href="#" class="link-item">Environment</a>
+                    <a href="#" class="link-item">Transportation</a>
+                </div>
+            </div>
+            
+            <!-- Business & Economy -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">💼 Business & Economy</h3>
+                <p class="sitemap-subtitle">Markets, Companies & Finance</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Business News</a>
+                    <a href="#" class="link-item">Markets</a>
+                    <a href="#" class="link-item">Economy</a>
+                    <a href="#" class="link-item">Companies</a>
+                    <a href="#" class="link-item">Personal Finance</a>
+                    <a href="#" class="link-item">Banking</a>
+                    <a href="#" class="link-item">Jobs & Employment</a>
+                    <a href="#" class="link-item">Technology</a>
+                    <a href="#" class="link-item">Startups</a>
+                    <a href="#" class="link-item">Retail</a>
+                    <a href="#" class="link-item">Real Estate</a>
+                    <a href="#" class="link-item">Economic Analysis</a>
+                </div>
+            </div>
+            
+            <!-- Technology -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">💻 Technology</h3>
+                <p class="sitemap-subtitle">Tech, Innovation & Digital</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Technology News</a>
+                    <a href="#" class="link-item">Artificial Intelligence</a>
+                    <a href="#" class="link-item">Smartphones</a>
+                    <a href="#" class="link-item">Computers</a>
+                    <a href="#" class="link-item">Internet</a>
+                    <a href="#" class="link-item">Cybersecurity</a>
+                    <a href="#" class="link-item">Gaming</a>
+                    <a href="#" class="link-item">Social Media</a>
+                    <a href="#" class="link-item">Innovation</a>
+                    <a href="#" class="link-item">Science & Technology</a>
+                </div>
+            </div>
+            
+            <!-- Sports -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">⚽ Sports</h3>
+                <p class="sitemap-subtitle">Sports Coverage</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Sports News</a>
+                    <a href="#" class="link-item">Football</a>
+                    <a href="#" class="link-item">Basketball</a>
+                    <a href="#" class="link-item">Baseball</a>
+                    <a href="#" class="link-item">Tennis</a>
+                    <a href="#" class="link-item">Motorsport</a>
+                    <a href="#" class="link-item">Boxing</a>
+                    <a href="#" class="link-item">International Sports</a>
+                    <a href="#" class="link-item">Local Sports</a>
+                    <a href="#" class="link-item">Sports Analysis</a>
+                    <a href="#" class="link-item">Scores & Results</a>
+                </div>
+            </div>
+            
+            <!-- Culture & Entertainment -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🎬 Culture & Entertainment</h3>
+                <p class="sitemap-subtitle">Arts, Movies & More</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Movies</a>
+                    <a href="#" class="link-item">Television</a>
+                    <a href="#" class="link-item">Music</a>
+                    <a href="#" class="link-item">Celebrity News</a>
+                    <a href="#" class="link-item">Arts</a>
+                    <a href="#" class="link-item">Books</a>
+                    <a href="#" class="link-item">Gaming</a>
+                    <a href="#" class="link-item">Culture</a>
+                    <a href="#" class="link-item">Entertainment News</a>
+                    <a href="#" class="link-item">Reviews</a>
+                    <a href="#" class="link-item">Interviews</a>
+                </div>
+            </div>
+            
+            <!-- Rangarang TV -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📺 Rangarang TV</h3>
+                <p class="sitemap-subtitle">Four Broadcasting Networks</p>
+                
+                <div class="tv-subsection">
+                    <p class="tv-subsection-title">Rangarang TV 1</p>
+                    <p class="tv-subsection-desc">News & Current Affairs</p>
+                    <div class="link-grid">
+                        <a href="#" class="link-item">TV 1 Home</a>
+                        <a href="#" class="link-item">Live</a>
+                        <a href="#" class="link-item">Latest Programs</a>
+                        <a href="#" class="link-item">News</a>
+                        <a href="#" class="link-item">Breaking News</a>
+                        <a href="#" class="link-item">Interviews</a>
+                        <a href="#" class="link-item">Current Affairs</a>
+                        <a href="#" class="link-item">Special Reports</a>
+                        <a href="#" class="link-item">Program Schedule</a>
+                    </div>
+                </div>
+                
+                <div class="tv-subsection">
+                    <p class="tv-subsection-title">Rangarang TV 2</p>
+                    <p class="tv-subsection-desc">Las Ontras & Regional News</p>
+                    <div class="link-grid">
+                        <a href="#" class="link-item">TV 2 Home</a>
+                        <a href="#" class="link-item">Live</a>
+                        <a href="#" class="link-item">Las Ontras News</a>
+                        <a href="#" class="link-item">Regional News</a>
+                        <a href="#" class="link-item">Local Reports</a>
+                        <a href="#" class="link-item">Community</a>
+                        <a href="#" class="link-item">Local Politics</a>
+                        <a href="#" class="link-item">Program Schedule</a>
+                    </div>
+                </div>
+                
+                <div class="tv-subsection">
+                    <p class="tv-subsection-title">Rangarang TV 3</p>
+                    <p class="tv-subsection-desc">Business, Economy & Technology</p>
+                    <div class="link-grid">
+                        <a href="#" class="link-item">TV 3 Home</a>
+                        <a href="#" class="link-item">Live</a>
+                        <a href="#" class="link-item">Business</a>
+                        <a href="#" class="link-item">Markets</a>
+                        <a href="#" class="link-item">Economy</a>
+                        <a href="#" class="link-item">Technology</a>
+                        <a href="#" class="link-item">Innovation</a>
+                        <a href="#" class="link-item">Interviews</a>
+                        <a href="#" class="link-item">Program Schedule</a>
+                    </div>
+                </div>
+                
+                <div class="tv-subsection">
+                    <p class="tv-subsection-title">Rangarang TV 4</p>
+                    <p class="tv-subsection-desc">Sports, Culture & Entertainment</p>
+                    <div class="link-grid">
+                        <a href="#" class="link-item">TV 4 Home</a>
+                        <a href="#" class="link-item">Live</a>
+                        <a href="#" class="link-item">Sports</a>
+                        <a href="#" class="link-item">Culture</a>
+                        <a href="#" class="link-item">Entertainment</a>
+                        <a href="#" class="link-item">Movies & Television</a>
+                        <a href="#" class="link-item">Music</a>
+                        <a href="#" class="link-item">Special Programs</a>
+                        <a href="#" class="link-item">Program Schedule</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- WhatsApp News -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📱 Rangarang WhatsApp News</h3>
+                <p class="sitemap-subtitle">WhatsApp News Channel</p>
+                <div class="link-grid">
+                    <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank" class="link-item">WhatsApp News</a>
+                    <a href="#" class="link-item">Latest Updates</a>
+                    <a href="#" class="link-item">Breaking News</a>
+                    <a href="#" class="link-item">Las Ontras Local</a>
+                    <a href="#" class="link-item">Business & Economy</a>
+                    <a href="#" class="link-item">Sports</a>
+                    <a href="#" class="link-item">Special Alerts</a>
+                    <a href="#" class="link-item">How to Follow</a>
+                    <a href="#" class="link-item">Privacy Information</a>
+                </div>
+            </div>
+            
+            <!-- Newsletters -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📧 Newsletters</h3>
+                <p class="sitemap-subtitle">Email Newsletters</p>
+                <div class="link-grid">
+                    <a href="newsletters.html" class="link-item">Newsletter Home</a>
+                    <a href="newsletters.html" class="link-item">Top Stories</a>
+                    <a href="newsletters.html" class="link-item">World News</a>
+                    <a href="newsletters.html" class="link-item">Las Ontras Local</a>
+                    <a href="newsletters.html" class="link-item">Business & Economy</a>
+                    <a href="newsletters.html" class="link-item">Technology</a>
+                    <a href="newsletters.html" class="link-item">Sports</a>
+                    <a href="newsletters.html" class="link-item">Culture & Entertainment</a>
+                    <a href="newsletters.html" class="link-item">Rangarang TV</a>
+                    <a href="newsletters.html" class="link-item">Breaking News Alerts</a>
+                    <a href="newsletters.html" class="link-item">Manage Preferences</a>
+                    <a href="newsletters.html" class="link-item">Unsubscribe</a>
+                </div>
+            </div>
+            
+            <!-- Online Store -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🛍️ Rangarang Online Store</h3>
+                <p class="sitemap-subtitle">Clothing & Accessories</p>
+                <div class="link-grid">
+                    <a href="../shop.html" class="link-item">Store Home</a>
+                    <a href="../shop.html" class="link-item">New Arrivals</a>
+                    <a href="../shop.html" class="link-item">Featured Products</a>
+                    <a href="../shop.html" class="link-item">Clothing</a>
+                    <a href="../shop.html" class="link-item">T-Shirts</a>
+                    <a href="../shop.html" class="link-item">Hoodies</a>
+                    <a href="../shop.html" class="link-item">Jackets</a>
+                    <a href="../shop.html" class="link-item">Accessories</a>
+                    <a href="../shop.html" class="link-item">Men's Collection</a>
+                    <a href="../shop.html" class="link-item">Women's Collection</a>
+                    <a href="../shop.html" class="link-item">Rangarang Collection</a>
+                    <a href="../shop.html" class="link-item">Sale</a>
+                    <a href="#" class="link-item">Shopping Cart</a>
+                    <a href="#" class="link-item">Checkout</a>
+                    <a href="#" class="link-item">My Orders</a>
+                    <a href="#" class="link-item">Order Tracking</a>
+                    <a href="#" class="link-item">Returns & Refunds</a>
+                    <a href="#" class="link-item">Shipping Information</a>
+                    <a href="about.html" class="link-item">Customer Support</a>
+                </div>
+            </div>
+            
+            <!-- Search -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🔎 Search</h3>
+                <p class="sitemap-subtitle">Search All Content</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Search</a>
+                    <a href="#" class="link-item">Advanced Search</a>
+                    <a href="#" class="link-item">Search News</a>
+                    <a href="#" class="link-item">Search Local News</a>
+                    <a href="#" class="link-item">Search Videos</a>
+                    <a href="#" class="link-item">Search TV Programs</a>
+                    <a href="#" class="link-item">Search Store</a>
+                </div>
+            </div>
+            
+            <!-- Editorial & Journalism -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🎙️ Editorial & Journalism</h3>
+                <p class="sitemap-subtitle">Newsroom & Standards</p>
+                <div class="link-grid">
+                    <a href="#" class="link-item">Our Journalism</a>
+                    <a href="#" class="link-item">Editorial Standards</a>
+                    <a href="#" class="link-item">Newsroom</a>
+                    <a href="#" class="link-item">Investigations</a>
+                    <a href="#" class="link-item">Fact Checking</a>
+                    <a href="#" class="link-item">Corrections</a>
+                    <a href="#" class="link-item">Ethics Policy</a>
+                    <a href="#" class="link-item">Source Protection</a>
+                    <a href="#" class="link-item">Anonymous Tips</a>
+                    <a href="#" class="link-item">Submit a News Tip</a>
+                    <a href="about.html" class="link-item">Contact the Newsroom</a>
+                </div>
+            </div>
+            
+            <!-- About -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">👥 About Golhaye Rangarang</h3>
+                <p class="sitemap-subtitle">Company Information</p>
+                <div class="link-grid">
+                    <a href="about.html" class="link-item">About Us</a>
+                    <a href="about.html" class="link-item">Our Mission</a>
+                    <a href="about.html" class="link-item">Our Team</a>
+                    <a href="about.html" class="link-item">Leadership</a>
+                    <a href="about.html" class="link-item">Newsroom</a>
+                    <a href="about.html" class="link-item">Careers</a>
+                    <a href="about.html" class="link-item">Internships</a>
+                    <a href="#" class="link-item">Advertise With Us</a>
+                    <a href="#" class="link-item">Partnerships</a>
+                    <a href="#" class="link-item">Press Room</a>
+                    <a href="about.html" class="link-item">Contact Us</a>
+                </div>
+            </div>
+            
+            <!-- Advertising -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📢 Advertising</h3>
+                <p class="sitemap-subtitle">Advertise With Us</p>
+                <div class="link-grid">
+                    <a href="adchoices.html" class="link-item">Advertising</a>
+                    <a href="adchoices.html" class="link-item">Advertising Solutions</a>
+                    <a href="adchoices.html" class="link-item">Media Kit</a>
+                    <a href="adchoices.html" class="link-item">TV Advertising</a>
+                    <a href="adchoices.html" class="link-item">Digital Advertising</a>
+                    <a href="adchoices.html" class="link-item">Sponsored Content</a>
+                    <a href="adchoices.html" class="link-item">Partnerships</a>
+                    <a href="adchoices.html" class="link-item">Ad Choices</a>
+                    <a href="adchoices.html" class="link-item">Your Privacy Choices</a>
+                </div>
+            </div>
+            
+            <!-- Privacy & Legal -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🔐 Privacy & Legal</h3>
+                <p class="sitemap-subtitle">Legal Information</p>
+                <div class="link-grid">
+                    <a href="privacy.html" class="link-item">Privacy Policy</a>
+                    <a href="terms.html" class="link-item">Terms of Use</a>
+                    <a href="cookies.html" class="link-item">Manage Cookies</a>
+                    <a href="adchoices.html" class="link-item">Ad Choices</a>
+                    <a href="accessibility.html" class="link-item">Accessibility & CC</a>
+                    <a href="adchoices.html" class="link-item">Your Privacy Choices</a>
+                    <a href="adchoices.html" class="link-item">Do Not Sell or Share</a>
+                    <a href="#" class="link-item">Copyright</a>
+                    <a href="#" class="link-item">DMCA / Copyright Complaints</a>
+                    <a href="#" class="link-item">California Privacy Rights</a>
+                    <a href="#" class="link-item">State Privacy Rights</a>
+                    <a href="cookies.html" class="link-item">Cookie Policy</a>
+                </div>
+            </div>
+            
+            <!-- Accessibility -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">♿ Accessibility</h3>
+                <p class="sitemap-subtitle">Accessibility Features</p>
+                <div class="link-grid">
+                    <a href="accessibility.html" class="link-item">Accessibility</a>
+                    <a href="accessibility.html" class="link-item">Closed Captions</a>
+                    <a href="accessibility.html" class="link-item">Live Captions</a>
+                    <a href="accessibility.html" class="link-item">Subtitles</a>
+                    <a href="transcripts.html" class="link-item">Transcripts</a>
+                    <a href="accessibility.html" class="link-item">Screen Reader Support</a>
+                    <a href="accessibility.html" class="link-item">Keyboard Navigation</a>
+                    <a href="accessibility.html" class="link-item">Accessibility Feedback</a>
+                </div>
+            </div>
+            
+            <!-- Help & Support -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">🆘 Help & Support</h3>
+                <p class="sitemap-subtitle">Customer Support</p>
+                <div class="link-grid">
+                    <a href="about.html" class="link-item">Help Center</a>
+                    <a href="about.html" class="link-item">Contact Us</a>
+                    <a href="about.html" class="link-item">Frequently Asked Questions</a>
+                    <a href="about.html" class="link-item">Account Help</a>
+                    <a href="newsletters.html" class="link-item">Newsletter Help</a>
+                    <a href="about.html" class="link-item">Video Help</a>
+                    <a href="about.html" class="link-item">TV Support</a>
+                    <a href="../shop.html" class="link-item">Store Support</a>
+                    <a href="#" class="link-item">Shipping & Returns</a>
+                    <a href="privacy.html" class="link-item">Privacy Requests</a>
+                    <a href="accessibility.html" class="link-item">Accessibility Support</a>
+                </div>
+            </div>
+            
+            <!-- Contact -->
+            <div class="sitemap-section">
+                <h3 class="sitemap-title">📞 Contact</h3>
+                <p class="sitemap-subtitle">General, Newsroom, Advertising, Store, Privacy</p>
+                <div class="link-grid">
+                    <a href="about.html" class="link-item">Contact Us</a>
+                    <a href="about.html" class="link-item">Contact the Newsroom</a>
+                    <a href="about.html" class="link-item">Submit a News Tip</a>
+                    <a href="about.html" class="link-item">Investigative Tips</a>
+                    <a href="adchoices.html" class="link-item">Advertising Contact</a>
+                    <a href="adchoices.html" class="link-item">Media Kit</a>
+                    <a href="../shop.html" class="link-item">Customer Service</a>
+                    <a href="../shop.html" class="link-item">Order Support</a>
+                    <a href="../shop.html" class="link-item">Returns & Refunds</a>
+                    <a href="privacy.html" class="link-item">Privacy Requests</a>
+                    <a href="privacy.html" class="link-item">Data Requests</a>
+                    <a href="accessibility.html" class="link-item">Accessibility Feedback</a>
+                </div>
+            </div>
+            
+            <!-- Important Site Pages -->
+            <div class="important-pages">
+                <h3>📄 Important Site Pages</h3>
+                <div class="important-grid">
+                    <a href="../index.html" class="important-link">Home</a>
+                    <a href="about.html" class="important-link">About Us</a>
+                    <a href="about.html" class="important-link">Contact Us</a>
+                    <a href="privacy.html" class="important-link">Privacy Policy</a>
+                    <a href="terms.html" class="important-link">Terms of Use</a>
+                    <a href="cookies.html" class="important-link">Manage Cookies</a>
+                    <a href="adchoices.html" class="important-link">Ad Choices</a>
+                    <a href="accessibility.html" class="important-link">Accessibility</a>
+                    <a href="newsletters.html" class="important-link">Newsletters</a>
+                    <a href="sitemap.html" class="important-link">Sitemap</a>
+                </div>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📺 Golhaye Rangarang Media Network</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+                <p class="tagline">
+                    اخبار محلی. اخبار جهان. گزارش‌های اختصاصی.<br>
+                    گل‌های رنگارنگ، خبر را به شما می‌رساند.
+                </p>
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+</body>
+</html>
