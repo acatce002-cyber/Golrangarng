@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رویترز: قیمت نفت بیش از ۲٪ افزایش یافت - گلهای رنگارنگ</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        header h1 { margin: 0; font-size: 22px; }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+            flex: 1;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        
+        .news-article {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            line-height: 2;
+        }
+        .news-article h1 {
+            color: #c0392b;
+            font-size: 22px;
+            margin: 0 0 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            line-height: 1.6;
+        }
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .news-meta .category {
+            background-color: #c0392b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+        .news-article p {
+            font-size: 15px;
+            text-align: justify;
+            margin-bottom: 18px;
+            color: #333;
+            line-height: 2;
+        }
+        .news-article .lead {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-right: 4px solid #c0392b;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+        .news-article .bullet-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background-color: #fff5f5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-right: 3px solid #e74c3c;
+        }
+        .news-article .bullet-point .icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .news-article .bullet-point p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+        .news-article h3 {
+            color: #c0392b;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-right: 12px;
+            border-right: 4px solid #c0392b;
+        }
+        .price-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .price-item {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .price-item .name {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        .price-item .value {
+            font-size: 22px;
+            font-weight: bold;
+            direction: ltr;
+        }
+        .price-item .change {
+            font-size: 13px;
+            margin-top: 5px;
+            color: #7bed9f;
+        }
+        .tags {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #eef2ff;
+            color: #2a5298;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-left: 5px;
+            margin-bottom: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #eaeaea;
+            color: #555;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .news-article { padding: 20px; }
+            .news-article h1 { font-size: 18px; }
+            .news-article p { font-size: 14px; }
+            .price-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📰 گلهای رنگارنگ</h1>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
+        
+        <div class="news-article">
+            <h1>🛢️ رویترز: قیمت نفت بیش از ۲٪ افزایش یافت؛ برنت به ۱۰۶.۷۲ دلار رسید</h1>
+            
+            <div class="news-meta">
+                <span class="category">🛢️ انرژی</span>
+                <span>📅 دوشنبه ۱۵ سپتامبر ۲۰۲۶</span>
+                <span>⏱ زمان مطالعه: ۳ دقیقه</span>
+            </div>
+            
+            <div class="lead">
+                قیمت نفت روز دوشنبه بیش از ۲ درصد افزایش یافت و قیمت برنت به ۱۰۶.۷۲ دلار و نفت WTI به ۱۰۲.۱۵ دلار در هر بشکه رسید؛ هم‌زمان تشدید حملات در خاورمیانه نگرانی‌ها درباره اختلال در عرضه را افزایش داده است.
+            </div>
+            
+            <h3>📈 قیمت‌های جهانی نفت</h3>
+            <div class="price-box">
+                <div class="price-item">
+                    <div class="name">🛢️ نفت برنت</div>
+                    <div class="value">$106.72</div>
+                    <div class="change">▲ +۲.۴٪</div>
+                </div>
+                <div class="price-item">
+                    <div class="name">🛢️ نفت WTI</div>
+                    <div class="value">$102.15</div>
+                    <div class="change">▲ +۲.۱٪</div>
+                </div>
+            </div>
+            
+            <h3>⚡ اختلال در عرضه نفت</h3>
+            <p>
+                گزارش‌ها حاکی از آن است که خط لوله شرق به غرب عربستان پس از حمله پهپادی همچنان بسته است. این موضوع می‌تواند تا ۴ درصد از عرضه جهانی نفت را در معرض خطر قرار دهد و به‌عنوان یکی از مهم‌ترین عوامل افزایش قیمت در روزهای اخیر شناخته می‌شود.
+            </p>
+            
+            <div class="bullet-point">
+                <span class="icon">🔴</span>
+                <p>خط لوله شرق به غرب عربستان پس از حمله پهپادی همچنان بسته است؛ موضوعی که می‌تواند تا ۴٪ از عرضه جهانی نفت را در معرض خطر قرار دهد.</p>
+            </div>
+            
+            <h3>🔥 حمله به شناور در تنگه هرمز</h3>
+            <p>
+                هم‌زمان با افزایش تنش‌ها در منطقه، یک شناور در تنگه هرمز هدف حمله قرار گرفت و دچار آتش‌سوزی شد. تنگه هرمز یکی از مهم‌ترین مسیرهای انتقال نفت در جهان است و هرگونه اختلال در آن می‌تواند تأثیرات گسترده‌ای بر بازارهای جهانی انرژی داشته باشد.
+            </p>
+            
+            <div class="bullet-point">
+                <span class="icon">🔴</span>
+                <p>همچنین یک شناور در تنگه هرمز هدف حمله قرار گرفت و دچار آتش‌سوزی شد.</p>
+            </div>
+            
+            <h3>⚔️ ازسرگیری حملات حوثی‌ها</h3>
+            <p>
+                افزایش قیمت نفت پس از ازسرگیری حملات حوثی‌ها به عربستان سعودی رخ داده است. این حملات که در روزهای اخیر شدت گرفته، نگرانی‌ها درباره امنیت تأسیسات نفتی و مسیرهای انتقال انرژی را افزایش داده است. همچنین گزارش شده که نشست برنامه‌ریزی‌شده میان ایران و کشورهای خلیج فارس درباره وضعیت تنگه هرمز به تعویق افتاده است.
+            </p>
+            
+            <div class="bullet-point">
+                <span class="icon">🔴</span>
+                <p>افزایش قیمت نفت پس از ازسرگیری حملات حوثی‌ها به عربستان سعودی رخ داده است. نشست برنامه‌ریزی‌شده میان ایران و کشورهای خلیج فارس درباره وضعیت تنگه هرمز نیز به تعویق افتاده است.</p>
+            </div>
+            
+            <h3>🌍 چشم‌انداز بازار انرژی</h3>
+            <p>
+                کارشناسان معتقدند که ادامه تنش‌ها در خاورمیانه می‌تواند قیمت نفت را به سطوح بالاتری هدایت کند. در صورت بسته ماندن خط لوله عربستان و ادامه حملات، احتمال رسیدن قیمت برنت به بالای ۱۱۰ دلار در هفته‌های آینده وجود دارد. این وضعیت می‌تواند فشار تورمی بر اقتصاد جهانی را افزایش دهد و تصمیم‌گیری بانک‌های مرکزی را پیچیده‌تر کند.
+            </p>
+            
+            <div class="tags">
+                <span class="tag">#نفت</span>
+                <span class="tag">#برنت</span>
+                <span class="tag">#تنگه_هرمز</span>
+                <span class="tag">#عربستان</span>
+                <span class="tag">#حوثی‌ها</span>
+                <span class="tag">#بازار_انرژی</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        گلهای رنگارنگ 2026 (c)
+    </footer>
+
+</body>
+</html>
