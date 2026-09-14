@@ -25,16 +25,11 @@
             min-height: 100vh; color: #333;
         }
         
-        /* ============================ */
-        /* تبلیغ Heinz - پررنگ و شفاف  */
-        /* ============================ */
+        /* تبلیغ Heinz */
         .top-ad-wrapper { max-width: 800px; width: 100%; margin: 15px auto 0 auto; padding: 0 15px; }
         .top-ad {
-            position: relative;
-            width: 100%;
-            height: 150px;
-            border-radius: 14px;
-            overflow: hidden;
+            position: relative; width: 100%; height: 150px;
+            border-radius: 14px; overflow: hidden;
             box-shadow: 0 8px 30px rgba(192, 57, 43, 0.5), 0 0 0 4px rgba(192, 57, 43, 0.15);
             border: 4px solid #c0392b;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -67,9 +62,7 @@
         }
         .ad-brand {
             font-family: Georgia, serif;
-            font-size: 46px;
-            font-weight: bold;
-            color: #ffffff;
+            font-size: 46px; font-weight: bold; color: #ffffff;
             letter-spacing: 8px;
             text-shadow: 
                 3px 3px 0 #c0392b,
@@ -80,26 +73,18 @@
         }
         .ad-grg {
             font-family: 'IRANSans', sans-serif;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
+            font-size: 20px; font-weight: bold; color: white;
             background: linear-gradient(135deg, #c0392b, #7d1f17);
-            padding: 6px 16px;
-            border-radius: 8px;
+            padding: 6px 16px; border-radius: 8px;
             letter-spacing: 3px;
-            box-shadow: 
-                0 4px 12px rgba(0,0,0,0.5),
-                inset 0 1px 0 rgba(255,255,255,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
             border: 2px solid rgba(255,255,255,0.4);
         }
         .ad-slogan {
             font-family: 'IRANSans', sans-serif;
-            font-size: 15px;
-            font-weight: bold;
-            color: #ffffff;
+            font-size: 15px; font-weight: bold; color: #ffffff;
             background: linear-gradient(135deg, rgba(192, 57, 43, 0.95), rgba(125, 31, 23, 0.95));
-            padding: 8px 22px;
-            border-radius: 25px;
+            padding: 8px 22px; border-radius: 25px;
             border: 2px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -152,10 +137,8 @@
             font-weight: bold;
         }
         .menu-separator {
-            height: 1px;
-            background-color: #e0e0e0;
-            margin: 8px 15px;
-            border-radius: 1px;
+            height: 1px; background-color: #e0e0e0;
+            margin: 8px 15px; border-radius: 1px;
         }
         
         /* اخبار کوتاه */
@@ -182,13 +165,11 @@
         }
         
         /* ============================================ */
-        /* خبر ۱۹ - Exclusive با عکس (بالای ۳ خبر ساده) */
+        /* خبر اختصاصی با عکس (بالای ۳ خبر ساده)       */
         /* ============================================ */
         .exclusive-news-section {
-            max-width: 800px;
-            width: 100%;
-            margin: 25px auto 30px auto;
-            padding: 0 15px;
+            max-width: 800px; width: 100%;
+            margin: 25px auto 30px auto; padding: 0 15px;
         }
         .exclusive-card {
             display: block;
@@ -213,8 +194,7 @@
             position: relative;
         }
         .exclusive-image img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             display: block;
             transition: transform 0.5s;
@@ -227,33 +207,19 @@
             top: 15px;
             right: 15px;
             z-index: 3;
-            font-size: 12px;
+            font-size: 13px;
             color: white;
             font-weight: bold;
             background: linear-gradient(135deg, #c0392b, #7d1f17);
-            padding: 6px 16px;
-            border-radius: 6px;
-            font-family: Georgia, serif;
-            letter-spacing: 2px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-family: 'IRANSans', sans-serif;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.3);
         }
         .exclusive-content {
             padding: 22px 25px;
-        }
-        .exclusive-category {
-            display: inline-block;
-            font-size: 11px;
-            color: #c0392b;
-            font-weight: bold;
-            background-color: #fff5f5;
-            padding: 4px 12px;
-            border-radius: 12px;
-            border: 1px solid #fadbd8;
-            margin-bottom: 12px;
-            font-family: Georgia, serif;
-            letter-spacing: 1.5px;
-            direction: ltr;
         }
         .exclusive-title {
             margin: 0;
@@ -364,28 +330,45 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
         
-        /* دکمه اخبار */
-        .go-news-wrapper {
+        /* ============================ */
+        /* صفحه‌بندی ۱ و ۲               */
+        /* ============================ */
+        .pagination {
             max-width: 800px; width: 100%;
-            margin: 20px auto 30px auto; padding: 0 15px;
+            margin: 30px auto 30px auto;
+            padding: 0 15px;
+            display: flex; justify-content: center; align-items: center; gap: 12px;
         }
-        .go-news-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: linear-gradient(135deg, #c0392b, #e74c3c);
-            color: white; text-decoration: none;
-            padding: 20px 25px; border-radius: 14px;
-            font-size: 17px; font-weight: bold;
-            font-family: 'IRANSans', sans-serif;
-            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
-            transition: all 0.3s; border: 2px solid #c0392b;
+        .page-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            font-family: Georgia, serif;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0 16px;
+            background-color: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .go-news-btn:hover {
+        .page-num:hover {
+            border-color: #c0392b;
+            color: #c0392b;
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.5);
-            background: linear-gradient(135deg, #a93226, #c0392b);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.2);
         }
-        .go-news-btn .arrow-icon { font-size: 22px; transition: transform 0.3s; }
-        .go-news-btn:hover .arrow-icon { transform: translateX(-5px); }
+        .page-num.active {
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            color: white;
+            border-color: #c0392b;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
+        }
         
         /* فوتر */
         footer {
@@ -459,7 +442,7 @@
 </head>
 <body>
 
-    <!-- تبلیغ Heinz - پررنگ و شفاف -->
+    <!-- تبلیغ Heinz -->
     <div class="top-ad-wrapper">
         <div class="top-ad">
             <a href="https://www.heinz.com" target="_blank">
@@ -519,23 +502,22 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- خبر ۱۹ - Exclusive با عکس (بالای ۳ خبر ساده) -->
+    <!-- خبر اختصاصی با عکس                          -->
     <!-- ============================================ -->
     <div class="exclusive-news-section">
         <a href="N1/news19.html" class="exclusive-card">
             <div class="exclusive-image">
-                <div class="exclusive-badge">GRG Exclusive</div>
+                <div class="exclusive-badge">اختصاصی GRG</div>
                 <img src="products/doj-news.jpg" alt="تماس تلفنی پرتنش و استعفا" onerror="this.style.display='none';">
             </div>
             <div class="exclusive-content">
-                <span class="exclusive-category">POLITICS • 5 MIN READ</span>
                 <h2 class="exclusive-title">تماس تلفنی پرتنش و استعفا، تحقیقات وزارت دادگستری درباره دشمنان اصلی ترامپ را به هم ریخت</h2>
             </div>
         </a>
     </div>
 
     <!-- ============================================ -->
-    <!-- ۳ خبر ساده (بدون عکس)                     -->
+    <!-- ۳ خبر ساده (بدون عکس)                       -->
     <!-- ============================================ -->
     <div class="simple-news-block">
         <div class="simple-news-inner">
@@ -576,12 +558,10 @@
         </a>
     </div>
 
-    <!-- دکمه رفتن به اخبار -->
-    <div class="go-news-wrapper">
-        <a href="news2.html" class="go-news-btn">
-            <span>📰 مشاهده همه اخبار</span>
-            <span class="arrow-icon">←</span>
-        </a>
+    <!-- صفحه‌بندی ۱ و ۲ -->
+    <div class="pagination">
+        <span class="page-num active">۱</span>
+        <a href="news2.html" class="page-num">۲</a>
     </div>
 
     <!-- فوتر -->
