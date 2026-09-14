@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اخبار - صفحه ۲ - گلهای رنگارنگ</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold; font-style: normal; font-display: swap;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f4f4f9;
+            display: flex; flex-direction: column;
+            min-height: 100vh; color: #333;
+        }
+        
+        /* هدر */
+        .header-row {
+            max-width: 800px; width: 100%;
+            margin: 18px auto 10px auto; padding: 0 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .menu-btn {
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+        }
+        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
+        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        .brand-block {
+            display: flex; flex-direction: column; line-height: 1.1;
+            text-decoration: none; cursor: pointer; transition: opacity 0.2s;
+        }
+        .brand-block:hover { opacity: 0.8; }
+        .brand-grg { font-size: 20px; font-weight: bold; color: #c0392b; letter-spacing: 3px; font-family: Georgia, serif; }
+        .brand-name { font-size: 10px; color: #666; font-family: 'IRANSans', sans-serif; }
+        
+        /* منو */
+        .menu-dropdown {
+            max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+        }
+        .menu-dropdown.open { max-height: 800px; }
+        .menu-inner {
+            background-color: white; border-radius: 10px; padding: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 8px; border: 1px solid #eee;
+        }
+        .menu-dropdown a {
+            display: block; padding: 10px 15px; color: #333; text-decoration: none;
+            font-size: 14px; border-radius: 8px; transition: all 0.2s;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .menu-dropdown a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 20px; }
+        .menu-category {
+            font-size: 11px; color: #999; padding: 10px 15px 5px 15px;
+            font-weight: bold; border-top: 1px solid #f0f0f0; margin-top: 5px;
+        }
+        .menu-category:first-child { border-top: none; margin-top: 0; }
+        
+        .category-toggle {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 15px; color: #333; font-size: 14px;
+            font-family: 'IRANSans', sans-serif; cursor: pointer;
+            border-radius: 8px; transition: all 0.2s; font-weight: bold; user-select: none;
+        }
+        .category-toggle:hover { background-color: #fff5f5; color: #c0392b; }
+        .category-toggle .arrow { font-size: 12px; transition: transform 0.3s; color: #c0392b; }
+        .category-toggle.open .arrow { transform: rotate(180deg); }
+        .category-list { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding-right: 15px; }
+        .category-list.open { max-height: 600px; }
+        .category-list a { padding: 8px 20px; font-size: 13px; color: #555; }
+        .category-list a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 25px; }
+        
+        /* تیتر صفحه */
+        .page-title { max-width: 800px; width: 100%; margin: 10px auto 20px auto; padding: 0 15px; }
+        .page-title-inner {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white; padding: 18px 25px; border-radius: 12px;
+            text-align: center; box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+        }
+        .page-title-inner h1 { margin: 0; font-size: 20px; font-family: 'IRANSans', sans-serif; }
+        .page-title-inner p { margin: 6px 0 0 0; font-size: 12px; opacity: 0.9; }
+        
+        /* خبرها */
+        .container { max-width: 800px; width: 100%; margin: 0 auto 20px auto; padding: 0 15px; flex: 1; }
+        .news-box {
+            background-color: white; padding: 20px; margin-bottom: 20px;
+            border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex; align-items: center; gap: 20px; position: relative;
+        }
+        .news-topic {
+            position: absolute; top: 12px; right: 15px;
+            font-size: 11px; color: #c0392b; font-weight: bold;
+            background-color: #fff5f5; padding: 3px 10px;
+            border-radius: 12px; border: 1px solid #fadbd8;
+        }
+        .news-box img { width: 150px; height: 100px; object-fit: cover; border-radius: 5px; }
+        .news-content { width: 100%; padding-top: 15px; }
+        .news-content h2 { margin: 0 0 10px 0; color: #333; font-size: 17px; line-height: 1.6; }
+        .news-content p { color: #666; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 13px; display: inline-block; }
+        .read-more:hover { background-color: #2980b9; }
+        
+        /* صفحه‌بندی */
+        .pagination {
+            max-width: 800px; width: 100%; margin: 20px auto 30px auto;
+            padding: 0 15px;
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .pagination a, .pagination span {
+            display: flex; align-items: center; justify-content: center;
+            min-width: 44px; height: 44px;
+            border-radius: 10px;
+            font-family: 'IRANSans', sans-serif;
+            font-size: 15px; font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+            padding: 0 14px;
+        }
+        .page-num {
+            background-color: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+        .page-num:hover {
+            border-color: #c0392b;
+            color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.15);
+        }
+        .page-num.active {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            border-color: #c0392b;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+        }
+        .page-arrow {
+            background-color: white;
+            color: #c0392b;
+            border: 2px solid #e0e0e0;
+        }
+        .page-arrow:hover {
+            background-color: #c0392b;
+            color: white;
+            border-color: #c0392b;
+        }
+        
+        /* فوتر */
+        footer { background-color: #eaeaea; padding: 25px 15px 0 15px; margin-top: auto; }
+        .footer-links { max-width: 800px; margin: 0 auto 20px auto; display: flex; flex-direction: column; gap: 14px; }
+        .footer-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px 30px; }
+        .footer-row a {
+            color: #333; text-decoration: none; font-size: 12px;
+            font-family: 'IRANSans', sans-serif; transition: color 0.2s; white-space: nowrap;
+        }
+        .footer-row a:hover { color: #c0392b; text-decoration: underline; }
+        .footer-bottom {
+            background-color: #000000; padding: 20px 15px;
+            margin: 20px -15px 0 -15px; text-align: center;
+        }
+        .footer-bottom .copyright {
+            max-width: 800px; margin: 0 auto;
+            color: #ffffff; font-size: 12px; line-height: 2;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .footer-bottom .copyright p { margin: 5px 0; }
+        .footer-bottom .copyright .network { font-size: 11px; color: #cccccc; margin-top: 8px; }
+        
+        @media (max-width: 600px) {
+            .news-box { flex-direction: column; align-items: flex-start; }
+            .news-box img { width: 100%; height: 180px; }
+            .footer-row { gap: 12px 18px; }
+            .footer-row a { font-size: 11px; }
+            .pagination a, .pagination span { min-width: 38px; height: 38px; font-size: 13px; padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">گلهای رنگارنگ</div>
+        </a>
+    </div>
+
+    <!-- منو -->
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <a href="index.html">🏠 صفحه اصلی</a>
+            <a href="bours.html">📊 تحلیل اختصاصی بورس</a>
+            <a href="shop.html">🛍️ فروشگاه</a>
+            
+            <div class="category-toggle" onclick="toggleCategories(this)">
+                <span>📂 دسته‌بندی اخبار</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="category-list" id="categoryList">
+                <a href="#">🏛 اخبار سیاسی</a>
+                <a href="#">💰 اخبار اقتصادی</a>
+                <a href="#">⚔️ اخبار نظامی</a>
+                <a href="#">🌍 اخبار بین‌الملل</a>
+                <a href="#">⚡ اخبار انرژی</a>
+                <a href="#">🔬 اخبار علمی</a>
+                <a href="#">💻 اخبار فناوری</a>
+                <a href="#">🏥 اخبار سلامت</a>
+                <a href="#">⚽ اخبار ورزشی</a>
+                <a href="#">🎬 اخبار فرهنگی و هنری</a>
+                <a href="#">🎓 اخبار آموزشی</a>
+                <a href="#">🌦️ اخبار محیط زیست</a>
+                <a href="#">🚔 اخبار حوادث</a>
+                <a href="#">✈️ اخبار گردشگری</a>
+                <a href="#">📱 اخبار شبکه‌های اجتماعی</a>
+            </div>
+            
+            <div class="menu-category">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 واتس‌اپ</a>
+            
+            <div class="menu-category">📞 درباره ما و پشتیبانی</div>
+            <a href="#">ℹ️ درباره ما</a>
+            <a href="#">✉️ پشتیبانی</a>
+        </div>
+    </div>
+
+    <!-- تیتر صفحه -->
+    <div class="page-title">
+        <div class="page-title-inner">
+            <h1>📰 آخرین اخبار - صفحه ۲</h1>
+            <p>اخبار قدیمی‌تر</p>
+        </div>
+    </div>
+
+    <!-- خبرها - صفحه ۲ -->
+    <div class="container">
+
+        <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
+            <div class="news-content">
+                <h2>تصویب قانون تشدید تحریم‌های روسیه و ایران در مجلس سنای آمریکا</h2>
+                <p>مجلس سنای آمریکا قانون تشدید تحریم های روسیه و ایران به نام لیندسی گراهام رو با ۸۶ رأی موافق در برابر ۱۱ رأی مخالف تصویب کرد.</p>
+                <a href="N1/news7.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <div class="news-box">
+            <div class="news-topic">| نظامی</div>
+            <div class="news-content">
+                <h2>🔴 پنتاگون جلسه اضطراری برای تأمین تسلیحات برگزار می‌کند</h2>
+                <p>شبکه ان‌بی‌سی نیوز : وزارت جنگ ایالات متحده پس از تماس تلفنی خشمگین دونالد ترامپ با معاون پیت هگست، قرار است یک جلسه اضطراری مختص به کمبود تسلیحات برگزار کند.</p>
+                <a href="N1/news6.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <div class="news-box">
+            <div class="news-topic">| بین‌الملل</div>
+            <div class="news-content">
+                <h2>🏛 لایحه گالیگو: الزام رضایت والدین برای حساب شبکه‌های اجتماعی افراد زیر ۱۶ سال</h2>
+                <p>سناتور روبن گالیگو در حال معرفی قانونی است که پلتفرم‌های شبکه‌های اجتماعی را ملزم می‌کند تا پیش از ایجاد یا تداوم فعالیت حساب کاربری برای کاربران زیر ۱۶ سال، رضایت والدین را دریافت کنند.</p>
+                <a href="N1/news5.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
+            <div class="news-content">
+                <h2>الجزیره: تنها یک یا دو موضوع در مذاکرات ایران و عمان باقی مانده است</h2>
+                <p>تنها یک یا دو موضوع در مذاکرات ایران و عمان حل نشده باقی مانده است و این مسائل به نظر نمی‌رسد چندان پیچیده باشند.</p>
+                <a href="N1/news4.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
+            <div class="news-content">
+                <h2>نهایی شدن پیش‌نویس توافق درباره تنگه هرمز</h2>
+                <p>👈خبرگزاری آسوشیتدپرس: مذاکره‌کنندگان ایران و عمان پیش‌نویس توافق درباره تنگه هرمز را نهایی کرده‌اند؛ اقدامی که می‌تواند یک نقطه عطف احتمالی در بن‌بست مربوط به این مسیر حیاتی نفتی و کشتیرانی باشد.</p>
+                <a href="N1/news3.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
+            <img src="N1/news2.jpg" alt="مذاکرات ایران و عمان">
+            <div class="news-content">
+                <h2>مذاکرات ایران و عمان درباره ترتیبات مشترک تنگه هرمز</h2>
+                <p>المیادین به نقل از منبع امنیتی-سیاسی ایرانی: مذاکرات ایران و عمان درباره ترتیبات مشترک برای مدیریت تنگه هرمز به مراحل مهمی رسیده است.</p>
+                <a href="N1/news2.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+        <div class="news-box">
+            <div class="news-topic">| سیاسی</div>
+            <img src="N1/news1.jpg" alt="حادثه بالگرد ترامپ">
+            <div class="news-content">
+                <h2>فوری: بالگرد ترامپ در آسمان واشنگتن دچار حادثه ایمنی شد</h2>
+                <p>رسانه‌های عبری گزارش دادند بالگرد دونالد ترامپ، رئیس جمهور آمریکا، روز گذشته هنگام حضور او در بالگرد، در آسمان واشنگتن درگیر یک حادثه ایمنی شد.</p>
+                <a href="N1/news1.html" class="read-more">ادامه مطلب</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- صفحه‌بندی -->
+    <div class="pagination">
+        <a href="index.html" class="page-arrow" title="صفحه قبل">‹ قبلی</a>
+        <a href="index.html" class="page-num">۱</a>
+        <span class="page-num active">۲</span>
+        <a href="index.html" class="page-arrow" title="صفحه قبل">قبلی ›</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="#">Ad Choices</a>
+                <a href="#">Accessibility & CC</a>
+                <a href="#">About</a>
+                <a href="#">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="#">Transcripts</a>
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+                <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+        function toggleCategories(element) {
+            const list = document.getElementById('categoryList');
+            element.classList.toggle('open');
+            list.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
