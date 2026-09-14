@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متن کامل برنامه‌ها - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #e7f3ff, #d0e7ff);
+            border-right: 4px solid #3498db;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .section-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .section-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .section-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        /* نمایش Transcript نمونه */
+        .transcript-sample {
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            border-radius: 12px;
+            padding: 22px;
+            margin: 18px 0;
+            border-right: 4px solid #c0392b;
+            direction: ltr;
+        }
+        .transcript-sample .tr-header {
+            color: #ffd700;
+            font-family: Georgia, serif;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+            text-align: center;
+        }
+        .transcript-line {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        .transcript-speaker {
+            color: #e74c3c;
+            font-family: Georgia, serif;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            width: 100px;
+            text-align: right;
+            padding-top: 2px;
+        }
+        .transcript-text {
+            color: #e0e0e0;
+            font-size: 13px;
+            line-height: 1.9;
+            flex: 1;
+            text-align: left;
+        }
+        
+        /* Timestamps */
+        .timestamp-sample {
+            background-color: #0f3460;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            direction: ltr;
+            border-right: 4px solid #3498db;
+        }
+        .timestamp-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .timestamp-item:last-child {
+            border-bottom: none;
+        }
+        .timestamp-time {
+            color: #ffd700;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .timestamp-speaker {
+            color: #e74c3c;
+            font-family: Georgia, serif;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        .timestamp-text {
+            color: #b8b8b8;
+            font-size: 12px;
+            line-height: 1.7;
+            flex: 1;
+            text-align: left;
+        }
+        
+        /* مقایسه CC و Transcript */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 18px 0;
+        }
+        .compare-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 4px solid #3498db;
+        }
+        .compare-card.cc {
+            border-top-color: #27ae60;
+        }
+        .compare-card.tr {
+            border-top-color: #c0392b;
+        }
+        .compare-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 12px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .compare-desc {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0 0 10px 0;
+            text-align: justify;
+        }
+        .compare-list {
+            padding-right: 20px;
+            margin: 0;
+        }
+        .compare-list li {
+            font-size: 11px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 3px;
+        }
+        
+        /* کارت‌های محتوا */
+        .content-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-right: 4px solid #c0392b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .content-card-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 6px 0;
+        }
+        .content-list {
+            padding-right: 20px;
+            margin: 8px 0 0 0;
+        }
+        .content-list li {
+            font-size: 12px;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 3px;
+        }
+        
+        /* کارت‌های TV */
+        .tv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .tv-channel {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(192, 57, 43, 0.25);
+            transition: transform 0.2s;
+        }
+        .tv-channel:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* جعبه جستجو */
+        .search-box {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 18px 0;
+            text-align: center;
+        }
+        .search-box h4 {
+            color: #3498db;
+            margin: 0 0 15px 0;
+            font-size: 15px;
+        }
+        .search-input-demo {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-input-demo::before {
+            content: '🔍';
+            font-size: 14px;
+        }
+        
+        /* جعبه زبان‌ها */
+        .languages-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .lang-tag {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            font-family: Georgia, serif;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.25);
+            transition: transform 0.2s;
+        }
+        .lang-tag:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* جعبه هشدار */
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #856404;
+            line-height: 2;
+            text-align: justify;
+        }
+        .warning-box strong {
+            color: #e67e22;
+        }
+        
+        /* جعبه Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border-top: 4px solid #c0392b;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.15);
+        }
+        .contact-card .cc-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .contact-card .cc-desc {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.7;
+            display: block;
+        }
+        
+        /* اطلاعات تماس */
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        
+        /* Commitment */
+        .commitment-box {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border: 2px solid #c0392b;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .commitment-box h3 {
+            color: #c0392b;
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            border: none;
+            padding: 0;
+        }
+        .commitment-box p {
+            font-size: 13px;
+            color: #555;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+        .format-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .format-tag {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: Georgia, serif;
+            box-shadow: 0 3px 10px rgba(192, 57, 43, 0.25);
+            transition: transform 0.2s;
+        }
+        .format-tag:hover {
+            transform: translateY(-3px);
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .compare-grid { grid-template-columns: 1fr; }
+            .tv-grid { grid-template-columns: 1fr; }
+            .transcript-speaker { width: 70px; font-size: 10px; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">متن کامل برنامه‌ها</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>📝 متن کامل برنامه‌ها، ویدیوها و گزارش‌ها</h1>
+            
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: سپتامبر ۲۰۲۶
+            </div>
+            
+            <div class="page-intro">
+                در <strong>Golhaye Rangarang Media Network</strong> تلاش می‌کنیم محتوای خبری و ویدیویی خود را تا حد امکان برای همه مخاطبان قابل دسترس کنیم.
+                <br><br>
+                برای برخی از برنامه‌ها، گزارش‌ها، مصاحبه‌ها و ویدیوهای منتشرشده در خدمات گل‌های رنگارنگ، نسخه متنی یا <strong>Transcript</strong> نیز ارائه می‌شود.
+                <br><br>
+                Transcript، نسخه نوشتاری محتوای گفتاری یک برنامه یا ویدیو است و می‌تواند به کاربران کمک کند بدون تماشای ویدیو یا گوش دادن به فایل صوتی، محتوای آن را مطالعه کنند.
+            </div>
+            
+            <!-- What Is a Transcript -->
+            <div class="section">
+                <h3 class="section-title">📄 Transcript چیست؟</h3>
+                <p class="section-description">
+                    Transcript متن نوشتاری صحبت‌ها و محتوای گفتاری یک ویدیو، برنامه تلویزیونی، مصاحبه، پادکست یا گزارش است.
+                </p>
+                <p class="section-description">
+                    بسته به نوع محتوا، Transcript ممکن است شامل موارد زیر باشد:
+                </p>
+                <ul class="section-list">
+                    <li>صحبت‌های مجری</li>
+                    <li>صحبت‌های خبرنگار</li>
+                    <li>اظهارات مهمانان</li>
+                    <li>مصاحبه‌ها</li>
+                    <li>نقل‌قول‌های مستقیم</li>
+                    <li>توضیحات مربوط به گزارش</li>
+                    <li>توضیحات صوتی مهم</li>
+                    <li>معرفی بخش‌های مختلف برنامه</li>
+                    <li>اطلاعات مربوط به گوینده</li>
+                </ul>
+            </div>
+            
+            <!-- Where Transcripts Are Available -->
+            <div class="section">
+                <h3 class="section-title">📍 Transcript کجا در دسترس است؟</h3>
+                <p class="section-description">
+                    Transcript ممکن است برای برخی از محتوای زیر ارائه شود:
+                </p>
+                
+                <div class="content-card">
+                    <p class="content-card-name">📰 Golhaye Rangarang News</p>
+                    <ul class="content-list">
+                        <li>گزارش‌های ویژه</li>
+                        <li>مصاحبه‌ها</li>
+                        <li>ویدیوهای خبری</li>
+                        <li>گزارش‌های تحقیقی</li>
+                        <li>برنامه‌های تحلیلی</li>
+                        <li>برخی ویدیوهای کوتاه</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <p class="content-card-name">📍 Las Ontras Local News</p>
+                    <ul class="content-list">
+                        <li>گزارش‌های محلی</li>
+                        <li>مصاحبه با مسئولان</li>
+                        <li>جلسات و رویدادهای مهم</li>
+                        <li>گزارش‌های جامعه محلی</li>
+                        <li>گزارش‌های ویژه</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <p class="content-card-name">📺 Rangarang TV</p>
+                    <p class="section-description" style="margin: 8px 0;">
+                        Transcript ممکن است برای برخی برنامه‌های شبکه‌های زیر در دسترس باشد:
+                    </p>
+                    <div class="tv-grid">
+                        <div class="tv-channel">Rangarang TV 1</div>
+                        <div class="tv-channel">Rangarang TV 2</div>
+                        <div class="tv-channel">Rangarang TV 3</div>
+                        <div class="tv-channel">Rangarang TV 4</div>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <p class="content-card-name">🎙️ Podcasts</p>
+                    <p class="section-description" style="margin: 8px 0 0 0;">
+                        برخی قسمت‌های Podcast نیز ممکن است دارای Transcript باشند.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- How to Find a Transcript -->
+            <div class="section">
+                <h3 class="section-title">🔍 چگونه Transcript را پیدا کنیم؟</h3>
+                <p class="section-description">
+                    اگر برای یک ویدیو یا برنامه Transcript موجود باشد، معمولاً گزینه‌ای مانند:
+                </p>
+                <ul class="section-list">
+                    <li><strong>Transcript</strong></li>
+                    <li><strong>Read Transcript</strong></li>
+                </ul>
+                <p class="section-description">
+                    در صفحه همان محتوا نمایش داده می‌شود. با انتخاب این گزینه، متن برنامه در همان صفحه یا در یک صفحه جداگانه نمایش داده خواهد شد.
+                </p>
+            </div>
+            
+            <!-- Transcript Format -->
+            <div class="section">
+                <h3 class="section-title">📋 قالب Transcript</h3>
+                <p class="section-description">
+                    برای محتوای مصاحبه‌ای، Transcript ممکن است گویندگان را با نام یا عنوان آن‌ها مشخص کند. برای مثال:
+                </p>
+                
+                <div class="transcript-sample">
+                    <div class="tr-header">📄 TRANSCRIPT SAMPLE</div>
+                    <div class="transcript-line">
+                        <div class="transcript-speaker">ANCHOR:</div>
+                        <div class="transcript-text">Good evening. Here is the latest update from Las Ontras.</div>
+                    </div>
+                    <div class="transcript-line">
+                        <div class="transcript-speaker">REPORTER:</div>
+                        <div class="transcript-text">Officials announced new measures earlier today.</div>
+                    </div>
+                    <div class="transcript-line">
+                        <div class="transcript-speaker">GUEST:</div>
+                        <div class="transcript-text">We expect the changes to take effect next week.</div>
+                    </div>
+                </div>
+                
+                <p class="section-description">
+                    این قالب باعث می‌شود مشخص باشد هر بخش از صحبت متعلق به چه کسی است.
+                </p>
+            </div>
+            
+            <!-- Timestamps -->
+            <div class="section">
+                <h3 class="section-title">⏱️ Timestamps</h3>
+                <p class="section-description">
+                    در برخی Transcriptها ممکن است زمان هر بخش نیز نمایش داده شود. برای مثال:
+                </p>
+                
+                <div class="timestamp-sample">
+                    <div class="timestamp-item">
+                        <span class="timestamp-time">00:01:24</span>
+                        <span class="timestamp-speaker">— ANCHOR</span>
+                        <span class="timestamp-text">Good evening. Here are today's top stories.</span>
+                    </div>
+                    <div class="timestamp-item">
+                        <span class="timestamp-time">00:03:17</span>
+                        <span class="timestamp-speaker">— REPORTER</span>
+                        <span class="timestamp-text">Officials announced the decision this morning.</span>
+                    </div>
+                </div>
+                
+                <p class="section-description">
+                    با انتخاب Timestamp، ممکن است کاربر مستقیماً به همان بخش از ویدیو منتقل شود.
+                </p>
+            </div>
+            
+            <!-- Transcripts and Closed Captions -->
+            <div class="section">
+                <h3 class="section-title">🔄 تفاوت Transcript و Closed Captions</h3>
+                <p class="section-description">
+                    Transcript و Closed Captions (CC) یکسان نیستند.
+                </p>
+                
+                <div class="compare-grid">
+                    <div class="compare-card cc">
+                        <p class="compare-title">📺 Closed Captions</p>
+                        <p class="compare-desc">
+                            برای دنبال کردن ویدیو هنگام پخش طراحی شده‌اند و معمولاً به‌صورت هم‌زمان روی ویدیو نمایش داده می‌شوند.
+                        </p>
+                        <p class="compare-desc" style="font-weight: bold;">ممکن است شامل:</p>
+                        <ul class="compare-list">
+                            <li>دیالوگ</li>
+                            <li>صدای مهم</li>
+                            <li>تغییر گوینده</li>
+                            <li>صداهای مهم محیط</li>
+                        </ul>
+                    </div>
+                    <div class="compare-card tr">
+                        <p class="compare-title">📄 Transcript</p>
+                        <p class="compare-desc">
+                            یک نسخه متنی قابل مطالعه از محتوای برنامه است و معمولاً به‌صورت یک متن مستقل در کنار یا زیر ویدیو ارائه می‌شود.
+                        </p>
+                        <p class="compare-desc" style="font-weight: bold;">ویژگی‌ها:</p>
+                        <ul class="compare-list">
+                            <li>متن مستقل قابل مطالعه</li>
+                            <li>قابل جست‌وجو</li>
+                            <li>قابل دانلود (در صورت فعال بودن)</li>
+                            <li>مناسب مطالعه بدون پخش ویدیو</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="section-description">
+                    یک ویدیو ممکن است هر دو قابلیت CC و Transcript را داشته باشد.
+                </p>
+            </div>
+            
+            <!-- Accuracy -->
+            <div class="section">
+                <h3 class="section-title">✅ دقت Transcript</h3>
+                <p class="section-description">
+                    ما تلاش می‌کنیم Transcriptها تا حد امکان دقیق باشند. با این حال، در محتوای زنده، مصاحبه‌های سریع، صدای پس‌زمینه، لهجه‌های مختلف یا کیفیت پایین صدا ممکن است خطاهایی ایجاد شود.
+                </p>
+                <p class="section-description">
+                    Transcript ممکن است:
+                </p>
+                <ul class="section-list">
+                    <li>به‌صورت دستی ویرایش شود.</li>
+                    <li>با کمک فناوری تشخیص گفتار تولید شود.</li>
+                    <li>توسط تیم تحریریه بررسی شود.</li>
+                    <li>پس از انتشار اصلاح شود.</li>
+                </ul>
+                <p class="section-description">
+                    در موارد حساس خبری، تلاش می‌شود متن با محتوای اصلی ویدیو مطابقت داده شود.
+                </p>
+            </div>
+            
+            <!-- Breaking News -->
+            <div class="section">
+                <h3 class="section-title">⚡ Breaking News و رویدادهای زنده</h3>
+                <p class="section-description">
+                    برای برنامه‌های زنده و Breaking News، Transcript ممکن است هم‌زمان با پخش در دسترس نباشد.
+                </p>
+                <p class="section-description">
+                    در چنین مواردی ممکن است ابتدا:
+                </p>
+                <ul class="section-list">
+                    <li>ویدیو یا پخش زنده منتشر شود.</li>
+                    <li>Closed Captions ارائه شود.</li>
+                    <li>Transcript پس از بررسی و ویرایش منتشر شود.</li>
+                </ul>
+                <p class="section-description">
+                    بنابراین ممکن است Transcript یک برنامه زنده با تأخیر منتشر شود.
+                </p>
+            </div>
+            
+            <!-- Interviews -->
+            <div class="section">
+                <h3 class="section-title">🎤 مصاحبه‌ها</h3>
+                <p class="section-description">
+                    برای مصاحبه‌های منتشرشده، Transcript ممکن است شامل پرسش‌های خبرنگار و پاسخ‌های مصاحبه‌شونده باشد.
+                </p>
+                <p class="section-description">
+                    در صورت وجود چند گوینده، تلاش می‌کنیم گویندگان را به شکل واضح از یکدیگر تفکیک کنیم.
+                </p>
+                <p class="section-description">
+                    در مواردی که هویت گوینده از محتوای ویدیو مشخص نباشد، ممکن است از عناوینی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>HOST</li>
+                    <li>REPORTER</li>
+                    <li>GUEST</li>
+                    <li>SPEAKER</li>
+                </ul>
+                <p class="section-description">استفاده شود.</p>
+            </div>
+            
+            <!-- News Reports -->
+            <div class="section">
+                <h3 class="section-title">📰 گزارش‌های خبری</h3>
+                <p class="section-description">
+                    Transcript گزارش‌های خبری ممکن است شامل متن صحبت خبرنگار و بخش‌های گفتاری مهم گزارش باشد.
+                </p>
+                <p class="section-description">
+                    با این حال، Transcript لزوماً جایگزین کامل محتوای تصویری گزارش نیست. برای مثال، اگر اطلاعات مهمی فقط از طریق تصویر، نمودار یا نمایش یک سند ارائه شود، ممکن است توضیح متنی مربوط به آن نیز در Transcript یا صفحه گزارش اضافه شود.
+                </p>
+            </div>
+            
+            <!-- Visual Information -->
+            <div class="section">
+                <h3 class="section-title">🖼️ اطلاعات تصویری</h3>
+                <p class="section-description">
+                    ما تلاش می‌کنیم اطلاعات مهم تصویری را نیز تا حد امکان برای کاربران قابل دسترس کنیم.
+                </p>
+                <p class="section-description">
+                    برای مثال، اگر یک نمودار یا تصویر بخش مهمی از یک گزارش باشد، ممکن است توضیحی متنی درباره آن ارائه شود. این توضیحات می‌توانند جدا از Transcript اصلی یا در کنار آن قرار داشته باشند.
+                </p>
+            </div>
+            
+            <!-- Corrections -->
+            <div class="section">
+                <h3 class="section-title">✏️ اصلاح Transcript</h3>
+                <p class="section-description">
+                    اگر متوجه اشتباه مهمی در یک Transcript شدید، می‌توانید آن را به ما گزارش کنید.
+                </p>
+                <p class="section-description">
+                    لطفاً در صورت امکان موارد زیر را مشخص کنید:
+                </p>
+                <ul class="section-list">
+                    <li>عنوان برنامه یا ویدیو</li>
+                    <li>تاریخ انتشار</li>
+                    <li>زمان تقریبی بخش اشتباه</li>
+                    <li>متن فعلی</li>
+                    <li>اصلاح پیشنهادی</li>
+                    <li>توضیح کوتاه درباره اشتباه</li>
+                </ul>
+                <p class="section-description">
+                    تیم مربوطه مورد را بررسی خواهد کرد.
+                </p>
+            </div>
+            
+            <!-- Transcript Availability -->
+            <div class="section">
+                <h3 class="section-title">📊 در دسترس بودن Transcript</h3>
+                <p class="section-description">
+                    وجود Transcript برای همه محتواها تضمین نمی‌شود. دلایل احتمالی شامل:
+                </p>
+                <ul class="section-list">
+                    <li>محتوای زنده</li>
+                    <li>محتوای قدیمی</li>
+                    <li>محدودیت‌های فنی</li>
+                    <li>محتوای دارای مجوز شخص ثالث</li>
+                    <li>برنامه‌های خریداری‌شده یا توزیع‌شده</li>
+                    <li>محتوای بسیار کوتاه</li>
+                    <li>مشکلات کیفیت صدا</li>
+                    <li>محدودیت‌های حقوقی یا قراردادی</li>
+                </ul>
+                <p class="section-description">
+                    است. ما به‌مرور تلاش می‌کنیم دسترسی به Transcript را برای محتوای بیشتری فراهم کنیم.
+                </p>
+            </div>
+            
+            <!-- Third-Party Content -->
+            <div class="section">
+                <h3 class="section-title">🌐 محتوای شخص ثالث</h3>
+                <p class="section-description">
+                    برخی محتواها ممکن است از منابع یا تولیدکنندگان شخص ثالث دریافت شده باشند. در این موارد، امکان ارائه Transcript ممکن است به حقوق، مجوزها و شرایط مربوط به آن محتوا بستگی داشته باشد.
+                </p>
+            </div>
+            
+            <!-- Accessibility -->
+            <div class="section">
+                <h3 class="section-title">♿ دسترسی‌پذیری</h3>
+                <p class="section-description">
+                    Transcriptها بخشی از تلاش ما برای بهبود دسترسی به محتوای خبری و ویدیویی هستند. آن‌ها می‌توانند برای افرادی که:
+                </p>
+                <ul class="section-list">
+                    <li>نمی‌توانند صدا را بشنوند.</li>
+                    <li>ترجیح می‌دهند محتوا را بخوانند.</li>
+                    <li>در محیطی بدون امکان پخش صدا هستند.</li>
+                    <li>به دنبال یک بخش خاص از یک مصاحبه هستند.</li>
+                    <li>از فناوری‌های کمکی استفاده می‌کنند.</li>
+                </ul>
+                <p class="section-description">
+                    مفید باشند. برای اطلاعات بیشتر درباره امکانات دسترسی، به صفحه <a href="accessibility.html" style="color: #c0392b; font-weight: bold;">Accessibility & CC</a> مراجعه کنید.
+                </p>
+            </div>
+            
+            <!-- Search Within Transcripts -->
+            <div class="section">
+                <h3 class="section-title">🔎 جست‌وجو در Transcriptها</h3>
+                <p class="section-description">
+                    در صورت پشتیبانی فنی، Transcriptها ممکن است قابل جست‌وجو باشند. این قابلیت به شما اجازه می‌دهد یک کلمه یا عبارت را جست‌وجو کنید و سریع‌تر به بخش مربوطه برسید.
+                </p>
+                
+                <div class="search-box">
+                    <h4>🔍 Search Transcript</h4>
+                    <div class="search-input-demo">
+                        "Las Ontras"
+                    </div>
+                    <p class="section-description" style="margin-top: 15px; font-size: 12px;">
+                        ممکن است تمام بخش‌هایی که این عبارت در آن‌ها استفاده شده است را نمایش دهد.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Transcript Language -->
+            <div class="section">
+                <h3 class="section-title">🌐 زبان Transcript</h3>
+                <p class="section-description">
+                    زبان اصلی Transcript معمولاً با زبان محتوای منتشرشده مطابقت دارد. در صورت ارائه نسخه‌های ترجمه‌شده، ممکن است گزینه‌هایی مانند موارد زیر در اختیار کاربران قرار گیرد:
+                </p>
+                
+                <div class="languages-box">
+                    <span class="lang-tag">English</span>
+                    <span class="lang-tag">Español</span>
+                    <span class="lang-tag">فارسی</span>
+                    <span class="lang-tag">Other Available Languages</span>
+                </div>
+                
+                <p class="section-description">
+                    ترجمه Transcript ممکن است توسط مترجم انسانی، فناوری ترجمه یا ترکیبی از روش‌ها تهیه شود.
+                </p>
+            </div>
+            
+            <!-- Downloading -->
+            <div class="section">
+                <h3 class="section-title">💾 دانلود Transcriptها</h3>
+                <p class="section-description">
+                    در صورت فعال بودن این قابلیت، برخی Transcriptها ممکن است برای استفاده شخصی در قالب‌های متنی قابل دریافت باشند.
+                </p>
+                <p class="section-description">
+                    هرگونه استفاده مجدد، انتشار، بازنشر یا توزیع Transcriptها تابع <a href="terms.html" style="color: #c0392b; font-weight: bold;">Terms of Use</a> و قوانین مربوط به Copyright است.
+                </p>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="section">
+                <h3 class="section-title">©️ کپی‌رایت</h3>
+                <p class="section-description">
+                    Transcriptهای تولیدشده توسط گل‌های رنگارنگ ممکن است تحت قوانین مالکیت فکری و Copyright قرار داشته باشند.
+                </p>
+                <p class="section-description">
+                    ارائه Transcript برای دسترسی‌پذیری به این معنی نیست که حقوق مالکیت فکری مربوط به محتوای اصلی به کاربر منتقل می‌شود.
+                </p>
+            </div>
+            
+            <!-- Need Help -->
+            <div class="section">
+                <h3 class="section-title">🆘 نیاز به کمک دارید؟</h3>
+                <p class="section-description">
+                    اگر Transcript یک محتوا در دسترس نیست یا فکر می‌کنید Transcript دارای مشکل جدی است، می‌توانید با تیم Accessibility یا Newsroom تماس بگیرید.
+                </p>
+                
+                <div class="contact-grid">
+                    <a href="accessibility.html" class="contact-card">
+                        <span class="cc-title">♿ Accessibility Support</span>
+                        <span class="cc-desc">برای گزارش مشکلات مربوط به دسترسی و Transcript</span>
+                    </a>
+                    <a href="about.html" class="contact-card">
+                        <span class="cc-title">📰 Newsroom</span>
+                        <span class="cc-desc">برای اصلاحات محتوایی و خبری</span>
+                    </a>
+                    <a href="about.html" class="contact-card">
+                        <span class="cc-title">📞 Contact Us</span>
+                        <span class="cc-desc">برای سایر درخواست‌ها</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Our Commitment -->
+            <div class="commitment-box">
+                <h3>💪 تعهد ما</h3>
+                <p>
+                    ما به توسعه ابزارهایی برای دسترسی بهتر مخاطبان به اخبار، گزارش‌ها و برنامه‌های گل‌های رنگارنگ ادامه خواهیم داد.
+                </p>
+                <p>
+                    هدف ما این است که اطلاعات مهم، تا حد امکان، از طریق قالب‌های مختلف در دسترس باشد:
+                </p>
+                <div class="format-tags">
+                    <span class="format-tag">Video</span>
+                    <span class="format-tag">Audio</span>
+                    <span class="format-tag">Closed Captions</span>
+                    <span class="format-tag">Transcripts</span>
+                    <span class="format-tag">Text</span>
+                </div>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📺 Golhaye Rangarang Media Network</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+                <p style="font-style: italic; margin-top: 10px;">
+                    اخبار محلی. اخبار جهان. گزارش‌های اختصاصی.
+                </p>
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+</body>
+</html>
