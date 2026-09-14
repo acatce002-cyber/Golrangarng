@@ -6,10 +6,10 @@
     <title>مدیریت کوکی‌ها - گلهای رنگارنگ</title>
     <link href="style.css" rel="stylesheet" />
     <style>
-        .cookie-intro {
+        .page-intro {
             background: linear-gradient(135deg, #fff8e1, #fff3cd);
             border-right: 4px solid #f39c12;
-            padding: 18px 22px;
+            padding: 20px 25px;
             border-radius: 10px;
             margin-bottom: 25px;
             font-size: 14px;
@@ -18,29 +18,30 @@
             text-align: justify;
         }
         
-        .cookie-card {
+        .cookie-section {
             background-color: #f8f9fa;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
+            padding: 22px;
+            margin-bottom: 18px;
             border-right: 4px solid #c0392b;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .cookie-card:hover {
+        .cookie-section:hover {
             transform: translateX(-3px);
             box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
         }
-        .cookie-header {
+        .cookie-section-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
         }
         .cookie-icon {
             font-size: 26px;
             flex-shrink: 0;
         }
-        .cookie-title {
+        .cookie-section-title {
             font-size: 16px;
             font-weight: bold;
             color: #c0392b;
@@ -60,11 +61,43 @@
             background-color: #27ae60;
         }
         .cookie-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .cookie-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .cookie-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        .tv-channel-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-right: 4px solid #c0392b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .tv-channel-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 6px 0;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .tv-channel-desc {
             font-size: 13px;
             color: #555;
             line-height: 1.9;
             margin: 0;
-            text-align: justify;
         }
         
         .choice-section {
@@ -86,6 +119,7 @@
             font-size: 13px;
             color: #555;
             margin-bottom: 20px;
+            line-height: 2;
         }
         
         .cookie-buttons {
@@ -104,7 +138,7 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid transparent;
-            min-width: 130px;
+            min-width: 140px;
         }
         .cookie-btn.accept-all {
             background: linear-gradient(135deg, #27ae60, #16a085);
@@ -157,52 +191,112 @@
             transform: translateX(-50%) translateY(0);
         }
         
-        .privacy-note {
-            background-color: #e7f3ff;
-            border-right: 4px solid #3498db;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-top: 25px;
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
             font-size: 13px;
-            color: #2c3e50;
-            line-height: 1.9;
-            text-align: justify;
+            line-height: 2;
+            margin: 5px 0;
         }
-        .privacy-note a {
-            color: #c0392b;
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
             font-weight: bold;
-            text-decoration: none;
-        }
-        .privacy-note a:hover {
-            text-decoration: underline;
+            letter-spacing: 2px;
+            margin-top: 12px;
         }
         
-        .brand-footer {
-            text-align: center;
+        .services-list {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-right: 4px solid #2c3e50;
+        }
+        .services-list h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 16px;
+            border: none;
+            padding: 0;
+        }
+        .services-list ul {
+            padding-right: 20px;
+            margin: 0;
+        }
+        .services-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 4px;
+        }
+        
+        .final-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
             margin-top: 30px;
             padding-top: 25px;
             border-top: 1px solid #eee;
         }
-        .brand-footer .brand-name {
-            font-size: 16px;
-            font-weight: bold;
+        .final-btn {
+            padding: 10px 20px;
+            background-color: white;
             color: #c0392b;
-            margin-bottom: 6px;
-        }
-        .brand-footer .brand-location {
+            border: 2px solid #c0392b;
+            border-radius: 8px;
+            text-decoration: none;
             font-size: 13px;
+            font-weight: bold;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            transition: all 0.3s;
+        }
+        .final-btn:hover {
+            background-color: #c0392b;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
             color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
         }
         
         @media (max-width: 600px) {
             .cookie-buttons { flex-direction: column; }
             .cookie-btn { width: 100%; }
-            .cookie-header { flex-wrap: wrap; }
+            .cookie-section-header { flex-wrap: wrap; }
+            .final-buttons { flex-direction: column; }
+            .final-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+    <!-- هدر: GRG + مدیریت کوکی‌ها -->
     <div class="header-row">
         <a href="../index.html" class="brand-block">
             <div class="brand-grg">GRG</div>
@@ -214,65 +308,252 @@
         <div class="page-card">
             <h1>🍪 مدیریت کوکی‌ها</h1>
             
-            <div class="cookie-intro">
-                در <strong>گل‌های رنگارنگ</strong> از کوکی‌ها و فناوری‌های مشابه برای ارائه تجربه‌ای بهتر، ایمن‌تر و شخصی‌سازی‌شده به کاربران استفاده می‌کنیم.
-                <br><br>
-                شما می‌توانید انتخاب کنید که کدام نوع کوکی‌ها در هنگام استفاده از وب‌سایت و خدمات گل‌های رنگارنگ فعال باشند.
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: ۱۴ سپتامبر ۲۰۲۶
             </div>
             
-            <!-- کوکی‌های ضروری -->
-            <div class="cookie-card">
-                <div class="cookie-header">
+            <div class="page-intro">
+                به وب‌سایت <strong>گل‌های رنگارنگ (Golhaye Rangarang)</strong> خوش آمدید.
+                <br><br>
+                گل‌های رنگارنگ یک مجموعه رسانه‌ای و خبری مستقر در ایالت خیالی لاسونتراس، ایالات متحده آمریکا است که از طریق وب‌سایت خبری بین‌المللی، بخش اخبار محلی، کانال خبری واتس‌اپ، شبکه‌های تلویزیونی و فروشگاه اینترنتی خود، خدمات مختلفی را در اختیار مخاطبان قرار می‌دهد.
+                <br><br>
+                برای ارائه خدمات بهتر، حفظ امنیت وب‌سایت، بهبود عملکرد، تحلیل نحوه استفاده کاربران از خدمات و ارائه محتوای مرتبط، ممکن است گل‌های رنگارنگ از کوکی‌ها (Cookies) و فناوری‌های مشابه استفاده کند.
+                <br><br>
+                این صفحه توضیح می‌دهد کوکی‌ها چه هستند، چرا از آن‌ها استفاده می‌کنیم و شما چگونه می‌توانید انتخاب کنید که چه نوع کوکی‌هایی در دستگاه شما مورد استفاده قرار گیرند.
+            </div>
+            
+            <!-- کوکی چیست؟ -->
+            <h2>🍪 کوکی چیست؟</h2>
+            <p>
+                کوکی یک فایل کوچک متنی است که هنگام بازدید از یک وب‌سایت می‌تواند روی رایانه، تلفن همراه یا سایر دستگاه‌های شما ذخیره شود.
+            </p>
+            <p>
+                کوکی‌ها به وب‌سایت اجازه می‌دهند دستگاه شما را در بازدیدهای بعدی شناسایی کنند و برخی اطلاعات مربوط به تنظیمات یا نحوه استفاده شما از سایت را به خاطر بسپارند.
+            </p>
+            <p>برای مثال، کوکی‌ها ممکن است به ما کمک کنند تا:</p>
+            <ul class="cookie-list">
+                <li>تنظیمات انتخاب‌شده توسط شما را حفظ کنیم.</li>
+                <li>زبان یا منطقه انتخابی شما را به خاطر بسپاریم.</li>
+                <li>وضعیت ورود شما به حساب کاربری را حفظ کنیم.</li>
+                <li>امنیت حساب و وب‌سایت را افزایش دهیم.</li>
+                <li>عملکرد صفحات مختلف سایت را بررسی کنیم.</li>
+                <li>تعداد بازدیدها و نحوه تعامل کاربران با محتوای خبری را تحلیل کنیم.</li>
+                <li>محتوای مرتبط‌تری را به شما نمایش دهیم.</li>
+                <li>تجربه خرید شما در فروشگاه اینترنتی گل‌های رنگارنگ را بهبود دهیم.</li>
+            </ul>
+            <p>
+                کوکی‌ها معمولاً شامل اطلاعاتی هستند که به‌تنهایی برای شناسایی مستقیم شما کافی نیستند.
+            </p>
+            
+            <!-- انواع کوکی‌ها -->
+            <h2>📋 انواع کوکی‌هایی که استفاده می‌کنیم</h2>
+            <p>
+                گل‌های رنگارنگ کوکی‌ها را بر اساس کاربرد آن‌ها به چند دسته تقسیم می‌کند.
+            </p>
+            
+            <!-- ۱ -->
+            <div class="cookie-section">
+                <div class="cookie-section-header">
                     <span class="cookie-icon">🔒</span>
-                    <h3 class="cookie-title">کوکی‌های ضروری</h3>
+                    <h3 class="cookie-section-title">۱. کوکی‌های کاملاً ضروری</h3>
                     <span class="cookie-badge">ضروری</span>
                 </div>
                 <p class="cookie-description">
-                    این کوکی‌ها برای عملکرد صحیح وب‌سایت ضروری هستند و بدون آن‌ها برخی از قابلیت‌های اصلی سایت کار نخواهند کرد. این کوکی‌ها قابل غیرفعال کردن نیستند.
+                    این کوکی‌ها برای عملکرد صحیح وب‌سایت ضروری هستند. بدون استفاده از این کوکی‌ها ممکن است بعضی از قابلیت‌های اصلی سایت در دسترس نباشند. این دسته می‌تواند شامل مواردی مانند:
+                </p>
+                <ul class="cookie-list">
+                    <li>حفظ امنیت نشست کاربر</li>
+                    <li>جلوگیری از فعالیت‌های مخرب</li>
+                    <li>حفظ تنظیمات امنیتی</li>
+                    <li>مدیریت ورود به حساب کاربری</li>
+                    <li>حفظ وضعیت فرم‌ها</li>
+                    <li>عملکرد صحیح سیستم مدیریت محتوا</li>
+                    <li>مدیریت درخواست‌های کاربران</li>
+                    <li>جلوگیری از ارسال مکرر یا غیرعادی درخواست‌ها</li>
+                </ul>
+                <p class="cookie-description">
+                    از آنجا که این کوکی‌ها برای ارائه سرویس ضروری هستند، معمولاً امکان غیرفعال کردن آن‌ها از طریق ابزار مدیریت کوکی وجود ندارد.
                 </p>
             </div>
             
-            <!-- کوکی‌های عملکردی -->
-            <div class="cookie-card">
-                <div class="cookie-header">
+            <!-- ۲ -->
+            <div class="cookie-section">
+                <div class="cookie-section-header">
                     <span class="cookie-icon">⚙️</span>
-                    <h3 class="cookie-title">کوکی‌های عملکردی</h3>
+                    <h3 class="cookie-section-title">۲. کوکی‌های عملکرد و تحلیل</h3>
                     <span class="cookie-badge optional">اختیاری</span>
                 </div>
                 <p class="cookie-description">
-                    به ما کمک می‌کنند نحوه استفاده کاربران از وب‌سایت را بهتر درک کنیم و عملکرد، سرعت و قابلیت‌های سایت را بهبود دهیم.
+                    گل‌های رنگارنگ ممکن است از کوکی‌های تحلیلی برای درک بهتر نحوه استفاده کاربران از وب‌سایت استفاده کند. اطلاعات به‌دست‌آمده از این کوکی‌ها می‌تواند به تیم فنی و تحریریه ما کمک کند تا بفهمد کدام بخش‌های سایت بهتر عمل می‌کنند و کدام قسمت‌ها نیاز به بهبود دارند.
+                </p>
+                <p class="cookie-description">برای مثال ممکن است اطلاعاتی درباره موارد زیر جمع‌آوری شود:</p>
+                <ul class="cookie-list">
+                    <li>تعداد بازدید از صفحات</li>
+                    <li>مدت زمان تقریبی حضور در یک صفحه</li>
+                    <li>مسیر حرکت کاربر میان صفحات</li>
+                    <li>عملکرد فنی صفحات</li>
+                    <li>خطاهای احتمالی</li>
+                    <li>نوع دستگاه مورد استفاده</li>
+                    <li>مرورگر مورد استفاده</li>
+                    <li>نحوه تعامل کاربران با بخش‌های مختلف سایت</li>
+                </ul>
+                <p class="cookie-description">
+                    این اطلاعات عمدتاً به صورت آماری بررسی می‌شوند و هدف آن‌ها کمک به بهبود خدمات گل‌های رنگارنگ است.
                 </p>
             </div>
             
-            <!-- کوکی‌های شخصی‌سازی -->
-            <div class="cookie-card">
-                <div class="cookie-header">
+            <!-- ۳ -->
+            <div class="cookie-section">
+                <div class="cookie-section-header">
                     <span class="cookie-icon">🎨</span>
-                    <h3 class="cookie-title">کوکی‌های شخصی‌سازی</h3>
+                    <h3 class="cookie-section-title">۳. کوکی‌های مربوط به تنظیمات و شخصی‌سازی</h3>
                     <span class="cookie-badge optional">اختیاری</span>
                 </div>
                 <p class="cookie-description">
-                    این کوکی‌ها می‌توانند برای ارائه محتوای مرتبط‌تر، پیشنهادهای شخصی‌سازی‌شده و تجربه‌ای متناسب با علایق شما استفاده شوند.
+                    گل‌های رنگارنگ خدمات مختلفی ارائه می‌دهد و ممکن است کاربران تنظیمات متفاوتی داشته باشند. این کوکی‌ها می‌توانند برای ذخیره تنظیمات انتخاب‌شده توسط شما استفاده شوند.
+                </p>
+                <p class="cookie-description">برای مثال:</p>
+                <ul class="cookie-list">
+                    <li>حالت روشن یا تاریک سایت</li>
+                    <li>زبان سایت</li>
+                    <li>منطقه خبری مورد علاقه</li>
+                    <li>تنظیمات نمایش مطالب</li>
+                    <li>اندازه یا نحوه نمایش برخی عناصر</li>
+                    <li>تنظیمات مربوط به ویدئو</li>
+                    <li>تنظیمات مربوط به اعلان‌ها</li>
+                </ul>
+                <p class="cookie-description">
+                    ممکن است توسط این نوع کوکی‌ها حفظ شوند. به این ترتیب، در بازدیدهای بعدی لازم نیست برخی تنظیمات را دوباره انتخاب کنید.
                 </p>
             </div>
             
-            <!-- کوکی‌های تبلیغاتی -->
-            <div class="cookie-card">
-                <div class="cookie-header">
+            <!-- ۴ -->
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <span class="cookie-icon">📰</span>
+                    <h3 class="cookie-section-title">۴. کوکی‌های مربوط به محتوای خبری</h3>
+                    <span class="cookie-badge optional">اختیاری</span>
+                </div>
+                <p class="cookie-description">
+                    گل‌های رنگارنگ یک رسانه خبری است و کاربران ممکن است علاقه‌های خبری متفاوتی داشته باشند. یک کاربر ممکن است بیشتر اخبار محلی لاسونتراس را دنبال کند، در حالی که کاربر دیگری به اخبار بین‌المللی، اقتصاد، فناوری، ورزش یا فرهنگ علاقه‌مند باشد.
+                </p>
+                <p class="cookie-description">
+                    در صورت فعال بودن این دسته از کوکی‌ها، ممکن است اطلاعات مربوط به نحوه تعامل شما با محتوای سایت برای ارائه تجربه خبری مرتبط‌تر مورد استفاده قرار گیرد. این موضوع به معنای آن نیست که تمام فعالیت‌های شما به یک فرد مشخص نسبت داده می‌شود.
+                </p>
+            </div>
+            
+            <!-- ۵ -->
+            <div class="cookie-section">
+                <div class="cookie-section-header">
                     <span class="cookie-icon">📢</span>
-                    <h3 class="cookie-title">کوکی‌های تبلیغاتی</h3>
+                    <h3 class="cookie-section-title">۵. کوکی‌های تبلیغاتی</h3>
                     <span class="cookie-badge optional">اختیاری</span>
                 </div>
                 <p class="cookie-description">
-                    ممکن است برای نمایش تبلیغات مرتبط‌تر و اندازه‌گیری عملکرد کمپین‌های تبلیغاتی مورد استفاده قرار گیرند.
+                    ممکن است گل‌های رنگارنگ یا شرکای تبلیغاتی آن از فناوری‌هایی برای نمایش، اندازه‌گیری و مدیریت تبلیغات استفاده کنند. این فناوری‌ها ممکن است به ما کمک کنند تا متوجه شویم:
+                </p>
+                <ul class="cookie-list">
+                    <li>یک تبلیغ چند بار نمایش داده شده است.</li>
+                    <li>کاربران با یک تبلیغ تعامل داشته‌اند یا خیر.</li>
+                    <li>یک کمپین تبلیغاتی چه میزان بازدید ایجاد کرده است.</li>
+                    <li>کدام قالب تبلیغاتی عملکرد بهتری داشته است.</li>
+                </ul>
+                <p class="cookie-description">
+                    در صورت فعال بودن کوکی‌های تبلیغاتی، ممکن است محتوای تبلیغاتی بر اساس اطلاعات عمومی مربوط به نحوه استفاده از خدمات برای شما مرتبط‌تر شود.
                 </p>
             </div>
             
-            <!-- بخش انتخاب -->
+            <!-- ۶ -->
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <span class="cookie-icon">🛍️</span>
+                    <h3 class="cookie-section-title">۶. کوکی‌های فروشگاه اینترنتی</h3>
+                    <span class="cookie-badge optional">اختیاری</span>
+                </div>
+                <p class="cookie-description">
+                    گل‌های رنگارنگ علاوه بر فعالیت رسانه‌ای، دارای فروشگاه اینترنتی پوشاک است. در بخش فروشگاه، برخی کوکی‌ها ممکن است برای عملکرد صحیح فرآیند خرید مورد استفاده قرار گیرند.
+                </p>
+                <p class="cookie-description">برای مثال:</p>
+                <ul class="cookie-list">
+                    <li>نگهداری محصولات اضافه‌شده به سبد خرید</li>
+                    <li>حفظ وضعیت سبد خرید</li>
+                    <li>مدیریت فرآیند پرداخت</li>
+                    <li>حفظ تنظیمات فروشگاه</li>
+                    <li>جلوگیری از فعالیت‌های غیرمجاز</li>
+                    <li>بهبود تجربه جست‌وجو و خرید</li>
+                </ul>
+                <p class="cookie-description">
+                    ممکن است به استفاده از کوکی نیاز داشته باشند. غیرفعال کردن برخی کوکی‌های فروشگاه ممکن است باعث شود بعضی قابلیت‌های خرید به‌درستی کار نکنند.
+                </p>
+            </div>
+            
+            <!-- کانال واتس‌اپ -->
+            <h2>💬 کانال واتس‌اپ گل‌های رنگارنگ</h2>
+            <p>
+                گل‌های رنگارنگ همچنین از طریق کانال خبری واتس‌اپ، اخبار فوری، اخبار محلی لاسونتراس و برخی مطالب منتخب را منتشر می‌کند.
+            </p>
+            <p>
+                استفاده از کانال واتس‌اپ تابع شرایط و سیاست‌های خود واتس‌اپ است و اطلاعات مربوط به نحوه پردازش داده‌ها در آن سرویس ممکن است تحت سیاست‌های حریم خصوصی واتس‌اپ قرار گیرد.
+            </p>
+            <p>
+                گل‌های رنگارنگ مسئول سیاست‌های فنی یا حریم خصوصی سرویس‌های شخص ثالث نیست و توصیه می‌کند کاربران پیش از استفاده از آن‌ها، شرایط مربوط به سرویس موردنظر را مطالعه کنند.
+            </p>
+            
+            <!-- شبکه‌های تلویزیونی -->
+            <h2>📺 شبکه‌های تلویزیونی گل‌های رنگارنگ</h2>
+            <p>
+                مجموعه گل‌های رنگارنگ همچنین شامل چهار شبکه تلویزیونی است:
+            </p>
+            
+            <div class="tv-channel-card">
+                <p class="tv-channel-name">Rangarang TV 1</p>
+                <p class="tv-channel-desc">شبکه اصلی اخبار و رویدادهای مهم.</p>
+            </div>
+            <div class="tv-channel-card">
+                <p class="tv-channel-name">Rangarang TV 2</p>
+                <p class="tv-channel-desc">تمرکز بر اخبار محلی، ایالت لاسونتراس و جامعه محلی.</p>
+            </div>
+            <div class="tv-channel-card">
+                <p class="tv-channel-name">Rangarang TV 3</p>
+                <p class="tv-channel-desc">اخبار اقتصادی، فناوری، کسب‌وکار و بازارها.</p>
+            </div>
+            <div class="tv-channel-card">
+                <p class="tv-channel-name">Rangarang TV 4</p>
+                <p class="tv-channel-desc">ورزش، فرهنگ، سرگرمی و برنامه‌های ویژه.</p>
+            </div>
+            
+            <p>
+                استفاده از وب‌سایت یا پخش آنلاین شبکه‌های تلویزیونی ممکن است به فناوری‌های ذخیره‌سازی یا کوکی‌های مرتبط با پخش ویدئو نیاز داشته باشد.
+            </p>
+            
+            <!-- آیا می‌توانم رد کنم -->
+            <h2>❓ آیا می‌توانم کوکی‌ها را رد کنم؟</h2>
+            <p>
+                بله. هنگام ورود به وب‌سایت، ممکن است پنجره مدیریت کوکی‌ها در اختیار شما قرار گیرد. شما می‌توانید میان گزینه‌های مختلف انتخاب کنید:
+            </p>
+            <ul class="cookie-list">
+                <li><strong>پذیرش همه کوکی‌ها:</strong> تمام دسته‌های مجاز کوکی فعال می‌شوند.</li>
+                <li><strong>رد کردن کوکی‌های غیرضروری:</strong> کوکی‌های ضروری فعال باقی می‌مانند و سایر دسته‌های اختیاری غیرفعال می‌شوند.</li>
+                <li><strong>مدیریت تنظیمات:</strong> می‌توانید دسته‌های مختلف را به صورت جداگانه انتخاب کنید.</li>
+            </ul>
+            <p>
+                انتخاب شما تا حد امکان ذخیره خواهد شد تا در بازدیدهای بعدی مجبور به انتخاب مجدد نباشید.
+            </p>
+            
+            <!-- تغییر انتخاب -->
+            <h2>🔄 تغییر انتخاب شما</h2>
+            <p>
+                هر زمان که بخواهید می‌توانید انتخاب خود درباره کوکی‌ها را تغییر دهید. برای این کار می‌توانید از گزینه Cookie Settings یا Manage Cookies در پایین صفحات وب‌سایت استفاده کنید.
+            </p>
+            <p>
+                تغییر تنظیمات ممکن است باعث شود برخی قابلیت‌های شخصی‌سازی یا امکانات غیرضروری سایت در دسترس نباشند.
+            </p>
+            
+            <!-- بخش انتخاب کاربر -->
             <div class="choice-section">
-                <h3>انتخاب شما</h3>
+                <h3>⚙️ انتخاب شما</h3>
                 <p>
-                    شما می‌توانید همه کوکی‌های غیرضروری را بپذیرید، رد کنید یا تنظیمات دلخواه خود را انتخاب کنید. تنظیمات شما در مرورگر ذخیره خواهد شد.
+                    شما می‌توانید همه کوکی‌های غیرضروری را بپذیرید، رد کنید یا تنظیمات دلخواه خود را انتخاب کنید.
                 </p>
                 <div class="cookie-buttons">
                     <button class="cookie-btn accept-all" onclick="acceptAll()">✅ پذیرش همه</button>
@@ -281,16 +562,114 @@
                 </div>
             </div>
             
-            <!-- لینک حریم خصوصی -->
-            <div class="privacy-note">
-                🔒 برای اطلاعات بیشتر درباره نحوه جمع‌آوری و استفاده از اطلاعات، لطفاً <a href="privacy.html">سیاست حفظ حریم خصوصی گل‌های رنگارنگ</a> را مطالعه کنید.
+            <!-- کوکی‌های شخص ثالث -->
+            <h2>🤝 کوکی‌های شخص ثالث</h2>
+            <p>
+                برخی از خدمات موجود در وب‌سایت ممکن است توسط شرکت‌ها یا سرویس‌دهندگان شخص ثالث ارائه شوند.
+            </p>
+            <p>این خدمات می‌توانند شامل مواردی مانند:</p>
+            <ul class="cookie-list">
+                <li>پخش ویدئو</li>
+                <li>تحلیل آماری</li>
+                <li>تبلیغات</li>
+                <li>امنیت</li>
+                <li>پرداخت اینترنتی</li>
+                <li>نقشه‌ها</li>
+                <li>محتوای تعبیه‌شده</li>
+                <li>شبکه‌های اجتماعی</li>
+            </ul>
+            <p>
+                باشند. این سرویس‌ها ممکن است مطابق سیاست‌های خود از کوکی یا فناوری‌های مشابه استفاده کنند.
+            </p>
+            <p>
+                گل‌های رنگارنگ تلاش می‌کند استفاده از فناوری‌های شخص ثالث را به سرویس‌هایی محدود کند که برای ارائه یا بهبود خدمات موردنیاز هستند.
+            </p>
+            
+            <!-- مدت زمان -->
+            <h2>⏱️ مدت زمان نگهداری کوکی‌ها</h2>
+            <p>
+                برخی کوکی‌ها فقط تا زمانی که مرورگر شما باز است فعال هستند و پس از بسته شدن مرورگر حذف می‌شوند. این کوکی‌ها معمولاً <strong>Session Cookies</strong> نامیده می‌شوند.
+            </p>
+            <p>
+                برخی دیگر ممکن است برای مدت طولانی‌تری روی دستگاه باقی بمانند و هنگام بازدیدهای بعدی مورد استفاده قرار گیرند.
+            </p>
+            <p>
+                مدت نگهداری هر کوکی به نوع، هدف و تنظیمات مربوط به آن بستگی دارد.
+            </p>
+            
+            <!-- مدیریت از مرورگر -->
+            <h2>🌐 مدیریت کوکی‌ها از طریق مرورگر</h2>
+            <p>
+                علاوه بر ابزار مدیریت کوکی گل‌های رنگارنگ، اکثر مرورگرهای اینترنتی به شما اجازه می‌دهند کوکی‌ها را از طریق تنظیمات مرورگر مدیریت یا حذف کنید.
+            </p>
+            <p>
+                می‌توانید کوکی‌های ذخیره‌شده را مشاهده، حذف یا مسدود کنید.
+            </p>
+            <p>
+                با این حال، در صورت مسدود کردن تمام کوکی‌ها ممکن است برخی از قابلیت‌های سایت، حساب کاربری یا فروشگاه اینترنتی به‌درستی کار نکنند.
+            </p>
+            
+            <!-- حریم خصوصی -->
+            <h2>🔐 حریم خصوصی</h2>
+            <p>
+                کوکی‌ها بخشی از فناوری‌هایی هستند که ممکن است برای ارائه خدمات گل‌های رنگارنگ مورد استفاده قرار گیرند.
+            </p>
+            <p>
+                برای آگاهی از نحوه جمع‌آوری، استفاده، نگهداری و حفاظت از اطلاعات، لطفاً <a href="privacy.html" style="color: #c0392b; font-weight: bold;">Privacy Policy</a> گل‌های رنگارنگ را نیز مطالعه کنید.
+            </p>
+            <p>
+                سیاست کوکی‌ها باید در کنار سیاست حفظ حریم خصوصی ما مطالعه شود.
+            </p>
+            
+            <!-- تغییرات -->
+            <h2>📝 تغییرات در این سیاست</h2>
+            <p>
+                ممکن است این سیاست کوکی‌ها در طول زمان تغییر کند. برای مثال، در صورت اضافه شدن قابلیت جدید، تغییر سرویس‌دهندگان، تغییر فناوری‌های مورد استفاده یا تغییر الزامات قانونی، ممکن است این صفحه به‌روزرسانی شود.
+            </p>
+            <p>
+                تاریخ آخرین تغییر در ابتدای این صفحه درج خواهد شد.
+            </p>
+            <p>
+                ما توصیه می‌کنیم کاربران هر چند وقت یک‌بار این صفحه را بررسی کنند تا از تغییرات احتمالی مطلع شوند.
+            </p>
+            
+            <!-- تماس -->
+            <div class="contact-box">
+                <h3>📞 تماس با گل‌های رنگارنگ</h3>
+                <p>
+                    اگر درباره کوکی‌ها، حریم خصوصی یا نحوه استفاده از فناوری‌های مشابه در خدمات گل‌های رنگارنگ پرسشی دارید، می‌توانید از طریق بخش Contact Us با تیم ما تماس بگیرید.
+                </p>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
             </div>
             
-            <!-- امضای برند -->
-            <div class="brand-footer">
-                <div class="brand-name">🌷 گل‌های رنگارنگ — اخبار محلی، ملی و بین‌المللی</div>
-                <div class="brand-location">لاسونتراس، ایالات متحده آمریکا</div>
+            <!-- بخش‌های اصلی -->
+            <div class="services-list">
+                <h3>🏢 بخش‌های اصلی مجموعه:</h3>
+                <ul>
+                    <li>📰 Golhaye Rangarang News</li>
+                    <li>🏘️ Las Ontras Local News</li>
+                    <li>💬 Rangarang WhatsApp News</li>
+                    <li>📺 Rangarang TV 1</li>
+                    <li>📺 Rangarang TV 2</li>
+                    <li>📺 Rangarang TV 3</li>
+                    <li>📺 Rangarang TV 4</li>
+                    <li>🛍️ Rangarang Online Store</li>
+                </ul>
             </div>
+            
+            <!-- لینک‌های نهایی -->
+            <div class="final-buttons">
+                <a href="cookies.html" class="final-btn">🍪 Manage Cookies</a>
+                <a href="privacy.html" class="final-btn">🔒 Privacy Policy</a>
+                <a href="terms.html" class="final-btn">📜 Terms of Use</a>
+                <a href="about.html" class="final-btn">✉️ Contact Us</a>
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
         </div>
     </div>
 
@@ -298,6 +677,7 @@
         <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
     </div>
 
+    <!-- فوتر -->
     <footer>
         <div class="footer-links">
             <div class="footer-row">
@@ -317,23 +697,13 @@
             </div>
         </div>
         
-        <div class="follow-section">
-            <div class="follow-title">📱 ما را دنبال کنید</div>
-            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-                </svg>
-                کانال واتس‌اپ
-            </a>
-        </div>
-        
         <div class="footer-copyright">
             <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
             <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
         </div>
     </footer>
 
-    <!-- پیام پس از انتخاب -->
+    <!-- پیام Toast -->
     <div class="cookie-toast" id="cookieToast">
         ✅ تنظیمات شما ذخیره شد
     </div>
@@ -353,7 +723,9 @@
                 essential: true,
                 functional: true,
                 personalization: true,
+                newsContent: true,
                 advertising: true,
+                store: true,
                 date: new Date().toISOString()
             }));
             showToast('✅ همه کوکی‌ها پذیرفته شدند');
@@ -364,7 +736,9 @@
                 essential: true,
                 functional: false,
                 personalization: false,
+                newsContent: false,
                 advertising: false,
+                store: false,
                 date: new Date().toISOString()
             }));
             showToast('❌ کوکی‌های غیرضروری رد شدند');
@@ -372,7 +746,6 @@
         
         function manageSettings() {
             showToast('⚙️ تنظیمات پیشرفته به‌زودی...');
-            // بعداً می‌تونی یه modal اضافه کنی برای انتخاب دقیق هر کوکی
         }
     </script>
 
