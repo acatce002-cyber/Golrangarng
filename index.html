@@ -122,22 +122,6 @@
         .category-list a { padding: 8px 20px; font-size: 13px; color: #555; }
         .category-list a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 25px; }
         
-        /* سرچ */
-        .search-wrapper { max-width: 800px; width: 100%; margin: 15px auto 10px auto; padding: 0 15px; }
-        .search-box { position: relative; width: 100%; }
-        .search-box input {
-            width: 100%; padding: 12px 45px 12px 20px;
-            border: 2px solid #e0e0e0; border-radius: 25px;
-            font-size: 14px; font-family: 'IRANSans', sans-serif;
-            background-color: white; transition: all 0.3s; color: #333;
-        }
-        .search-box input:focus { outline: none; border-color: #c0392b; box-shadow: 0 0 10px rgba(192, 57, 43, 0.15); }
-        .search-box input::placeholder { color: #bbb; }
-        .search-box .search-icon {
-            position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
-            font-size: 16px; color: #c0392b; pointer-events: none;
-        }
-        
         /* اخبار کوتاه */
         .short-news-block { max-width: 800px; width: 100%; margin: 15px auto; padding: 0 15px; }
         .short-news-inner {
@@ -182,32 +166,102 @@
             box-shadow: 0 10px 30px rgba(192, 57, 43, 0.5);
             background: linear-gradient(135deg, #a93226, #c0392b);
         }
-        .go-news-btn .arrow-icon {
-            font-size: 22px;
-            transition: transform 0.3s;
-        }
+        .go-news-btn .arrow-icon { font-size: 22px; transition: transform 0.3s; }
         .go-news-btn:hover .arrow-icon { transform: translateX(-5px); }
         
-        /* فوتر */
-        footer { background-color: #eaeaea; padding: 25px 15px 0 15px; margin-top: auto; }
-        .footer-links { max-width: 800px; margin: 0 auto 20px auto; display: flex; flex-direction: column; gap: 14px; }
-        .footer-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px 30px; }
+        /* ============================ */
+        /* فوتر - همه سیاه                */
+        /* ============================ */
+        footer {
+            background-color: #000000;
+            padding: 30px 15px 25px 15px;
+            margin-top: auto;
+        }
+        .footer-links {
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .footer-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+        }
         .footer-row a {
-            color: #333; text-decoration: none; font-size: 12px;
-            font-family: 'IRANSans', sans-serif; transition: color 0.2s; white-space: nowrap;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.2s;
+            white-space: nowrap;
         }
-        .footer-row a:hover { color: #c0392b; text-decoration: underline; }
-        .footer-bottom {
-            background-color: #000000; padding: 20px 15px;
-            margin: 20px -15px 0 -15px; text-align: center;
+        .footer-row a:hover {
+            color: #ff6b6b;
+            text-decoration: underline;
         }
-        .footer-bottom .copyright {
-            max-width: 800px; margin: 0 auto;
-            color: #ffffff; font-size: 12px; line-height: 2;
+        
+        /* بخش ما را دنبال کنید */
+        .follow-section {
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+        .follow-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
             font-family: 'IRANSans', sans-serif;
         }
-        .footer-bottom .copyright p { margin: 5px 0; }
-        .footer-bottom .copyright .network { font-size: 11px; color: #cccccc; margin-top: 8px; }
+        .whatsapp-channel-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-channel-btn:hover {
+            background-color: #20b858;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+        
+        /* کپی‌رایت */
+        .footer-copyright {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #ffffff;
+            font-size: 12px;
+            line-height: 2;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .footer-copyright p { margin: 5px 0; }
+        .footer-copyright .network {
+            font-size: 11px;
+            color: #aaaaaa;
+            margin-top: 8px;
+        }
         
         @media (max-width: 600px) {
             .top-ad { height: 110px; }
@@ -251,13 +305,6 @@
     <!-- منو -->
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
-            <div class="search-wrapper" style="margin: 0 0 10px 0; padding: 0;">
-                <div class="search-box">
-                    <input type="text" placeholder="search GRG..." id="searchInput">
-                    <span class="search-icon">🔍</span>
-                </div>
-            </div>
-            
             <a href="bours.html">📊 تحلیل اختصاصی بورس</a>
             <a href="shop.html">🛍️ فروشگاه</a>
             
@@ -283,20 +330,9 @@
                 <a href="#">📱 اخبار شبکه‌های اجتماعی</a>
             </div>
             
-            <div class="menu-category">📱 ما را دنبال کنید</div>
-            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 واتس‌اپ</a>
-            
             <div class="menu-category">📞 درباره ما و پشتیبانی</div>
             <a href="#">ℹ️ درباره ما</a>
             <a href="#">✉️ پشتیبانی</a>
-        </div>
-    </div>
-
-    <!-- سرچ -->
-    <div class="search-wrapper">
-        <div class="search-box">
-            <input type="text" placeholder="search GRG..." id="mainSearchInput">
-            <span class="search-icon">🔍</span>
         </div>
     </div>
 
@@ -320,7 +356,7 @@
         </a>
     </div>
 
-    <!-- فوتر -->
+    <!-- فوتر - همه سیاه -->
     <footer>
         <div class="footer-links">
             <div class="footer-row">
@@ -339,11 +375,22 @@
                 <a href="#">Sitemap</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="copyright">
-                <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
-                <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
-            </div>
+        
+        <!-- ما را دنبال کنید -->
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <!-- کپی‌رایت -->
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
         </div>
     </footer>
 
