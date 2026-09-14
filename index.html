@@ -90,10 +90,10 @@
             display: inline-block;
         }
         
-        /* نوار اخبار کوتاه - ساده */
+        /* نوار اخبار کوتاه */
         .ticker-wrapper {
             max-width: 800px;
-            margin: 15px auto 25px auto;
+            margin: 15px auto 15px auto;
             background-color: #e74c3c;
             color: white;
             border-radius: 6px;
@@ -133,6 +133,54 @@
             opacity: 0;
         }
 
+        /* تبلیغات */
+        .ad-banner {
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            padding: 0 15px;
+        }
+        .ad-content {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            border-radius: 10px;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 3px 12px rgba(231, 76, 60, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .ad-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(231, 76, 60, 0.4);
+        }
+        .ad-logo {
+            font-size: 40px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        .ad-text {
+            text-align: right;
+            color: white;
+        }
+        .ad-brand {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 3px;
+            color: #ffd700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .ad-slogan {
+            font-size: 14px;
+            font-style: italic;
+            opacity: 0.95;
+            direction: ltr;
+            text-align: left;
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto 20px auto;
@@ -156,6 +204,16 @@
         .read-more { background-color: #3498db; color: white; text-decoration: none; padding: 8px 15px; border-radius: 4px; font-size: 14px; display: inline-block; }
         .read-more:hover { background-color: #2980b9; }
         footer { text-align: center; padding: 20px; background-color: #eaeaea; color: #555; font-size: 14px; margin-top: 20px; }
+        
+        @media (max-width: 600px) {
+            .ad-content {
+                padding: 14px 18px;
+                gap: 12px;
+            }
+            .ad-logo { font-size: 32px; }
+            .ad-brand { font-size: 16px; letter-spacing: 2px; }
+            .ad-slogan { font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -200,6 +258,17 @@
         <div class="ticker-content">
             <div id="ticker-text"></div>
         </div>
+    </div>
+
+    <!-- تبلیغات Heinz -->
+    <div class="ad-banner">
+        <a href="https://www.heinz.com" target="_blank" class="ad-content" style="text-decoration: none;">
+            <div class="ad-logo">🍅</div>
+            <div class="ad-text">
+                <div class="ad-brand">HEINZ</div>
+                <div class="ad-slogan">No one grows Ketchup like Heinz</div>
+            </div>
+        </a>
     </div>
 
     <div class="container">
@@ -348,7 +417,7 @@
         setInterval(updateTime, 1000);
         updateTime(); 
 
-        // اخبار کوتاه جدید
+        // اخبار کوتاه
         const shortNews = [
             "ترامپ: ایرانی‌ها با کمبود سوخت مواجه هستند.",
             "قیمت هر بشکه نفت به ۱۰۸ دلار رسید",
@@ -358,10 +427,8 @@
         let currentNewsIndex = 0;
         const tickerElement = document.getElementById('ticker-text');
 
-        // نمایش خبر اول
         tickerElement.innerText = shortNews[currentNewsIndex];
 
-        // تغییر خودکار هر ۶ ثانیه با fade ملایم
         setInterval(() => {
             tickerElement.classList.add('fade-out');
             
