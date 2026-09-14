@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرایط استفاده - گلهای رنگارنگ</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+        .page-intro {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border-right: 4px solid #f39c12;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 2;
+            color: #856404;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-right: 4px solid #c0392b;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .section:hover {
+            transform: translateX(-3px);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.15);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .section-number {
+            background-color: #c0392b;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0;
+            flex: 1;
+        }
+        .section-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+        .section-list {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+        .section-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        /* سرویس‌های گلهای رنگارنگ */
+        .service-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-right: 4px solid #c0392b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+        }
+        .service-card:hover {
+            transform: translateX(-3px);
+        }
+        .service-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #c0392b;
+            margin: 0 0 6px 0;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .service-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.9;
+            margin: 0;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+        }
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 18px;
+        }
+        .contact-box p {
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+            margin: 5px 0;
+        }
+        .contact-box .brand-name-en {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+        
+        .services-list {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-right: 4px solid #2c3e50;
+        }
+        .services-list h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 16px;
+            border: none;
+            padding: 0;
+        }
+        .services-list ul {
+            padding-right: 20px;
+            margin: 0;
+        }
+        .services-list li {
+            font-size: 13px;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 4px;
+        }
+        
+        .related-pages {
+            background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #c0392b;
+        }
+        .related-pages h3 {
+            margin: 0 0 20px 0;
+            color: #c0392b;
+            font-size: 17px;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #eee;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.15);
+        }
+        .related-card .rc-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .related-card .rc-desc {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.7;
+            display: block;
+        }
+        
+        .final-note {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-right: 4px solid #c0392b;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 13px;
+            color: #721c24;
+            line-height: 2;
+            text-align: justify;
+            font-weight: bold;
+        }
+        
+        .brand-copyright {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+            line-height: 2;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        
+        @media (max-width: 600px) {
+            .section-header { flex-wrap: wrap; }
+            .related-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر: GRG + شرایط استفاده -->
+    <div class="header-row">
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">شرایط استفاده</div>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-card">
+            <h1>📜 شرایط استفاده از خدمات</h1>
+            
+            <div class="last-update">
+                📅 آخرین به‌روزرسانی: ۱۴ سپتامبر ۲۰۲۶
+            </div>
+            
+            <div class="page-intro">
+                به <strong>Golhaye Rangarang (گل‌های رنگارنگ)</strong> خوش آمدید.
+                <br><br>
+                این شرایط استفاده («شرایط») قوانین و مقررات مربوط به دسترسی و استفاده شما از وب‌سایت‌ها، خدمات دیجیتال، محتوای خبری، شبکه‌های تلویزیونی، کانال‌های ارتباطی و فروشگاه اینترنتی مجموعه گل‌های رنگارنگ را مشخص می‌کند.
+                <br><br>
+                گل‌های رنگارنگ یک مجموعه رسانه‌ای و دیجیتال مستقر در ایالت لاسونتراس، ایالات متحده آمریکا است که خدمات خود را از طریق پلتفرم‌های مختلف از جمله وب‌سایت خبری بین‌المللی، اخبار محلی، کانال خبری واتس‌اپ، چهار شبکه تلویزیونی و فروشگاه اینترنتی پوشاک ارائه می‌کند.
+                <br><br>
+                با دسترسی، مرور یا استفاده از هر یک از خدمات گل‌های رنگارنگ، شما تأیید می‌کنید که این شرایط را مطالعه کرده‌اید و با رعایت آن‌ها موافقت می‌کنید.
+                <br><br>
+                اگر با بخشی از این شرایط موافق نیستید، لطفاً از استفاده از خدمات مربوطه خودداری کنید.
+            </div>
+            
+            <!-- ۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱</span>
+                    <h3 class="section-title">خدمات گل‌های رنگارنگ</h3>
+                </div>
+                <p class="section-description">
+                    خدمات گل‌های رنگارنگ ممکن است شامل موارد زیر باشد:
+                </p>
+                
+                <div class="service-card">
+                    <p class="service-name">Golhaye Rangarang News</p>
+                    <p class="service-desc">پلتفرم اصلی خبری مجموعه که اخبار داخلی، بین‌المللی، اقتصادی، سیاسی، اجتماعی، فناوری، فرهنگی، علمی و سایر گزارش‌ها را منتشر می‌کند.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Las Ontras Local News</p>
+                    <p class="service-desc">بخش اختصاصی اخبار محلی ایالت لاسونتراس که رویدادها، جامعه، کسب‌وکارها، ورزش، فرهنگ و مسائل منطقه‌ای را پوشش می‌دهد.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Rangarang WhatsApp News</p>
+                    <p class="service-desc">کانال خبری واتس‌اپ گل‌های رنگارنگ که اخبار فوری، تیترهای مهم و مطالب منتخب را منتشر می‌کند.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Rangarang TV 1</p>
+                    <p class="service-desc">شبکه اصلی خبری و اطلاع‌رسانی گل‌های رنگارنگ.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Rangarang TV 2</p>
+                    <p class="service-desc">شبکه اختصاصی اخبار محلی و منطقه‌ای.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Rangarang TV 3</p>
+                    <p class="service-desc">شبکه اقتصادی، فناوری و کسب‌وکار.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Rangarang TV 4</p>
+                    <p class="service-desc">شبکه ورزش، فرهنگ و سرگرمی.</p>
+                </div>
+                <div class="service-card">
+                    <p class="service-name">Rangarang Online Store</p>
+                    <p class="service-desc">فروشگاه اینترنتی پوشاک و محصولات منتخب گل‌های رنگارنگ.</p>
+                </div>
+                
+                <p class="section-description">
+                    ممکن است خدمات، برنامه‌ها، بخش‌ها یا قابلیت‌های جدیدی در آینده اضافه یا حذف شوند.
+                </p>
+            </div>
+            
+            <!-- ۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲</span>
+                    <h3 class="section-title">پذیرش شرایط</h3>
+                </div>
+                <p class="section-description">
+                    با استفاده از خدمات گل‌های رنگارنگ، شما تأیید می‌کنید که:
+                </p>
+                <ul class="section-list">
+                    <li>توانایی قانونی لازم برای پذیرش این شرایط را دارید؛</li>
+                    <li>اطلاعاتی که در اختیار ما قرار می‌دهید تا حد امکان صحیح است؛</li>
+                    <li>از خدمات مطابق قوانین قابل اجرا استفاده خواهید کرد؛</li>
+                    <li>از خدمات برای اهداف غیرقانونی یا مخرب استفاده نخواهید کرد.</li>
+                </ul>
+                <p class="section-description">
+                    اگر از طرف یک شخص، شرکت یا سازمان از خدمات استفاده می‌کنید، تأیید می‌کنید که اختیار پذیرش این شرایط از طرف آن شخص یا سازمان را دارید.
+                </p>
+            </div>
+            
+            <!-- ۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۳</span>
+                    <h3 class="section-title">استفاده مجاز</h3>
+                </div>
+                <p class="section-description">
+                    شما می‌توانید از خدمات گل‌های رنگارنگ برای اهداف قانونی و شخصی استفاده کنید. برای مثال، شما می‌توانید:
+                </p>
+                <ul class="section-list">
+                    <li>اخبار را مطالعه کنید؛</li>
+                    <li>گزارش‌ها را مشاهده کنید؛</li>
+                    <li>ویدئوها و برنامه‌های تلویزیونی را تماشا کنید؛</li>
+                    <li>مطالب را با دیگران به اشتراک بگذارید؛</li>
+                    <li>از کانال‌های رسمی مجموعه استفاده کنید؛</li>
+                    <li>محصولات فروشگاه را مشاهده و خریداری کنید؛</li>
+                    <li>در بخش‌های تعاملی مجاز مشارکت کنید؛</li>
+                    <li>از قابلیت‌های سایت مطابق قوانین استفاده کنید.</li>
+                </ul>
+            </div>
+            
+            <!-- ۴ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۴</span>
+                    <h3 class="section-title">استفاده‌های ممنوع</h3>
+                </div>
+                <p class="section-description">
+                    شما نباید از خدمات گل‌های رنگارنگ برای انجام فعالیت‌های غیرقانونی یا مخرب استفاده کنید. موارد ممنوع شامل، اما نه محدود به، موارد زیر است:
+                </p>
+                <ul class="section-list">
+                    <li>تلاش برای دسترسی غیرمجاز به سیستم‌ها؛</li>
+                    <li>حمله به سرورها یا زیرساخت‌های شبکه؛</li>
+                    <li>انتشار بدافزار یا کد مخرب؛</li>
+                    <li>ایجاد اختلال عمدی در سرویس؛</li>
+                    <li>ارسال حجم غیرعادی درخواست‌ها؛</li>
+                    <li>تلاش برای دور زدن سیستم‌های امنیتی؛</li>
+                    <li>جعل هویت کارکنان یا نمایندگان گل‌های رنگارنگ؛</li>
+                    <li>ایجاد حساب‌های جعلی با هدف فریب کاربران؛</li>
+                    <li>جمع‌آوری خودکار اطلاعات بدون مجوز؛</li>
+                    <li>استفاده از ربات‌ها یا ابزارهای خودکار برخلاف محدودیت‌های سایت؛</li>
+                    <li>استفاده از محتوای سایت برای فعالیت غیرقانونی؛</li>
+                    <li>نقض حقوق مالکیت فکری دیگران؛</li>
+                    <li>ارسال محتوای غیرقانونی؛</li>
+                    <li>ایجاد مزاحمت یا تهدید برای سایر کاربران؛</li>
+                    <li>استفاده از خدمات برای کلاهبرداری یا فریب.</li>
+                </ul>
+            </div>
+            
+            <!-- ۵ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۵</span>
+                    <h3 class="section-title">حساب کاربری</h3>
+                </div>
+                <p class="section-description">
+                    برخی قابلیت‌های گل‌های رنگارنگ ممکن است نیازمند ایجاد حساب کاربری باشند. شما مسئول حفظ امنیت اطلاعات ورود خود هستید.
+                </p>
+                <p class="section-description">
+                    نباید رمز عبور یا اطلاعات ورود خود را در اختیار اشخاص غیرمجاز قرار دهید. اگر متوجه استفاده غیرمجاز از حساب خود شدید، باید در اسرع وقت موضوع را به گل‌های رنگارنگ اطلاع دهید.
+                </p>
+                <p class="section-description">
+                    گل‌های رنگارنگ می‌تواند در صورت نقض این شرایط یا وجود دلایل امنیتی، دسترسی به یک حساب را محدود یا تعلیق کند.
+                </p>
+            </div>
+            
+            <!-- ۶ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۶</span>
+                    <h3 class="section-title">محتوای خبری</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ اخبار و گزارش‌های خود را از خبرنگاران، منابع خبری، گزارش‌های رسمی، تصاویر، ویدئوها و سایر منابع دریافت می‌کند.
+                </p>
+                <p class="section-description">
+                    ما تلاش می‌کنیم محتوای منتشرشده دقیق و قابل اعتماد باشد، اما نمی‌توانیم تضمین کنیم که تمام اطلاعات در همه زمان‌ها کاملاً بدون خطا یا کامل باشند. اخبار ممکن است با گذشت زمان تغییر کنند و اطلاعات جدید جایگزین اطلاعات قبلی شوند.
+                </p>
+                <p class="section-description">
+                    بنابراین، نباید صرفاً بر اساس یک گزارش خبری، تصمیم‌های مهم مالی، پزشکی، حقوقی یا سایر تصمیم‌های حساس را اتخاذ کنید.
+                </p>
+            </div>
+            
+            <!-- ۷ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۷</span>
+                    <h3 class="section-title">نظر و تحلیل</h3>
+                </div>
+                <p class="section-description">
+                    برخی مطالب منتشرشده توسط گل‌های رنگارنگ ممکن است شامل موارد زیر باشد:
+                </p>
+                <ul class="section-list">
+                    <li>تحلیل</li>
+                    <li>دیدگاه کارشناسی</li>
+                    <li>سرمقاله</li>
+                    <li>نظر نویسنده</li>
+                    <li>نقد</li>
+                    <li>تفسیر</li>
+                    <li>محتوای مهمان</li>
+                </ul>
+                <p class="section-description">
+                    این مطالب لزوماً بیانگر دیدگاه رسمی تمام کارکنان یا مجموعه گل‌های رنگارنگ نیستند. محتوای خبری، گزارش تحلیلی و نظر شخصی ممکن است در بخش‌های مختلف سایت به صورت جداگانه مشخص شوند.
+                </p>
+            </div>
+            
+            <!-- ۸ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۸</span>
+                    <h3 class="section-title">محتوای کاربران</h3>
+                </div>
+                <p class="section-description">
+                    برخی خدمات ممکن است به کاربران اجازه دهند دیدگاه، نظر، تصویر، پیام یا سایر مطالب را ارسال کنند. با ارسال محتوا، شما مسئول محتوای خود هستید.
+                </p>
+                <p class="section-description">شما نباید محتوایی ارسال کنید که:</p>
+                <ul class="section-list">
+                    <li>غیرقانونی باشد؛</li>
+                    <li>تهدیدآمیز باشد؛</li>
+                    <li>حاوی نفرت‌پراکنی باشد؛</li>
+                    <li>حقوق دیگران را نقض کند؛</li>
+                    <li>حاوی اطلاعات خصوصی افراد بدون مجوز باشد؛</li>
+                    <li>حاوی بدافزار باشد؛</li>
+                    <li>عمداً گمراه‌کننده باشد؛</li>
+                    <li>حقوق مالکیت فکری شخص دیگری را نقض کند.</li>
+                </ul>
+                <p class="section-description">
+                    گل‌های رنگارنگ حق دارد محتوایی را که برخلاف این شرایط یا قوانین قابل اجرا باشد، حذف یا محدود کند.
+                </p>
+            </div>
+            
+            <!-- ۹ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۹</span>
+                    <h3 class="section-title">حقوق محتوای کاربران</h3>
+                </div>
+                <p class="section-description">
+                    با ارسال محتوا به بخش‌های عمومی گل‌های رنگارنگ، شما تأیید می‌کنید که حق ارسال آن محتوا را دارید.
+                </p>
+                <p class="section-description">
+                    شما همچنان مالک محتوایی هستید که متعلق به خودتان است، مگر اینکه شرایط دیگری به صورت مشخص اعمال شود. با این حال، با ارسال محتوا ممکن است مجوز محدودی برای میزبانی، نمایش، ذخیره، تکثیر و توزیع آن محتوا در چارچوب خدمات گل‌های رنگارنگ به ما داده شود.
+                </p>
+            </div>
+            
+            <!-- ۱۰ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۰</span>
+                    <h3 class="section-title">مالکیت فکری</h3>
+                </div>
+                <p class="section-description">
+                    تمام حقوق مربوط به محتوای متعلق به گل‌های رنگارنگ، مگر در مواردی که خلاف آن مشخص شده باشد، متعلق به گل‌های رنگارنگ یا صاحبان مجاز آن محتوا است. این موارد می‌تواند شامل:
+                </p>
+                <ul class="section-list">
+                    <li>نام و نشان گل‌های رنگارنگ</li>
+                    <li>لوگوها</li>
+                    <li>طراحی سایت</li>
+                    <li>تصاویر</li>
+                    <li>ویدئوها</li>
+                    <li>گزارش‌های خبری</li>
+                    <li>متن‌ها</li>
+                    <li>گرافیک‌ها</li>
+                    <li>صداها</li>
+                    <li>برنامه‌های تلویزیونی</li>
+                    <li>نرم‌افزار</li>
+                    <li>طراحی رابط کاربری</li>
+                </ul>
+                <p class="section-description">
+                    باشد. استفاده از این محتوا بدون مجوز مناسب ممکن است نقض قوانین مالکیت فکری باشد.
+                </p>
+            </div>
+            
+            <!-- ۱۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۱</span>
+                    <h3 class="section-title">استفاده از اخبار و مطالب</h3>
+                </div>
+                <p class="section-description">
+                    کاربران می‌توانند در چارچوب قوانین قابل اجرا، مطالب گل‌های رنگارنگ را برای استفاده شخصی مشاهده و با دیگران به اشتراک بگذارند.
+                </p>
+                <p class="section-description">
+                    با این حال، کپی گسترده، بازنشر کامل مطالب، فروش مجدد، استخراج خودکار محتوا یا استفاده تجاری از محتوای گل‌های رنگارنگ بدون مجوز ممکن است ممنوع باشد.
+                </p>
+                <p class="section-description">
+                    نقل‌قول کوتاه از مطالب، در موارد مجاز قانونی، باید به منبع اصلی نسبت داده شود.
+                </p>
+            </div>
+            
+            <!-- ۱۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۲</span>
+                    <h3 class="section-title">علائم تجاری</h3>
+                </div>
+                <p class="section-description">
+                    نام‌ها، لوگوها و علائم تجاری مربوط به گل‌های رنگارنگ و شبکه‌های آن ممکن است تحت حمایت قوانین مالکیت فکری باشند.
+                </p>
+                <p class="section-description">
+                    استفاده از این علائم به گونه‌ای که باعث ایجاد تصور ارتباط، حمایت یا تأیید رسمی توسط گل‌های رنگارنگ شود، بدون اجازه مجاز نیست.
+                </p>
+            </div>
+            
+            <!-- ۱۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۳</span>
+                    <h3 class="section-title">محتوای شخص ثالث</h3>
+                </div>
+                <p class="section-description">
+                    وب‌سایت ممکن است شامل لینک، تبلیغات، ویدئو یا محتوایی از سرویس‌های شخص ثالث باشد. گل‌های رنگارنگ مالک یا کنترل‌کننده تمام این سرویس‌ها نیست.
+                </p>
+                <p class="section-description">
+                    استفاده شما از سرویس شخص ثالث ممکن است تابع شرایط و سیاست‌های همان سرویس باشد. گل‌های رنگارنگ مسئول محتوای وب‌سایت‌های خارجی نیست.
+                </p>
+            </div>
+            
+            <!-- ۱۴ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۴</span>
+                    <h3 class="section-title">تبلیغات</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ ممکن است برای تأمین هزینه‌های فعالیت رسانه‌ای خود از تبلیغات استفاده کند. تبلیغات ممکن است توسط گل‌های رنگارنگ یا شرکت‌های تبلیغاتی شخص ثالث ارائه شوند.
+                </p>
+                <p class="section-description">
+                    نمایش یک تبلیغ به معنای تأیید یا تضمین محصول یا خدمات تبلیغ‌شده توسط گل‌های رنگارنگ نیست، مگر اینکه صراحتاً اعلام شده باشد.
+                </p>
+            </div>
+            
+            <!-- ۱۵ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۵</span>
+                    <h3 class="section-title">کانال واتس‌اپ</h3>
+                </div>
+                <p class="section-description">
+                    کانال رسمی واتس‌اپ گل‌های رنگارنگ یکی از روش‌های توزیع اخبار و اطلاعیه‌های مجموعه است.
+                </p>
+                <p class="section-description">
+                    استفاده از واتس‌اپ تابع شرایط استفاده و سیاست‌های خود واتس‌اپ است. گل‌های رنگارنگ مسئول اختلالات، تغییرات یا محدودیت‌هایی که مستقیماً توسط واتس‌اپ ایجاد می‌شوند نیست.
+                </p>
+            </div>
+            
+            <!-- ۱۶ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۶</span>
+                    <h3 class="section-title">شبکه‌های تلویزیونی</h3>
+                </div>
+                <p class="section-description">
+                    چهار شبکه تلویزیونی گل‌های رنگارنگ ممکن است شامل برنامه‌های زنده، ضبط‌شده، خبری، ورزشی، اقتصادی، فرهنگی و سرگرمی باشند.
+                </p>
+                <p class="section-description">
+                    زمان پخش برنامه‌ها ممکن است بدون اطلاع قبلی تغییر کند. در شرایط فنی، خبری یا اضطراری، ممکن است یک برنامه لغو، جابه‌جا یا با برنامه دیگری جایگزین شود.
+                </p>
+                <p class="section-description">
+                    هیچ برنامه‌ای تضمین نمی‌شود که همیشه در یک زمان مشخص در دسترس باشد.
+                </p>
+            </div>
+            
+            <!-- ۱۷ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۷</span>
+                    <h3 class="section-title">فروشگاه اینترنتی</h3>
+                </div>
+                <p class="section-description">
+                    استفاده از فروشگاه اینترنتی گل‌های رنگارنگ علاوه بر این شرایط، ممکن است مشمول شرایط خاص خرید، پرداخت، ارسال، بازگشت و تعویض کالا باشد.
+                </p>
+                <p class="section-description">
+                    قیمت، موجودی، مشخصات و زمان ارسال محصولات ممکن است تغییر کند. گل‌های رنگارنگ تلاش می‌کند اطلاعات محصولات را دقیق نگه دارد، اما ممکن است خطاهای تایپی یا فنی رخ دهد.
+                </p>
+                <p class="section-description">
+                    در صورت وجود خطای مهم در قیمت یا مشخصات یک محصول، گل‌های رنگارنگ می‌تواند سفارش را بررسی و در صورت لزوم با مشتری تماس بگیرد.
+                </p>
+            </div>
+            
+            <!-- ۱۸ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۸</span>
+                    <h3 class="section-title">سفارش و پرداخت</h3>
+                </div>
+                <p class="section-description">
+                    ثبت سفارش به معنای تضمین پذیرش نهایی سفارش نیست. سفارش ممکن است در شرایطی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>تمام شدن موجودی</li>
+                    <li>خطای قیمت</li>
+                    <li>مشکل پرداخت</li>
+                    <li>اطلاعات ناقص</li>
+                    <li>فعالیت مشکوک</li>
+                    <li>محدودیت ارسال</li>
+                    <li>خطای فنی</li>
+                </ul>
+                <p class="section-description">
+                    لغو یا متوقف شود. در صورت دریافت وجه برای سفارشی که لغو شده است، مبلغ مربوطه مطابق روش پرداخت و سیاست بازپرداخت قابل اجرا بازگردانده خواهد شد.
+                </p>
+            </div>
+            
+            <!-- ۱۹ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۱۹</span>
+                    <h3 class="section-title">ارسال و تحویل</h3>
+                </div>
+                <p class="section-description">
+                    زمان‌های اعلام‌شده برای ارسال کالا ممکن است تخمینی باشند.
+                </p>
+                <p class="section-description">
+                    تأخیرهایی که ناشی از شرکت حمل‌ونقل، شرایط آب‌وهوایی، تعطیلات، مشکلات فنی یا شرایط خارج از کنترل گل‌های رنگارنگ باشند، ممکن است خارج از مسئولیت مستقیم مجموعه قرار گیرند.
+                </p>
+            </div>
+            
+            <!-- ۲۰ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۰</span>
+                    <h3 class="section-title">بازگشت کالا</h3>
+                </div>
+                <p class="section-description">
+                    شرایط بازگشت یا تعویض محصولات ممکن است بسته به نوع محصول متفاوت باشد.
+                </p>
+                <p class="section-description">
+                    جزئیات مربوط به مهلت بازگشت، شرایط کالا و روش بازپرداخت در صفحه مربوط به Returns & Refunds اعلام خواهد شد.
+                </p>
+            </div>
+            
+            <!-- ۲۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۱</span>
+                    <h3 class="section-title">دسترسی‌پذیری</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ تلاش می‌کند خدمات دیجیتال خود را برای طیف گسترده‌ای از کاربران قابل دسترسی کند.
+                </p>
+                <p class="section-description">
+                    اگر در استفاده از بخشی از سایت یا خدمات با مشکل دسترسی مواجه شدید، می‌توانید از طریق بخش تماس با ما موضوع را گزارش کنید.
+                </p>
+            </div>
+            
+            <!-- ۲۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۲</span>
+                    <h3 class="section-title">در دسترس بودن خدمات</h3>
+                </div>
+                <p class="section-description">
+                    ما تلاش می‌کنیم خدمات گل‌های رنگارنگ در دسترس و پایدار باشند، اما نمی‌توانیم تضمین کنیم که سایت یا سرویس‌ها همیشه بدون وقفه کار کنند. ممکن است خدمات به دلیل مواردی مانند:
+                </p>
+                <ul class="section-list">
+                    <li>تعمیرات</li>
+                    <li>به‌روزرسانی</li>
+                    <li>مشکلات سرور</li>
+                    <li>قطعی شبکه</li>
+                    <li>حملات سایبری</li>
+                    <li>مشکلات ارائه‌دهندگان خدمات</li>
+                    <li>شرایط اضطراری</li>
+                </ul>
+                <p class="section-description">
+                    موقتاً محدود یا قطع شوند.
+                </p>
+            </div>
+            
+            <!-- ۲۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۳</span>
+                    <h3 class="section-title">عدم تضمین</h3>
+                </div>
+                <p class="section-description">
+                    تا حدی که قانون اجازه دهد، خدمات گل‌های رنگارنگ بدون تضمین کامل یا مطلق درباره:
+                </p>
+                <ul class="section-list">
+                    <li>صحت تمام اطلاعات</li>
+                    <li>کامل بودن تمام مطالب</li>
+                    <li>بدون خطا بودن سایت</li>
+                    <li>در دسترس بودن دائمی خدمات</li>
+                    <li>مناسب بودن خدمات برای یک هدف خاص</li>
+                </ul>
+                <p class="section-description">
+                    ارائه می‌شوند. گل‌های رنگارنگ تلاش می‌کند کیفیت بالایی ارائه دهد، اما نمی‌تواند وقوع تمام خطاها یا اختلالات را تضمین کند.
+                </p>
+            </div>
+            
+            <!-- ۲۴ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۴</span>
+                    <h3 class="section-title">محدودیت مسئولیت</h3>
+                </div>
+                <p class="section-description">
+                    تا حدی که قوانین قابل اجرا اجازه دهند، گل‌های رنگارنگ و شرکت‌ها یا اشخاص وابسته به آن مسئول خسارات غیرمستقیم یا تبعی ناشی از استفاده یا ناتوانی در استفاده از خدمات نخواهند بود.
+                </p>
+                <p class="section-description">
+                    این بند به هیچ وجه قصد حذف حقوقی را ندارد که طبق قانون قابل حذف یا محدود کردن نیستند.
+                </p>
+            </div>
+            
+            <!-- ۲۵ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۵</span>
+                    <h3 class="section-title">جبران خسارت</h3>
+                </div>
+                <p class="section-description">
+                    در حدودی که قانون اجازه دهد، کاربر مسئول خسارات یا هزینه‌هایی خواهد بود که مستقیماً از نقض عمدی یا غیرقانونی این شرایط توسط او ناشی شود.
+                </p>
+                <p class="section-description">
+                    این موضوع می‌تواند شامل ادعاهایی باشد که در نتیجه استفاده غیرمجاز از خدمات یا نقض حقوق اشخاص ثالث ایجاد شده‌اند.
+                </p>
+            </div>
+            
+            <!-- ۲۶ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۶</span>
+                    <h3 class="section-title">تعلیق یا پایان دسترسی</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ می‌تواند در صورت نقض این شرایط، سوءاستفاده از سرویس یا فعالیتی که امنیت کاربران یا سیستم‌ها را تهدید کند، دسترسی کاربر را محدود یا متوقف کند.
+                </p>
+                <p class="section-description">
+                    در مواردی که قانون الزام کند، اقدامات لازم مطابق فرآیندهای قانونی انجام خواهد شد.
+                </p>
+            </div>
+            
+            <!-- ۲۷ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۷</span>
+                    <h3 class="section-title">تغییر خدمات</h3>
+                </div>
+                <p class="section-description">
+                    گل‌های رنگارنگ می‌تواند در طول زمان:
+                </p>
+                <ul class="section-list">
+                    <li>قابلیت‌های جدید اضافه کند؛</li>
+                    <li>قابلیت‌های قدیمی را تغییر دهد؛</li>
+                    <li>بخش‌هایی از سایت را حذف کند؛</li>
+                    <li>شبکه‌های تلویزیونی را تغییر دهد؛</li>
+                    <li>روش ارائه اخبار را تغییر دهد؛</li>
+                    <li>فروشگاه یا محصولات آن را به‌روزرسانی کند.</li>
+                </ul>
+                <p class="section-description">
+                    این تغییرات ممکن است بدون اطلاع قبلی انجام شوند، مگر اینکه قانون اطلاع‌رسانی قبلی را الزامی کند.
+                </p>
+            </div>
+            
+            <!-- ۲۸ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۸</span>
+                    <h3 class="section-title">تغییر شرایط استفاده</h3>
+                </div>
+                <p class="section-description">
+                    ممکن است این شرایط در آینده تغییر کند. نسخه جدید با تاریخ به‌روزرسانی در بالای همین صفحه منتشر خواهد شد.
+                </p>
+                <p class="section-description">
+                    در صورت ایجاد تغییرات مهم، ممکن است روش‌های اطلاع‌رسانی اضافی نیز مورد استفاده قرار گیرد. ادامه استفاده از خدمات پس از لازم‌الاجرا شدن تغییرات، در مواردی که قانون اجازه دهد، به معنای پذیرش شرایط جدید خواهد بود.
+                </p>
+            </div>
+            
+            <!-- ۲۹ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۲۹</span>
+                    <h3 class="section-title">قانون قابل اجرا</h3>
+                </div>
+                <p class="section-description">
+                    این شرایط تا حدی که قانون اجازه دهد، مطابق قوانین قابل اجرای ایالات متحده و مقررات مربوط به حوزه قضایی فعالیت مجموعه گل‌های رنگارنگ تفسیر خواهد شد.
+                </p>
+                <p class="section-description">
+                    حقوق اجباری مصرف‌کنندگان یا کاربران که طبق قوانین محل اقامت آن‌ها قابل سلب نیست، تحت تأثیر این بند قرار نمی‌گیرد.
+                </p>
+            </div>
+            
+            <!-- ۳۰ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۳۰</span>
+                    <h3 class="section-title">تفکیک‌پذیری</h3>
+                </div>
+                <p class="section-description">
+                    اگر هر بخشی از این شرایط توسط یک مرجع صالح غیرقابل اجرا یا غیرمعتبر تشخیص داده شود، سایر بخش‌های شرایط تا حد امکان معتبر و قابل اجرا باقی خواهند ماند.
+                </p>
+            </div>
+            
+            <!-- ۳۱ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۳۱</span>
+                    <h3 class="section-title">عدم چشم‌پوشی</h3>
+                </div>
+                <p class="section-description">
+                    اگر گل‌های رنگارنگ در یک مورد خاص یکی از حقوق خود را اجرا نکند، این موضوع به معنای صرف‌نظر دائمی از آن حق نخواهد بود.
+                </p>
+                <p class="section-description">
+                    هر حق یا اختیار می‌تواند در موارد بعدی مطابق شرایط و قوانین قابل اجرا اعمال شود.
+                </p>
+            </div>
+            
+            <!-- ۳۲ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۳۲</span>
+                    <h3 class="section-title">توافق کامل</h3>
+                </div>
+                <p class="section-description">
+                    این شرایط، همراه با سیاست حفظ حریم خصوصی، سیاست کوکی‌ها و سایر شرایطی که برای سرویس‌های خاص منتشر می‌شوند، چارچوب کلی استفاده از خدمات گل‌های رنگارنگ را تشکیل می‌دهند.
+                </p>
+                <p class="section-description">
+                    در صورت وجود شرایط اختصاصی برای یک سرویس، ممکن است آن شرایط علاوه بر این سند اعمال شوند.
+                </p>
+            </div>
+            
+            <!-- ۳۳ -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-number">۳۳</span>
+                    <h3 class="section-title">تماس با گل‌های رنگارنگ</h3>
+                </div>
+                <p class="section-description">
+                    اگر درباره این شرایط، خدمات، حساب کاربری، اخبار یا فروشگاه سؤالی دارید، می‌توانید از طریق بخش Contact Us با گل‌های رنگارنگ تماس بگیرید.
+                </p>
+            </div>
+            
+            <!-- اطلاعات تماس -->
+            <div class="contact-box">
+                <h3>📞 تماس با گل‌های رنگارنگ</h3>
+                <p class="brand-name-en">Golhaye Rangarang Media Network</p>
+                <p>📍 Las Ontras, United States</p>
+            </div>
+            
+            <!-- خدمات مجموعه -->
+            <div class="services-list">
+                <h3>🏢 خدمات مجموعه:</h3>
+                <ul>
+                    <li>📰 Golhaye Rangarang News</li>
+                    <li>🏘️ Las Ontras Local News</li>
+                    <li>💬 Rangarang WhatsApp News</li>
+                    <li>📺 Rangarang TV 1</li>
+                    <li>📺 Rangarang TV 2</li>
+                    <li>📺 Rangarang TV 3</li>
+                    <li>📺 Rangarang TV 4</li>
+                    <li>🛍️ Rangarang Online Store</li>
+                </ul>
+            </div>
+            
+            <!-- صفحات مرتبط -->
+            <div class="related-pages">
+                <h3>🔗 صفحات مرتبط</h3>
+                <div class="related-grid">
+                    <a href="privacy.html" class="related-card">
+                        <span class="rc-title">Privacy Policy</span>
+                        <span class="rc-desc">سیاست حفظ حریم خصوصی</span>
+                    </a>
+                    <a href="cookies.html" class="related-card">
+                        <span class="rc-title">Manage Cookies</span>
+                        <span class="rc-desc">مدیریت کوکی‌ها</span>
+                    </a>
+                    <a href="terms.html" class="related-card">
+                        <span class="rc-title">Returns & Refunds</span>
+                        <span class="rc-desc">بازگشت و بازپرداخت</span>
+                    </a>
+                    <a href="accessibility.html" class="related-card">
+                        <span class="rc-title">Accessibility</span>
+                        <span class="rc-desc">دسترسی‌پذیری</span>
+                    </a>
+                    <a href="about.html" class="related-card">
+                        <span class="rc-title">Contact Us</span>
+                        <span class="rc-desc">تماس با گل‌های رنگارنگ</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- یادداشت پایانی -->
+            <div class="final-note">
+                📝 استفاده از خدمات گل‌های رنگارنگ به منزله پذیرش شرایط استفاده مندرج در این صفحه، مطابق قوانین قابل اجرا، خواهد بود.
+            </div>
+            
+            <div class="brand-copyright">
+                © 2026 Golhaye Rangarang Media Network. All Rights Reserved.
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="terms.html">Terms of Use</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="adchoices.html">Ad Choices</a>
+                <a href="accessibility.html">Accessibility & CC</a>
+                <a href="newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="transcripts.html">Transcripts</a>
+                <a href="sitemap.html">Sitemap</a>
+                <a href="about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+</body>
+</html>
