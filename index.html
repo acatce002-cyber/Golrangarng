@@ -139,11 +139,12 @@
             margin: 8px 15px; border-radius: 1px;
         }
         
-        /* اخبار کوتاه */
+        /* اخبار کوتاه - چرخشی */
         .short-news-block { max-width: 800px; width: 100%; margin: 15px auto; padding: 0 15px; }
         .short-news-inner {
             background-color: white; border-radius: 10px; padding: 15px 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-right: 4px solid #e74c3c;
+            min-height: 145px;
         }
         .short-news-title {
             font-size: 14px; font-weight: bold; color: #c0392b;
@@ -151,15 +152,20 @@
         }
         .short-news-title::before { content: '📢'; }
         .short-news-inner ul { margin: 0; padding-right: 20px; list-style: none; }
-        .short-news-inner li {
+        .short-news-inner ul li {
             font-size: 13px; color: #333; line-height: 1.9;
             padding: 6px 0; border-bottom: 1px dashed #eee;
             position: relative; padding-right: 18px;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
         }
-        .short-news-inner li:last-child { border-bottom: none; }
-        .short-news-inner li::before {
+        .short-news-inner ul li:last-child { border-bottom: none; }
+        .short-news-inner ul li::before {
             content: '●'; color: #e74c3c;
             position: absolute; right: 0; font-size: 10px; top: 10px;
+        }
+        .short-news-inner ul.fade-out li {
+            opacity: 0;
         }
         
         /* ============================================ */
@@ -224,9 +230,7 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.8);
         }
         
-        /* ============================================ */
-        /* خط جداکننده                                 */
-        /* ============================================ */
+        /* خط جداکننده */
         .section-divider {
             max-width: 800px; width: 100%;
             margin: 30px auto 25px auto; padding: 0 15px;
@@ -235,6 +239,67 @@
             height: 2px;
             background: linear-gradient(to left, transparent, #c0392b, transparent);
             border-radius: 2px; opacity: 0.5;
+        }
+        
+        /* ============================================ */
+        /* 🆕 خبر جدید جداگانه (۳ تیتر)                */
+        /* ============================================ */
+        .breaking-news-section {
+            max-width: 800px; width: 100%;
+            margin: 25px auto 30px auto; padding: 0 15px;
+        }
+        .breaking-news-inner {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.15);
+            border: 2px solid #c0392b;
+        }
+        .breaking-news-header {
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            color: white;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+        .breaking-news-header::before {
+            content: '⚡';
+            font-size: 18px;
+        }
+        .breaking-news-item {
+            display: block;
+            padding: 18px 22px;
+            text-decoration: none;
+            color: #000;
+            background-color: white;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.8;
+            font-family: 'IRANSans', sans-serif;
+            position: relative;
+            padding-right: 40px;
+        }
+        .breaking-news-item:last-child { border-bottom: none; }
+        .breaking-news-item:hover {
+            background-color: #fff5f5;
+            color: #c0392b;
+        }
+        .breaking-news-item::before {
+            content: '•';
+            position: absolute;
+            right: 18px;
+            top: 16px;
+            color: #c0392b;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1;
         }
         
         /* ============================================ */
@@ -417,6 +482,7 @@
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
             .featured-subtitle { font-size: 11px; }
+            .breaking-news-item { font-size: 14px; padding: 16px 18px 16px 38px; }
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
         }
@@ -465,15 +531,34 @@
         </div>
     </div>
 
-    <!-- اخبار کوتاه -->
+    <!-- اخبار کوتاه - چرخشی (هر ۳ ثانیه ۳ تا) -->
     <div class="short-news-block">
         <div class="short-news-inner">
             <div class="short-news-title">اخبار کوتاه</div>
-            <ul>
-                <li>ترامپ: ایرانی‌ها با کمبود سوخت مواجه هستند.</li>
-                <li>قیمت هر بشکه نفت به ۱۰۸ دلار رسید.</li>
-                <li>مایک جانسون، رئیس مجلس نمایندگان آمریکا، درباره ترامپ: ترامپ ایده‌پرداز فوق‌العاده‌ای است.</li>
+            <ul id="shortNewsList">
+                <!-- اخبار با JavaScript پر میشه -->
             </ul>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 🆕 خبر جداگانه - ۳ تیتر                     -->
+    <!-- ============================================ -->
+    <div class="breaking-news-section">
+        <div class="breaking-news-inner">
+            <div class="breaking-news-header">آخرین اخبار</div>
+            
+            <a href="N1/news21.html" class="breaking-news-item">
+                هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی و جنگی شدن فضا مخالفیم
+            </a>
+            
+            <a href="N1/news22.html" class="breaking-news-item">
+                محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید
+            </a>
+            
+            <a href="N1/news23.html" class="breaking-news-item">
+                مقام عمانی: بحران تنگه هرمز به زودی پایان خواهد یافت
+            </a>
         </div>
     </div>
 
@@ -497,9 +582,7 @@
         <div class="divider-line"></div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- خبر اختصاصی با عکس                          -->
-    <!-- ============================================ -->
+    <!-- خبر اختصاصی با عکس -->
     <div class="exclusive-news-section">
         <a href="N1/news19.html" class="exclusive-card">
             <div class="exclusive-image">
@@ -590,6 +673,57 @@
     </footer>
 
     <script>
+        // ============================================
+        // اخبار کوتاه - چرخشی (هر ۳ ثانیه ۳ تای جدید)
+        // ============================================
+        const allShortNews = [
+            "وزیرخارجه عمان و مارکو روبیو، وزیرخارجه آمریکا در رابطه با تنش‌های ایران و آمریکا و تحولات منطقه گفتگو کردند.",
+            "ایلان ماسک: هرکی بازی ویدیویی نکنه احمقه، بازی کنید چون برای مغز خوب و مفیده.",
+            "ترامپ درباره هوش مصنوعی: ربات‌ها قرار نیست جهان را تصرف کنند. این اتفاق نخواهد افتاد.",
+            "کرایه روزانه یک ابرنفتکش از خلیج فارس به چین برای نخستین بار در تاریخ به یک میلیون دلار رسیده است.",
+            "عمان: ۲۳ خدمه نفتکش «الگایا» نجات یافتند؛ جست‌وجو برای ۲ نفر ادامه دارد.",
+            "آخرین قیمت نفت: ۱۰۸ دلار و ۲۰ سنت."
+        ];
+        
+        let currentBatch = 0;
+        const batchSize = 3;
+        const totalBatches = Math.ceil(allShortNews.length / batchSize);
+        const shortNewsList = document.getElementById('shortNewsList');
+        
+        function renderNewsBatch() {
+            // Fade out
+            shortNewsList.classList.add('fade-out');
+            
+            setTimeout(() => {
+                // Clear list
+                shortNewsList.innerHTML = '';
+                
+                // Get current 3 news
+                const startIndex = currentBatch * batchSize;
+                const batch = allShortNews.slice(startIndex, startIndex + batchSize);
+                
+                // Render each
+                batch.forEach(news => {
+                    const li = document.createElement('li');
+                    li.textContent = news;
+                    shortNewsList.appendChild(li);
+                });
+                
+                // Fade in
+                shortNewsList.classList.remove('fade-out');
+                
+                // Next batch
+                currentBatch = (currentBatch + 1) % totalBatches;
+            }, 500);
+        }
+        
+        // Initial render
+        renderNewsBatch();
+        
+        // Rotate every 3 seconds
+        setInterval(renderNewsBatch, 3000);
+        
+        // Menu toggle
         function toggleMenu() {
             const btn = document.getElementById('menuBtn');
             const dropdown = document.getElementById('menuDropdown');
