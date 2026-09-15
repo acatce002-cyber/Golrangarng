@@ -139,38 +139,89 @@
             margin: 8px 15px; border-radius: 1px;
         }
         
-        /* اخبار کوتاه - چرخشی (هر ۵ ثانیه) */
-        .short-news-block { max-width: 800px; width: 100%; margin: 12px auto 15px auto; padding: 0 15px; }
+        /* ============================ */
+        /* اخبار کوتاه - ارتفاع ثابت   */
+        /* ============================ */
+        .short-news-block { 
+            max-width: 800px; 
+            width: 100%; 
+            margin: 12px auto 20px auto; 
+            padding: 0 15px; 
+        }
         .short-news-inner {
-            background-color: white; border-radius: 10px; padding: 15px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-right: 4px solid #e74c3c;
-            min-height: 145px;
+            background-color: white; 
+            border-radius: 10px; 
+            padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+            border-right: 4px solid #e74c3c;
+            height: 165px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
         .short-news-title {
-            font-size: 14px; font-weight: bold; color: #c0392b;
-            margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+            font-size: 14px; 
+            font-weight: bold; 
+            color: #c0392b;
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
         }
-        .short-news-title::before { content: '📢'; }
-        .short-news-inner ul { margin: 0; padding-right: 20px; list-style: none; }
+        .short-news-title-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .short-news-title-left::before { 
+            content: '📢'; 
+        }
+        .short-news-counter {
+            font-size: 12px;
+            color: #999;
+            font-weight: bold;
+            background-color: #f5f5f5;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-family: Georgia, serif;
+            direction: ltr;
+        }
+        .short-news-inner ul { 
+            margin: 0; 
+            padding-right: 20px; 
+            list-style: none;
+            flex: 1;
+            overflow: hidden;
+        }
         .short-news-inner ul li {
-            font-size: 13px; color: #333; line-height: 1.9;
-            padding: 6px 0; border-bottom: 1px dashed #eee;
-            position: relative; padding-right: 18px;
+            font-size: 13px; 
+            color: #333; 
+            line-height: 1.9;
+            padding: 6px 0; 
+            border-bottom: 1px dashed #eee;
+            position: relative; 
+            padding-right: 18px;
             transition: opacity 0.5s ease-in-out;
             opacity: 1;
         }
-        .short-news-inner ul li:last-child { border-bottom: none; }
+        .short-news-inner ul li:last-child { 
+            border-bottom: none; 
+        }
         .short-news-inner ul li::before {
-            content: '●'; color: #e74c3c;
-            position: absolute; right: 0; font-size: 10px; top: 10px;
+            content: '●'; 
+            color: #e74c3c;
+            position: absolute; 
+            right: 0; 
+            font-size: 10px; 
+            top: 10px;
         }
         .short-news-inner ul.fade-out li {
             opacity: 0;
         }
         
-        /* ============================================ */
-        /* اخبار ۲۱، ۲۲، ۲۳ - ۳ تیتر                  */
-        /* ============================================ */
+        /* ============================ */
+        /* ۳ خبر - ۲۱، ۲۲، ۲۳         */
+        /* ============================ */
         .breaking-news-section {
             max-width: 800px; width: 100%;
             margin: 0 auto 22px auto; padding: 0 15px;
@@ -194,28 +245,16 @@
             font-weight: bold;
             line-height: 1.8;
             font-family: 'IRANSans', sans-serif;
-            position: relative;
-            padding-right: 40px;
         }
         .breaking-news-item:last-child { border-bottom: none; }
         .breaking-news-item:hover {
             background-color: #fff5f5;
             color: #c0392b;
         }
-        .breaking-news-item::before {
-            content: '•';
-            position: absolute;
-            right: 18px;
-            top: 16px;
-            color: #c0392b;
-            font-size: 22px;
-            font-weight: bold;
-            line-height: 1;
-        }
         
-        /* ============================================ */
-        /* کارت تحلیل چین - ۳:۴ با متن روی عکس        */
-        /* ============================================ */
+        /* ============================ */
+        /* کارت تحلیل چین - ۳:۴         */
+        /* ============================ */
         .featured-news-section {
             max-width: 800px; width: 100%;
             margin: 0 auto 20px auto; padding: 0 15px;
@@ -464,7 +503,8 @@
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
             .featured-subtitle { font-size: 11px; }
-            .breaking-news-item { font-size: 14px; padding: 16px 18px 16px 38px; }
+            .breaking-news-item { font-size: 14px; padding: 16px 18px; }
+            .short-news-inner { height: 175px; }
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
         }
@@ -513,10 +553,13 @@
         </div>
     </div>
 
-    <!-- اخبار کوتاه - چرخشی (هر ۵ ثانیه ۳ تای جدید) -->
+    <!-- اخبار کوتاه - چرخشی (هر ۵ ثانیه) -->
     <div class="short-news-block">
         <div class="short-news-inner">
-            <div class="short-news-title">اخبار کوتاه</div>
+            <div class="short-news-title">
+                <span class="short-news-title-left">اخبار کوتاه</span>
+                <span class="short-news-counter" id="newsCounter">1/2</span>
+            </div>
             <ul id="shortNewsList">
                 <!-- اخبار با JavaScript پر میشه -->
             </ul>
@@ -541,7 +584,7 @@
         </div>
     </div>
 
-    <!-- کارت تحلیل چین - ۳:۴ با متن روی عکس -->
+    <!-- کارت تحلیل چین - ۳:۴ -->
     <div class="featured-news-section">
         <div class="featured-section-title">تحلیل</div>
         <a href="N1/news20.html" class="featured-news-card">
@@ -651,7 +694,7 @@
 
     <script>
         // ============================================
-        // اخبار کوتاه - چرخشی (هر ۵ ثانیه ۳ تای جدید)
+        // اخبار کوتاه - چرخشی (هر ۵ ثانیه)
         // ============================================
         const allShortNews = [
             "وزیرخارجه عمان و مارکو روبیو، وزیرخارجه آمریکا در رابطه با تنش‌های ایران و آمریکا و تحولات منطقه گفتگو کردند.",
@@ -666,6 +709,7 @@
         const batchSize = 3;
         const totalBatches = Math.ceil(allShortNews.length / batchSize);
         const shortNewsList = document.getElementById('shortNewsList');
+        const newsCounter = document.getElementById('newsCounter');
         
         function renderNewsBatch() {
             // Fade out
@@ -685,6 +729,9 @@
                     li.textContent = news;
                     shortNewsList.appendChild(li);
                 });
+                
+                // Update counter
+                newsCounter.textContent = (currentBatch + 1) + '/' + totalBatches;
                 
                 // Fade in
                 shortNewsList.classList.remove('fade-out');
