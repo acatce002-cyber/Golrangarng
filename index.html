@@ -139,13 +139,129 @@
             margin: 8px 15px; border-radius: 1px;
         }
         
-        /* ============================ */
-        /* اخبار کوتاه - ارتفاع ثابت   */
-        /* ============================ */
+        /* ==================================== */
+        /* 🆕 اخبار اختصاصی ایالت لاسونتراس   */
+        /* ==================================== */
+        .lasontras-section {
+            max-width: 800px;
+            width: 100%;
+            margin: 22px auto 20px auto;
+            padding: 0 15px;
+        }
+        .lasontras-card {
+            display: block;
+            position: relative;
+            background: linear-gradient(135deg, #1a2a4a 0%, #2c3e50 50%, #1a2a4a 100%);
+            border-radius: 14px;
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: 
+                0 8px 28px rgba(26, 42, 74, 0.4),
+                0 0 0 3px rgba(243, 156, 18, 0.2);
+            border: 3px solid #f39c12;
+            transition: transform 0.35s, box-shadow 0.35s;
+            padding: 22px 25px;
+        }
+        .lasontras-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .lasontras-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at bottom right, rgba(243, 156, 18, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .lasontras-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 14px 40px rgba(243, 156, 18, 0.5),
+                0 0 0 3px rgba(243, 156, 18, 0.4);
+            border-color: #ffd700;
+        }
+        .lasontras-inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .lasontras-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 
+                0 6px 18px rgba(243, 156, 18, 0.5),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .lasontras-content {
+            flex: 1;
+            text-align: right;
+        }
+        .lasontras-label {
+            display: inline-block;
+            font-size: 11px;
+            color: #1a2a4a;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700, #f39c12);
+            padding: 3px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-family: 'IRANSans', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(243, 156, 18, 0.4);
+        }
+        .lasontras-title {
+            margin: 0 0 6px 0;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.6;
+            font-family: 'IRANSans', sans-serif;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+        .lasontras-subtitle {
+            margin: 0;
+            color: #b8c4d9;
+            font-size: 13px;
+            line-height: 1.7;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .lasontras-arrow {
+            flex-shrink: 0;
+            color: #f39c12;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .lasontras-card:hover .lasontras-arrow {
+            transform: translateX(-8px);
+        }
+        
+        /* اخبار کوتاه */
         .short-news-block { 
             max-width: 800px; 
             width: 100%; 
-            margin: 12px auto 20px auto; 
+            margin: 0 auto 20px auto; 
             padding: 0 15px; 
         }
         .short-news-inner {
@@ -219,9 +335,7 @@
             opacity: 0;
         }
         
-        /* ============================ */
-        /* ۳ خبر - ۲۱، ۲۲، ۲۳         */
-        /* ============================ */
+        /* ۳ خبر - ۲۱، ۲۲، ۲۳ */
         .breaking-news-section {
             max-width: 800px; width: 100%;
             margin: 0 auto 22px auto; padding: 0 15px;
@@ -252,9 +366,7 @@
             color: #c0392b;
         }
         
-        /* ============================ */
-        /* کارت تحلیل چین - ۳:۴         */
-        /* ============================ */
+        /* کارت تحلیل چین - ۳:۴ */
         .featured-news-section {
             max-width: 800px; width: 100%;
             margin: 0 auto 20px auto; padding: 0 15px;
@@ -495,6 +607,11 @@
             .ad-brand { font-size: 34px; letter-spacing: 5px; }
             .ad-grg { font-size: 15px; padding: 4px 10px; }
             .ad-slogan { font-size: 12px; padding: 6px 16px; }
+            .lasontras-card { padding: 18px 20px; }
+            .lasontras-inner { gap: 12px; }
+            .lasontras-icon { width: 50px; height: 50px; font-size: 26px; }
+            .lasontras-title { font-size: 16px; }
+            .lasontras-subtitle { font-size: 11px; }
             .exclusive-image { height: 220px; }
             .exclusive-title { font-size: 16px; }
             .exclusive-content { padding: 18px; }
@@ -528,6 +645,23 @@
         </div>
     </div>
 
+    <!-- ==================================== -->
+    <!-- 🆕 اخبار اختصاصی ایالت لاسونتراس   -->
+    <!-- ==================================== -->
+    <div class="lasontras-section">
+        <a href="N1/lasontras.html" class="lasontras-card">
+            <div class="lasontras-inner">
+                <div class="lasontras-icon">📍</div>
+                <div class="lasontras-content">
+                    <span class="lasontras-label">اخبار اختصاصی</span>
+                    <h2 class="lasontras-title">ایالت لاسونتراس</h2>
+                    <p class="lasontras-subtitle">پوشش لحظه‌ای رویدادهای محلی، سیاسی و اجتماعی ایالت لاسونتراس</p>
+                </div>
+                <div class="lasontras-arrow">←</div>
+            </div>
+        </a>
+    </div>
+
     <!-- هدر -->
     <div class="header-row">
         <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
@@ -553,7 +687,7 @@
         </div>
     </div>
 
-    <!-- اخبار کوتاه - چرخشی (هر ۵ ثانیه) -->
+    <!-- اخبار کوتاه - چرخشی -->
     <div class="short-news-block">
         <div class="short-news-inner">
             <div class="short-news-title">
@@ -712,42 +846,31 @@
         const newsCounter = document.getElementById('newsCounter');
         
         function renderNewsBatch() {
-            // Fade out
             shortNewsList.classList.add('fade-out');
             
             setTimeout(() => {
-                // Clear list
                 shortNewsList.innerHTML = '';
                 
-                // Get current 3 news
                 const startIndex = currentBatch * batchSize;
                 const batch = allShortNews.slice(startIndex, startIndex + batchSize);
                 
-                // Render each
                 batch.forEach(news => {
                     const li = document.createElement('li');
                     li.textContent = news;
                     shortNewsList.appendChild(li);
                 });
                 
-                // Update counter
                 newsCounter.textContent = (currentBatch + 1) + '/' + totalBatches;
                 
-                // Fade in
                 shortNewsList.classList.remove('fade-out');
                 
-                // Next batch
                 currentBatch = (currentBatch + 1) % totalBatches;
             }, 500);
         }
         
-        // Initial render
         renderNewsBatch();
-        
-        // Rotate every 5 seconds
         setInterval(renderNewsBatch, 5000);
         
-        // Menu toggle
         function toggleMenu() {
             const btn = document.getElementById('menuBtn');
             const dropdown = document.getElementById('menuDropdown');
