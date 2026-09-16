@@ -1,1 +1,480 @@
-.
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اخبار سیاسی ایالت لاسونتراس - گلهای رنگارنگ</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold; font-style: normal; font-display: swap;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f4f4f9;
+            display: flex; flex-direction: column;
+            min-height: 100vh; color: #333;
+        }
+        
+        /* هدر */
+        .header-row {
+            max-width: 800px; width: 100%;
+            margin: 18px auto 10px auto; padding: 0 15px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .menu-btn {
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+        }
+        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
+        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        .header-title-block {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .header-title-fa {
+            font-size: 17px;
+            font-weight: bold;
+            color: #c0392b;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .header-subtitle {
+            font-size: 11px;
+            color: #888;
+            font-family: 'IRANSans', sans-serif;
+            margin-top: 2px;
+        }
+        
+        /* منو */
+        .menu-dropdown {
+            max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
+            max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+        }
+        .menu-dropdown.open { max-height: 900px; }
+        .menu-inner {
+            background-color: white; border-radius: 12px; padding: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12); margin-top: 8px; 
+            border: 1px solid #eee;
+        }
+        .menu-inner-title {
+            font-size: 12px;
+            color: #999;
+            padding: 6px 15px 10px 15px;
+            font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            border-bottom: 2px solid #f5f5f5;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .menu-inner-title::before {
+            content: '📂';
+            font-size: 14px;
+        }
+        .menu-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 15px; 
+            color: #333; 
+            text-decoration: none;
+            font-size: 14px; 
+            border-radius: 8px; 
+            transition: all 0.2s;
+            font-family: 'IRANSans', sans-serif;
+            font-weight: bold;
+        }
+        .menu-dropdown a:hover { 
+            background-color: #fff5f5; 
+            color: #c0392b; 
+            padding-right: 20px; 
+        }
+        .menu-dropdown a.active-page {
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            color: white;
+        }
+        .menu-icon {
+            font-size: 16px;
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        /* بنر دسته‌بندی */
+        .category-banner {
+            max-width: 800px;
+            width: 100%;
+            margin: 5px auto 22px auto;
+            padding: 0 15px;
+        }
+        .category-banner-inner {
+            background: linear-gradient(135deg, #c0392b 0%, #7d1f17 100%);
+            border-radius: 14px;
+            padding: 22px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.35);
+            border: 3px solid #c0392b;
+            position: relative;
+            overflow: hidden;
+        }
+        .category-banner-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .category-banner-icon {
+            font-size: 42px;
+            margin-bottom: 8px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .category-banner-title {
+            margin: 0;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* خبرهای دسته‌بندی */
+        .category-news-section {
+            max-width: 800px; width: 100%;
+            margin: 0 auto 30px auto; padding: 0 15px;
+        }
+        
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        /* کارت خبر با عکس */
+        .news-card {
+            display: block;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .news-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(192, 57, 43, 0.2);
+        }
+        .news-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            position: relative;
+        }
+        .news-card-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .news-card:hover .news-card-image img {
+            transform: scale(1.05);
+        }
+        .news-card-badge {
+            position: absolute;
+            top: 12px; right: 12px;
+            z-index: 3;
+            font-size: 11px;
+            color: white;
+            font-weight: bold;
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-family: 'IRANSans', sans-serif;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+        }
+        .news-card-content {
+            padding: 18px 22px;
+        }
+        .news-card-title {
+            margin: 0 0 10px 0;
+            color: #1a1a1a;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.7;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.2s;
+        }
+        .news-card:hover .news-card-title {
+            color: #c0392b;
+        }
+        .news-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 11px;
+            color: #999;
+            font-family: 'IRANSans', sans-serif;
+            flex-wrap: wrap;
+        }
+        .news-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        /* کارت خبر ساده (بدون عکس) */
+        .news-card-simple {
+            display: block;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px 22px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .news-card-simple:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(192, 57, 43, 0.2);
+        }
+        .news-card-simple .news-card-title {
+            margin: 0 0 10px 0;
+        }
+        .news-card-simple:hover .news-card-title {
+            color: #c0392b;
+        }
+        
+        /* فوتر */
+        footer {
+            background-color: #000000;
+            padding: 30px 15px 25px 15px;
+            margin-top: auto;
+        }
+        .footer-links {
+            max-width: 800px; margin: 0 auto 25px auto;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .footer-row {
+            display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 20px 30px;
+        }
+        .footer-row a {
+            color: #ffffff; text-decoration: none; font-size: 12px;
+            font-family: 'IRANSans', sans-serif; transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .footer-row a:hover { color: #ff6b6b; text-decoration: underline; }
+        .footer-row a.about-link { font-weight: bold; color: #ffd700; }
+        .footer-row a.about-link:hover { color: #ffed4e; }
+        
+        .follow-section {
+            max-width: 800px; margin: 0 auto 25px auto;
+            padding-top: 20px; border-top: 1px solid #333; text-align: center;
+        }
+        .follow-title {
+            color: #ffffff; font-size: 14px; font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .whatsapp-channel-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: #25D366; color: white; text-decoration: none;
+            padding: 10px 22px; border-radius: 25px;
+            font-size: 14px; font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-channel-btn:hover {
+            background-color: #20b858; transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
+        .footer-copyright {
+            max-width: 800px; margin: 0 auto; text-align: center;
+            padding-top: 20px; border-top: 1px solid #333;
+            color: #ffffff; font-size: 12px; line-height: 2;
+        }
+        .footer-copyright p { margin: 5px 0; }
+        .footer-copyright .network { font-size: 11px; color: #aaaaaa; margin-top: 8px; }
+        
+        @media (max-width: 600px) {
+            .header-title-fa { font-size: 15px; }
+            .category-banner-title { font-size: 20px; }
+            .news-card-image { height: 160px; }
+            .news-card-title { font-size: 15px; }
+            .footer-row { gap: 12px 18px; }
+            .footer-row a { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <div class="header-row">
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="header-title-block">
+            <span class="header-title-fa">گلهای رنگارنگ</span>
+            <span class="header-subtitle">اخبار ایالت لاسونتراس</span>
+        </div>
+    </div>
+
+    <!-- منو -->
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <div class="menu-inner-title">دسته‌بندی اخبار ایالت</div>
+            
+            <a href="index.html">
+                <span class="menu-icon">🏠</span>
+                <span>صفحه اصلی لاسونتراس</span>
+            </a>
+            
+            <a href="politics.html" class="active-page">
+                <span class="menu-icon">🏛️</span>
+                <span>سیاسی</span>
+            </a>
+            <a href="social.html">
+                <span class="menu-icon">👥</span>
+                <span>اجتماعی</span>
+            </a>
+            <a href="economy.html">
+                <span class="menu-icon">💰</span>
+                <span>اقتصادی</span>
+            </a>
+            <a href="sports.html">
+                <span class="menu-icon">⚽</span>
+                <span>ورزشی</span>
+            </a>
+            <a href="culture.html">
+                <span class="menu-icon">🎬</span>
+                <span>فرهنگی و هنری</span>
+            </a>
+            <a href="concerts.html">
+                <span class="menu-icon">🎵</span>
+                <span>کنسرت و موسیقی</span>
+            </a>
+            <a href="accidents.html">
+                <span class="menu-icon">🚨</span>
+                <span>حوادث</span>
+            </a>
+            <a href="health.html">
+                <span class="menu-icon">🏥</span>
+                <span>سلامت</span>
+            </a>
+            <a href="education.html">
+                <span class="menu-icon">🎓</span>
+                <span>آموزش</span>
+            </a>
+            <a href="technology.html">
+                <span class="menu-icon">💻</span>
+                <span>فناوری</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- بنر دسته‌بندی -->
+    <div class="category-banner">
+        <div class="category-banner-inner">
+            <span class="category-banner-icon">🏛️</span>
+            <h1 class="category-banner-title">اخبار سیاسی</h1>
+        </div>
+    </div>
+
+    <!-- خبرهای سیاسی -->
+    <div class="category-news-section">
+        <div class="news-list">
+            
+            <!-- خبر ۱: اعلام پیروزی گارد ملی -->
+            <a href="../N1/lasventras-guard.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تحلیل</div>
+                    <img src="../products/lasventras-featured.jpg" alt="اعلام پیروزی گارد ملی" onerror="this.style.display='none';">
+                </div>
+                <div class="news-card-content">
+                    <h3 class="news-card-title">اعلام پیروزی گارد ملی؛ آیا درگیری‌ها در لاس‌ونتراس به پایان نزدیک شده است؟</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۷ سپتامبر ۲۰۲۶</span>
+                        <span>🕐 ۱۲:۱۱ بامداد</span>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="../pages/terms.html">Terms of Use</a>
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="../pages/adchoices.html">Ad Choices</a>
+                <a href="../pages/accessibility.html">Accessibility & CC</a>
+                <a href="../pages/newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="../pages/transcripts.html">Transcripts</a>
+                <a href="../pages/sitemap.html">Sitemap</a>
+                <a href="../pages/about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© ۲۰۲۶ شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
