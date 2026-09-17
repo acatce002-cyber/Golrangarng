@@ -26,6 +26,72 @@
         }
         
         /* ==================================== */
+        /* تبلیغ Heinz - پررنگ و شفاف          */
+        /* ==================================== */
+        .top-ad-wrapper { max-width: 800px; width: 100%; margin: 15px auto 0 auto; padding: 0 15px; }
+        .top-ad {
+            position: relative; width: 100%; height: 150px;
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 8px 30px rgba(192, 57, 43, 0.5), 0 0 0 4px rgba(192, 57, 43, 0.15);
+            border: 4px solid #c0392b;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .top-ad:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(192, 57, 43, 0.7), 0 0 0 4px rgba(192, 57, 43, 0.25);
+        }
+        .top-ad a { display: block; width: 100%; height: 100%; position: relative; text-decoration: none; }
+        .ad-bg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; opacity: 1; z-index: 1;
+            filter: saturate(1.2) contrast(1.05);
+        }
+        .ad-overlay {
+            position: relative; z-index: 2;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.35) 100%);
+            padding: 15px 20px;
+        }
+        .ad-brand-row {
+            display: flex; align-items: center;
+            gap: 18px; margin-bottom: 10px;
+        }
+        .ad-brand {
+            font-family: Georgia, serif;
+            font-size: 46px; font-weight: bold; color: #ffffff;
+            letter-spacing: 8px;
+            text-shadow: 
+                3px 3px 0 #c0392b,
+                4px 4px 0 #7d1f17,
+                6px 6px 15px rgba(0,0,0,0.8),
+                0 0 30px rgba(255,255,255,0.5);
+            line-height: 1;
+        }
+        .ad-grg {
+            font-family: 'IRANSans', sans-serif;
+            font-size: 20px; font-weight: bold; color: white;
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            padding: 6px 16px; border-radius: 8px;
+            letter-spacing: 3px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .ad-slogan {
+            font-family: 'IRANSans', sans-serif;
+            font-size: 15px; font-weight: bold; color: #ffffff;
+            background: linear-gradient(135deg, rgba(192, 57, 43, 0.95), rgba(125, 31, 23, 0.95));
+            padding: 8px 22px; border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
+        }
+        
+        /* ==================================== */
         /* هدر - سه خط + گلهای رنگارنگ        */
         /* ==================================== */
         .header-row {
@@ -63,13 +129,13 @@
         }
         
         /* ==================================== */
-        /* منو - دسته‌بندی‌ها                  */
+        /* منو - دسته‌بندی‌ها + بازگشت         */
         /* ==================================== */
         .menu-dropdown {
             max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
             max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
         }
-        .menu-dropdown.open { max-height: 900px; }
+        .menu-dropdown.open { max-height: 1000px; }
         .menu-inner {
             background-color: white; border-radius: 12px; padding: 14px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.12); margin-top: 8px; 
@@ -114,6 +180,27 @@
             width: 22px;
             text-align: center;
             flex-shrink: 0;
+        }
+        
+        /* دکمه بازگشت به صفحه اصلی ۱ */
+        .back-to-home {
+            background: linear-gradient(135deg, #c0392b, #7d1f17) !important;
+            color: white !important;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+        }
+        .back-to-home:hover {
+            background: linear-gradient(135deg, #a93226, #5a1610) !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.5);
+            padding-right: 15px !important;
+        }
+        .menu-separator {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 8px 15px;
+            border-radius: 1px;
         }
         
         /* ==================================== */
@@ -177,7 +264,9 @@
             font-family: 'IRANSans', sans-serif;
         }
         
-        /* فوتر */
+        /* ==================================== */
+        /* فوتر                                */
+        /* ==================================== */
         footer {
             background-color: #000000;
             padding: 30px 15px 25px 15px;
@@ -230,6 +319,10 @@
         .footer-copyright .network { font-size: 11px; color: #aaaaaa; margin-top: 8px; }
         
         @media (max-width: 600px) {
+            .top-ad { height: 130px; }
+            .ad-brand { font-size: 34px; letter-spacing: 5px; }
+            .ad-grg { font-size: 15px; padding: 4px 10px; }
+            .ad-slogan { font-size: 12px; padding: 6px 16px; }
             .header-title-fa { font-size: 15px; }
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
@@ -239,6 +332,22 @@
     </style>
 </head>
 <body>
+
+    <!-- تبلیغ Heinz -->
+    <div class="top-ad-wrapper">
+        <div class="top-ad">
+            <a href="https://www.heinz.com" target="_blank">
+                <img src="../products/heinz.jpg" alt="Heinz Ketchup" class="ad-bg" onerror="this.style.background='linear-gradient(135deg,#c0392b,#7d1f17)';">
+                <div class="ad-overlay">
+                    <div class="ad-brand-row">
+                        <span class="ad-brand">HEINZ</span>
+                        <span class="ad-grg">GRG</span>
+                    </div>
+                    <div class="ad-slogan">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</div>
+                </div>
+            </a>
+        </div>
+    </div>
 
     <!-- هدر -->
     <div class="header-row">
@@ -251,9 +360,18 @@
         </div>
     </div>
 
-    <!-- منو - دسته‌بندی‌ها -->
+    <!-- منو -->
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
+            
+            <!-- دکمه بازگشت به صفحه اصلی ۱ -->
+            <a href="../index.html" class="back-to-home">
+                <span class="menu-icon">🏠</span>
+                <span>بازگشت به صفحه اصلی</span>
+            </a>
+            
+            <div class="menu-separator"></div>
+            
             <div class="menu-inner-title">دسته‌بندی اخبار ایالت</div>
             
             <a href="politics.html">
@@ -299,11 +417,9 @@
         </div>
     </div>
 
-    <!-- ==================================== -->
-    <!-- کارت خبر ویژه - ۳:۴                -->
-    <!-- ==================================== -->
+    <!-- کارت خبر ویژه ۳:۴ -->
     <div class="featured-news-section">
-        <a href="../N1/lasventras-guard.html" class="featured-news-card">
+        <a href="N2/news1.html" class="featured-news-card">
             <div class="featured-topic">| سیاسی</div>
             <img src="../products/lasventras-featured.jpg" alt="اعلام پیروزی گارد ملی" onerror="this.style.background='linear-gradient(135deg,#1a1a1a,#2c3e50)';this.style.opacity='1';this.removeAttribute('src');">
             <div class="featured-overlay">
