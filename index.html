@@ -267,100 +267,23 @@
             transform: translateX(-8px);
         }
         
-        /* اخبار کوتاه */
-        .short-news-block { 
-            max-width: 800px; 
-            width: 100%; 
-            margin: 0 auto 20px auto; 
-            padding: 0 15px; 
-        }
-        .short-news-inner {
-            background-color: white; 
-            border-radius: 10px; 
-            padding: 15px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
-            border-right: 4px solid #e74c3c;
-            height: 165px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .short-news-title {
-            font-size: 14px; 
-            font-weight: bold; 
-            color: #c0392b;
-            margin-bottom: 10px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-        }
-        .short-news-title-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .short-news-title-left::before { 
-            content: '📢'; 
-        }
-        .short-news-counter {
-            font-size: 12px;
-            color: #999;
-            font-weight: bold;
-            background-color: #f5f5f5;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-family: Georgia, serif;
-            direction: ltr;
-        }
-        .short-news-inner ul { 
-            margin: 0; 
-            padding-right: 20px; 
-            list-style: none;
-            flex: 1;
-            overflow: hidden;
-        }
-        .short-news-inner ul li {
-            font-size: 13px; 
-            color: #333; 
-            line-height: 1.9;
-            padding: 6px 0; 
-            border-bottom: 1px dashed #eee;
-            position: relative; 
-            padding-right: 18px;
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1;
-        }
-        .short-news-inner ul li:last-child { 
-            border-bottom: none; 
-        }
-        .short-news-inner ul li::before {
-            content: '●'; 
-            color: #e74c3c;
-            position: absolute; 
-            right: 0; 
-            font-size: 10px; 
-            top: 10px;
-        }
-        .short-news-inner ul.fade-out li {
-            opacity: 0;
-        }
-        
-        /* ۳ خبر - ۲۱، ۲۲، ۲۳ */
-        .breaking-news-section {
+        /* ==================================== */
+        /* ۳ خبر ساده - بدون عکس               */
+        /* ==================================== */
+        .simple-news-section {
             max-width: 800px; width: 100%;
             margin: 0 auto 22px auto; padding: 0 15px;
         }
-        .breaking-news-inner {
+        .simple-news-inner {
             background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 12px; overflow: hidden;
             box-shadow: 0 4px 20px rgba(192, 57, 43, 0.15);
             border: 2px solid #c0392b;
         }
-        .breaking-news-item {
-            display: block;
+        .simple-news-item {
+            display: block; 
             padding: 18px 22px;
-            text-decoration: none;
+            text-decoration: none; 
             color: #000;
             background-color: white;
             border-bottom: 1px solid #f0f0f0;
@@ -370,13 +293,83 @@
             line-height: 1.8;
             font-family: 'IRANSans', sans-serif;
         }
-        .breaking-news-item:last-child { border-bottom: none; }
-        .breaking-news-item:hover {
+        .simple-news-item:last-child { border-bottom: none; }
+        .simple-news-item:hover {
             background-color: #fff5f5;
             color: #c0392b;
         }
         
-        /* کارت تحلیل چین - ۳:۴ */
+        /* ==================================== */
+        /* 🆕 خبر جدید با عکس - تیتر بالا       */
+        /* ==================================== */
+        .image-news-section {
+            max-width: 800px; width: 100%;
+            margin: 0 auto 22px auto; padding: 0 15px;
+        }
+        .image-news-card {
+            display: block;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .image-news-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.2);
+        }
+        .image-news-content-top {
+            padding: 22px 25px 15px 25px;
+        }
+        .image-news-category {
+            display: inline-block;
+            font-size: 11px;
+            color: #ffffff;
+            font-weight: bold;
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            padding: 4px 14px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-family: Georgia, serif;
+            letter-spacing: 1.5px;
+            box-shadow: 0 2px 8px rgba(192, 57, 43, 0.3);
+        }
+        .image-news-title {
+            margin: 0;
+            color: #000;
+            font-size: 19px;
+            font-weight: bold;
+            line-height: 1.7;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.2s;
+        }
+        .image-news-card:hover .image-news-title {
+            color: #c0392b;
+        }
+        .image-news-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            position: relative;
+        }
+        .image-news-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .image-news-card:hover .image-news-image img {
+            transform: scale(1.05);
+        }
+        
+        /* ==================================== */
+        /* کارت تحلیل چین - ۳:۴                */
+        /* ==================================== */
         .featured-news-section {
             max-width: 800px; width: 100%;
             margin: 0 auto 20px auto; padding: 0 15px;
@@ -495,26 +488,28 @@
             font-family: 'IRANSans', sans-serif;
         }
         
-        /* ۳ خبر ساده */
+        /* ۳ خبر ساده پایین */
         .simple-news-block {
             max-width: 800px; width: 100%;
             margin: 0 auto 25px auto; padding: 0 15px;
         }
-        .simple-news-inner {
+        .simple-news-block .simple-news-inner {
             background-color: white;
             border-radius: 10px; overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: none;
         }
-        .simple-news-item {
+        .simple-news-block .simple-news-item {
             display: block; padding: 20px 25px;
             text-decoration: none; color: #000;
             background-color: white;
             border-bottom: 1px solid #e0e0e0;
             transition: background-color 0.2s;
+            font-size: inherit;
         }
-        .simple-news-item:last-child { border-bottom: none; }
-        .simple-news-item:hover { background-color: #fafafa; }
-        .simple-news-topic {
+        .simple-news-block .simple-news-item:last-child { border-bottom: none; }
+        .simple-news-block .simple-news-item:hover { background-color: #fafafa; }
+        .simple-news-block .simple-news-topic {
             display: inline-block;
             font-size: 11px; color: #c0392b; font-weight: bold;
             background-color: #fff5f5;
@@ -522,7 +517,7 @@
             border: 1px solid #fadbd8;
             margin-bottom: 10px;
         }
-        .simple-news-title {
+        .simple-news-block .simple-news-title {
             margin: 0; color: #000;
             font-size: 16px; font-weight: bold; line-height: 1.7;
             font-family: 'IRANSans', sans-serif;
@@ -622,16 +617,18 @@
             .lasontras-image { width: 55px; height: 55px; }
             .lasontras-title { font-size: 16px; }
             .lasontras-subtitle { font-size: 11px; }
+            .image-news-image { height: 220px; }
+            .image-news-title { font-size: 16px; }
+            .image-news-content-top { padding: 18px 20px 12px 20px; }
             .exclusive-image { height: 220px; }
             .exclusive-title { font-size: 16px; }
             .exclusive-content { padding: 18px; }
-            .simple-news-item { padding: 16px 20px; }
-            .simple-news-title { font-size: 14px; }
+            .simple-news-block .simple-news-item { padding: 16px 20px; }
+            .simple-news-block .simple-news-title { font-size: 14px; }
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
             .featured-subtitle { font-size: 11px; }
-            .breaking-news-item { font-size: 14px; padding: 16px 18px; }
-            .short-news-inner { height: 175px; }
+            .simple-news-item { font-size: 14px; padding: 16px 18px; }
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
         }
@@ -699,32 +696,36 @@
         </div>
     </div>
 
-    <!-- اخبار کوتاه - چرخشی -->
-    <div class="short-news-block">
-        <div class="short-news-inner">
-            <div class="short-news-title">
-                <span class="short-news-title-left">اخبار کوتاه</span>
-                <span class="short-news-counter" id="newsCounter">1/2</span>
+    <!-- ==================================== -->
+    <!-- 🆕 خبر جدید با عکس - تیتر بالا       -->
+    <!-- ==================================== -->
+    <div class="image-news-section">
+        <a href="N1/news24.html" class="image-news-card">
+            <div class="image-news-content-top">
+                <span class="image-news-category">TECHNOLOGY</span>
+                <h2 class="image-news-title">هوش مصنوعی در حال ایجاد سطوح کاملاً متفاوتی از استرس در آمریکا و چین است</h2>
             </div>
-            <ul id="shortNewsList">
-                <!-- اخبار با JavaScript پر میشه -->
-            </ul>
-        </div>
+            <div class="image-news-image">
+                <img src="products/ai-stress.jpg" alt="استرس هوش مصنوعی در آمریکا و چین" onerror="this.style.display='none';">
+            </div>
+        </a>
     </div>
 
-    <!-- ۳ خبر - ۲۱، ۲۲، ۲۳ -->
-    <div class="breaking-news-section">
-        <div class="breaking-news-inner">
+    <!-- ==================================== -->
+    <!-- ۳ خبر ساده - ۲۱، ۲۲، ۲۳             -->
+    <!-- ==================================== -->
+    <div class="simple-news-section">
+        <div class="simple-news-inner">
             
-            <a href="N1/news21.html" class="breaking-news-item">
+            <a href="N1/news21.html" class="simple-news-item">
                 هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی و جنگی شدن فضا مخالفیم
             </a>
             
-            <a href="N1/news22.html" class="breaking-news-item">
+            <a href="N1/news22.html" class="simple-news-item">
                 محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید
             </a>
             
-            <a href="N1/news23.html" class="breaking-news-item">
+            <a href="N1/news23.html" class="simple-news-item">
                 مقام عمانی: بحران تنگه هرمز به زودی پایان خواهد یافت
             </a>
         </div>
@@ -761,7 +762,7 @@
         </a>
     </div>
 
-    <!-- ۳ خبر ساده -->
+    <!-- ۳ خبر ساده پایین -->
     <div class="simple-news-block">
         <div class="simple-news-inner">
             
@@ -839,48 +840,6 @@
     </footer>
 
     <script>
-        // اخبار کوتاه - چرخشی
-        const allShortNews = [
-            "وزیرخارجه عمان و مارکو روبیو، وزیرخارجه آمریکا در رابطه با تنش‌های ایران و آمریکا و تحولات منطقه گفتگو کردند.",
-            "ایلان ماسک: هرکی بازی ویدیویی نکنه احمقه، بازی کنید چون برای مغز خوب و مفیده.",
-            "ترامپ درباره هوش مصنوعی: ربات‌ها قرار نیست جهان را تصرف کنند. این اتفاق نخواهد افتاد.",
-            "کرایه روزانه یک ابرنفتکش از خلیج فارس به چین برای نخستین بار در تاریخ به یک میلیون دلار رسیده است.",
-            "عمان: ۲۳ خدمه نفتکش «الگایا» نجات یافتند؛ جست‌وجو برای ۲ نفر ادامه دارد.",
-            "آخرین قیمت نفت: ۱۰۸ دلار و ۲۰ سنت."
-        ];
-        
-        let currentBatch = 0;
-        const batchSize = 3;
-        const totalBatches = Math.ceil(allShortNews.length / batchSize);
-        const shortNewsList = document.getElementById('shortNewsList');
-        const newsCounter = document.getElementById('newsCounter');
-        
-        function renderNewsBatch() {
-            shortNewsList.classList.add('fade-out');
-            
-            setTimeout(() => {
-                shortNewsList.innerHTML = '';
-                
-                const startIndex = currentBatch * batchSize;
-                const batch = allShortNews.slice(startIndex, startIndex + batchSize);
-                
-                batch.forEach(news => {
-                    const li = document.createElement('li');
-                    li.textContent = news;
-                    shortNewsList.appendChild(li);
-                });
-                
-                newsCounter.textContent = (currentBatch + 1) + '/' + totalBatches;
-                
-                shortNewsList.classList.remove('fade-out');
-                
-                currentBatch = (currentBatch + 1) % totalBatches;
-            }, 500);
-        }
-        
-        renderNewsBatch();
-        setInterval(renderNewsBatch, 5000);
-        
         function toggleMenu() {
             const btn = document.getElementById('menuBtn');
             const dropdown = document.getElementById('menuDropdown');
