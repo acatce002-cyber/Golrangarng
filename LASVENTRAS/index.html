@@ -198,11 +198,79 @@
         }
         
         /* ============================================ */
-        /* 🆕 ۳ خبر ساده - بدون عکس                    */
+        /* 🆕 خبر با عکس - کارت افقی                    */
+        /* ============================================ */
+        .image-news-section {
+            max-width: 800px; width: 100%;
+            margin: 20px auto 20px auto; padding: 0 15px;
+        }
+        .image-news-card {
+            display: block;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .image-news-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.2);
+        }
+        .image-news-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            position: relative;
+        }
+        .image-news-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .image-news-card:hover .image-news-image img {
+            transform: scale(1.05);
+        }
+        .image-news-badge {
+            position: absolute;
+            top: 14px; right: 14px;
+            z-index: 3;
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(192, 57, 43, 0.95);
+            padding: 5px 14px;
+            border-radius: 14px;
+            font-family: 'IRANSans', sans-serif;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+        }
+        .image-news-content {
+            padding: 22px 25px;
+        }
+        .image-news-title {
+            margin: 0;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.7;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.2s;
+        }
+        .image-news-card:hover .image-news-title {
+            color: #c0392b;
+        }
+        
+        /* ============================================ */
+        /* ۳ خبر ساده - بدون عکس                        */
         /* ============================================ */
         .simple-news-section {
             max-width: 800px; width: 100%;
-            margin: 20px auto 25px auto; padding: 0 15px;
+            margin: 0 auto 25px auto; padding: 0 15px;
         }
         .simple-news-inner {
             background-color: white;
@@ -359,6 +427,9 @@
             .ad-grg { font-size: 15px; padding: 4px 10px; }
             .ad-slogan { font-size: 12px; padding: 6px 16px; }
             .header-title-fa { font-size: 15px; }
+            .image-news-image { height: 200px; }
+            .image-news-title { font-size: 15px; }
+            .image-news-content { padding: 18px 20px; }
             .simple-news-item { padding: 16px 20px; }
             .simple-news-title { font-size: 14px; }
             .featured-news-card { max-width: 340px; }
@@ -401,7 +472,6 @@
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
             
-            <!-- دکمه بازگشت به صفحه اصلی ۱ -->
             <a href="../index.html" class="back-to-home">
                 <span class="menu-icon">🏠</span>
                 <span>بازگشت به صفحه اصلی</span>
@@ -455,27 +525,37 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- 🆕 ۳ خبر ساده - بدون عکس                    -->
+    <!-- 🆕 خبر جدید با عکس - فرانسه و کره‌جنوبی     -->
     <!-- ============================================ -->
+    <div class="image-news-section">
+        <a href="N2/news5.html" class="image-news-card">
+            <div class="image-news-image">
+                <div class="image-news-badge">| سیاسی</div>
+                <img src="../products/lasontras.jpg" alt="مذاکرات فرانسه و کره‌جنوبی" onerror="this.style.display='none';">
+            </div>
+            <div class="image-news-content">
+                <h2 class="image-news-title">فرانسه و کره‌جنوبی در آستانه مذاکرات جدید با لاسونتراس</h2>
+            </div>
+        </a>
+    </div>
+
+    <!-- ۳ خبر ساده - بدون عکس -->
     <div class="simple-news-section">
         <div class="simple-news-inner">
             
-            <!-- خبر ۲ -->
             <a href="N2/news2.html" class="simple-news-item">
                 <span class="simple-news-topic">| سیاسی</span>
                 <h2 class="simple-news-title">کشف و انهدام مواضع موشکی گروه مخالف در مناطق مرزی</h2>
             </a>
             
-            <!-- خبر ۳ -->
             <a href="N2/news3.html" class="simple-news-item">
                 <span class="simple-news-topic">| سیاسی</span>
                 <h2 class="simple-news-title">سخنگوی گارد ملی لاسونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h2>
             </a>
             
-            <!-- خبر ۴ -->
             <a href="N2/news4.html" class="simple-news-item">
                 <span class="simple-news-topic">| سیاسی</span>
-                <h2 class="simple-news-title">نیروی هوایی لاسونتراس چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
+                <h2 class="simple-news-title">نیروی هوایی لاسونتراس: چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
             </a>
             
         </div>
