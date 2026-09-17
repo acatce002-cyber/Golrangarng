@@ -122,6 +122,69 @@
             margin: 25px auto 30px auto; padding: 0 15px;
         }
         
+        /* کارت خبر با عکس - افقی */
+        .image-news-card {
+            display: block;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+        .image-news-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.2);
+        }
+        .image-news-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            position: relative;
+        }
+        .image-news-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+        .image-news-card:hover .image-news-image img {
+            transform: scale(1.05);
+        }
+        .image-news-badge {
+            position: absolute;
+            top: 14px; right: 14px;
+            z-index: 3;
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(192, 57, 43, 0.95);
+            padding: 5px 14px;
+            border-radius: 14px;
+            font-family: 'IRANSans', sans-serif;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+        }
+        .image-news-content {
+            padding: 22px 25px;
+        }
+        .image-news-title {
+            margin: 0;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.7;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.2s;
+        }
+        .image-news-card:hover .image-news-title {
+            color: #c0392b;
+        }
+        
         /* کارت خبر ویژه ۳:۴ */
         .featured-news-card {
             display: block; position: relative; width: 100%; max-width: 380px;
@@ -269,6 +332,9 @@
         
         @media (max-width: 600px) {
             .header-title-fa { font-size: 15px; }
+            .image-news-image { height: 200px; }
+            .image-news-title { font-size: 15px; }
+            .image-news-content { padding: 18px 20px; }
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
             .simple-news-item { padding: 16px 20px; }
@@ -347,6 +413,17 @@
     <!-- خبرهای سیاسی -->
     <div class="category-news-section">
         
+        <!-- 🆕 خبر ۵ - فرانسه و کره‌جنوبی (با عکس) -->
+        <a href="N2/news5.html" class="image-news-card">
+            <div class="image-news-image">
+                <div class="image-news-badge">| سیاسی</div>
+                <img src="../products/lasontras.jpg" alt="مذاکرات فرانسه و کره‌جنوبی" onerror="this.style.display='none';">
+            </div>
+            <div class="image-news-content">
+                <h2 class="image-news-title">فرانسه و کره‌جنوبی در آستانه مذاکرات جدید با لاسونتراس</h2>
+            </div>
+        </a>
+        
         <!-- کارت ۳:۴ - خبر گارد ملی -->
         <a href="N2/news1.html" class="featured-news-card">
             <div class="featured-topic">| سیاسی</div>
@@ -369,13 +446,13 @@
             <!-- خبر ۳ -->
             <a href="N2/news3.html" class="simple-news-item">
                 <span class="simple-news-topic">| سیاسی</span>
-                <h2 class="simple-news-title">سخنگوی گارد ملی لاس‌ونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h2>
+                <h2 class="simple-news-title">سخنگوی گارد ملی لاسونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h2>
             </a>
             
             <!-- خبر ۴ -->
             <a href="N2/news4.html" class="simple-news-item">
                 <span class="simple-news-topic">| سیاسی</span>
-                <h2 class="simple-news-title">نیروی هوایی لاس‌ونتراس: چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
+                <h2 class="simple-news-title">نیروی هوایی لاسونتراس: چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
             </a>
             
         </div>
