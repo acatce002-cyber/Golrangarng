@@ -25,9 +25,7 @@
             min-height: 100vh; color: #333;
         }
         
-        /* ==================================== */
-        /* تبلیغ Heinz - پررنگ و شفاف          */
-        /* ==================================== */
+        /* تبلیغ Heinz */
         .top-ad-wrapper { max-width: 800px; width: 100%; margin: 15px auto 0 auto; padding: 0 15px; }
         .top-ad {
             position: relative; width: 100%; height: 150px;
@@ -91,9 +89,7 @@
             letter-spacing: 0.5px;
         }
         
-        /* ==================================== */
-        /* هدر - سه خط + گلهای رنگارنگ        */
-        /* ==================================== */
+        /* هدر */
         .header-row {
             max-width: 800px; width: 100%;
             margin: 18px auto 10px auto; padding: 0 15px;
@@ -128,9 +124,7 @@
             margin-top: 2px;
         }
         
-        /* ==================================== */
-        /* منو - دسته‌بندی‌ها + بازگشت         */
-        /* ==================================== */
+        /* منو */
         .menu-dropdown {
             max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
             max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
@@ -203,12 +197,55 @@
             border-radius: 1px;
         }
         
-        /* ==================================== */
-        /* کارت خبر ویژه - ۳:۴                */
-        /* ==================================== */
+        /* ============================================ */
+        /* 🆕 ۳ خبر ساده - بدون عکس                    */
+        /* ============================================ */
+        .simple-news-section {
+            max-width: 800px; width: 100%;
+            margin: 20px auto 25px auto; padding: 0 15px;
+        }
+        .simple-news-inner {
+            background-color: white;
+            border-radius: 10px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .simple-news-item {
+            display: block; 
+            padding: 20px 25px;
+            text-decoration: none; 
+            color: #000;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.2s;
+        }
+        .simple-news-item:last-child { border-bottom: none; }
+        .simple-news-item:hover { background-color: #fafafa; }
+        .simple-news-topic {
+            display: inline-block;
+            font-size: 11px; 
+            color: #c0392b; 
+            font-weight: bold;
+            background-color: #fff5f5;
+            padding: 3px 10px; 
+            border-radius: 12px;
+            border: 1px solid #fadbd8;
+            margin-bottom: 10px;
+        }
+        .simple-news-title {
+            margin: 0; 
+            color: #000;
+            font-size: 16px; 
+            font-weight: bold; 
+            line-height: 1.7;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        /* ============================================ */
+        /* کارت خبر ویژه - ۳:۴                         */
+        /* ============================================ */
         .featured-news-section {
             max-width: 800px; width: 100%;
-            margin: 20px auto 30px auto; padding: 0 15px;
+            margin: 0 auto 30px auto; padding: 0 15px;
         }
         .featured-news-card {
             display: block; position: relative; width: 100%; max-width: 380px;
@@ -264,9 +301,7 @@
             font-family: 'IRANSans', sans-serif;
         }
         
-        /* ==================================== */
-        /* فوتر                                */
-        /* ==================================== */
+        /* فوتر */
         footer {
             background-color: #000000;
             padding: 30px 15px 25px 15px;
@@ -324,6 +359,8 @@
             .ad-grg { font-size: 15px; padding: 4px 10px; }
             .ad-slogan { font-size: 12px; padding: 6px 16px; }
             .header-title-fa { font-size: 15px; }
+            .simple-news-item { padding: 16px 20px; }
+            .simple-news-title { font-size: 14px; }
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
             .footer-row { gap: 12px 18px; }
@@ -414,6 +451,33 @@
                 <span class="menu-icon">💻</span>
                 <span>فناوری</span>
             </a>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 🆕 ۳ خبر ساده - بدون عکس                    -->
+    <!-- ============================================ -->
+    <div class="simple-news-section">
+        <div class="simple-news-inner">
+            
+            <!-- خبر ۲ -->
+            <a href="N2/news2.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <h2 class="simple-news-title">کشف و انهدام مواضع موشکی گروه مخالف در مناطق مرزی</h2>
+            </a>
+            
+            <!-- خبر ۳ -->
+            <a href="N2/news3.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <h2 class="simple-news-title">سخنگوی گارد ملی لاسونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h2>
+            </a>
+            
+            <!-- خبر ۴ -->
+            <a href="N2/news4.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <h2 class="simple-news-title">نیروی هوایی لاسونتراس چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
+            </a>
+            
         </div>
     </div>
 
