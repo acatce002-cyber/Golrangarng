@@ -122,10 +122,10 @@
             margin: 25px auto 30px auto; padding: 0 15px;
         }
         
-        /* کارت خبر ۳:۴ */
+        /* کارت خبر ویژه ۳:۴ */
         .featured-news-card {
             display: block; position: relative; width: 100%; max-width: 380px;
-            aspect-ratio: 3 / 4; margin: 0 auto 20px auto; 
+            aspect-ratio: 3 / 4; margin: 0 auto 25px auto; 
             border-radius: 16px; overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.18);
             text-decoration: none; transition: transform 0.35s, box-shadow 0.35s;
@@ -175,6 +175,43 @@
             margin: 0; color: #ffffff;
             font-size: 17px; font-weight: bold; line-height: 1.7;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        /* ۳ خبر ساده */
+        .simple-news-inner {
+            background-color: white;
+            border-radius: 10px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .simple-news-item {
+            display: block; 
+            padding: 20px 25px;
+            text-decoration: none; 
+            color: #000;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.2s;
+        }
+        .simple-news-item:last-child { border-bottom: none; }
+        .simple-news-item:hover { background-color: #fafafa; }
+        .simple-news-topic {
+            display: inline-block;
+            font-size: 11px; 
+            color: #c0392b; 
+            font-weight: bold;
+            background-color: #fff5f5;
+            padding: 3px 10px; 
+            border-radius: 12px;
+            border: 1px solid #fadbd8;
+            margin-bottom: 10px;
+        }
+        .simple-news-title {
+            margin: 0; 
+            color: #000;
+            font-size: 16px; 
+            font-weight: bold; 
+            line-height: 1.7;
             font-family: 'IRANSans', sans-serif;
         }
         
@@ -234,6 +271,8 @@
             .header-title-fa { font-size: 15px; }
             .featured-news-card { max-width: 340px; }
             .featured-title { font-size: 15px; }
+            .simple-news-item { padding: 16px 20px; }
+            .simple-news-title { font-size: 14px; }
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
         }
@@ -308,7 +347,7 @@
     <!-- خبرهای سیاسی -->
     <div class="category-news-section">
         
-        <!-- خبر ۱: اعلام پیروزی گارد ملی -->
+        <!-- کارت ۳:۴ - خبر گارد ملی -->
         <a href="N2/news1.html" class="featured-news-card">
             <div class="featured-topic">| سیاسی</div>
             <img src="../products/lasventras-featured.jpg" alt="اعلام پیروزی گارد ملی" onerror="this.style.background='linear-gradient(135deg,#1a1a1a,#2c3e50)';this.style.opacity='1';this.removeAttribute('src');">
@@ -317,6 +356,29 @@
                 <h2 class="featured-title">اعلام پیروزی گارد ملی؛ آیا درگیری‌ها در لاسونتراس به پایان نزدیک شده است؟</h2>
             </div>
         </a>
+        
+        <!-- ۳ خبر ساده -->
+        <div class="simple-news-inner">
+            
+            <!-- خبر ۲ -->
+            <a href="N2/news2.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <h2 class="simple-news-title">کشف و انهدام مواضع موشکی گروه مخالف در مناطق مرزی</h2>
+            </a>
+            
+            <!-- خبر ۳ -->
+            <a href="N2/news3.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <h2 class="simple-news-title">سخنگوی گارد ملی لاس‌ونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h2>
+            </a>
+            
+            <!-- خبر ۴ -->
+            <a href="N2/news4.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <h2 class="simple-news-title">نیروی هوایی لاس‌ونتراس: چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
+            </a>
+            
+        </div>
         
     </div>
 
