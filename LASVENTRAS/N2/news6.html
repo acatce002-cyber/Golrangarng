@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرماندار لاسونتراس: بودجه ایالت افزایش می‌یابد - گلهای رنگارنگ</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold; font-style: normal; font-display: swap;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f4f4f9;
+            display: flex; flex-direction: column;
+            min-height: 100vh; color: #333;
+        }
+        
+        .header-row {
+            max-width: 800px; width: 100%;
+            margin: 18px auto 10px auto; padding: 0 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .menu-btn {
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+        }
+        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
+        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        .brand-block {
+            display: flex; flex-direction: column; line-height: 1.1;
+            text-decoration: none; cursor: pointer; transition: opacity 0.2s;
+        }
+        .brand-block:hover { opacity: 0.8; }
+        .brand-grg { font-size: 20px; font-weight: bold; color: #c0392b; letter-spacing: 3px; font-family: Georgia, serif; }
+        .brand-name { font-size: 10px; color: #666; font-family: 'IRANSans', sans-serif; }
+        
+        .menu-dropdown {
+            max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+        }
+        .menu-dropdown.open { max-height: 900px; }
+        .menu-inner {
+            background-color: white; border-radius: 12px; padding: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12); margin-top: 8px; 
+            border: 1px solid #eee;
+        }
+        .menu-inner-title {
+            font-size: 12px;
+            color: #999;
+            padding: 6px 15px 10px 15px;
+            font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            border-bottom: 2px solid #f5f5f5;
+            margin-bottom: 8px;
+        }
+        .menu-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 15px; 
+            color: #333; 
+            text-decoration: none;
+            font-size: 14px; 
+            border-radius: 8px; 
+            transition: all 0.2s;
+            font-family: 'IRANSans', sans-serif;
+            font-weight: bold;
+        }
+        .menu-dropdown a:hover { 
+            background-color: #fff5f5; 
+            color: #c0392b; 
+            padding-right: 20px; 
+        }
+        .menu-icon {
+            font-size: 16px;
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .container {
+            max-width: 800px; width: 100%;
+            margin: 10px auto 20px auto; padding: 0 15px;
+            flex: 1;
+        }
+        
+        .news-article {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+        
+        .article-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 12px;
+            color: #888;
+            font-family: 'IRANSans', sans-serif;
+            flex-wrap: wrap;
+        }
+        .meta-badge {
+            background-color: #c0392b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .meta-item { display: flex; align-items: center; gap: 5px; }
+        
+        .article-title {
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin: 0 0 18px 0;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .article-author-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #f0f0f0;
+            flex-wrap: wrap;
+        }
+        .author-info { display: flex; align-items: center; gap: 10px; }
+        .author-avatar {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px; font-weight: bold;
+            font-family: Georgia, serif; flex-shrink: 0;
+        }
+        .author-details { display: flex; flex-direction: column; gap: 2px; }
+        .author-name { font-size: 13px; color: #333; font-weight: bold; }
+        .author-time { font-size: 11px; color: #999; }
+        .article-time-badge {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 11px; color: #888;
+            background-color: #f8f8f8;
+            padding: 5px 12px; border-radius: 12px;
+            font-family: 'IRANSans', sans-serif;
+            margin-right: auto;
+        }
+        
+        .article-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .article-image img {
+            width: 100%; height: auto;
+            display: block;
+            max-height: 450px;
+            object-fit: cover;
+        }
+        .article-image-caption {
+            background-color: #f8f8f8;
+            padding: 10px 15px;
+            font-size: 11px;
+            color: #777;
+            text-align: center;
+            font-family: 'IRANSans', sans-serif;
+            border-top: 1px solid #eee;
+        }
+        
+        .article-body p {
+            font-size: 15px;
+            line-height: 2.1;
+            text-align: justify;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .article-body .lead-paragraph {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a1a1a;
+            background-color: #f8f9fa;
+            padding: 18px 20px;
+            border-right: 4px solid #c0392b;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .article-body .quote-box {
+            background-color: #f8f9fa;
+            border-right: 4px solid #2c3e50;
+            padding: 18px 22px;
+            margin: 25px 0;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 2;
+            font-family: 'IRANSans', sans-serif;
+            font-style: italic;
+        }
+        
+        .article-body .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .article-tags {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #eef2ff;
+            color: #2a5298;
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 12px;
+            margin-left: 6px;
+            margin-bottom: 6px;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .back-home-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            max-width: 800px; margin: 20px auto 30px auto; padding: 14px 25px;
+            background-color: white; color: #c0392b; text-decoration: none;
+            border-radius: 12px; font-size: 15px; font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            border: 2px solid #c0392b; transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .back-home-btn:hover {
+            background-color: #c0392b; color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+        }
+        .back-btn-wrapper { max-width: 800px; margin: 0 auto; padding: 0 15px; }
+        
+        footer {
+            background-color: #000000;
+            padding: 30px 15px 25px 15px;
+            margin-top: auto;
+        }
+        .footer-links {
+            max-width: 800px; margin: 0 auto 25px auto;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .footer-row {
+            display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 20px 30px;
+        }
+        .footer-row a {
+            color: #ffffff; text-decoration: none; font-size: 12px;
+            font-family: 'IRANSans', sans-serif; transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .footer-row a:hover { color: #ff6b6b; text-decoration: underline; }
+        .footer-row a.about-link { font-weight: bold; color: #ffd700; }
+        .footer-row a.about-link:hover { color: #ffed4e; }
+        
+        .follow-section {
+            max-width: 800px; margin: 0 auto 25px auto;
+            padding-top: 20px; border-top: 1px solid #333; text-align: center;
+        }
+        .follow-title {
+            color: #ffffff; font-size: 14px; font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .whatsapp-channel-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: #25D366; color: white; text-decoration: none;
+            padding: 10px 22px; border-radius: 25px;
+            font-size: 14px; font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-channel-btn:hover {
+            background-color: #20b858; transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
+        .footer-copyright {
+            max-width: 800px; margin: 0 auto; text-align: center;
+            padding-top: 20px; border-top: 1px solid #333;
+            color: #ffffff; font-size: 12px; line-height: 2;
+        }
+        .footer-copyright p { margin: 5px 0; }
+        .footer-copyright .network { font-size: 11px; color: #aaaaaa; margin-top: 8px; }
+        
+        @media (max-width: 600px) {
+            .news-article { padding: 20px; }
+            .article-title { font-size: 19px; }
+            .article-body p { font-size: 14px; line-height: 2; }
+            .article-body .lead-paragraph { font-size: 14px; padding: 14px 16px; }
+            .article-body .quote-box { font-size: 14px; padding: 16px 18px; }
+            .footer-row { gap: 12px 18px; }
+            .footer-row a { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-row">
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="brand-block">
+            <div class="brand-grg">GRG</div>
+            <div class="brand-name">سیاسی - اجتماعی</div>
+        </a>
+    </div>
+
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <div class="menu-inner-title">دسته‌بندی اخبار ایالت</div>
+            <a href="../politics.html"><span class="menu-icon">🏛️</span><span>سیاسی</span></a>
+            <a href="../social.html"><span class="menu-icon">👥</span><span>اجتماعی</span></a>
+            <a href="../economy.html"><span class="menu-icon">💰</span><span>اقتصادی</span></a>
+            <a href="../sports.html"><span class="menu-icon">⚽</span><span>ورزشی</span></a>
+            <a href="../culture.html"><span class="menu-icon">🎬</span><span>فرهنگی و هنری</span></a>
+            <a href="../concerts.html"><span class="menu-icon">🎵</span><span>کنسرت و موسیقی</span></a>
+            <a href="../accidents.html"><span class="menu-icon">🚨</span><span>حوادث</span></a>
+            <a href="../health.html"><span class="menu-icon">🏥</span><span>سلامت</span></a>
+            <a href="../education.html"><span class="menu-icon">🎓</span><span>آموزش</span></a>
+            <a href="../technology.html"><span class="menu-icon">💻</span><span>فناوری</span></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="news-article">
+            
+            <div class="article-meta-top">
+                <span class="meta-badge">سیاسی-اجتماعی</span>
+                <span class="meta-item">⏱ ۳ دقیقه مطالعه</span>
+            </div>
+            
+            <h1 class="article-title">فرماندار لاسونتراس: بودجه ایالت برای بازسازی و حمایت اجتماعی افزایش می‌یابد؛ هشدار به مخالفان و کشورهایی که کنترل خاک خود را از دست داده‌اند</h1>
+            
+            <div class="article-author-row">
+                <div class="author-info">
+                    <div class="author-avatar">آ</div>
+                    <div class="author-details">
+                        <span class="author-name">آناهیتا بهرامی</span>
+                        <span class="author-time">📅 ۱۸ سپتامبر ۲۰۲۶</span>
+                    </div>
+                </div>
+                <span class="article-time-badge">🕐 ساعت ۸:۴۴ بعدظهر</span>
+            </div>
+            
+            <div class="article-image">
+                <img src="../../products/governor-budget.jpg" alt="حامد صادقیان، فرماندار لاسونتراس" onerror="this.style.background='linear-gradient(135deg,#1a1a1a,#2c3e50)';this.style.height='350px';this.removeAttribute('src');">
+                <div class="article-image-caption">حامد صادقیان، فرماندار لاسونتراس در نشست خبری امشب</div>
+            </div>
+            
+            <div class="article-body">
+                <p class="lead-paragraph">
+                    حامد صادقیان، فرماندار لاسونتراس، در تازه‌ترین اظهارات خود از برنامه دولت برای تقویت بودجه اجتماعی و بازسازی زیرساخت‌های آسیب‌دیده خبر داد و هم‌زمان درباره ادامه فعالیت گروه‌های مخالف از خاک کشورهای دیگر هشدار داد.
+                </p>
+                
+                <p>
+                    صادقیان گفت بخشی از بودجه جدید ایالت به خدمات اجتماعی، حمایت از خانواده‌ها، اشتغال جوانان، درمان و بازسازی زیرساخت‌های عمومی اختصاص خواهد یافت. به گفته او، <span class="highlight">بازگشت ثبات اقتصادی و اجتماعی</span> پس از درگیری‌های اخیر یکی از اولویت‌های اصلی دولت است.
+                </p>
+                
+                <p>
+                    فرماندار لاسونتراس در بخش دیگری از سخنان خود، کشورهای خارجی را که به گفته او توان کنترل کامل خاک خود را ندارند، مسئول جلوگیری از فعالیت گروه‌های مسلح علیه لاسونتراس دانست و خواستار افزایش گزارش‌دهی، بازرسی و نظارت سازمان ملل بر اجرای توافق‌های قبلی شد.
+                </p>
+                
+                <p>
+                    او همچنین خطاب به گروه‌های مخالف و حامیان خارجی آنها هشدار داد که ادامه حملات می‌تواند پاسخ نظامی لاسونتراس را به دنبال داشته باشد.
+                </p>
+                
+                <div class="quote-box">
+                    «ما برای مذاکره و بررسی راه‌های پایان بحران آماده‌ایم، اما امنیت لاسونتراس قابل معامله نیست. اگر گروه‌های مخالف بار دیگر از خاک کشورهای دیگر علیه ما استفاده کنند، مسئولیت آن متوجه کسانی خواهد بود که اجازه چنین فعالیتی را داده‌اند.»
+                    <div style="text-align: left; margin-top: 10px; font-weight: bold; font-style: normal; font-size: 13px;">— حامد صادقیان، فرماندار لاسونتراس</div>
+                </div>
+                
+                <p>
+                    فرمانداری تأکید کرده است که در برابر حملات جدید، سیاست بخشش و چشم‌پوشی در دستور کار نخواهد بود و در عین حال، افزایش نظارت بین‌المللی را برای جلوگیری از تکرار حملات ضروری می‌داند.
+                </p>
+                
+                <p>
+                    در همین حال، دولت اعلام کرده است که ادامه درگیری‌ها نباید مانع ارائه خدمات عمومی شود و تلاش خواهد کرد منابع مالی لازم برای بازسازی و حمایت از شهروندان را حفظ کند.
+                </p>
+                
+                <p>
+                    ترکیب این مواضع نشان می‌دهد فرمانداری لاسونتراس در کنار ادامه فشار نظامی، به دنبال تقویت جبهه داخلی از طریق بازسازی اقتصادی و برنامه‌های اجتماعی است؛ در حالی که مسئله کنترل مرزی و فعالیت گروه‌های مخالف در کشورهای دیگر همچنان یکی از محورهای اصلی بحران باقی مانده است.
+                </p>
+                
+                <div class="article-tags">
+                    <span class="tag">#لاسونتراس</span>
+                    <span class="tag">#حامد_صادقیان</span>
+                    <span class="tag">#سیاسی</span>
+                    <span class="tag">#اجتماعی</span>
+                    <span class="tag">#بودجه</span>
+                    <span class="tag">#بازسازی</span>
+                    <span class="tag">#فرماندار</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به صفحه اصلی لاسونتراس</a>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="../../pages/terms.html">Terms of Use</a>
+                <a href="../../pages/privacy.html">Privacy Policy</a>
+                <a href="../../pages/cookies.html">+Manage Cookies</a>
+            </div>
+            <div class="footer-row">
+                <a href="../../pages/adchoices.html">Ad Choices</a>
+                <a href="../../pages/accessibility.html">Accessibility & CC</a>
+                <a href="../../pages/newsletters.html">Newsletters</a>
+            </div>
+            <div class="footer-row">
+                <a href="../../pages/transcripts.html">Transcripts</a>
+                <a href="../../pages/sitemap.html">Sitemap</a>
+                <a href="../../pages/about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© ۲۰۲۶ شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
