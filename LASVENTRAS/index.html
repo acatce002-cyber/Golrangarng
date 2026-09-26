@@ -16,412 +16,796 @@
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
             font-weight: bold; font-style: normal; font-display: swap;
         }
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
-            margin: 0; padding: 0;
-            background-color: #f4f4f9;
-            display: flex; flex-direction: column;
-            min-height: 100vh; color: #333;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #c0392b;
+            --primary-dark: #7d1f17;
+            --accent: #f39c12;
+            --dark: #1a1a2e;
+            --gray: #666;
+            --light: #f4f4f9;
+            --white: #ffffff;
+            --border: #e8e8e8;
         }
         
-        /* تبلیغ Heinz */
-        .top-ad-wrapper { max-width: 800px; width: 100%; margin: 15px auto 0 auto; padding: 0 15px; }
-        .top-ad {
-            position: relative; width: 100%; height: 150px;
-            border-radius: 14px; overflow: hidden;
-            box-shadow: 0 8px 30px rgba(192, 57, 43, 0.5), 0 0 0 4px rgba(192, 57, 43, 0.15);
-            border: 4px solid #c0392b;
-            transition: transform 0.3s, box-shadow 0.3s;
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
         }
-        .top-ad:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 40px rgba(192, 57, 43, 0.7), 0 0 0 4px rgba(192, 57, 43, 0.25);
+        
+        /* ============================ */
+        /* تبلیغ بالای سایت              */
+        /* ============================ */
+        .top-ad-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            margin: 15px auto 0 auto;
+            padding: 0 20px;
+        }
+        .top-ad {
+            position: relative;
+            width: 100%;
+            height: 130px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(192, 57, 43, 0.4);
+            border: 3px solid #c0392b;
         }
         .top-ad a { display: block; width: 100%; height: 100%; position: relative; text-decoration: none; }
         .ad-bg {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            object-fit: cover; opacity: 1; z-index: 1;
-            filter: saturate(1.2) contrast(1.05);
+            object-fit: cover; z-index: 1;
+            filter: saturate(1.2);
         }
         .ad-overlay {
             position: relative; z-index: 2;
             width: 100%; height: 100%;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.35) 100%);
-            padding: 15px 20px;
-        }
-        .ad-brand-row {
-            display: flex; align-items: center;
-            gap: 18px; margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+            padding: 15px 25px;
         }
         .ad-brand {
             font-family: Georgia, serif;
-            font-size: 46px; font-weight: bold; color: #ffffff;
-            letter-spacing: 8px;
+            font-size: 42px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 6px;
             text-shadow: 
                 3px 3px 0 #c0392b,
-                4px 4px 0 #7d1f17,
-                6px 6px 15px rgba(0,0,0,0.8),
-                0 0 30px rgba(255,255,255,0.5);
-            line-height: 1;
+                5px 5px 15px rgba(0,0,0,0.9);
         }
         .ad-grg {
             font-family: 'IRANSans', sans-serif;
-            font-size: 20px; font-weight: bold; color: white;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
             background: linear-gradient(135deg, #c0392b, #7d1f17);
-            padding: 6px 16px; border-radius: 8px;
-            letter-spacing: 3px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
-            border: 2px solid rgba(255,255,255,0.4);
+            padding: 6px 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.3);
         }
         .ad-slogan {
             font-family: 'IRANSans', sans-serif;
-            font-size: 15px; font-weight: bold; color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
             background: linear-gradient(135deg, rgba(192, 57, 43, 0.95), rgba(125, 31, 23, 0.95));
-            padding: 8px 22px; border-radius: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-            letter-spacing: 0.5px;
+            padding: 8px 20px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
         }
         
-        /* هدر */
-        .header-row {
-            max-width: 800px; width: 100%;
-            margin: 18px auto 10px auto; padding: 0 15px;
-            display: flex; align-items: center; gap: 12px;
+        /* ============================ */
+        /* هدر اصلی - Sticky            */
+        /* ============================ */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-top: 15px;
+        }
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: inherit;
         }
         .menu-btn {
-            background-color: white; border: 2px solid #e0e0e0;
-            border-radius: 8px; width: 42px; height: 42px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.25s;
+            flex-shrink: 0;
         }
-        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
-        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn:hover {
+            border-color: var(--primary);
+            background-color: #fff5f5;
+            transform: scale(1.05);
+        }
+        .menu-btn span {
+            display: block;
+            width: 22px;
+            height: 2.5px;
+            background-color: #333;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
         .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
         .menu-btn.active span:nth-child(2) { opacity: 0; }
         .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-        .header-title-block {
+        
+        .brand-text {
             display: flex;
             flex-direction: column;
-            line-height: 1.2;
+            line-height: 1.15;
         }
-        .header-title-fa {
-            font-size: 17px;
+        .brand-title {
+            font-size: 22px;
             font-weight: bold;
-            color: #c0392b;
+            color: var(--primary);
             font-family: 'IRANSans', sans-serif;
+            letter-spacing: -0.3px;
         }
-        .header-subtitle {
+        .brand-subtitle {
             font-size: 11px;
-            color: #888;
-            font-family: 'IRANSans', sans-serif;
-            margin-top: 2px;
-        }
-        
-        /* منو */
-        .menu-dropdown {
-            max-width: 800px; width: 100%; margin: 0 auto; padding: 0 15px;
-            max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
-        }
-        .menu-dropdown.open { max-height: 1000px; }
-        .menu-inner {
-            background-color: white; border-radius: 12px; padding: 14px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12); margin-top: 8px; 
-            border: 1px solid #eee;
-        }
-        .menu-inner-title {
-            font-size: 12px;
-            color: #999;
-            padding: 6px 15px 10px 15px;
-            font-weight: bold;
-            font-family: 'IRANSans', sans-serif;
-            border-bottom: 2px solid #f5f5f5;
-            margin-bottom: 8px;
+            color: var(--gray);
+            margin-top: 3px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
-        .menu-inner-title::before {
-            content: '📂';
+        .brand-subtitle::before {
+            content: '●';
+            color: #27ae60;
+            font-size: 8px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .header-live {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #fff5f5;
+            border: 2px solid var(--primary);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .header-live::before {
+            content: '●';
+            color: var(--primary);
+            animation: blink 1.5s infinite;
             font-size: 14px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* ============================ */
+        /* منوی بازشو                   */
+        /* ============================ */
+        .menu-dropdown {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .menu-dropdown.open { max-height: 1000px; }
+        .menu-inner {
+            background-color: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            margin-top: 12px;
+            border: 1px solid var(--border);
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px;
+            margin-top: 12px;
         }
         .menu-dropdown a {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 11px 15px; 
-            color: #333; 
+            padding: 12px 15px;
+            color: #333;
             text-decoration: none;
-            font-size: 14px; 
-            border-radius: 8px; 
-            transition: all 0.2s;
+            font-size: 14px;
+            border-radius: 10px;
+            transition: all 0.25s;
             font-family: 'IRANSans', sans-serif;
             font-weight: bold;
+            background-color: #f8f9fa;
         }
-        .menu-dropdown a:hover { 
-            background-color: #fff5f5; 
-            color: #c0392b; 
-            padding-right: 20px; 
+        .menu-dropdown a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
         }
-        .menu-icon {
+        .menu-dropdown a.back-to-home {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 15px;
+            padding: 14px;
+        }
+        .menu-dropdown a.back-to-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.5);
+        }
+        .menu-icon { font-size: 18px; width: 24px; text-align: center; }
+        .menu-inner-title {
+            font-size: 13px;
+            color: var(--gray);
+            padding: 5px 5px 10px 5px;
+            font-weight: bold;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .menu-inner-title::before {
+            content: '📂';
             font-size: 16px;
-            width: 22px;
-            text-align: center;
+        }
+        
+        /* ============================ */
+        /* نوار دسته‌بندی افقی           */
+        /* ============================ */
+        .category-bar {
+            max-width: 1100px;
+            width: 100%;
+            margin: 20px auto 0 auto;
+            padding: 0 20px;
+        }
+        .category-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 8px 0;
+            scrollbar-width: thin;
+        }
+        .category-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        .category-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background-color: white;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.25s;
+            font-family: 'IRANSans', sans-serif;
             flex-shrink: 0;
         }
-        
-        /* دکمه بازگشت به صفحه اصلی ۱ */
-        .back-to-home {
-            background: linear-gradient(135deg, #c0392b, #7d1f17) !important;
-            color: white !important;
-            margin-bottom: 8px;
+        .category-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
+        }
+        .category-chip.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
             box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
         }
-        .back-to-home:hover {
-            background: linear-gradient(135deg, #a93226, #5a1610) !important;
-            color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.5);
-            padding-right: 15px !important;
-        }
-        .menu-separator {
-            height: 1px;
-            background-color: #e0e0e0;
-            margin: 8px 15px;
-            border-radius: 1px;
+        
+        /* ============================ */
+        /* محتوای اصلی                  */
+        /* ============================ */
+        .main-content {
+            max-width: 1100px;
+            width: 100%;
+            margin: 20px auto 30px auto;
+            padding: 0 20px;
+            flex: 1;
         }
         
-        /* ============================================ */
-        /* کارت خبر ویژه ۳:۴ (خبر فرماندار)            */
-        /* ============================================ */
-        .featured-news-section {
-            max-width: 800px; width: 100%;
-            margin: 20px auto 25px auto; padding: 0 15px;
+        /* Section Title */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #1a1a1a;
         }
-        .featured-news-card {
-            display: block; position: relative; width: 100%; max-width: 400px;
-            aspect-ratio: 3 / 4; margin: 0 auto; border-radius: 16px; overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.18);
-            text-decoration: none; transition: transform 0.35s, box-shadow 0.35s;
-            background-color: #1a1a1a; border: 2px solid #e0e0e0;
-        }
-        .featured-news-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 14px 40px rgba(192, 57, 43, 0.35);
-            border-color: #c0392b;
-        }
-        .featured-news-card img {
-            width: 100%; height: 100%; object-fit: cover;
-            display: block; transition: transform 0.5s;
-        }
-        .featured-news-card:hover img { transform: scale(1.05); }
-        .featured-topic {
-            position: absolute; top: 14px; right: 14px; z-index: 3;
-            font-size: 12px; color: white; font-weight: bold;
-            background-color: rgba(192, 57, 43, 0.95);
-            padding: 5px 14px; border-radius: 14px;
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a1a1a;
             font-family: 'IRANSans', sans-serif;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .section-title::before {
+            content: '';
+            width: 6px;
+            height: 28px;
+            background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+            border-radius: 3px;
+        }
+        .section-link {
+            font-size: 13px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.25s;
+        }
+        .section-link:hover { gap: 10px; }
+        
+        /* ============================ */
+        /* HERO - کارت خبر اصلی بزرگ    */
+        /* ============================ */
+        .hero-card {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 0;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.35s, box-shadow 0.35s;
+            border: 1px solid var(--border);
+        }
+        .hero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(192, 57, 43, 0.2);
+            border-color: var(--primary);
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .hero-card:hover .hero-image img { transform: scale(1.05); }
+        .hero-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.5);
+            z-index: 2;
+        }
+        .hero-content {
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff, #fafafa);
+        }
+        .hero-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .hero-category::before {
+            content: '';
+            width: 20px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .hero-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.55;
+            margin: 0 0 18px 0;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .hero-excerpt {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.85;
+            margin: 0 0 25px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 12px;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* ============================ */
+        /* Grid اخبار                  */
+        /* ============================ */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+        .news-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+        
+        /* کارت خبر معمولی */
+        .news-card {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+        }
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(192, 57, 43, 0.15);
+            border-color: var(--primary);
+        }
+        .news-card-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
+            position: relative;
+        }
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .news-card:hover .news-card-image img { transform: scale(1.06); }
+        .news-card-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+        .news-card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card-category {
+            font-size: 11px;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .news-card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.65;
+            margin: 0 0 12px 0;
+            font-family: 'IRANSans', sans-serif;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: color 0.2s;
+        }
+        .news-card:hover .news-card-title { color: var(--primary); }
+        .news-card-meta {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #999;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        /* ============================ */
+        /* کارت ۳:۴ (Featured)          */
+        /* ============================ */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+        .featured-card {
+            display: block;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            text-decoration: none;
+            transition: transform 0.35s, box-shadow 0.35s;
+            background-color: #1a1a1a;
+            border: 2px solid #e0e0e0;
+        }
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(192, 57, 43, 0.35);
+            border-color: var(--primary);
+        }
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s;
+        }
+        .featured-card:hover img { transform: scale(1.06); }
+        .featured-topic {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 3;
+            font-size: 11px;
+            color: white;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-family: 'IRANSans', sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            letter-spacing: 0.5px;
         }
         .featured-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 60px 20px 22px 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 70px 22px 22px 22px;
             background: linear-gradient(to top, 
                 rgba(0,0,0,0.98) 0%, 
-                rgba(0,0,0,0.92) 35%, 
-                rgba(0,0,0,0.65) 65%, 
+                rgba(0,0,0,0.92) 30%, 
+                rgba(0,0,0,0.6) 60%, 
                 transparent 100%);
             z-index: 2;
         }
         .featured-title {
-            margin: 0; color: #ffffff;
-            font-size: 17px; font-weight: bold; line-height: 1.7;
+            margin: 0;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.7;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
             font-family: 'IRANSans', sans-serif;
         }
         
-        /* ============================================ */
-        /* ۳ خبر ساده - بدون عکس                        */
-        /* ============================================ */
-        .simple-news-section {
-            max-width: 800px; width: 100%;
-            margin: 0 auto 25px auto; padding: 0 15px;
-        }
-        .simple-news-inner {
-            background-color: white;
-            border-radius: 10px; overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .simple-news-item {
-            display: block; 
-            padding: 20px 25px;
-            text-decoration: none; 
-            color: #000;
-            background-color: white;
-            border-bottom: 1px solid #e0e0e0;
-            transition: background-color 0.2s;
-        }
-        .simple-news-item:last-child { border-bottom: none; }
-        .simple-news-item:hover { background-color: #fafafa; }
-        .simple-news-topic {
-            display: inline-block;
-            font-size: 11px; 
-            color: #c0392b; 
-            font-weight: bold;
-            background-color: #fff5f5;
-            padding: 3px 10px; 
-            border-radius: 12px;
-            border: 1px solid #fadbd8;
-            margin-bottom: 10px;
-        }
-        .simple-news-title {
-            margin: 0; 
-            color: #000;
-            font-size: 16px; 
-            font-weight: bold; 
-            line-height: 1.7;
-            font-family: 'IRANSans', sans-serif;
-        }
-        
-        /* ============================================ */
-        /* خبر با عکس - افقی                            */
-        /* ============================================ */
-        .image-news-section {
-            max-width: 800px; width: 100%;
-            margin: 0 auto 25px auto; padding: 0 15px;
-        }
-        .image-news-card {
-            display: block;
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            text-decoration: none;
-            color: #333;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s;
-        }
-        .image-news-card:hover {
-            border-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.2);
-        }
-        .image-news-image {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
-            position: relative;
-        }
-        .image-news-image img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s;
-        }
-        .image-news-card:hover .image-news-image img {
-            transform: scale(1.05);
-        }
-        .image-news-badge {
-            position: absolute;
-            top: 14px; right: 14px;
-            z-index: 3;
-            font-size: 12px;
-            color: white;
-            font-weight: bold;
-            background-color: rgba(192, 57, 43, 0.95);
-            padding: 5px 14px;
-            border-radius: 14px;
-            font-family: 'IRANSans', sans-serif;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-        }
-        .image-news-content {
-            padding: 22px 25px;
-        }
-        .image-news-title {
-            margin: 0;
-            color: #000;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 1.7;
-            font-family: 'IRANSans', sans-serif;
-            transition: color 0.2s;
-        }
-        .image-news-card:hover .image-news-title {
-            color: #c0392b;
-        }
-        
-        /* فوتر */
+        /* ============================ */
+        /* فوتر                        */
+        /* ============================ */
         footer {
-            background-color: #000000;
-            padding: 30px 15px 25px 15px;
+            background-color: #0f0f1e;
+            padding: 40px 20px 25px 20px;
             margin-top: auto;
         }
         .footer-links {
-            max-width: 800px; margin: 0 auto 25px auto;
-            display: flex; flex-direction: column; gap: 14px;
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
         .footer-row {
-            display: flex; justify-content: center;
-            flex-wrap: wrap; gap: 20px 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px 35px;
         }
         .footer-row a {
-            color: #ffffff; text-decoration: none; font-size: 12px;
-            font-family: 'IRANSans', sans-serif; transition: color 0.2s;
+            color: #b8b8c8;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'IRANSans', sans-serif;
+            transition: color 0.25s;
             white-space: nowrap;
         }
-        .footer-row a:hover { color: #ff6b6b; text-decoration: underline; }
-        .footer-row a.about-link { font-weight: bold; color: #ffd700; }
-        .footer-row a.about-link:hover { color: #ffed4e; }
+        .footer-row a:hover { color: #ffffff; }
+        .footer-row a.about-link {
+            font-weight: bold;
+            color: var(--accent);
+        }
+        .footer-row a.about-link:hover { color: #ffd700; }
         
         .follow-section {
-            max-width: 800px; margin: 0 auto 25px auto;
-            padding-top: 20px; border-top: 1px solid #333; text-align: center;
+            max-width: 1100px;
+            margin: 0 auto 25px auto;
+            padding-top: 25px;
+            border-top: 1px solid #2a2a3a;
+            text-align: center;
         }
         .follow-title {
-            color: #ffffff; font-size: 14px; font-weight: bold;
-            margin-bottom: 12px;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
         .whatsapp-channel-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            background-color: #25D366; color: white; text-decoration: none;
-            padding: 10px 22px; border-radius: 25px;
-            font-size: 14px; font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
             transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
         .whatsapp-channel-btn:hover {
-            background-color: #20b858; transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+            background-color: #20b858;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.5);
         }
-        .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
+        .whatsapp-channel-btn svg { width: 20px; height: 20px; fill: white; }
+        
         .footer-copyright {
-            max-width: 800px; margin: 0 auto; text-align: center;
-            padding-top: 20px; border-top: 1px solid #333;
-            color: #ffffff; font-size: 12px; line-height: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 22px;
+            border-top: 1px solid #2a2a3a;
+            color: #888;
+            font-size: 12px;
+            line-height: 2;
+            font-family: 'IRANSans', sans-serif;
         }
         .footer-copyright p { margin: 5px 0; }
-        .footer-copyright .network { font-size: 11px; color: #aaaaaa; margin-top: 8px; }
+        .footer-copyright .network { font-size: 11px; color: #666; margin-top: 8px; }
+        
+        /* ============================ */
+        /* رسپانسیو                    */
+        /* ============================ */
+        @media (max-width: 900px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+            }
+            .hero-image {
+                min-height: 280px;
+                aspect-ratio: 16/10;
+            }
+            .hero-content {
+                padding: 25px 22px;
+            }
+            .hero-title { font-size: 20px; }
+            .hero-excerpt { font-size: 14px; }
+        }
         
         @media (max-width: 600px) {
-            .top-ad { height: 130px; }
-            .ad-brand { font-size: 34px; letter-spacing: 5px; }
-            .ad-grg { font-size: 15px; padding: 4px 10px; }
-            .ad-slogan { font-size: 12px; padding: 6px 16px; }
-            .header-title-fa { font-size: 15px; }
-            .featured-news-card { max-width: 320px; }
+            .top-ad { height: 110px; }
+            .ad-brand { font-size: 30px; letter-spacing: 4px; }
+            .ad-grg { font-size: 13px; padding: 4px 10px; }
+            .ad-slogan { font-size: 11px; padding: 6px 14px; }
+            .ad-overlay { flex-direction: column; gap: 6px; }
+            
+            .brand-title { font-size: 18px; }
+            .header-live { font-size: 10px; padding: 6px 12px; }
+            .menu-btn { width: 42px; height: 42px; }
+            
+            .section-title { font-size: 18px; }
+            .section-title::before { height: 24px; width: 5px; }
+            
+            .hero-content { padding: 20px 18px; }
+            .hero-title { font-size: 18px; line-height: 1.6; }
+            .hero-excerpt { font-size: 13px; }
+            
+            .news-grid, .news-grid-2, .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-card-title { font-size: 15px; }
             .featured-title { font-size: 15px; }
-            .simple-news-item { padding: 16px 20px; }
-            .simple-news-title { font-size: 14px; }
-            .image-news-image { height: 200px; }
-            .image-news-title { font-size: 15px; }
-            .image-news-content { padding: 18px 20px; }
+            
+            .category-chip { padding: 8px 14px; font-size: 12px; }
+            
             .footer-row { gap: 12px 18px; }
             .footer-row a { font-size: 11px; }
         }
@@ -435,140 +819,219 @@
             <a href="https://www.heinz.com" target="_blank">
                 <img src="../products/heinz.jpg" alt="Heinz Ketchup" class="ad-bg" onerror="this.style.background='linear-gradient(135deg,#c0392b,#7d1f17)';">
                 <div class="ad-overlay">
-                    <div class="ad-brand-row">
-                        <span class="ad-brand">HEINZ</span>
-                        <span class="ad-grg">GRG</span>
-                    </div>
-                    <div class="ad-slogan">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</div>
+                    <span class="ad-brand">HEINZ</span>
+                    <span class="ad-grg">GRG</span>
+                    <span class="ad-slogan">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</span>
                 </div>
             </a>
         </div>
     </div>
 
-    <!-- هدر -->
-    <div class="header-row">
-        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="header-title-block">
-            <span class="header-title-fa">گلهای رنگارنگ</span>
-            <span class="header-subtitle">اخبار ایالت لاسونتراس</span>
+    <!-- هدر اصلی -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="brand-text">
+                    <div class="brand-title">گلهای رنگارنگ</div>
+                    <div class="brand-subtitle">اخبار ایالت لاسونتراس</div>
+                </div>
+            </div>
+            <div class="header-live">پوشش زنده</div>
         </div>
-    </div>
+    </header>
 
     <!-- منو -->
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
-            
             <a href="../index.html" class="back-to-home">
                 <span class="menu-icon">🏠</span>
                 <span>بازگشت به صفحه اصلی</span>
             </a>
-            
-            <div class="menu-separator"></div>
-            
             <div class="menu-inner-title">دسته‌بندی اخبار ایالت</div>
-            
-            <a href="politics.html">
-                <span class="menu-icon">🏛️</span>
-                <span>سیاسی</span>
-            </a>
-            <a href="social.html">
-                <span class="menu-icon">👥</span>
-                <span>اجتماعی</span>
-            </a>
-            <a href="economy.html">
-                <span class="menu-icon">💰</span>
-                <span>اقتصادی</span>
-            </a>
-            <a href="sports.html">
-                <span class="menu-icon">⚽</span>
-                <span>ورزشی</span>
-            </a>
-            <a href="culture.html">
-                <span class="menu-icon">🎬</span>
-                <span>فرهنگی و هنری</span>
-            </a>
-            <a href="concerts.html">
-                <span class="menu-icon">🎵</span>
-                <span>کنسرت و موسیقی</span>
-            </a>
-            <a href="accidents.html">
-                <span class="menu-icon">🚨</span>
-                <span>حوادث</span>
-            </a>
-            <a href="health.html">
-                <span class="menu-icon">🏥</span>
-                <span>سلامت</span>
-            </a>
-            <a href="education.html">
-                <span class="menu-icon">🎓</span>
-                <span>آموزش</span>
-            </a>
-            <a href="technology.html">
-                <span class="menu-icon">💻</span>
-                <span>فناوری</span>
-            </a>
+            <div class="menu-grid">
+                <a href="politics.html"><span class="menu-icon">🏛️</span><span>سیاسی</span></a>
+                <a href="social.html"><span class="menu-icon">👥</span><span>اجتماعی</span></a>
+                <a href="economy.html"><span class="menu-icon">💰</span><span>اقتصادی</span></a>
+                <a href="sports.html"><span class="menu-icon">⚽</span><span>ورزشی</span></a>
+                <a href="culture.html"><span class="menu-icon">🎬</span><span>فرهنگی و هنری</span></a>
+                <a href="concerts.html"><span class="menu-icon">🎵</span><span>کنسرت و موسیقی</span></a>
+                <a href="accidents.html"><span class="menu-icon">🚨</span><span>حوادث</span></a>
+                <a href="health.html"><span class="menu-icon">🏥</span><span>سلامت</span></a>
+                <a href="education.html"><span class="menu-icon">🎓</span><span>آموزش</span></a>
+                <a href="technology.html"><span class="menu-icon">💻</span><span>فناوری</span></a>
+            </div>
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- 🆕 خبر فرماندار - کارت ۳:۴                  -->
-    <!-- ============================================ -->
-    <div class="featured-news-section">
-        <a href="N2/news6.html" class="featured-news-card">
-            <div class="featured-topic">| سیاسی-اجتماعی</div>
-            <img src="../products/governor-budget.jpg" alt="فرماندار لاسونتراس" onerror="this.style.background='linear-gradient(135deg,#1a1a1a,#2c3e50)';this.style.opacity='1';this.removeAttribute('src');">
-            <div class="featured-overlay">
-                <h2 class="featured-title">فرماندار لاسونتراس: بودجه ایالت برای بازسازی و حمایت اجتماعی افزایش می‌یابد؛ هشدار به مخالفان و کشورهایی که کنترل خاک خود را از دست داده‌اند</h2>
-            </div>
-        </a>
-    </div>
-
-    <!-- ۳ خبر ساده - بدون عکس -->
-    <div class="simple-news-section">
-        <div class="simple-news-inner">
-            
-            <a href="N2/news2.html" class="simple-news-item">
-                <span class="simple-news-topic">| سیاسی</span>
-                <h2 class="simple-news-title">کشف و انهدام مواضع موشکی گروه مخالف در مناطق مرزی</h2>
-            </a>
-            
-            <a href="N2/news3.html" class="simple-news-item">
-                <span class="simple-news-topic">| سیاسی</span>
-                <h2 class="simple-news-title">سخنگوی گارد ملی لاسونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h2>
-            </a>
-            
-            <a href="N2/news4.html" class="simple-news-item">
-                <span class="simple-news-topic">| سیاسی</span>
-                <h2 class="simple-news-title">نیروی هوایی لاسونتراس: چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h2>
-            </a>
-            
+    <!-- نوار دسته‌بندی افقی -->
+    <div class="category-bar">
+        <div class="category-scroll">
+            <a href="index.html" class="category-chip active">🏠 همه اخبار</a>
+            <a href="politics.html" class="category-chip">🏛️ سیاسی</a>
+            <a href="social.html" class="category-chip">👥 اجتماعی</a>
+            <a href="economy.html" class="category-chip">💰 اقتصادی</a>
+            <a href="sports.html" class="category-chip">⚽ ورزشی</a>
+            <a href="culture.html" class="category-chip">🎬 فرهنگی</a>
+            <a href="concerts.html" class="category-chip">🎵 کنسرت</a>
+            <a href="accidents.html" class="category-chip">🚨 حوادث</a>
+            <a href="health.html" class="category-chip">🏥 سلامت</a>
+            <a href="education.html" class="category-chip">🎓 آموزش</a>
+            <a href="technology.html" class="category-chip">💻 فناوری</a>
         </div>
     </div>
 
-    <!-- خبر با عکس - فرانسه و کره -->
-    <div class="image-news-section">
-        <a href="N2/news5.html" class="image-news-card">
-            <div class="image-news-image">
-                <div class="image-news-badge">| سیاسی</div>
-                <img src="../products/lasontras.jpg" alt="مذاکرات فرانسه و کره‌جنوبی" onerror="this.style.display='none';">
-            </div>
-            <div class="image-news-content">
-                <h2 class="image-news-title">فرانسه و کره‌جنوبی در آستانه مذاکرات جدید با لاسونتراس</h2>
-            </div>
-        </a>
-    </div>
+    <!-- محتوای اصلی -->
+    <div class="main-content">
 
-    <!-- کارت خبر ویژه ۳:۴ - گارد ملی -->
-    <div class="featured-news-section">
-        <a href="N2/news1.html" class="featured-news-card">
-            <div class="featured-topic">| سیاسی</div>
-            <img src="../products/lasventras-featured.jpg" alt="اعلام پیروزی گارد ملی" onerror="this.style.background='linear-gradient(135deg,#1a1a1a,#2c3e50)';this.style.opacity='1';this.removeAttribute('src');">
-            <div class="featured-overlay">
-                <h2 class="featured-title">اعلام پیروزی گارد ملی؛ آیا درگیری‌ها در لاسونتراس به پایان نزدیک شده است؟</h2>
+        <!-- ==================================== -->
+        <!-- HERO - خبر اصلی بزرگ (خبر فرماندار) -->
+        <!-- ==================================== -->
+        <a href="N2/news6.html" class="hero-card">
+            <div class="hero-image">
+                <div class="hero-badge">خبر ویژه</div>
+                <img src="../products/governor-budget.jpg" alt="فرماندار لاسونتراس" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+            </div>
+            <div class="hero-content">
+                <div class="hero-category">سیاسی-اجتماعی</div>
+                <h2 class="hero-title">فرماندار لاسونتراس: بودجه ایالت برای بازسازی و حمایت اجتماعی افزایش می‌یابد؛ هشدار به مخالفان و کشورهایی که کنترل خاک خود را از دست داده‌اند</h2>
+                <p class="hero-excerpt">
+                    حامد صادقیان، فرماندار لاسونتراس، در تازه‌ترین اظهارات خود از برنامه دولت برای تقویت بودجه اجتماعی و بازسازی زیرساخت‌های آسیب‌دیده خبر داد و هم‌زمان درباره ادامه فعالیت گروه‌های مخالف از خاک کشورهای دیگر هشدار داد.
+                </p>
+                <div class="hero-meta">
+                    <span class="hero-meta-item">✍️ آناهیتا بهرامی</span>
+                    <span class="hero-meta-item">📅 ۱۸ سپتامبر ۲۰۲۶</span>
+                    <span class="hero-meta-item">🕐 ۸:۴۴ بعدظهر</span>
+                </div>
             </div>
         </a>
+
+        <!-- ==================================== -->
+        <!-- بخش: اخبار سیاسی                    -->
+        <!-- ==================================== -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار سیاسی</h2>
+            <a href="politics.html" class="section-link">مشاهده همه ←</a>
+        </div>
+
+        <div class="news-grid">
+            <!-- خبر گارد ملی -->
+            <a href="N2/news1.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">| سیاسی</div>
+                    <img src="../products/lasventras-featured.jpg" alt="اعلام پیروزی گارد ملی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تحلیل</div>
+                    <h3 class="news-card-title">اعلام پیروزی گارد ملی؛ آیا درگیری‌ها در لاسونتراس به پایان نزدیک شده است؟</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۷ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- خبر فرانسه و کره -->
+            <a href="N2/news5.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">| سیاسی</div>
+                    <img src="../products/lasontras.jpg" alt="مذاکرات فرانسه و کره‌جنوبی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">سیاسی</div>
+                    <h3 class="news-card-title">فرانسه و کره‌جنوبی در آستانه مذاکرات جدید با لاسونتراس</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۷ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- خبر مواضع موشکی -->
+            <a href="N2/news2.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">| سیاسی</div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">سیاسی</div>
+                    <h3 class="news-card-title">کشف و انهدام مواضع موشکی گروه مخالف در مناطق مرزی</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ سارا تهماسبی</span>
+                        <span>📅 ۱۷ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- ==================================== -->
+        <!-- بخش: تحلیل‌ها                        -->
+        <!-- ==================================== -->
+        <div class="section-header">
+            <h2 class="section-title">تحلیل‌های ویژه</h2>
+        </div>
+
+        <div class="featured-grid">
+            <!-- کارت ۳:۴ - گارد ملی -->
+            <a href="N2/news1.html" class="featured-card">
+                <div class="featured-topic">| تحلیل</div>
+                <img src="../products/lasventras-featured.jpg" alt="اعلام پیروزی گارد ملی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <h3 class="featured-title">اعلام پیروزی گارد ملی؛ آیا درگیری‌ها در لاسونتراس به پایان نزدیک شده است؟</h3>
+                </div>
+            </a>
+
+            <!-- کارت ۳:۴ - فرانسه و کره -->
+            <a href="N2/news5.html" class="featured-card">
+                <div class="featured-topic">| سیاسی</div>
+                <img src="../products/lasontras.jpg" alt="مذاکرات فرانسه و کره‌جنوبی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <h3 class="featured-title">فرانسه و کره‌جنوبی در آستانه مذاکرات جدید با لاسونتراس</h3>
+                </div>
+            </a>
+
+            <!-- کارت ۳:۴ - فرماندار -->
+            <a href="N2/news6.html" class="featured-card">
+                <div class="featured-topic">| سیاسی-اجتماعی</div>
+                <img src="../products/governor-budget.jpg" alt="فرماندار لاسونتراس" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <h3 class="featured-title">فرماندار لاسونتراس: بودجه ایالت برای بازسازی و حمایت اجتماعی افزایش می‌یابد</h3>
+                </div>
+            </a>
+        </div>
+
+        <!-- ==================================== -->
+        <!-- بخش: آخرین اخبار                     -->
+        <!-- ==================================== -->
+        <div class="section-header">
+            <h2 class="section-title">آخرین اخبار</h2>
+        </div>
+
+        <div class="news-grid-2">
+            <a href="N2/news3.html" class="news-card">
+                <div class="news-card-content">
+                    <div class="news-card-category">سیاسی</div>
+                    <h3 class="news-card-title">سخنگوی گارد ملی لاسونتراس: کره جنوبی در صورت حمله مجدد با پاسخ نظامی روبه‌رو می‌شود</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ سارا تهماسبی</span>
+                        <span>📅 ۱۷ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="N2/news4.html" class="news-card">
+                <div class="news-card-content">
+                    <div class="news-card-category">سیاسی</div>
+                    <h3 class="news-card-title">نیروی هوایی لاسونتراس: چندین سایت موشکی و راداری در کره جنوبی هدف قرار گرفت</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ سارا تهماسبی</span>
+                        <span>📅 ۱۷ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
     </div>
 
     <!-- فوتر -->
@@ -578,13 +1041,9 @@
                 <a href="../pages/terms.html">Terms of Use</a>
                 <a href="../pages/privacy.html">Privacy Policy</a>
                 <a href="../pages/cookies.html">+Manage Cookies</a>
-            </div>
-            <div class="footer-row">
                 <a href="../pages/adchoices.html">Ad Choices</a>
                 <a href="../pages/accessibility.html">Accessibility & CC</a>
                 <a href="../pages/newsletters.html">Newsletters</a>
-            </div>
-            <div class="footer-row">
                 <a href="../pages/transcripts.html">Transcripts</a>
                 <a href="../pages/sitemap.html">Sitemap</a>
                 <a href="../pages/about.html" class="about-link">درباره ما</a>
