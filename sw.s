@@ -1,4 +1,4 @@
-const CACHE_NAME = 'golrang-v4'; // ← نسخه رو بروز کن
+const CACHE_NAME = 'golrang-v5'; // ← نسخه رو بروز کن
 
 const urlsToCache = [
   'index.html',
