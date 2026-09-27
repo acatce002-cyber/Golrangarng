@@ -1,7 +1,7 @@
 {
   "name": "گلهای رنگارنگ",
   "short_name": "گلهای رنگارنگ",
-  "description": "پایگاه خبری مستقل گلهای رنگارنگ",
+  "description": "پایگاه خبری مستقل",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -15,7 +15,7 @@
       "src": "products/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
