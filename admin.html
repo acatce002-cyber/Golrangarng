@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پنل ادمین</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Tahoma, sans-serif; }
+  body { background:#0f0f14; color:#fff; padding:20px; min-height:100vh; }
+  .box { max-width:600px; margin:40px auto; background:#1a1a24; padding:30px; border-radius:14px; border:1px solid #2a2a3a; }
+  h1 { color:#6c9eff; margin-bottom:20px; font-size:22px; }
+  label { display:block; margin-bottom:8px; color:#aaa; font-size:14px; }
+  input, textarea {
+    width:100%; padding:12px; background:#0f0f14; border:1px solid #2a2a3a;
+    border-radius:8px; color:#fff; font-size:15px; margin-bottom:18px; font-family:Tahoma;
+  }
+  textarea { min-height:150px; resize:vertical; }
+  button {
+    background:#6c9eff; color:#fff; border:none; padding:12px 24px;
+    border-radius:8px; cursor:pointer; font-size:15px; font-weight:bold;
+  }
+  button:hover { background:#5588ee; }
+  .msg { padding:12px; border-radius:8px; margin-bottom:18px; font-size:14px; }
+  .ok { background:#1a3a1a; color:#7fff7f; }
+  .err { background:#3a1a1a; color:#ff7f7f; }
+  .hidden { display:none; }
+  .logout { background:#3a1a1a; color:#ff7f7f; margin-top:20px; }
+  .logout:hover { background:#5a2a2a; }
+</style>
+</head>
+<body>
+
+<!-- صفحه ورود -->
+<div class="box" id="loginBox">
+  <h1>🔐 ورود ادمین</h1>
+  <label>رمز عبور:</label>
+  <input type="password" id="password" placeholder="رمز را وارد کنید">
+  <button onclick="login()">ورود</button>
+  <div id="loginMsg"></div>
+</div>
+
+<!-- صفحه افزودن خبر -->
+<div class="box hidden" id="adminBox">
+  <h1>📝 افزودن خبر جدید</h1>
+  <div id="msg"></div>
+  
+  <label>عنوان خبر:</label>
+  <input type="text" id="title" placeholder="عنوان را بنویسید...">
+  
+  <label>متن خبر:</label>
+  <textarea id="body" placeholder="متن کامل خبر را بنویسید..."></textarea>
+  
+  <button onclick="addNews()">✅ ثبت خبر</button>
+  <button class="logout" onclick="logout()">خروج</button>
+</div>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+  const ADMIN_PASSWORD = 'golrang2024';
+  const supabase = createClient(
+    'https://tatzsjktdaxglldtdvcg.supabase.co',
+    'sb_publishable_dLdosYuzUAkrx2bbJCzcFQ_ouTEsPV7'
+  );
+
+  // اگه قبلاً وارد شده بود، مستقیم بره پنل
+  if (sessionStorage.getItem('admin_logged') === 'yes') {
+    showAdmin();
+  }
+
+  window.login = function() {
+    const pass = document.getElementById('password').value;
+    if (pass === ADMIN_PASSWORD) {
+      sessionStorage.setItem('admin_logged', 'yes');
+      showAdmin();
+    } else {
+      document.getElementById('loginMsg').innerHTML = '<div class="msg err">❌ رمز اشتباه است</div>';
+    }
+  };
+
+  window.logout = function() {
+    sessionStorage.removeItem('admin_logged');
+    location.reload();
+  };
+
+  function showAdmin() {
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('adminBox').classList.remove('hidden');
+  }
+
+  window.addNews = async function() {
+    const title = document.getElementById('title').value.trim();
+    const body = document.getElementById('body').value.trim();
+    const msg = document.getElementById('msg');
+
+    if (!title || !body) {
+      msg.innerHTML = '<div class="msg err">⚠️ عنوان و متن خبر را پر کنید</div>';
+      return;
+    }
+
+    const { error } = await supabase.from('News').insert([
+      { Title: title, Body: body }
+    ]);
+
+    if (error) {
+      msg.innerHTML = '<div class="msg err">❌ خطا: ' + error.message + '</div>';
+    } else {
+      msg.innerHTML = '<div class="msg ok">✅ خبر با موفقیت ثبت شد!</div>';
+      document.getElementById('title').value = '';
+      document.getElementById('body').value = '';
+    }
+  };
+</script>
+
+</body>
+</html>
