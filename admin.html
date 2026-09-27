@@ -99,7 +99,7 @@
     }
 
     const { error } = await supabase.from('News').insert([
-      { Title: title, Body: body }
+      { title: title, body: body }
     ]);
 
     if (error) {
