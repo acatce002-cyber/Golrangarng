@@ -53,9 +53,7 @@
             line-height: 1.7;
         }
         
-        /* ============================ */
-        /* تبلیغ بالای سایت              */
-        /* ============================ */
+        /* تبلیغ */
         .top-ad-wrapper {
             max-width: 1200px;
             width: 100%;
@@ -104,9 +102,7 @@
             border: 1.5px solid rgba(255,255,255,0.4);
         }
         
-        /* ============================ */
-        /* هدر اصلی                     */
-        /* ============================ */
+        /* هدر */
         .main-header {
             background-color: white;
             box-shadow: 0 2px 15px rgba(0,0,0,0.06);
@@ -178,9 +174,7 @@
             50% { opacity: 0.4; }
         }
         
-        /* ============================ */
-        /* منوی بازشو                   */
-        /* ============================ */
+        /* منو */
         .menu-dropdown {
             max-width: 1200px;
             width: 100%;
@@ -220,9 +214,7 @@
         }
         .menu-icon { font-size: 16px; width: 20px; text-align: center; }
         
-        /* ============================ */
-        /* نوار دسته‌بندی                */
-        /* ============================ */
+        /* نوار دسته‌بندی */
         .category-bar {
             background-color: white;
             border-bottom: 1px solid var(--border);
@@ -262,9 +254,7 @@
             border-bottom-color: var(--primary);
         }
         
-        /* ============================ */
-        /* بنر لاسونتراس                */
-        /* ============================ */
+        /* بنر لاسونتراس */
         .lasontras-banner-wrap {
             max-width: 1200px;
             width: 100%;
@@ -349,9 +339,7 @@
         }
         .lasontras-banner:hover .lasontras-arrow { transform: translateX(-8px); }
         
-        /* ============================ */
-        /* محتوای اصلی                  */
-        /* ============================ */
+        /* محتوای اصلی */
         .main-content {
             max-width: 1200px;
             width: 100%;
@@ -388,9 +376,7 @@
         }
         .section-link:hover { transform: translateX(-3px); }
         
-        /* ============================ */
-        /* نوار فوری - Breaking News    */
-        /* ============================ */
+        /* نوار فوری */
         .breaking-bar {
             display: flex;
             align-items: stretch;
@@ -437,9 +423,7 @@
             100% { transform: translateX(100%); }
         }
         
-        /* ============================ */
-        /* HERO - خبر اصلی             */
-        /* ============================ */
+        /* HERO */
         .hero-card {
             display: grid;
             grid-template-columns: 1.3fr 1fr;
@@ -528,9 +512,7 @@
             flex-wrap: wrap;
         }
         
-        /* ============================ */
-        /* Quick News Grid              */
-        /* ============================ */
+        /* Quick News */
         .quick-news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -574,9 +556,7 @@
         }
         .quick-news-item:hover .quick-news-title { color: var(--primary); }
         
-        /* ============================ */
-        /* Featured Grid - 3:4          */
-        /* ============================ */
+        /* Featured Grid */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -659,9 +639,7 @@
             overflow: hidden;
         }
         
-        /* ============================ */
-        /* News Grid                    */
-        /* ============================ */
+        /* News Grid */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -742,9 +720,7 @@
             gap: 8px;
         }
         
-        /* ============================ */
-        /* Exclusive Section            */
-        /* ============================ */
+        /* Exclusive Section */
         .exclusive-section {
             background: linear-gradient(135deg, #1a1a2e, #2c3e50);
             border-radius: 16px;
@@ -827,9 +803,7 @@
             color: white;
         }
         
-        /* ============================ */
-        /* Simple News                  */
-        /* ============================ */
+        /* Simple News */
         .simple-news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -872,9 +846,7 @@
         }
         .simple-news-item:hover .simple-news-title { color: var(--primary); }
         
-        /* ============================ */
-        /* صفحه‌بندی                     */
-        /* ============================ */
+        /* صفحه‌بندی */
         .pagination {
             max-width: 1200px;
             width: 100%;
@@ -909,9 +881,7 @@
             box-shadow: 0 6px 18px rgba(192, 57, 43, 0.4);
         }
         
-        /* ============================ */
-        /* فوتر                        */
-        /* ============================ */
+        /* فوتر */
         footer {
             background-color: #0f0f1e;
             padding: 35px 16px 22px 16px;
@@ -989,9 +959,36 @@
         .footer-copyright p { margin: 4px 0; }
         .footer-copyright .network { font-size: 10px; color: #666; margin-top: 6px; }
         
-        /* ============================ */
-        /* Responsive                    */
-        /* ============================ */
+        /* دکمه نصب اپ */
+        #installBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6c9eff, #4a7dff);
+            color: #fff;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(108, 158, 255, 0.5);
+            z-index: 9999;
+            transition: all 0.3s;
+            animation: installPulse 2s infinite;
+        }
+        #installBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(108, 158, 255, 0.7);
+        }
+        @keyframes installPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Responsive */
         @media (max-width: 900px) {
             .hero-card {
                 grid-template-columns: 1fr;
@@ -1072,6 +1069,13 @@
             
             .footer-row { gap: 10px 16px; }
             .footer-row a { font-size: 11px; }
+            
+            #installBtn {
+                padding: 12px 18px;
+                font-size: 13px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
@@ -1091,7 +1095,7 @@
         </div>
     </div>
 
-    <!-- هدر اصلی -->
+    <!-- هدر -->
     <header class="main-header">
         <div class="header-container">
             <div class="header-brand">
@@ -1401,6 +1405,9 @@
         </div>
     </footer>
 
+    <!-- دکمه نصب اپ -->
+    <button id="installBtn">📲 نصب اپ</button>
+
     <script>
         function toggleMenu() {
             const btn = document.getElementById('menuBtn');
@@ -1423,6 +1430,34 @@
                     });
             });
         }
+
+        // ============================
+        // PWA - Install Prompt
+        // ============================
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').style.display = 'block';
+        });
+        
+        document.getElementById('installBtn')?.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('User choice:', outcome);
+                deferredPrompt = null;
+                document.getElementById('installBtn').style.display = 'none';
+            }
+        });
+
+        // وقتی اپ نصب شد، دکمه مخفی بشه
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ اپ نصب شد');
+            document.getElementById('installBtn').style.display = 'none';
+            deferredPrompt = null;
+        });
     </script>
 </body>
 </html>
