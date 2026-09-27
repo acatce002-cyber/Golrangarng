@@ -2,20 +2,15 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اخبار</title>
+<title>تست</title>
 <style>
-  body { background: #0f0f14; color: #fff; font-family: Tahoma; padding: 20px; }
-  .card { background: #1a1a24; padding: 20px; margin-bottom: 15px; border-radius: 10px; }
-  h2 { color: #6c9eff; margin-bottom: 10px; }
-  .error { color: red; }
-  .ok { color: lime; }
+  body { background:#0f0f14; color:#fff; font-family:Tahoma; padding:20px; }
+  pre { background:#1a1a24; padding:15px; border-radius:10px; white-space:pre-wrap; }
 </style>
 </head>
 <body>
-
-<h1>📰 اخبار</h1>
-<div id="out">در حال بارگذاری...</div>
+<h1>تست اتصال</h1>
+<pre id="out">در حال تست...</pre>
 
 <script type="module">
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
@@ -26,23 +21,25 @@
   );
 
   const out = document.getElementById('out');
+  let log = '';
 
   try {
+    log += '1. کتابخانه لود شد\n';
     const { data, error } = await supabase.from('News').select('*');
+    log += '2. درخواست فرستاده شد\n';
     
     if (error) {
-      out.innerHTML = '<p class="error">خطا: ' + error.message + '</p>';
-    } else if (!data || data.length === 0) {
-      out.innerHTML = '<p>هیچ خبری نیست</p>';
+      log += '❌ خطا: ' + error.message + '\n';
+      log += 'کد خطا: ' + error.code + '\n';
     } else {
-      out.innerHTML = '<p class="ok">تعداد اخبار: ' + data.length + '</p>';
-      out.innerHTML += data.map(n => 
-        '<div class="card"><h2>' + (n.Title || n.title || 'بی‌عنوان') + '</h2><p>' + (n.Body || n.body || '') + '</p></div>'
-      ).join('');
+      log += '✅ موفق! تعداد ردیف‌ها: ' + (data ? data.length : 0) + '\n';
+      log += 'داده: ' + JSON.stringify(data, null, 2);
     }
   } catch(e) {
-    out.innerHTML = '<p class="error">خطای غیرمنتظره: ' + e.message + '</p>';
+    log += '❌ خطای غیرمنتظره: ' + e.message;
   }
+
+  out.textContent = log;
 </script>
 
 </body>
