@@ -142,7 +142,7 @@
     const listEl = document.getElementById('news-list');
     
     const { data, error } = await supabase
-      .from('news')
+      .from('News')
       .select('*')
       .order('created_at', { ascending: false });
 
