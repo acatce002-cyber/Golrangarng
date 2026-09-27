@@ -1,12 +1,15 @@
 {
   "name": "گلهای رنگارنگ",
   "short_name": "گلهای رنگارنگ",
-  "description": "اپلیکیشن گلهای رنگارنگ",
-  "start_url": "index.html",
+  "description": "پایگاه خبری مستقل گلهای رنگارنگ",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0f0f14",
-  "theme_color": "#6c9eff",
   "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#c0392b",
+  "lang": "fa",
+  "dir": "rtl",
   "icons": [
     {
       "src": "products/icon-512.png",
