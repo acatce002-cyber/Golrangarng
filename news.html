@@ -46,8 +46,8 @@
   } else {
     out.innerHTML = data.map(n => `
       <div class="card">
-        <h2>${n.Title || n.title || 'بی‌عنوان'}</h2>
-        <p>${n.Body || n.body || ''}</p>
+        <h2>${n.title || 'بی‌عنوان'}</h2>
+        <p>${n.body || ''}</p>
         <div class="date">${n.created_at ? new Date(n.created_at).toLocaleDateString('fa-IR') : ''}</div>
       </div>
     `).join('');
