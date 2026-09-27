@@ -1,58 +1,1419 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اخبار</title>
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:Tahoma, sans-serif; }
-  body { background:#0f0f14; color:#fff; padding:20px; }
-  h1 { margin-bottom:20px; color:#6c9eff; }
-  .card {
-    background:#1a1a24; border-radius:12px; padding:20px;
-    margin-bottom:15px; border:1px solid #2a2a3a;
-  }
-  .card h2 { color:#fff; font-size:18px; margin-bottom:10px; }
-  .card p { color:#aaa; line-height:1.8; font-size:14px; }
-  .date { color:#666; font-size:12px; margin-top:10px; }
-  .empty { text-align:center; padding:40px; color:#666; }
-  .error { color:#ff6b6b; background:#2a1a1a; padding:15px; border-radius:10px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c0392b">
+    <meta name="description" content="گلهای رنگارنگ - پایگاه خبری مستقل">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="گلهای رنگارنگ">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <title>گلهای رنگارنگ - پایگاه خبری</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold; font-style: normal; font-display: swap;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #c0392b;
+            --primary-dark: #7d1f17;
+            --accent: #f39c12;
+            --gold: #ffd700;
+            --dark: #1a1a2e;
+            --gray: #666;
+            --light: #f5f5f7;
+            --white: #ffffff;
+            --border: #e8e8e8;
+        }
+        
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
+        }
+        
+        /* تبلیغ Heinz */
+        .top-ad-wrapper {
+            max-width: 1200px; width: 100%;
+            margin: 12px auto 0 auto; padding: 0 16px;
+        }
+        .top-ad {
+            position: relative; width: 100%; height: 100px;
+            border-radius: 14px; overflow: hidden;
+            background: linear-gradient(135deg, #c0392b 0%, #7d1f17 100%);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.35);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        .top-ad a { display: block; width: 100%; height: 100%; position: relative; text-decoration: none; }
+        .ad-bg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.25; z-index: 1;
+        }
+        .ad-overlay {
+            position: relative; z-index: 2;
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 30px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%);
+        }
+        .ad-left { display: flex; align-items: center; gap: 16px; }
+        .ad-brand {
+            font-family: Georgia, serif; font-size: 38px; font-weight: bold;
+            color: #ffd700; letter-spacing: 5px;
+            text-shadow: 2px 2px 0 #7d1f17, 4px 4px 12px rgba(0,0,0,0.9);
+            line-height: 1;
+        }
+        .ad-grg-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px; border-radius: 20px;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+        .ad-grg-badge .dot {
+            width: 8px; height: 8px;
+            background: #27ae60; border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        .ad-grg-badge .text {
+            font-size: 12px; font-weight: bold; color: white; letter-spacing: 1px;
+        }
+        .ad-slogan-box { text-align: left; direction: rtl; }
+        .ad-slogan-fa {
+            font-size: 15px; font-weight: bold; color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8); margin-bottom: 4px;
+        }
+        .ad-slogan-en {
+            font-size: 11px; color: rgba(255,255,255,0.85);
+            font-style: italic; direction: ltr; text-align: left;
+            font-family: Georgia, serif;
+        }
+        
+        /* هدر */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            position: sticky; top: 0; z-index: 100;
+            margin-top: 12px;
+        }
+        .header-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 12px 16px;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 15px;
+        }
+        .header-brand {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: inherit;
+        }
+        .menu-btn {
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 10px; width: 44px; height: 44px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 4px; cursor: pointer; transition: all 0.25s; flex-shrink: 0;
+        }
+        .menu-btn:hover { border-color: var(--primary); background-color: #fff5f5; }
+        .menu-btn span {
+            display: block; width: 20px; height: 2.5px;
+            background-color: #333; border-radius: 3px; transition: all 0.3s;
+        }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .brand-title { font-size: 20px; font-weight: bold; color: var(--primary); }
+        .brand-subtitle {
+            font-size: 10px; color: var(--gray); margin-top: 2px;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .brand-subtitle::before {
+            content: '●'; color: #27ae60; font-size: 7px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        /* منو */
+        .menu-dropdown {
+            max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 16px;
+            max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+        }
+        .menu-dropdown.open { max-height: 600px; }
+        .menu-inner {
+            background-color: white; border-radius: 14px; padding: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            margin-top: 10px; border: 1px solid var(--border);
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 6px;
+        }
+        .menu-dropdown a {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 14px; color: #333; text-decoration: none;
+            font-size: 13px; border-radius: 10px; transition: all 0.25s;
+            font-weight: bold; background-color: #f8f9fa;
+        }
+        .menu-dropdown a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+        }
+        .menu-icon { font-size: 16px; width: 20px; text-align: center; }
+        
+        /* نوار دسته‌بندی */
+        .category-bar {
+            background-color: white;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .category-bar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 16px;
+            display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+        }
+        .category-bar-inner::-webkit-scrollbar { display: none; }
+        .category-link {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 12px 16px; color: #444; text-decoration: none;
+            font-size: 13px; font-weight: bold; white-space: nowrap;
+            border-bottom: 3px solid transparent; transition: all 0.25s;
+            flex-shrink: 0;
+        }
+        .category-link:hover {
+            color: var(--primary); border-bottom-color: var(--primary);
+            background-color: #fff5f5;
+        }
+        .category-link.active {
+            color: var(--primary); border-bottom-color: var(--primary);
+        }
+        
+        /* بنر لاسونتراس */
+        .lasontras-banner-wrap {
+            max-width: 1200px; width: 100%;
+            margin: 14px auto 0 auto; padding: 0 16px;
+        }
+        .lasontras-banner {
+            display: flex; align-items: center; gap: 12px;
+            position: relative;
+            background: linear-gradient(135deg, #1a2a4a 0%, #2c3e50 100%);
+            border-radius: 10px; overflow: hidden; text-decoration: none;
+            box-shadow: 0 3px 12px rgba(26, 42, 74, 0.25);
+            border: 1.5px solid var(--accent);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 10px 14px;
+        }
+        .lasontras-banner::before {
+            content: ''; position: absolute;
+            top: -50%; right: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .lasontras-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(243, 156, 18, 0.35);
+            border-color: var(--gold);
+        }
+        .lasontras-image {
+            position: relative; z-index: 2;
+            flex-shrink: 0; width: 42px; height: 42px;
+            border-radius: 8px; overflow: hidden;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 3px 10px rgba(243, 156, 18, 0.4);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+        .lasontras-image img { width: 100%; height: 100%; object-fit: cover; }
+        .lasontras-content {
+            position: relative; z-index: 2; flex: 1;
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .lasontras-label {
+            font-size: 9px; color: #1a2a4a; font-weight: bold;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            padding: 2px 8px; border-radius: 8px; white-space: nowrap;
+        }
+        .lasontras-title {
+            color: #ffffff; font-size: 15px; font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); white-space: nowrap;
+        }
+        .lasontras-subtitle {
+            color: #b8c4d9; font-size: 11px; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis;
+        }
+        .lasontras-arrow {
+            position: relative; z-index: 2; flex-shrink: 0;
+            color: var(--accent); font-size: 18px; font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .lasontras-banner:hover .lasontras-arrow { transform: translateX(-6px); }
+        
+        /* محتوای اصلی */
+        .main-content {
+            max-width: 1200px; width: 100%;
+            margin: 20px auto 30px auto; padding: 0 16px;
+            flex: 1;
+        }
+        
+        .section-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 16px; padding-bottom: 10px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        .section-title {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 19px; font-weight: bold; color: #1a1a1a;
+        }
+        .section-title::before {
+            content: ''; width: 5px; height: 22px;
+            background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+            border-radius: 3px;
+        }
+        
+        /* ============================ */
+        /* خبر فوری - کارت مدرن با ۳ نمایش */
+        /* ============================ */
+        .urgent-news-section { margin-bottom: 30px; }
+        .urgent-news-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 100%);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .urgent-news-card::before {
+            content: ''; position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at top right, rgba(192, 57, 43, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .urgent-header {
+            position: relative; z-index: 2;
+            display: flex; align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px; padding-bottom: 12px;
+            border-bottom: 2px solid rgba(192, 57, 43, 0.3);
+            flex-wrap: wrap; gap: 10px;
+        }
+        .urgent-header-right {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .urgent-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 5px 14px; border-radius: 20px;
+            font-size: 11px; font-weight: bold; letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.5);
+            animation: urgentPulse 2s infinite;
+        }
+        .urgent-badge::before {
+            content: '⚡'; font-size: 13px;
+        }
+        @keyframes urgentPulse {
+            0%, 100% { box-shadow: 0 4px 12px rgba(192, 57, 43, 0.5); }
+            50% { box-shadow: 0 4px 20px rgba(192, 57, 43, 0.9); }
+        }
+        .urgent-title-header {
+            color: #ffffff; font-size: 14px; font-weight: bold;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .urgent-pagination {
+            color: #b8c4d9; font-size: 12px; font-weight: bold;
+            font-family: Georgia, serif;
+            direction: ltr;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 12px; border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .urgent-list {
+            position: relative; z-index: 2;
+            display: grid;
+            gap: 8px;
+            min-height: 180px;
+        }
+        .urgent-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            opacity: 1;
+        }
+        .urgent-list.fade-out .urgent-item {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .urgent-item-icon {
+            flex-shrink: 0; width: 8px; height: 8px;
+            background: var(--primary); border-radius: 50%;
+            margin-top: 8px;
+            box-shadow: 0 0 10px var(--primary);
+            animation: urgentDot 1.5s infinite;
+        }
+        @keyframes urgentDot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .urgent-item-content { flex: 1; }
+        .urgent-item-title {
+            color: #ffffff; font-size: 13px; font-weight: bold;
+            line-height: 1.7; margin-bottom: 4px;
+        }
+        .urgent-item-meta {
+            font-size: 10px; color: #b8c4d9;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .urgent-item-source {
+            color: var(--accent); font-weight: bold;
+        }
+        .urgent-progress {
+            display: flex; gap: 4px; justify-content: center;
+            margin-top: 12px; position: relative; z-index: 2;
+        }
+        .urgent-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        .urgent-dot.active {
+            background: var(--primary);
+            width: 20px; border-radius: 3px;
+            box-shadow: 0 0 8px var(--primary);
+        }
+        
+        /* HERO */
+        .hero-card {
+            display: grid; grid-template-columns: 1.3fr 1fr;
+            background-color: white; border-radius: 18px;
+            overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px; text-decoration: none; color: inherit;
+            transition: transform 0.35s, box-shadow 0.35s;
+            border: 1px solid var(--border);
+        }
+        .hero-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(192, 57, 43, 0.2);
+            border-color: var(--primary);
+        }
+        .hero-image {
+            width: 100%; height: 100%; min-height: 400px;
+            overflow: hidden; position: relative;
+            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
+        }
+        .hero-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .hero-card:hover .hero-image img { transform: scale(1.05); }
+        .hero-badge {
+            position: absolute; top: 18px; right: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 6px 16px; border-radius: 20px;
+            font-size: 11px; font-weight: bold; letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.5);
+            z-index: 2; font-family: Georgia, serif;
+        }
+        .hero-content {
+            padding: 30px 28px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .hero-category {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: var(--primary); font-size: 12px; font-weight: bold;
+            margin-bottom: 12px; letter-spacing: 1px;
+        }
+        .hero-category::before {
+            content: ''; width: 18px; height: 3px;
+            background: var(--primary); border-radius: 2px;
+        }
+        .hero-title {
+            font-size: 23px; font-weight: bold; color: #1a1a1a;
+            line-height: 1.55; margin-bottom: 15px;
+        }
+        .hero-excerpt {
+            font-size: 14px; color: #555; line-height: 1.85;
+            margin-bottom: 20px;
+            display: -webkit-box; -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .hero-meta {
+            display: flex; align-items: center; gap: 15px;
+            padding-top: 16px; border-top: 1px solid #eee;
+            color: #888; font-size: 11px; flex-wrap: wrap;
+        }
+        
+        /* Quick News */
+        .quick-news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px; margin-bottom: 30px;
+        }
+        .quick-news-item {
+            display: block; padding: 18px 20px;
+            background-color: white; text-decoration: none; color: inherit;
+            border-radius: 12px; border: 1px solid var(--border);
+            border-right: 4px solid var(--primary);
+            transition: all 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .quick-news-item:hover {
+            transform: translateX(-4px);
+            border-right-color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(192, 57, 43, 0.15);
+        }
+        .quick-news-topic {
+            display: inline-block; font-size: 10px;
+            color: var(--primary); font-weight: bold;
+            background-color: #fff5f5; padding: 3px 10px;
+            border-radius: 10px; border: 1px solid #fadbd8;
+            margin-bottom: 8px;
+        }
+        .quick-news-title {
+            color: #1a1a1a; font-size: 14px; font-weight: bold;
+            line-height: 1.7; transition: color 0.2s;
+        }
+        .quick-news-desc {
+            color: #777; font-size: 12px; line-height: 1.7;
+            margin-top: 6px;
+            display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .quick-news-item:hover .quick-news-title { color: var(--primary); }
+        
+        /* Featured Grid */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px; margin-bottom: 30px;
+        }
+        .featured-card {
+            display: block; position: relative; width: 100%;
+            aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            text-decoration: none; transition: transform 0.35s, box-shadow 0.35s;
+            background-color: #1a1a1a; border: 2px solid #e0e0e0;
+        }
+        .featured-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(192, 57, 43, 0.35);
+            border-color: var(--primary);
+        }
+        .featured-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block; transition: transform 0.6s;
+        }
+        .featured-card:hover img { transform: scale(1.06); }
+        .featured-topic {
+            position: absolute; top: 14px; right: 14px; z-index: 3;
+            font-size: 10px; color: white; font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 5px 14px; border-radius: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+        }
+        .featured-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 60px 18px 18px 18px;
+            background: linear-gradient(to top, 
+                rgba(0,0,0,0.98) 0%, 
+                rgba(0,0,0,0.92) 30%, 
+                rgba(0,0,0,0.6) 60%, 
+                transparent 100%);
+            z-index: 2;
+        }
+        .featured-label {
+            display: inline-block; font-size: 10px;
+            color: #ffffff; font-weight: bold;
+            background-color: rgba(192, 57, 43, 0.95);
+            padding: 3px 10px; border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .featured-title {
+            color: #ffffff; font-size: 15px; font-weight: bold;
+            line-height: 1.7; text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px; margin-bottom: 30px;
+        }
+        .news-card {
+            display: flex; flex-direction: column;
+            background-color: white; border-radius: 14px;
+            overflow: hidden; text-decoration: none; color: inherit;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(192, 57, 43, 0.15);
+            border-color: var(--primary);
+        }
+        .news-card-image {
+            width: 100%; aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
+            position: relative;
+        }
+        .news-card-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .news-card:hover .news-card-image img { transform: scale(1.06); }
+        .news-card-badge {
+            position: absolute; top: 12px; right: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 4px 12px; border-radius: 16px;
+            font-size: 10px; font-weight: bold; z-index: 2;
+        }
+        .news-card-content {
+            padding: 16px; flex: 1;
+            display: flex; flex-direction: column;
+        }
+        .news-card-category {
+            font-size: 10px; color: var(--primary); font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .news-card-title {
+            font-size: 15px; font-weight: bold; color: #1a1a1a;
+            line-height: 1.65; margin-bottom: 10px;
+            display: -webkit-box; -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; overflow: hidden;
+            transition: color 0.2s;
+        }
+        .news-card:hover .news-card-title { color: var(--primary); }
+        .news-card-meta {
+            margin-top: auto; padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+            display: flex; align-items: center; justify-content: space-between;
+            font-size: 10px; color: #999; gap: 8px;
+        }
+        
+        /* Simple News */
+        .simple-news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px; margin-bottom: 30px;
+        }
+        .simple-news-item {
+            display: block; padding: 18px 20px;
+            background-color: white; text-decoration: none; color: inherit;
+            border-radius: 12px; border: 1px solid var(--border);
+            transition: all 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            position: relative;
+            border-right: 4px solid transparent;
+        }
+        .simple-news-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            border-right-color: var(--primary);
+            box-shadow: 0 8px 22px rgba(192, 57, 43, 0.15);
+        }
+        .simple-news-topic {
+            display: inline-block; font-size: 10px;
+            color: var(--primary); font-weight: bold;
+            background-color: #fff5f5; padding: 3px 10px;
+            border-radius: 10px; border: 1px solid #fadbd8;
+            margin-bottom: 8px;
+        }
+        .simple-news-title {
+            color: #1a1a1a; font-size: 14px; font-weight: bold;
+            line-height: 1.7; transition: color 0.2s;
+        }
+        .simple-news-item:hover .simple-news-title { color: var(--primary); }
+        
+        /* صفحه‌بندی */
+        .pagination {
+            max-width: 1200px; width: 100%;
+            margin: 25px auto; padding: 0 16px;
+            display: flex; justify-content: center; gap: 10px;
+        }
+        .page-num {
+            display: flex; align-items: center; justify-content: center;
+            min-width: 48px; height: 48px; border-radius: 12px;
+            font-family: Georgia, serif; font-size: 16px; font-weight: bold;
+            text-decoration: none; transition: all 0.3s;
+            padding: 0 16px; background-color: white; color: #333;
+            border: 2px solid var(--border);
+        }
+        .page-num:hover {
+            border-color: var(--primary); color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .page-num.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; border-color: var(--primary);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.4);
+        }
+        
+        /* فوتر */
+        footer {
+            background-color: #0f0f1e;
+            padding: 35px 16px 22px 16px;
+            margin-top: auto;
+        }
+        .footer-links {
+            max-width: 1200px; margin: 0 auto 25px auto;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .footer-row {
+            display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 20px 30px;
+        }
+        .footer-row a {
+            color: #b8b8c8; text-decoration: none; font-size: 12px;
+            transition: color 0.25s; white-space: nowrap;
+        }
+        .footer-row a:hover { color: #ffffff; }
+        .footer-row a.about-link { font-weight: bold; color: var(--gold); }
+        
+        .follow-section {
+            max-width: 1200px; margin: 0 auto 20px auto;
+            padding-top: 22px; border-top: 1px solid #2a2a3a; text-align: center;
+        }
+        .follow-title {
+            color: #ffffff; font-size: 14px; font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .whatsapp-channel-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: #25D366; color: white; text-decoration: none;
+            padding: 10px 24px; border-radius: 25px;
+            font-size: 13px; font-weight: bold; transition: all 0.3s;
+        }
+        .whatsapp-channel-btn:hover {
+            background-color: #20b858; transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
+        
+        .footer-copyright {
+            max-width: 1200px; margin: 0 auto; text-align: center;
+            padding-top: 18px; border-top: 1px solid #2a2a3a;
+            color: #888; font-size: 11px; line-height: 2;
+        }
+        .footer-copyright p { margin: 4px 0; }
+        .footer-copyright .network { font-size: 10px; color: #666; margin-top: 6px; }
+        
+        /* ============================ */
+        /* Toast Notification مدرن      */
+        /* ============================ */
+        .pwa-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 100%);
+            color: white;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            z-index: 9998;
+            max-width: 380px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transform: translateY(200px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border: 2px solid var(--accent);
+            direction: rtl;
+            overflow: hidden;
+        }
+        .pwa-toast::before {
+            content: ''; position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at top right, rgba(243, 156, 18, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .pwa-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .pwa-toast-icon {
+            position: relative; z-index: 2;
+            width: 55px; height: 55px;
+            border-radius: 14px; overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: iconFloat 3s infinite;
+        }
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .pwa-toast-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .pwa-toast-content {
+            position: relative; z-index: 2;
+            flex: 1; text-align: right;
+        }
+        .pwa-toast-title {
+            font-size: 15px; font-weight: bold;
+            margin-bottom: 6px; color: #ffffff;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .pwa-toast-title::before {
+            content: '📲'; font-size: 17px;
+        }
+        .pwa-toast-text {
+            font-size: 12px; color: #b8c4d9;
+            line-height: 1.7; margin-bottom: 14px;
+        }
+        .pwa-toast-highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .pwa-toast-buttons { display: flex; gap: 8px; }
+        .pwa-toast-install {
+            background: linear-gradient(135deg, var(--accent), #e67e22);
+            color: white; border: none;
+            padding: 10px 18px; border-radius: 22px;
+            font-size: 13px; font-weight: bold;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer; transition: all 0.25s;
+            flex: 1;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+        }
+        .pwa-toast-install:hover {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(243, 156, 18, 0.6);
+        }
+        .pwa-toast-close {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 16px; border-radius: 22px;
+            font-size: 13px;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer; transition: all 0.25s;
+        }
+        .pwa-toast-close:hover { background: rgba(255,255,255,0.2); }
+        .pwa-toast-close-x {
+            position: absolute; top: 10px; left: 12px;
+            background: transparent; border: none;
+            color: #888; font-size: 20px;
+            cursor: pointer; line-height: 1;
+            padding: 0; transition: color 0.2s;
+            z-index: 3;
+        }
+        .pwa-toast-close-x:hover { color: #ffffff; }
+        
+        /* پیام موفقیت پس از نصب */
+        .pwa-installing-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #27ae60, #16a085);
+            color: white;
+            border-radius: 18px;
+            padding: 18px 22px;
+            box-shadow: 0 15px 50px rgba(39, 174, 96, 0.5);
+            z-index: 9999;
+            max-width: 340px;
+            transform: translateY(200px);
+            opacity: 0;
+            transition: all 0.5s;
+            border: 2px solid rgba(255,255,255,0.3);
+            direction: rtl;
+            text-align: center;
+        }
+        .pwa-installing-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .pwa-installing-toast .title {
+            font-size: 14px; font-weight: bold; margin-bottom: 6px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .pwa-installing-toast .title::before { content: '⏳'; }
+        .pwa-installing-toast .text {
+            font-size: 12px; line-height: 1.7; opacity: 0.95;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-card { grid-template-columns: 1fr; }
+            .hero-image { min-height: 260px; aspect-ratio: 16/10; }
+            .hero-content { padding: 22px 20px; }
+            .hero-title { font-size: 19px; }
+            .hero-excerpt { font-size: 13px; }
+        }
+        
+        @media (max-width: 600px) {
+            .top-ad { height: 80px; }
+            .ad-overlay { padding: 0 16px; }
+            .ad-brand { font-size: 26px; letter-spacing: 3px; }
+            .ad-grg-badge { padding: 4px 10px; }
+            .ad-grg-badge .text { font-size: 10px; }
+            .ad-slogan-fa { font-size: 11px; }
+            .ad-slogan-en { font-size: 9px; }
+            
+            .header-container { padding: 10px 12px; }
+            .brand-title { font-size: 17px; }
+            .brand-subtitle { font-size: 9px; }
+            .menu-btn { width: 40px; height: 40px; }
+            .menu-btn span { width: 18px; height: 2px; }
+            
+            .menu-inner { grid-template-columns: 1fr; padding: 10px; }
+            .menu-dropdown a { padding: 9px 12px; font-size: 12px; }
+            
+            .category-link { padding: 10px 12px; font-size: 12px; }
+            
+            .lasontras-banner { padding: 8px 12px; gap: 10px; }
+            .lasontras-image { width: 36px; height: 36px; }
+            .lasontras-title { font-size: 13px; }
+            .lasontras-subtitle { display: none; }
+            .lasontras-arrow { font-size: 16px; }
+            
+            .section-title { font-size: 16px; }
+            .section-title::before { height: 20px; width: 4px; }
+            
+            .urgent-news-card { padding: 16px; }
+            .urgent-header { gap: 8px; padding-bottom: 10px; margin-bottom: 12px; }
+            .urgent-badge { padding: 5px 10px; font-size: 10px; }
+            .urgent-title-header { font-size: 12px; }
+            .urgent-item { padding: 10px 12px; }
+            .urgent-item-title { font-size: 12px; }
+            .urgent-list { min-height: 210px; }
+            
+            .hero-content { padding: 18px 16px; }
+            .hero-title { font-size: 16px; }
+            .hero-excerpt { font-size: 12px; -webkit-line-clamp: 2; }
+            .hero-meta { font-size: 10px; gap: 10px; }
+            
+            .quick-news-item { padding: 14px 16px; }
+            .quick-news-title { font-size: 13px; }
+            
+            .featured-title { font-size: 14px; }
+            .featured-overlay { padding: 50px 14px 14px 14px; }
+            
+            .news-card-title { font-size: 14px; }
+            
+            .simple-news-item { padding: 14px 16px; }
+            .simple-news-title { font-size: 13px; }
+            
+            .page-num {
+                min-width: 42px; height: 42px;
+                font-size: 14px; padding: 0 12px;
+            }
+            
+            .footer-row { gap: 10px 16px; }
+            .footer-row a { font-size: 11px; }
+            
+            .pwa-toast {
+                right: 10px; left: 10px; bottom: 10px;
+                max-width: none; padding: 16px; border-radius: 14px;
+            }
+            .pwa-toast-icon { width: 48px; height: 48px; }
+            .pwa-installing-toast {
+                right: 10px; left: 10px; bottom: 10px;
+                max-width: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<h1>📰 اخبار</h1>
-<div id="out">⏳ در حال بارگذاری...</div>
+    <!-- تبلیغ Heinz -->
+    <div class="top-ad-wrapper">
+        <div class="top-ad">
+            <a href="https://www.heinz.com" target="_blank">
+                <img src="products/heinz.jpg" alt="Heinz" class="ad-bg" onerror="this.style.display='none';">
+                <div class="ad-overlay">
+                    <div class="ad-left">
+                        <span class="ad-brand">HEINZ</span>
+                        <div class="ad-grg-badge">
+                            <span class="dot"></span>
+                            <span class="text">GRG</span>
+                        </div>
+                    </div>
+                    <div class="ad-slogan-box">
+                        <div class="ad-slogan-fa">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</div>
+                        <div class="ad-slogan-en">No one grows Ketchup like Heinz</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 
-<script type="module">
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+    <!-- هدر -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="brand-text">
+                    <div class="brand-title">گلهای رنگارنگ</div>
+                    <div class="brand-subtitle">پایگاه خبری مستقل</div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  const supabase = createClient(
-    'https://tatzsjktdaxglldtdvcg.supabase.co',
-    'sb_publishable_dLdosYuzUAkrx2bbJCzcFQ_ouTEsPV7'
-  );
+    <!-- نوار دسته‌بندی -->
+    <nav class="category-bar">
+        <div class="category-bar-inner">
+            <a href="index.html" class="category-link active">🏠 آخرین اخبار</a>
+            <a href="#" class="category-link">🏛️ سیاسی</a>
+            <a href="#" class="category-link">💰 اقتصادی</a>
+            <a href="#" class="category-link">⚽ ورزشی</a>
+            <a href="#" class="category-link">💻 تکنولوژی</a>
+            <a href="#" class="category-link">🎬 فرهنگی</a>
+            <a href="#" class="category-link">🏥 سلامت</a>
+            <a href="#" class="category-link">👥 اجتماعی</a>
+            <a href="#" class="category-link">💼 کسب و کار</a>
+        </div>
+    </nav>
 
-  const out = document.getElementById('out');
+    <!-- منو -->
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <a href="bours.html"><span class="menu-icon">📊</span><span>تحلیل بورس</span></a>
+            <a href="shop.html"><span class="menu-icon">🛍️</span><span>فروشگاه</span></a>
+            <a href="LASVENTRAS/index.html"><span class="menu-icon">📍</span><span>اخبار لاسونتراس</span></a>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank"><span class="menu-icon">💬</span><span>کانال واتس‌اپ</span></a>
+            <a href="pages/about.html"><span class="menu-icon">ℹ️</span><span>درباره ما</span></a>
+        </div>
+    </div>
 
-  const { data, error } = await supabase
-    .from('News')
-    .select('*')
-    .order('created_at', { ascending: false });
+    <!-- بنر لاسونتراس -->
+    <div class="lasontras-banner-wrap">
+        <a href="LASVENTRAS/index.html" class="lasontras-banner">
+            <div class="lasontras-image">
+                <img src="products/lasontras.jpg" alt="لاسونتراس" onerror="this.style.display='none'; this.parentElement.innerHTML='📍'; this.parentElement.style.fontSize='20px';">
+            </div>
+            <div class="lasontras-content">
+                <span class="lasontras-label">اختصاصی</span>
+                <span class="lasontras-title">ایالت لاسونتراس</span>
+                <span class="lasontras-subtitle">پوشش لحظه‌ای رویدادهای محلی و سیاسی</span>
+            </div>
+            <div class="lasontras-arrow">←</div>
+        </a>
+    </div>
 
-  if (error) {
-    out.innerHTML = '<div class="error">خطا: ' + error.message + '</div>';
-  } else if (!data || data.length === 0) {
-    out.innerHTML = '<div class="empty">📭 هنوز خبری ثبت نشده</div>';
-  } else {
-    out.innerHTML = data.map(n => `
-      <div class="card">
-        <h2>${n.title || 'بی‌عنوان'}</h2>
-        <p>${n.body || ''}</p>
-        <div class="date">${n.created_at ? new Date(n.created_at).toLocaleDateString('fa-IR') : ''}</div>
-      </div>
-    `).join('');
-  }
-</script>
+    <!-- محتوای اصلی -->
+    <div class="main-content">
 
+        <!-- ============================ -->
+        <!-- خبر فوری - ۳ تایی چرخشی      -->
+        <!-- ============================ -->
+        <div class="urgent-news-section">
+            <div class="urgent-news-card">
+                <div class="urgent-header">
+                    <div class="urgent-header-right">
+                        <div class="urgent-badge">فوری</div>
+                        <div class="urgent-title-header">اخبار لحظه‌ای</div>
+                    </div>
+                    <div class="urgent-pagination" id="urgentPagination">1/2</div>
+                </div>
+                <div class="urgent-list" id="urgentList">
+                    <!-- با JavaScript پر میشه -->
+                </div>
+                <div class="urgent-progress" id="urgentProgress">
+                    <!-- نقطه‌های نشانگر -->
+                </div>
+            </div>
+        </div>
+
+        <!-- آخرین اخبار -->
+        <div class="section-header">
+            <h2 class="section-title">آخرین اخبار</h2>
+        </div>
+
+        <div class="quick-news-grid">
+            <a href="N1/news26.html" class="quick-news-item">
+                <span class="quick-news-topic">🛫 عراق</span>
+                <div class="quick-news-title">رفع ممنوعیت پروازهای ایرانی به فرودگاه نجف</div>
+                <div class="quick-news-desc">ممنوعیت ورود پروازهای ایرانی به فرودگاه بین‌المللی نجف طی ۲۴ ساعت آینده لغو می‌شود.</div>
+            </a>
+            
+            <a href="N1/news27.html" class="quick-news-item">
+                <span class="quick-news-topic">🌍 منطقه</span>
+                <div class="quick-news-title">ادعای کشته شدن ۴ کارشناس ایرانی در یمن</div>
+                <div class="quick-news-desc">سخنگوی نیروهای مسلح یمن مدعی شد ۴ کارشناس ایرانی در حمله به مواضع حوثی‌ها کشته شده‌اند.</div>
+            </a>
+            
+            <a href="N1/news28.html" class="quick-news-item">
+                <span class="quick-news-topic">🇬🇧 بریتانیا</span>
+                <div class="quick-news-title">بررسی نقش احتمالی تهران در طرح بمب‌گذاری</div>
+                <div class="quick-news-desc">پلیس ضدتروریسم بریتانیا در حال بررسی نقش احتمالی ایران در طرح بمب‌گذاری است.</div>
+            </a>
+        </div>
+
+        <!-- HERO -->
+        <a href="N1/news24.html" class="hero-card">
+            <div class="hero-image">
+                <div class="hero-badge">TECHNOLOGY</div>
+                <img src="products/ai-stress.jpg" alt="استرس هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+            </div>
+            <div class="hero-content">
+                <div class="hero-category">تکنولوژی</div>
+                <h2 class="hero-title">هوش مصنوعی در حال ایجاد سطوح کاملاً متفاوتی از استرس در آمریکا و چین است</h2>
+                <p class="hero-excerpt">
+                    پذیرش گسترده هوش مصنوعی در چین امروز، نشان‌دهنده استقبال این کشور از فناوری نوظهور است. نظرسنجی مورگان استنلی نشان داد ۸۰ درصد پاسخ‌دهندگان چینی حداقل هفتگی از هوش مصنوعی استفاده می‌کنند.
+                </p>
+                <div class="hero-meta">
+                    <span>✍️ آناهیتا بهرامی</span>
+                    <span>📅 ۱۷ سپتامبر ۲۰۲۶</span>
+                    <span>🕐 ۸:۲۱ بعدظهر</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- اخبار ویژه -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار ویژه</h2>
+        </div>
+
+        <div class="featured-grid">
+            <a href="N1/news20.html" class="featured-card">
+                <div class="featured-topic">تحلیل</div>
+                <img src="products/china-ai.jpg" alt="چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">تحلیل</span>
+                    <div class="featured-title">چین در مسابقه هوش مصنوعی به پیش می‌رود؛ صنعت جهانی در آستانه نقطه عطف</div>
+                </div>
+            </a>
+            <a href="N1/news15.html" class="featured-card">
+                <div class="featured-topic">فناوری</div>
+                <img src="products/ai-news.jpg" alt="هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">خبر ویژه</span>
+                    <div class="featured-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</div>
+                </div>
+            </a>
+            <a href="N1/news19.html" class="featured-card">
+                <div class="featured-topic">سیاسی</div>
+                <img src="products/doj-news.jpg" alt="وزارت دادگستری" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">اختصاصی</span>
+                    <div class="featured-title">تماس تلفنی پرتنش و استعفا، تحقیقات وزارت دادگستری درباره دشمنان ترامپ را به هم ریخت</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- اخبار تکنولوژی -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار تکنولوژی</h2>
+        </div>
+
+        <div class="news-grid">
+            <a href="N1/news16.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تحلیل</div>
+                    <img src="products/china-ai.jpg" alt="ترامپ و چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تحلیل</div>
+                    <h3 class="news-card-title">ترامپ ترمز هوش مصنوعی را نمی‌کشد چون می‌خواهد چین را شکست دهد</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+            <a href="N1/news17.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تکنولوژی</div>
+                    <img src="products/ai-stress.jpg" alt="سقوط سهام" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تکنولوژی</div>
+                    <h3 class="news-card-title">سقوط سهام مرتبط با هوش مصنوعی پس از درخواست مدیران ارشد صنعت</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+            <a href="N1/news18.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تکنولوژی</div>
+                    <img src="products/ai-news.jpg" alt="نهاد استانداردسازی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تکنولوژی</div>
+                    <h3 class="news-card-title">شرکت‌های پیشرو هوش مصنوعی درباره ایجاد نهاد استانداردسازی گفتگو کرده‌اند</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- اخبار سیاسی -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار سیاسی</h2>
+        </div>
+
+        <div class="simple-news-grid">
+            <a href="N1/news21.html" class="simple-news-item">
+                <span class="simple-news-topic">🏛️ چین</span>
+                <div class="simple-news-title">هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی و جنگی شدن فضا مخالفیم</div>
+            </a>
+            <a href="N1/news22.html" class="simple-news-item">
+                <span class="simple-news-topic">🇺🇸 آمریکا</span>
+                <div class="simple-news-title">محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید</div>
+            </a>
+            <a href="N1/news15.html" class="simple-news-item">
+                <span class="simple-news-topic">💻 فناوری</span>
+                <div class="simple-news-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- صفحه‌بندی -->
+    <div class="pagination">
+        <span class="page-num active">۱</span>
+        <a href="news2.html" class="page-num">۲</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="pages/terms.html">Terms of Use</a>
+                <a href="pages/privacy.html">Privacy Policy</a>
+                <a href="pages/cookies.html">+Manage Cookies</a>
+                <a href="pages/adchoices.html">Ad Choices</a>
+                <a href="pages/accessibility.html">Accessibility & CC</a>
+                <a href="pages/newsletters.html">Newsletters</a>
+                <a href="pages/transcripts.html">Transcripts</a>
+                <a href="pages/sitemap.html">Sitemap</a>
+                <a href="pages/about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© ۲۰۲۶ شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <!-- Toast اپلیکیشن -->
+    <div class="pwa-toast" id="pwaToast">
+        <button class="pwa-toast-close-x" onclick="dismissToast()">×</button>
+        <div class="pwa-toast-icon">
+            <img src="products/icon-512.png" alt="GRG" onerror="this.style.display='none'; this.parentElement.innerHTML='📰'; this.parentElement.style.fontSize='26px';">
+        </div>
+        <div class="pwa-toast-content">
+            <div class="pwa-toast-title">اپ گلهای رنگارنگ</div>
+            <div class="pwa-toast-text">
+                برای دسترسی سریع‌تر و دریافت اخبار لحظه‌ای، اپ ما را نصب کنید!
+                <br>
+                <span class="pwa-toast-highlight">📲 بعد از زدن دکمه نصب، کمی صبر کنید تا اپ به صفحه موبایل شما اضافه شود.</span>
+            </div>
+            <div class="pwa-toast-buttons">
+                <button class="pwa-toast-install" onclick="installApp()">📲 نصب اپ</button>
+                <button class="pwa-toast-close" onclick="dismissToast()">بعدا</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast در حال نصب -->
+    <div class="pwa-installing-toast" id="pwaInstallingToast">
+        <div class="title">کمی صبر کنید...</div>
+        <div class="text">اپلیکیشن در حال اضافه شدن به صفحه اصلی شماست</div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+
+        // ============================================
+        // اخبار فوری - ۳ تایی چرخشی هر ۳ ثانیه
+        // ============================================
+        const urgentNews = [
+            { title: 'منبع آگاه: ادعای آغاز دور جدید مذاکرات غیرمستقیم ایران و آمریکا کذب است', source: 'منبع آگاه' },
+            { title: 'بدر البوسعیدی، وزیر امور خارجه عمان: گفتگو مطمئن‌ترین مسیر برای دستیابی به صلح پایدار است', source: 'وزیر خارجه عمان' },
+            { title: 'بیل گیتس: هوش مصنوعی از انسان باهوش‌تر است', source: 'بیل گیتس' },
+            { title: 'وزیر خزانه‌داری آمریکا درباره ایران: ایرانی‌ها گفتن در صورت توافق، تنگه هرمز رو باز می‌کنن. ولی تنگه بازه که', source: 'وزیر خزانه‌داری آمریکا' },
+            { title: 'ترامپ: توافقی که ایرانی‌ها می‌خواهند مدنظر من نیست', source: 'دونالد ترامپ' },
+            { title: 'اسکات بِسِنت: ما اکنون یک رئیس‌جمهور داریم که چینی‌ها به او احترام می‌گذارند', source: 'اسکات بسنت' }
+        ];
+        
+        let urgentBatch = 0;
+        const batchSize = 3;
+        const totalBatches = Math.ceil(urgentNews.length / batchSize);
+        const urgentList = document.getElementById('urgentList');
+        const urgentPagination = document.getElementById('urgentPagination');
+        const urgentProgress = document.getElementById('urgentProgress');
+        
+        // ساخت نقطه‌های نشانگر
+        function createProgressDots() {
+            urgentProgress.innerHTML = '';
+            for (let i = 0; i < totalBatches; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'urgent-dot' + (i === 0 ? ' active' : '');
+                urgentProgress.appendChild(dot);
+            }
+        }
+        
+        // نمایش ۳ خبر
+        function renderUrgentBatch() {
+            urgentList.classList.add('fade-out');
+            
+            setTimeout(() => {
+                urgentList.innerHTML = '';
+                
+                const startIndex = urgentBatch * batchSize;
+                const batch = urgentNews.slice(startIndex, startIndex + batchSize);
+                
+                batch.forEach((news, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'urgent-item';
+                    item.innerHTML = `
+                        <div class="urgent-item-icon"></div>
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">${news.title}</div>
+                            <div class="urgent-item-meta">
+                                <span class="urgent-item-source">${news.source}</span>
+                            </div>
+                        </div>
+                    `;
+                    urgentList.appendChild(item);
+                });
+                
+                // شمارنده
+                urgentPagination.textContent = (urgentBatch + 1) + '/' + totalBatches;
+                
+                // نقطه‌ها
+                const dots = urgentProgress.querySelectorAll('.urgent-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === urgentBatch);
+                });
+                
+                urgentList.classList.remove('fade-out');
+                urgentBatch = (urgentBatch + 1) % totalBatches;
+            }, 400);
+        }
+        
+        createProgressDots();
+        renderUrgentBatch();
+        setInterval(renderUrgentBatch, 3000);
+
+        // PWA Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => console.log('✅ Service Worker registered'))
+                    .catch((error) => console.log('❌ SW error:', error));
+            });
+        }
+
+        // ============================================
+        // Install Prompt - همیشه نشون بده
+        // ============================================
+        let deferredPrompt;
+        const pwaToast = document.getElementById('pwaToast');
+        const pwaInstallingToast = document.getElementById('pwaInstallingToast');
+        
+        // همیشه توست رو بعد از ۲ ثانیه نشون بده
+        setTimeout(() => {
+            if (pwaToast && !window.matchMedia('(display-mode: standalone)').matches) {
+                pwaToast.classList.add('show');
+            }
+        }, 2000);
+        
+        // قبل از نصب
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+        
+        // تابع نصب اپ
+        async function installApp() {
+            // مخفی کردن توست اول
+            pwaToast.classList.remove('show');
+            
+            if (deferredPrompt) {
+                // نمایش پیام "کمی صبر کنید"
+                pwaInstallingToast.classList.add('show');
+                
+                try {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log('User choice:', outcome);
+                    deferredPrompt = null;
+                } catch (err) {
+                    console.log('Install error:', err);
+                }
+                
+                // بعد از ۵ ثانیه پیام "کمی صبر کنید" محو میشه
+                setTimeout(() => {
+                    pwaInstallingToast.classList.remove('show');
+                }, 5000);
+            } else {
+                // اگه deferredPrompt نبود، پیام راهنما
+                pwaInstallingToast.classList.add('show');
+                setTimeout(() => {
+                    pwaInstallingToast.classList.remove('show');
+                }, 4000);
+            }
+        }
+        
+        // تابع بستن توست
+        function dismissToast() {
+            pwaToast.classList.remove('show');
+        }
+        
+        // وقتی اپ نصب شد
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ اپ نصب شد');
+            pwaToast.classList.remove('show');
+            pwaInstallingToast.classList.remove('show');
+            deferredPrompt = null;
+        });
+        
+        // اگه کاربر توی حالت standalone هست، توست رو نشون نده
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            if (pwaToast) pwaToast.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
