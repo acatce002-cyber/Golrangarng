@@ -1,7 +1,7 @@
 {
-  "name": "گل‌رنگ‌آرنگ",
-  "short_name": "گل‌رنگ",
-  "description": "اپلیکیشن گل‌رنگ‌آرنگ",
+  "name": گلهای رنگارنگ",
+  "short_name": "گلهای رنگارنگ",
+  "description": "اپلیکیشن گلهای رنگارنگ",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0f0f14",
