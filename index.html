@@ -942,4 +942,665 @@
         .whatsapp-channel-btn:hover {
             background-color: #20b858;
             transform: translateY(-2px);
-            box
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
+        
+        .footer-copyright {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 18px;
+            border-top: 1px solid #2a2a3a;
+            color: #888;
+            font-size: 11px;
+            line-height: 2;
+        }
+        .footer-copyright p { margin: 4px 0; }
+        .footer-copyright .network { font-size: 10px; color: #666; margin-top: 6px; }
+        
+        /* ============================ */
+        /* Toast Notification (اعلان نصب) */
+        /* ============================ */
+        .pwa-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
+            color: white;
+            border-radius: 16px;
+            padding: 18px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            z-index: 9998;
+            max-width: 360px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transform: translateY(200px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border: 2px solid var(--accent);
+            direction: rtl;
+        }
+        .pwa-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .pwa-toast-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .pwa-toast-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pwa-toast-content {
+            flex: 1;
+            text-align: right;
+        }
+        .pwa-toast-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pwa-toast-title::before {
+            content: '📲';
+            font-size: 16px;
+        }
+        .pwa-toast-text {
+            font-size: 12px;
+            color: #b8c4d9;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .pwa-toast-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .pwa-toast-install {
+            background: linear-gradient(135deg, var(--accent), #e67e22);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer;
+            transition: all 0.25s;
+            flex: 1;
+        }
+        .pwa-toast-install:hover {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.5);
+        }
+        .pwa-toast-close {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: 'IRANSans', Tahoma, sans-serif;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .pwa-toast-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .pwa-toast-close-x {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            background: transparent;
+            border: none;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        .pwa-toast-close-x:hover {
+            color: #ffffff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-card { grid-template-columns: 1fr; }
+            .hero-image { min-height: 260px; aspect-ratio: 16/10; }
+            .hero-content { padding: 22px 20px; }
+            .hero-title { font-size: 19px; }
+            .hero-excerpt { font-size: 13px; }
+        }
+        
+        @media (max-width: 600px) {
+            .top-ad { height: 75px; }
+            .ad-brand { font-size: 22px; letter-spacing: 2px; }
+            .ad-grg { font-size: 10px; padding: 3px 8px; }
+            .ad-slogan { font-size: 9px; padding: 4px 10px; }
+            .ad-overlay { flex-direction: column; gap: 4px; padding: 8px 12px; }
+            
+            .header-container { padding: 10px 12px; }
+            .brand-title { font-size: 17px; }
+            .brand-subtitle { font-size: 9px; }
+            .menu-btn { width: 40px; height: 40px; }
+            .menu-btn span { width: 18px; height: 2px; }
+            
+            .menu-inner { grid-template-columns: 1fr; padding: 10px; }
+            .menu-dropdown a { padding: 9px 12px; font-size: 12px; }
+            
+            .category-link { padding: 10px 12px; font-size: 12px; }
+            
+            .lasontras-banner { padding: 12px 16px; }
+            .lasontras-inner { gap: 10px; }
+            .lasontras-image { width: 48px; height: 48px; }
+            .lasontras-title { font-size: 15px; }
+            .lasontras-subtitle { font-size: 10px; }
+            .lasontras-arrow { font-size: 18px; }
+            
+            .section-title { font-size: 16px; }
+            .section-title::before { height: 20px; width: 4px; }
+            .section-link { font-size: 11px; }
+            
+            .hero-content { padding: 18px 16px; }
+            .hero-title { font-size: 16px; }
+            .hero-excerpt { font-size: 12px; -webkit-line-clamp: 2; }
+            .hero-meta { font-size: 10px; gap: 10px; }
+            
+            .quick-news-item { padding: 14px 16px; }
+            .quick-news-title { font-size: 13px; }
+            
+            .featured-title { font-size: 14px; }
+            .featured-subtitle { font-size: 10px; }
+            .featured-overlay { padding: 50px 14px 14px 14px; }
+            
+            .news-card-title { font-size: 14px; }
+            
+            .exclusive-section { padding: 16px; }
+            .exclusive-title { font-size: 15px; }
+            .exclusive-item { padding: 12px 14px; }
+            .exclusive-item-title { font-size: 12px; }
+            
+            .simple-news-item { padding: 14px 16px; }
+            .simple-news-title { font-size: 13px; }
+            
+            .page-num {
+                min-width: 42px; height: 42px;
+                font-size: 14px; padding: 0 12px;
+            }
+            
+            .footer-row { gap: 10px 16px; }
+            .footer-row a { font-size: 11px; }
+            
+            /* Toast در موبایل */
+            .pwa-toast {
+                right: 10px;
+                left: 10px;
+                bottom: 10px;
+                max-width: none;
+                padding: 16px;
+                border-radius: 14px;
+            }
+            .pwa-toast-icon { width: 44px; height: 44px; }
+            .pwa-toast-title { font-size: 13px; }
+            .pwa-toast-text { font-size: 11px; margin-bottom: 10px; }
+            .pwa-toast-install { padding: 7px 14px; font-size: 11px; }
+            .pwa-toast-close { padding: 7px 12px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- تبلیغ Heinz -->
+    <div class="top-ad-wrapper">
+        <div class="top-ad">
+            <a href="https://www.heinz.com" target="_blank">
+                <img src="products/heinz.jpg" alt="Heinz Ketchup" class="ad-bg" onerror="this.style.background='linear-gradient(135deg,#c0392b,#7d1f17)';">
+                <div class="ad-overlay">
+                    <span class="ad-brand">HEINZ</span>
+                    <span class="ad-grg">GRG</span>
+                    <span class="ad-slogan">هیچ‌کس مثل هاینز کچاب پرورش نمی‌ده</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- هدر -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="brand-text">
+                    <div class="brand-title">گلهای رنگارنگ</div>
+                    <div class="brand-subtitle">پایگاه خبری مستقل</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- نوار دسته‌بندی -->
+    <nav class="category-bar">
+        <div class="category-bar-inner">
+            <a href="index.html" class="category-link active">🏠 آخرین اخبار</a>
+            <a href="#" class="category-link">🏛️ سیاسی</a>
+            <a href="#" class="category-link">💰 اقتصادی</a>
+            <a href="#" class="category-link">⚽ ورزشی</a>
+            <a href="#" class="category-link">💻 تکنولوژی</a>
+            <a href="#" class="category-link">🎬 فرهنگی</a>
+            <a href="#" class="category-link">🏥 سلامت</a>
+            <a href="#" class="category-link">👥 اجتماعی</a>
+            <a href="#" class="category-link">💼 کسب و کار</a>
+        </div>
+    </nav>
+
+    <!-- منو -->
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <a href="bours.html">
+                <span class="menu-icon">📊</span>
+                <span>تحلیل بورس</span>
+            </a>
+            <a href="shop.html">
+                <span class="menu-icon">🛍️</span>
+                <span>فروشگاه</span>
+            </a>
+            <a href="LASVENTRAS/index.html">
+                <span class="menu-icon">📍</span>
+                <span>اخبار لاسونتراس</span>
+            </a>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">
+                <span class="menu-icon">💬</span>
+                <span>کانال واتس‌اپ</span>
+            </a>
+            <a href="pages/about.html">
+                <span class="menu-icon">ℹ️</span>
+                <span>درباره ما</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- بنر لاسونتراس -->
+    <div class="lasontras-banner-wrap">
+        <a href="LASVENTRAS/index.html" class="lasontras-banner">
+            <div class="lasontras-inner">
+                <div class="lasontras-image">
+                    <img src="products/lasontras.jpg" alt="ایالت لاسونتراس" onerror="this.style.display='none'; this.parentElement.innerHTML='📍'; this.parentElement.style.fontSize='28px';">
+                </div>
+                <div class="lasontras-content">
+                    <span class="lasontras-label">اخبار اختصاصی</span>
+                    <div class="lasontras-title">ایالت لاسونتراس</div>
+                    <div class="lasontras-subtitle">پوشش لحظه‌ای رویدادهای محلی، سیاسی و اجتماعی ایالت</div>
+                </div>
+                <div class="lasontras-arrow">←</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="main-content">
+
+        <!-- HERO -->
+        <a href="N1/news24.html" class="hero-card">
+            <div class="hero-image">
+                <div class="hero-badge">TECHNOLOGY</div>
+                <img src="products/ai-stress.jpg" alt="استرس هوش مصنوعی در آمریکا و چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+            </div>
+            <div class="hero-content">
+                <div class="hero-category">تکنولوژی</div>
+                <h2 class="hero-title">هوش مصنوعی در حال ایجاد سطوح کاملاً متفاوتی از استرس در آمریکا و چین است</h2>
+                <p class="hero-excerpt">
+                    پذیرش گسترده هوش مصنوعی در چین امروز، نشان‌دهنده استقبال این کشور از فناوری نوظهور است. نظرسنجی مورگان استنلی نشان داد ۸۰ درصد پاسخ‌دهندگان چینی حداقل هفتگی از هوش مصنوعی استفاده می‌کنند.
+                </p>
+                <div class="hero-meta">
+                    <span>✍️ آناهیتا بهرامی</span>
+                    <span>📅 ۱۷ سپتامبر ۲۰۲۶</span>
+                    <span>🕐 ۸:۲۱ بعدظهر</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- نوار فوری -->
+        <div class="breaking-bar">
+            <div class="breaking-label">فوری</div>
+            <div class="breaking-content">
+                <div class="breaking-text">🔴 سنتکام: درگیری شدید نیروهای آمریکایی و سپاه پاسداران در آب‌های منطقه • گزارش‌ها از صدای چند انفجار در تنگه هرمز • قیمت هر بشکه نفت به ۱۰۸ دلار رسید • ترامپ: ایرانی‌ها با کمبود سوخت مواجه هستند</div>
+            </div>
+        </div>
+
+        <!-- آخرین اخبار -->
+        <div class="section-header">
+            <h2 class="section-title">آخرین اخبار</h2>
+        </div>
+
+        <div class="quick-news-grid">
+            <a href="N1/news21.html" class="quick-news-item">
+                <span class="quick-news-topic">| سیاسی</span>
+                <div class="quick-news-title">هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی و جنگی شدن فضا مخالفیم</div>
+            </a>
+            <a href="N1/news22.html" class="quick-news-item">
+                <span class="quick-news-topic">| سیاسی</span>
+                <div class="quick-news-title">محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید</div>
+            </a>
+            <a href="N1/news23.html" class="quick-news-item">
+                <span class="quick-news-topic">| اقتصادی</span>
+                <div class="quick-news-title">مقام عمانی: بحران تنگه هرمز به زودی پایان خواهد یافت</div>
+            </a>
+        </div>
+
+        <!-- اخبار ویژه -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار ویژه</h2>
+        </div>
+
+        <div class="featured-grid">
+            <a href="N1/news20.html" class="featured-card">
+                <div class="featured-topic">| تحلیل</div>
+                <img src="products/china-ai.jpg" alt="چین در مسابقه هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">تحلیل</span>
+                    <div class="featured-title">چین در مسابقه هوش مصنوعی به پیش می‌رود؛ صنعت جهانی در آستانه نقطه عطف</div>
+                    <div class="featured-subtitle">آمریکا و چین درگیر یک رقابت تسلیحاتی هستند که یادآور رویارویی هسته‌ای دوران جنگ سرد است...</div>
+                </div>
+            </a>
+            <a href="N1/news15.html" class="featured-card">
+                <div class="featured-topic">| سیاسی</div>
+                <img src="products/ai-news.jpg" alt="هشدار غول‌های هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">خبر ویژه</span>
+                    <div class="featured-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</div>
+                    <div class="featured-subtitle">این صنعت ممکن است در انتخابات میاندوره‌ای و سال ۲۰۲۸ به موضوعی حتی تأثیرگذارتر تبدیل شود...</div>
+                </div>
+            </a>
+            <a href="N1/news19.html" class="featured-card">
+                <div class="featured-topic">| سیاسی</div>
+                <img src="products/doj-news.jpg" alt="وزارت دادگستری" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">اختصاصی GRG</span>
+                    <div class="featured-title">تماس تلفنی پرتنش و استعفا، تحقیقات وزارت دادگستری درباره دشمنان اصلی ترامپ را به هم ریخت</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- اخبار اختصاصی -->
+        <div class="exclusive-section">
+            <div class="exclusive-header">
+                <div class="exclusive-title">اخبار اختصاصی</div>
+                <span class="exclusive-badge">GRG Exclusive</span>
+            </div>
+            <div class="exclusive-grid">
+                <a href="N1/news19.html" class="exclusive-item">
+                    <span class="exclusive-item-topic">| سیاسی</span>
+                    <div class="exclusive-item-title">تماس تلفنی پرتنش و استعفا، تحقیقات وزارت دادگستری درباره دشمنان اصلی ترامپ را به هم ریخت</div>
+                </a>
+                <a href="N1/news20.html" class="exclusive-item">
+                    <span class="exclusive-item-topic">| تحلیل</span>
+                    <div class="exclusive-item-title">چین در مسابقه هوش مصنوعی به پیش می‌رود؛ صنعت جهانی در آستانه نقطه عطف</div>
+                </a>
+                <a href="N1/news24.html" class="exclusive-item">
+                    <span class="exclusive-item-topic">| تکنولوژی</span>
+                    <div class="exclusive-item-title">هوش مصنوعی در حال ایجاد سطوح کاملاً متفاوتی از استرس در آمریکا و چین است</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- اخبار تکنولوژی -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار تکنولوژی</h2>
+        </div>
+
+        <div class="news-grid">
+            <a href="N1/news16.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تحلیل</div>
+                    <img src="products/china-ai.jpg" alt="تحلیل ترامپ و چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تحلیل</div>
+                    <h3 class="news-card-title">ترامپ ترمز هوش مصنوعی را نمی‌کشد چون می‌خواهد چین را شکست دهد</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+            <a href="N1/news17.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تکنولوژی</div>
+                    <img src="products/ai-stress.jpg" alt="سقوط سهام هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تکنولوژی</div>
+                    <h3 class="news-card-title">سقوط سهام مرتبط با هوش مصنوعی پس از درخواست مدیران ارشد صنعت</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+            <a href="N1/news18.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">تکنولوژی</div>
+                    <img src="products/ai-news.jpg" alt="نهاد استانداردسازی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">تکنولوژی</div>
+                    <h3 class="news-card-title">شرکت‌های پیشرو هوش مصنوعی درباره ایجاد نهاد استانداردسازی گفتگو کرده‌اند</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ آناهیتا بهرامی</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- اخبار سیاسی -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار سیاسی</h2>
+        </div>
+
+        <div class="simple-news-grid">
+            <a href="N1/news21.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <div class="simple-news-title">هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی و جنگی شدن فضا مخالفیم</div>
+            </a>
+            <a href="N1/news22.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <div class="simple-news-title">محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید</div>
+            </a>
+            <a href="N1/news15.html" class="simple-news-item">
+                <span class="simple-news-topic">| سیاسی</span>
+                <div class="simple-news-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</div>
+            </a>
+        </div>
+
+        <!-- اخبار اقتصادی -->
+        <div class="section-header">
+            <h2 class="section-title">اخبار اقتصادی</h2>
+        </div>
+
+        <div class="quick-news-grid">
+            <a href="N1/news23.html" class="quick-news-item">
+                <span class="quick-news-topic">| اقتصادی</span>
+                <div class="quick-news-title">مقام عمانی: بحران تنگه هرمز به زودی پایان خواهد یافت</div>
+            </a>
+            <a href="N1/news14.html" class="quick-news-item">
+                <span class="quick-news-topic">| اقتصادی</span>
+                <div class="quick-news-title">قیمت نفت بیش از ۲٪ افزایش یافت؛ برنت به ۱۰۶.۷۲ دلار رسید</div>
+            </a>
+            <a href="bours.html" class="quick-news-item">
+                <span class="quick-news-topic">| تحلیل</span>
+                <div class="quick-news-title">تحلیل اختصاصی بورس آمریکا - هفته منتهی به ۱۳ سپتامبر ۲۰۲۶</div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- صفحه‌بندی -->
+    <div class="pagination">
+        <span class="page-num active">۱</span>
+        <a href="news2.html" class="page-num">۲</a>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="pages/terms.html">Terms of Use</a>
+                <a href="pages/privacy.html">Privacy Policy</a>
+                <a href="pages/cookies.html">+Manage Cookies</a>
+                <a href="pages/adchoices.html">Ad Choices</a>
+                <a href="pages/accessibility.html">Accessibility & CC</a>
+                <a href="pages/newsletters.html">Newsletters</a>
+                <a href="pages/transcripts.html">Transcripts</a>
+                <a href="pages/sitemap.html">Sitemap</a>
+                <a href="pages/about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© ۲۰۲۶ شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <!-- ============================ -->
+    <!-- Toast Notification (اعلان نصب) -->
+    <!-- ============================ -->
+    <div class="pwa-toast" id="pwaToast">
+        <button class="pwa-toast-close-x" onclick="dismissToast()">×</button>
+        <div class="pwa-toast-icon">
+            <img src="products/icon-512.png" alt="GRG" onerror="this.style.display='none'; this.parentElement.innerHTML='📰'; this.parentElement.style.fontSize='24px';">
+        </div>
+        <div class="pwa-toast-content">
+            <div class="pwa-toast-title">اپ گلهای رنگارنگ</div>
+            <div class="pwa-toast-text">برای دسترسی سریع‌تر و دریافت اخبار لحظه‌ای، اپ ما را نصب کنید!</div>
+            <div class="pwa-toast-buttons">
+                <button class="pwa-toast-install" onclick="installApp()">📲 نصب اپ</button>
+                <button class="pwa-toast-close" onclick="dismissToast()">بعدا</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+
+        // ============================
+        // PWA - Service Worker
+        // ============================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+
+        // ============================
+        // PWA - Install Prompt
+        // ============================
+        let deferredPrompt;
+        const pwaToast = document.getElementById('pwaToast');
+        
+        // وقتی مرورگر آماده نصب شد
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // چک کن کاربر قبلاً رد نکرده باشه
+            const dismissed = localStorage.getItem('pwaToastDismissed');
+            const dismissedTime = localStorage.getItem('pwaToastDismissedTime');
+            
+            if (dismissed === 'true' && dismissedTime) {
+                const daysSince = (Date.now() - parseInt(dismissedTime)) / (1000 * 60 * 60 * 24);
+                // اگه کمتر از ۷ روز از رد کردن گذشته، نشون نده
+                if (daysSince < 7) {
+                    return;
+                }
+            }
+            
+            // بعد از ۳ ثانیه Toast رو نشون بده
+            setTimeout(() => {
+                if (pwaToast) {
+                    pwaToast.classList.add('show');
+                }
+            }, 3000);
+        });
+        
+        // تابع نصب اپ
+        async function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('User choice:', outcome);
+                deferredPrompt = null;
+                pwaToast.classList.remove('show');
+                
+                if (outcome === 'accepted') {
+                    localStorage.setItem('pwaToastDismissed', 'true');
+                    localStorage.setItem('pwaToastDismissedTime', Date.now().toString());
+                }
+            }
+        }
+        
+        // تابع بستن Toast
+        function dismissToast() {
+            pwaToast.classList.remove('show');
+            localStorage.setItem('pwaToastDismissed', 'true');
+            localStorage.setItem('pwaToastDismissedTime', Date.now().toString());
+        }
+        
+        // وقتی اپ نصب شد
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ اپ نصب شد');
+            if (pwaToast) {
+                pwaToast.classList.remove('show');
+            }
+            localStorage.setItem('pwaToastDismissed', 'true');
+            localStorage.setItem('pwaToastDismissedTime', Date.now().toString());
+            deferredPrompt = null;
+        });
+        
+        // اگه کاربر اپ رو نصب کرده، دیگه Toast نشون نده
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            if (pwaToast) pwaToast.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
