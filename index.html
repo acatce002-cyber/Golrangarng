@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c0392b">
+    <meta name="description" content="گلهای رنگارنگ - پایگاه خبری مستقل">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="گلهای رنگارنگ">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
     <title>گلهای رنگارنگ - پایگاه خبری</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
@@ -42,7 +54,7 @@
         }
         
         /* ============================ */
-        /* تبلیغ بالای سایت - کوچیک     */
+        /* تبلیغ بالای سایت              */
         /* ============================ */
         .top-ad-wrapper {
             max-width: 1200px;
@@ -167,7 +179,7 @@
         }
         
         /* ============================ */
-        /* منوی بازشو - کوچیک          */
+        /* منوی بازشو                   */
         /* ============================ */
         .menu-dropdown {
             max-width: 1200px;
@@ -209,7 +221,7 @@
         .menu-icon { font-size: 16px; width: 20px; text-align: center; }
         
         /* ============================ */
-        /* نوار دسته‌بندی - زیر هدر      */
+        /* نوار دسته‌بندی                */
         /* ============================ */
         .category-bar {
             background-color: white;
@@ -348,7 +360,6 @@
             flex: 1;
         }
         
-        /* Section Header */
         .section-header {
             display: flex;
             align-items: center;
@@ -518,7 +529,7 @@
         }
         
         /* ============================ */
-        /* اخبار فوری - Quick Grid      */
+        /* Quick News Grid              */
         /* ============================ */
         .quick-news-grid {
             display: grid;
@@ -649,7 +660,7 @@
         }
         
         /* ============================ */
-        /* News Grid - اخبار با عکس     */
+        /* News Grid                    */
         /* ============================ */
         .news-grid {
             display: grid;
@@ -732,7 +743,7 @@
         }
         
         /* ============================ */
-        /* اخبار اختصاصی - Special      */
+        /* Exclusive Section            */
         /* ============================ */
         .exclusive-section {
             background: linear-gradient(135deg, #1a1a2e, #2c3e50);
@@ -817,7 +828,7 @@
         }
         
         /* ============================ */
-        /* Simple News - بدون عکس       */
+        /* Simple News                  */
         /* ============================ */
         .simple-news-grid {
             display: grid;
@@ -979,14 +990,7 @@
         .footer-copyright .network { font-size: 10px; color: #666; margin-top: 6px; }
         
         /* ============================ */
-        /* Responsive - Desktop         */
-        /* ============================ */
-        @media (min-width: 901px) {
-            .main-content { padding: 0 20px; }
-        }
-        
-        /* ============================ */
-        /* Responsive - Tablet          */
+        /* Responsive                    */
         /* ============================ */
         @media (max-width: 900px) {
             .hero-card {
@@ -1001,9 +1005,6 @@
             .hero-excerpt { font-size: 13px; }
         }
         
-        /* ============================ */
-        /* Responsive - Mobile          */
-        /* ============================ */
         @media (max-width: 600px) {
             .top-ad { height: 75px; }
             .ad-brand { font-size: 22px; letter-spacing: 2px; }
@@ -1076,7 +1077,7 @@
 </head>
 <body>
 
-    <!-- تبلیغ Heinz - کوچیک -->
+    <!-- تبلیغ Heinz -->
     <div class="top-ad-wrapper">
         <div class="top-ad">
             <a href="https://www.heinz.com" target="_blank">
@@ -1120,7 +1121,7 @@
         </div>
     </nav>
 
-    <!-- منو - کوچیک و مرتب -->
+    <!-- منو -->
     <div class="menu-dropdown" id="menuDropdown">
         <div class="menu-inner">
             <a href="bours.html">
@@ -1166,9 +1167,7 @@
     <!-- محتوای اصلی -->
     <div class="main-content">
 
-        <!-- ==================================== -->
-        <!-- HERO - خبر اصلی                     -->
-        <!-- ==================================== -->
+        <!-- HERO -->
         <a href="N1/news24.html" class="hero-card">
             <div class="hero-image">
                 <div class="hero-badge">TECHNOLOGY</div>
@@ -1188,9 +1187,7 @@
             </div>
         </a>
 
-        <!-- ==================================== -->
-        <!-- نوار اخبار فوری                      -->
-        <!-- ==================================== -->
+        <!-- نوار فوری -->
         <div class="breaking-bar">
             <div class="breaking-label">فوری</div>
             <div class="breaking-content">
@@ -1198,9 +1195,7 @@
             </div>
         </div>
 
-        <!-- ==================================== -->
-        <!-- اخبار فوری - Quick Grid              -->
-        <!-- ==================================== -->
+        <!-- آخرین اخبار -->
         <div class="section-header">
             <h2 class="section-title">آخرین اخبار</h2>
         </div>
@@ -1220,9 +1215,7 @@
             </a>
         </div>
 
-        <!-- ==================================== -->
-        <!-- اخبار ویژه - Featured Grid 3:4       -->
-        <!-- ==================================== -->
+        <!-- اخبار ویژه -->
         <div class="section-header">
             <h2 class="section-title">اخبار ویژه</h2>
         </div>
@@ -1256,9 +1249,7 @@
             </a>
         </div>
 
-        <!-- ==================================== -->
-        <!-- اخبار اختصاصی - Exclusive Section    -->
-        <!-- ==================================== -->
+        <!-- اخبار اختصاصی -->
         <div class="exclusive-section">
             <div class="exclusive-header">
                 <div class="exclusive-title">اخبار اختصاصی</div>
@@ -1280,9 +1271,7 @@
             </div>
         </div>
 
-        <!-- ==================================== -->
-        <!-- اخبار تکنولوژی                       -->
-        <!-- ==================================== -->
+        <!-- اخبار تکنولوژی -->
         <div class="section-header">
             <h2 class="section-title">اخبار تکنولوژی</h2>
         </div>
@@ -1332,9 +1321,7 @@
             </a>
         </div>
 
-        <!-- ==================================== -->
-        <!-- اخبار سیاسی                          -->
-        <!-- ==================================== -->
+        <!-- اخبار سیاسی -->
         <div class="section-header">
             <h2 class="section-title">اخبار سیاسی</h2>
         </div>
@@ -1354,9 +1341,7 @@
             </a>
         </div>
 
-        <!-- ==================================== -->
-        <!-- اخبار اقتصادی                        -->
-        <!-- ==================================== -->
+        <!-- اخبار اقتصادی -->
         <div class="section-header">
             <h2 class="section-title">اخبار اقتصادی</h2>
         </div>
@@ -1422,6 +1407,21 @@
             const dropdown = document.getElementById('menuDropdown');
             btn.classList.toggle('active');
             dropdown.classList.toggle('open');
+        }
+
+        // ============================
+        // PWA - Service Worker Registration
+        // ============================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('✅ Service Worker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
         }
     </script>
 </body>
