@@ -1268,18 +1268,25 @@
     <div class="main-content">
 
         <!-- ============================ -->
-        <!-- خبر فوری - کارت مدرن         -->
+        <!<div-- خبر فوری - کارت مدرن         -->
         <!-- ============================ -->
-        <div class="urgent-news-section">
+         <!-- ============================ -->
+<!-- خبر فوری - اسلایدر مدرن     -->
+<!-- ============================ -->
+<div class="urgent-news-section">
     <div class="urgent-news-card">
         <div class="urgent-header">
             <div class="urgent-badge">فوری</div>
             <div class="urgent-title-header">اخبار لحظه‌ای</div>
+            <div class="urgent-nav">
+                <button class="urgent-nav-btn" onclick="urgentPrev()">‹</button>
+                <span class="urgent-counter"><span id="urgentCurrent">1</span>/6</span>
+                <button class="urgent-nav-btn" onclick="urgentNext()">›</button>
+            </div>
         </div>
-        <div class="urgent-list">
+        <div class="urgent-list" id="urgentList">
             
-            <div class="urgent-item">
-                <div class="urgent-item-icon"></div>
+            <div class="urgent-item active">
                 <div class="urgent-item-content">
                     <div class="urgent-item-title">منبع آگاه: ادعای آغاز دور جدید مذاکرات غیرمستقیم ایران و آمریکا کذب است</div>
                     <div class="urgent-item-meta">
@@ -1289,7 +1296,6 @@
             </div>
             
             <div class="urgent-item">
-                <div class="urgent-item-icon"></div>
                 <div class="urgent-item-content">
                     <div class="urgent-item-title">بدر البوسعیدی، وزیر امور خارجه عمان: گفتگو مطمئن‌ترین مسیر برای دستیابی به صلح پایدار است</div>
                     <div class="urgent-item-meta">
@@ -1299,7 +1305,6 @@
             </div>
             
             <div class="urgent-item">
-                <div class="urgent-item-icon"></div>
                 <div class="urgent-item-content">
                     <div class="urgent-item-title">بیل گیتس: هوش مصنوعی از انسان باهوش‌تر است</div>
                     <div class="urgent-item-meta">
@@ -1309,7 +1314,6 @@
             </div>
             
             <div class="urgent-item">
-                <div class="urgent-item-icon"></div>
                 <div class="urgent-item-content">
                     <div class="urgent-item-title">وزیر خزانه‌داری آمریکا درباره ایران: ایرانی‌ها گفتن در صورت توافق، تنگه هرمز رو باز می‌کنن. ولی تنگه بازه که</div>
                     <div class="urgent-item-meta">
@@ -1319,7 +1323,6 @@
             </div>
             
             <div class="urgent-item">
-                <div class="urgent-item-icon"></div>
                 <div class="urgent-item-content">
                     <div class="urgent-item-title">ترامپ: توافقی که ایرانی‌ها می‌خواهند مدنظر من نیست</div>
                     <div class="urgent-item-meta">
@@ -1329,7 +1332,6 @@
             </div>
             
             <div class="urgent-item">
-                <div class="urgent-item-icon"></div>
                 <div class="urgent-item-content">
                     <div class="urgent-item-title">اسکات بِسِنت: ما اکنون یک رئیس‌جمهور داریم که چینی‌ها به او احترام می‌گذارند</div>
                     <div class="urgent-item-meta">
@@ -1339,8 +1341,17 @@
             </div>
             
         </div>
-    </div>
+        <!-- نقطه‌های راهنما -->
+        <div class="urgent-dots" id="urgentDots">
+            <span class="urgent-dot active" onclick="urgentGo(0)"></span>
+            <span class="urgent-dot" onclick="urgentGo(1)"></span>
+            <span class="urgent-dot" onclick="urgentGo(2)"></span>
+            <span class="urgent-dot" onclick="urgentGo(3)"></span>
+            <span class="urgent-dot" onclick="urgentGo(4)"></span>
+            <span class="urgent-dot" onclick="urgentGo(5)"></span>
         </div>
+    </div>
+</div>
 
         <!-- آخرین اخبار -->
 <div class="section-header">
@@ -1349,13 +1360,13 @@
 
 <div class="quick-news-grid">
     
-    <a href="N1/news27.html" class="quick-news-item">
+    <a href="N1/news26.html" class="quick-news-item">
         <span class="quick-news-topic">| سیاسی</span>
         <div class="quick-news-title">رفع ممنوعیت پروازهای ایرانی به فرودگاه نجف</div>
         <div class="quick-news-desc">پس از هفته‌ها توقف، پروازهای ایرانی به فرودگاه نجف از سر گرفته شد.</div>
     </a>
     
-    <a href="N1/news26.html" class="quick-news-item">
+    <a href="N1/news27.html" class="quick-news-item">
         <span class="quick-news-topic">| سیاسی</span>
         <div class="quick-news-title">ادعای کشته شدن ۴ کارشناس ایرانی در یمن</div>
         <div class="quick-news-desc">منابع ناشناس مدعی شدند ۴ کارشناس ایرانی در یمن کشته شده‌اند.</div>
