@@ -430,131 +430,172 @@
             border-radius: 3px;
         }
         
-        /* ============================ */
-        /* خبر فوری - کارت مدرن         */
-        /* ============================ */
-        .urgent-news-section {
-            margin-bottom: 30px;
-        }
-        .urgent-news-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 100%);
-            border-radius: 18px;
-            padding: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            border: 2px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-        }
-        .urgent-news-card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle at top right, rgba(192, 57, 43, 0.2) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .urgent-header {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid rgba(192, 57, 43, 0.3);
-        }
-        .urgent-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.5);
-            animation: urgentPulse 2s infinite;
-        }
-        .urgent-badge::before {
-            content: '⚡';
-            font-size: 14px;
-        }
-        @keyframes urgentPulse {
-            0%, 100% { box-shadow: 0 4px 12px rgba(192, 57, 43, 0.5); }
-            50% { box-shadow: 0 4px 20px rgba(192, 57, 43, 0.9); }
-        }
-        .urgent-title-header {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .urgent-title-header::before {
-            content: '📰';
-            font-size: 18px;
-        }
-        .urgent-list {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            gap: 10px;
-        }
-        .urgent-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-        .urgent-item:hover {
-            background: rgba(192, 57, 43, 0.2);
-            border-color: var(--primary);
-            transform: translateX(-4px);
-            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
-        }
-        .urgent-item-icon {
-            flex-shrink: 0;
-            width: 8px; height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            margin-top: 8px;
-            box-shadow: 0 0 10px var(--primary);
-            animation: urgentDot 1.5s infinite;
-        }
-        @keyframes urgentDot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        .urgent-item-content {
-            flex: 1;
-        }
-        .urgent-item-title {
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: bold;
-            line-height: 1.7;
-            margin-bottom: 4px;
-        }
-        .urgent-item-meta {
-            font-size: 10px;
-            color: #b8c4d9;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .urgent-item-source {
-            color: var(--accent);
-            font-weight: bold;
+        /* ===== اسلایدر اخبار فوری ===== */
+.urgent-news-section {
+    margin: 15px auto;
+    max-width: 900px;
+    padding: 0 10px;
+}
+
+.urgent-news-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.urgent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: rgba(255, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+    gap: 10px;
+}
+
+.urgent-badge {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 0, 0, 0); }
+}
+
+.urgent-title-header {
+    font-size: 13px;
+    color: #fff;
+    font-weight: bold;
+    flex: 1;
+    text-align: right;
+}
+
+.urgent-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.urgent-nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.urgent-nav-btn:hover {
+    background: rgba(255, 0, 0, 0.5);
+    transform: scale(1.1);
+}
+
+.urgent-counter {
+    color: #aaa;
+    font-size: 11px;
+    min-width: 28px;
+    text-align: center;
+}
+
+.urgent-list {
+    position: relative;
+    height: 90px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.urgent-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+.urgent-item.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.urgent-item-title {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.urgent-item-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+}
+
+.urgent-item-source {
+    color: #ff6b6b;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.urgent-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 0 12px;
+}
+
+.urgent-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.urgent-dot.active {
+    background: #ff0000;
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* موبایل */
+@media (max-width: 600px) {
+    .urgent-item-title {
+        font-size: 12px;
+    }
+    .urgent-list {
+        height: 100px;
+    }
+    .urgent-title-header {
+        font-size: 11px;
+    }
+}            
         }
         
         /* ============================ */
