@@ -1667,5 +1667,52 @@
             if (pwaToast) pwaToast.style.display = 'none';
         }
     </script>
+    <script>
+    let urgentIndex = 0;
+    const urgentItems = document.querySelectorAll('.urgent-item');
+    const urgentDots = document.querySelectorAll('.urgent-dot');
+    const urgentCurrent = document.getElementById('urgentCurrent');
+    const urgentTotal = urgentItems.length;
+    let urgentTimer;
+
+    function urgentShow(index) {
+        urgentItems.forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+        urgentDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        urgentCurrent.textContent = index + 1;
+        urgentIndex = index;
+    }
+
+    function urgentNext() {
+        const next = (urgentIndex + 1) % urgentTotal;
+        urgentShow(next);
+    }
+
+    function urgentPrev() {
+        const prev = (urgentIndex - 1 + urgentTotal) % urgentTotal;
+        urgentShow(prev);
+    }
+
+    function urgentGo(index) {
+        urgentShow(index);
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(urgentTimer);
+        urgentTimer = setInterval(urgentNext, 3000);
+    }
+
+    // شروع خودکار
+    resetTimer();
+
+    // توقف وقتی موس روشه
+    const urgentCard = document.querySelector('.urgent-news-card');
+    urgentCard.addEventListener('mouseenter', () => clearInterval(urgentTimer));
+    urgentCard.addEventListener('mouseleave', resetTimer);
+    </script>
 </body>
 </html>
