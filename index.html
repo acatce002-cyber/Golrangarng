@@ -1306,46 +1306,85 @@
     </div>
 
     <!-- محتوای اصلی -->
-    <div class="main-content">
-
-        <!-- ============================ -->
-        <!<div-- خبر فوری - کارت مدرن         -->
-        <!-- ============================ -->
-         <!-- ============================ -->
+<!-- ============================ -->
 <!-- خبر فوری - اسلایدر مدرن     -->
 <!-- ============================ -->
-<div class="simple-news-grid">
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| اقتصادی</span>
-        <div class="simple-news-title">قیمت نفت برنت هم اکنون بیش از 96 دلار است</div>
-    </a>
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| بین‌الملل</span>
-        <div class="simple-news-title">ترامپ: می‌خواهم قبل از ترک کاخ سفید، پرونده کوبا را ببندم</div>
-    </a>
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| سیاسی</span>
-        <div class="simple-news-title">احتمال حمله گسترده امریکا به ایران تا آخر سال 2026 در سایت شرط بندی پلی مارکت به 9 درصد کاهش یافت</div>
-    </a>
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| نظامی</span>
-        <div class="simple-news-title">وزارت دفاع روسیه: یک کشتی باری در دریای سیاه، جنوب غربی اودیسا، مورد هدف قرار گرفت</div>
-    </a>
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| خاورمیانه</span>
-        <div class="simple-news-title">اسرائیل جنوب لبنان را گلوله‌باران کرد؛ منابع محلی بامداد امروز از گلوله‌باران مناطقی در جنوب لبنان توسط توپخانه اسرائیل خبر دادند</div>
-    </a>
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| سیاسی</span>
-        <div class="simple-news-title">ان بی سی: مذاکرات به بن بست محکمی خورده</div>
-    </a>
-    <a href="#" class="simple-news-item">
-        <span class="simple-news-topic">| سیاسی</span>
-        <div class="simple-news-title">ترامپ، روبیو رو مسئول مذاکرات با ایران کرد</div>
-    </a>
-</div>
+<div class="urgent-news-section">
+    <div class="urgent-news-card">
+        <div class="urgent-header">
+            <div class="urgent-badge">فوری</div>
+            <div class="urgent-title-header">اخبار لحظه‌ای</div>
+            <div class="urgent-nav">
+                <button class="urgent-nav-btn" onclick="urgentPrev()">‹</button>
+                <span class="urgent-counter"><span id="urgentCurrent">1</span>/7</span>
+                <button class="urgent-nav-btn" onclick="urgentNext()">›</button>
+            </div>
+        </div>
+        <div class="urgent-list" id="urgentList">
 
-            
+            <div class="urgent-item active">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">قیمت نفت برنت هم اکنون بیش از 96 دلار است</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">اقتصادی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgent-item">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">ترامپ: می‌خواهم قبل از ترک کاخ سفید، پرونده کوبا را ببندم</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">بین‌الملل</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgent-item">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">احتمال حمله گسترده امریکا به ایران تا آخر سال 2026 در سایت شرط بندی پلی مارکت به 9 درصد کاهش یافت</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">سیاسی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgent-item">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">وزارت دفاع روسیه: یک کشتی باری در دریای سیاه، جنوب غربی اودیسا، مورد هدف قرار گرفت</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">نظامی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgent-item">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">اسرائیل جنوب لبنان را گلوله‌باران کرد؛ منابع محلی بامداد امروز از گلوله‌باران مناطقی در جنوب لبنان خبر دادند</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">خاورمیانه</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgent-item">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">ان بی سی: مذاکرات به بن بست محکمی خورده</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">سیاسی</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="urgent-item">
+                <div class="urgent-item-content">
+                    <div class="urgent-item-title">ترامپ، روبیو رو مسئول مذاکرات با ایران کرد</div>
+                    <div class="urgent-item-meta">
+                        <span class="urgent-item-source">سیاسی</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <!-- نقطه‌های راهنما -->
         <div class="urgent-dots" id="urgentDots">
@@ -1355,9 +1394,11 @@
             <span class="urgent-dot" onclick="urgentGo(3)"></span>
             <span class="urgent-dot" onclick="urgentGo(4)"></span>
             <span class="urgent-dot" onclick="urgentGo(5)"></span>
+            <span class="urgent-dot" onclick="urgentGo(6)"></span>
         </div>
     </div>
 </div>
+
 
         <!-- آخرین اخبار -->
 <div class="section-header">
