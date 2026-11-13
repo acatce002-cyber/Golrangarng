@@ -362,18 +362,24 @@
             <h2 class="section-title">تحلیل ویژه</h2>
         </div>
         <!-- ==================================== -->
-<!-- HERO - خبر بزرگ انتخابات -->
-<!-- ==================================== -->
-<a href="N2/news8.html" class="hero-card" style="display: flex; flex-direction: column;">
-    <div class="hero-image" style="min-height: 280px; max-height: 400px; width: 100%;">
-        <div class="hero-badge" style="top: 15px; left: 15px; right: auto;">سیاسی</div>
-        <!-- نام عکس را در خط زیر در صورت نیاز تغییر دهید -->
-        <img src="../products/lasventras-featured.jpg" alt="بازگشت محمد علی‌نیا" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
-    </div>
-    <div class="hero-content" style="padding: 20px 30px;">
-        <h2 class="hero-title" style="font-size: 26px; margin: 0; text-align: justify; line-height: 1.6;">بازگشت پرحاشیه محمد علی‌نیا؛ لاسونتراس با یک فرماندار پرسش‌برانگیز روبه‌روست، آیا تاریخ دوباره تکرار می‌شود؟</h2>
-    </div>
-</a>
+        <!-- ==================================== -->
+        <!-- HERO - خبر بزرگ (تیتر روی عکس)       -->
+        <!-- ==================================== -->
+        <a href="N2/news8.html" style="display: block; position: relative; width: 100%; min-height: 420px; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.2); margin-bottom: 30px; text-decoration: none; border: 1px solid #333;">
+            
+            <!-- عکس تمام‌صفحه -->
+            <img src="../products/lasventras-featured.jpg" alt="بازگشت محمد علی‌نیا" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+            
+            <!-- برچسب سیاسی در بالا -->
+            <div style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #c0392b, #7d1f17); color: white; padding: 6px 18px; border-radius: 25px; font-size: 11px; font-weight: bold; z-index: 3; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">سیاسی</div>
+            
+            <!-- هاله تاریک و تیتر در پایین عکس (بدون هیچ کادر سفیدی) -->
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 120px 30px 30px 30px; background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 70%, transparent 100%); z-index: 2;">
+                <h2 style="color: #ffffff; font-size: 21px; font-weight: bold; margin: 0; line-height: 1.5; text-shadow: 0 3px 10px rgba(0,0,0,0.9); font-family: 'IRANSans', sans-serif;">بازگشت پرحاشیه محمد علی‌نیا؛ لاسونتراس با یک فرماندار پرسش‌برانگیز روبه‌روست؛ آیا تاریخ دوباره تکرار می‌شود؟</h2>
+            </div>
+            
+        </a>
+
 
         <!-- HERO - خبر بزرگ انتخابات -->
         <a href="N2/news7.html" class="hero-card">
