@@ -15,7 +15,7 @@
     <!-- Manifest -->
     <link rel="manifest" href="manifest.json">
     
-    <title>گلهای رنگارنگ - پایگاه خبری</title>
+    <title>گلهای رنگارنگ - پایگاه خبری اصلی</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         @font-face {
@@ -264,46 +264,6 @@
         }
         .menu-icon { font-size: 16px; width: 20px; text-align: center; }
         
-        /* نوار دسته‌بندی */
-        .category-bar {
-            background-color: white;
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .category-bar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 16px;
-            display: flex;
-            gap: 4px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .category-bar-inner::-webkit-scrollbar { display: none; }
-        .category-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 12px 16px;
-            color: #444;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
-            transition: all 0.25s;
-            flex-shrink: 0;
-        }
-        .category-link:hover {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-            background-color: #fff5f5;
-        }
-        .category-link.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-        
         /* ============================ */
         /* بنر لاسونتراس - جمع‌وجور    */
         /* ============================ */
@@ -414,10 +374,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #1a1a1a;
+            margin-top: 40px;
         }
+        .section-header:first-of-type { margin-top: 10px; }
         .section-title {
             display: flex; align-items: center; gap: 8px;
             font-size: 19px; font-weight: bold;
@@ -431,707 +393,119 @@
         }
         
         /* ===== اسلایدر اخبار فوری ===== */
-.urgent-news-section {
-    margin: 15px auto;
-    max-width: 900px;
-    padding: 0 10px;
-}
-
-.urgent-news-card {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 0, 0, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.urgent-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 15px;
-    background: rgba(255, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
-    gap: 10px;
-}
-
-.urgent-badge {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
-    color: #fff;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 3px 10px;
-    border-radius: 20px;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-    50% { box-shadow: 0 0 0 8px rgba(255, 0, 0, 0); }
-}
-
-.urgent-title-header {
-    font-size: 13px;
-    color: #fff;
-    font-weight: bold;
-    flex: 1;
-    text-align: right;
-}
-
-.urgent-nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.urgent-nav-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: none;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    line-height: 1;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.urgent-nav-btn:hover {
-    background: rgba(255, 0, 0, 0.5);
-    transform: scale(1.1);
-}
-
-.urgent-counter {
-    color: #aaa;
-    font-size: 11px;
-    min-width: 28px;
-    text-align: center;
-}
-
-.urgent-list {
-    position: relative;
-    height: 90px;
-    padding: 15px;
-    overflow: hidden;
-}
-
-.urgent-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 15px;
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: all 0.6s ease;
-    pointer-events: none;
-}
-
-.urgent-item.active {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-}
-
-.urgent-item-title {
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.7;
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.urgent-item-meta {
-    display: flex;
-    gap: 10px;
-    font-size: 11px;
-}
-
-.urgent-item-source {
-    color: #ff6b6b;
-    background: rgba(255, 0, 0, 0.1);
-    padding: 2px 8px;
-    border-radius: 10px;
-}
-
-.urgent-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    padding: 8px 0 12px;
-}
-
-.urgent-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.urgent-dot.active {
-    background: #ff0000;
-    width: 20px;
-    border-radius: 3px;
-}
-
-/* موبایل */
-@media (max-width: 600px) {
-    .urgent-item-title {
-        font-size: 12px;
-    }
-    .urgent-list {
-        height: 100px;
-    }
-    .urgent-title-header {
-        font-size: 11px;
-    }
-}            
-        }
+        .urgent-news-section { margin: 15px auto 30px auto; max-width: 900px; padding: 0 10px; }
+        .urgent-news-card { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 0, 0, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+        .urgent-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; background: rgba(255, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 0, 0, 0.2); gap: 10px; }
+        .urgent-badge { background: linear-gradient(135deg, #ff0000, #cc0000); color: #fff; font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 20px; animation: pulse 2s infinite; }
+        .urgent-title-header { font-size: 13px; color: #fff; font-weight: bold; flex: 1; text-align: right; }
+        .urgent-nav { display: flex; align-items: center; gap: 8px; }
+        .urgent-nav-btn { background: rgba(255, 255, 255, 0.1); color: #fff; border: none; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 16px; line-height: 1; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .urgent-nav-btn:hover { background: rgba(255, 0, 0, 0.5); transform: scale(1.1); }
+        .urgent-counter { color: #aaa; font-size: 11px; min-width: 28px; text-align: center; }
+        .urgent-list { position: relative; height: 90px; padding: 15px; overflow: hidden; }
+        .urgent-item { position: absolute; top: 0; left: 0; right: 0; padding: 15px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease; pointer-events: none; }
+        .urgent-item.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .urgent-item-title { color: #fff; font-size: 14px; line-height: 1.7; font-weight: 500; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .urgent-item-meta { display: flex; gap: 10px; font-size: 11px; }
+        .urgent-item-source { color: #ff6b6b; background: rgba(255, 0, 0, 0.1); padding: 2px 8px; border-radius: 10px; }
+        .urgent-dots { display: flex; justify-content: center; gap: 6px; padding: 8px 0 12px; }
+        .urgent-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.3s; }
+        .urgent-dot.active { background: #ff0000; width: 20px; border-radius: 3px; }
         
         /* ============================ */
         /* HERO                        */
         /* ============================ */
         .hero-card {
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            background-color: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.35s, box-shadow 0.35s;
-            border: 1px solid var(--border);
-        }
-        .hero-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(192, 57, 43, 0.2);
-            border-color: var(--primary);
-        }
-        .hero-image {
-            width: 100%; height: 100%;
-            min-height: 400px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
-        }
-        .hero-image img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s;
-        }
-        .hero-card:hover .hero-image img { transform: scale(1.05); }
-        .hero-badge {
-            position: absolute;
-            top: 18px; right: 18px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 11px; font-weight: bold;
-            letter-spacing: 1.5px;
-            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.5);
-            z-index: 2;
-            font-family: Georgia, serif;
-        }
-        .hero-content {
-            padding: 30px 28px;
             display: flex; flex-direction: column;
-            justify-content: center;
+            background-color: white; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px; text-decoration: none; color: inherit; transition: transform 0.35s, box-shadow 0.35s; border: 1px solid var(--border);
         }
-        .hero-category {
-            display: inline-flex; align-items: center; gap: 6px;
-            color: var(--primary);
-            font-size: 12px; font-weight: bold;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        .hero-category::before {
-            content: '';
-            width: 18px; height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        .hero-title {
-            font-size: 23px; font-weight: bold;
-            color: #1a1a1a;
-            line-height: 1.55;
-            margin-bottom: 15px;
-        }
-        .hero-excerpt {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.85;
-            margin-bottom: 20px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .hero-meta {
-            display: flex; align-items: center;
-            gap: 15px;
-            padding-top: 16px;
-            border-top: 1px solid #eee;
-            color: #888;
-            font-size: 11px;
-            flex-wrap: wrap;
-        }
-        
-        /* Quick News */
-        .quick-news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 14px;
-            margin-bottom: 30px;
-        }
-        .quick-news-item {
-            display: block;
-            padding: 18px 20px;
-            background-color: white;
-            text-decoration: none;
-            color: inherit;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            border-right: 4px solid var(--primary);
-            transition: all 0.3s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-        }
-        .quick-news-item:hover {
-            transform: translateX(-4px);
-            border-right-color: var(--primary-dark);
-            box-shadow: 0 8px 20px rgba(192, 57, 43, 0.15);
-        }
-        .quick-news-topic {
-            display: inline-block;
-            font-size: 10px;
-            color: var(--primary);
-            font-weight: bold;
-            background-color: #fff5f5;
-            padding: 3px 10px;
-            border-radius: 10px;
-            border: 1px solid #fadbd8;
-            margin-bottom: 8px;
-        }
-        .quick-news-title {
-            color: #1a1a1a;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 1.7;
-            transition: color 0.2s;
-        }
-        .quick-news-desc {
-            color: #777;
-            font-size: 12px;
-            line-height: 1.7;
-            margin-top: 6px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .quick-news-item:hover .quick-news-title { color: var(--primary); }
+        .hero-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(192, 57, 43, 0.2); border-color: var(--primary); }
+        .hero-image { width: 100%; min-height: 350px; overflow: hidden; position: relative; background: linear-gradient(135deg, #1a1a2e, #2c3e50); }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; position: absolute; top:0; left:0; }
+        .hero-card:hover .hero-image img { transform: scale(1.05); }
+        .hero-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: bold; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(192, 57, 43, 0.5); z-index: 2; font-family: 'IRANSans', sans-serif; }
+        .hero-content { padding: 25px 30px; display: flex; flex-direction: column; justify-content: center; }
+        .hero-category { display: inline-flex; align-items: center; gap: 6px; color: var(--primary); font-size: 12px; font-weight: bold; margin-bottom: 12px; letter-spacing: 1px; }
+        .hero-category::before { content: ''; width: 18px; height: 3px; background: var(--primary); border-radius: 2px; }
+        .hero-title { font-size: 25px; font-weight: bold; color: #1a1a1a; line-height: 1.55; margin-bottom: 15px; transition: color 0.2s; }
+        .hero-card:hover .hero-title { color: var(--primary); }
+        .hero-excerpt { font-size: 14px; color: #555; line-height: 1.85; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .hero-meta { display: flex; align-items: center; gap: 15px; padding-top: 16px; border-top: 1px solid #eee; color: #888; font-size: 11px; flex-wrap: wrap; }
         
         /* Featured Grid */
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-        .featured-card {
-            display: block;
-            position: relative;
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-            text-decoration: none;
-            transition: transform 0.35s, box-shadow 0.35s;
-            background-color: #1a1a1a;
-            border: 2px solid #e0e0e0;
-        }
-        .featured-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 45px rgba(192, 57, 43, 0.35);
-            border-color: var(--primary);
-        }
-        .featured-card img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s;
-        }
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .featured-card { display: block; position: relative; width: 100%; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.12); text-decoration: none; transition: transform 0.35s, box-shadow 0.35s; background-color: #1a1a2e; border: 2px solid #e0e0e0; }
+        .featured-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(192, 57, 43, 0.35); border-color: var(--primary); }
+        .featured-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
         .featured-card:hover img { transform: scale(1.06); }
-        .featured-topic {
-            position: absolute;
-            top: 14px; right: 14px;
-            z-index: 3;
-            font-size: 10px;
-            color: white;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 5px 14px;
-            border-radius: 18px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-        }
-        .featured-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 60px 18px 18px 18px;
-            background: linear-gradient(to top, 
-                rgba(0,0,0,0.98) 0%, 
-                rgba(0,0,0,0.92) 30%, 
-                rgba(0,0,0,0.6) 60%, 
-                transparent 100%);
-            z-index: 2;
-        }
-        .featured-label {
-            display: inline-block;
-            font-size: 10px;
-            color: #ffffff;
-            font-weight: bold;
-            background-color: rgba(192, 57, 43, 0.95);
-            padding: 3px 10px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-        .featured-title {
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: bold;
-            line-height: 1.7;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-        }
+        .featured-topic { position: absolute; top: 14px; right: 14px; z-index: 3; font-size: 10px; color: white; font-weight: bold; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); padding: 5px 14px; border-radius: 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.4); }
+        .featured-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 60px 18px 18px 18px; background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.92) 30%, rgba(0,0,0,0.6) 60%, transparent 100%); z-index: 2; }
+        .featured-label { display: inline-block; font-size: 10px; color: #ffffff; font-weight: bold; background-color: rgba(192, 57, 43, 0.95); padding: 3px 10px; border-radius: 8px; margin-bottom: 8px; }
+        .featured-title { color: #ffffff; font-size: 15px; font-weight: bold; line-height: 1.7; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
         
         /* News Grid */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-        .news-card {
-            display: flex; flex-direction: column;
-            background-color: white;
-            border-radius: 14px;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-            border: 1px solid var(--border);
-            transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
-        }
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(192, 57, 43, 0.15);
-            border-color: var(--primary);
-        }
-        .news-card-image {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
-            position: relative;
-        }
-        .news-card-image img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 30px; }
+        .news-card { display: flex; flex-direction: column; background-color: white; border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 3px 12px rgba(0,0,0,0.06); border: 1px solid var(--border); transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s; }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(192, 57, 43, 0.15); border-color: var(--primary); }
+        .news-card-image { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background: linear-gradient(135deg, #1a1a2e, #2c3e50); position: relative; }
+        .news-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .news-card:hover .news-card-image img { transform: scale(1.06); }
-        .news-card-badge {
-            position: absolute;
-            top: 12px; right: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 10px; font-weight: bold;
-            z-index: 2;
-        }
-        .news-card-content {
-            padding: 16px;
-            flex: 1;
-            display: flex; flex-direction: column;
-        }
-        .news-card-category {
-            font-size: 10px;
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-        .news-card-title {
-            font-size: 15px; font-weight: bold;
-            color: #1a1a1a;
-            line-height: 1.65;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            transition: color 0.2s;
-        }
+        .news-card-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 4px 12px; border-radius: 16px; font-size: 10px; font-weight: bold; z-index: 2; }
+        .news-card-content { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+        .news-card-category { font-size: 10px; color: var(--primary); font-weight: bold; margin-bottom: 6px; }
+        .news-card-title { font-size: 15px; font-weight: bold; color: #1a1a1a; line-height: 1.65; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s; }
         .news-card:hover .news-card-title { color: var(--primary); }
-        .news-card-meta {
-            margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 10px;
-            color: #999;
-            gap: 8px;
-        }
+        .news-card-meta { margin-top: auto; padding-top: 10px; border-top: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #999; gap: 8px; }
         
-        /* Simple News */
-        .simple-news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-        .simple-news-item {
-            display: block;
-            padding: 18px 20px;
-            background-color: white;
-            text-decoration: none;
-            color: inherit;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-        }
-        .simple-news-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 22px rgba(192, 57, 43, 0.15);
-        }
-        .simple-news-topic {
-            display: inline-block;
-            font-size: 10px;
-            color: var(--primary);
-            font-weight: bold;
-            background-color: #fff5f5;
-            padding: 3px 10px;
-            border-radius: 10px;
-            border: 1px solid #fadbd8;
-            margin-bottom: 8px;
-        }
-        .simple-news-title {
-            color: #1a1a1a;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 1.7;
-            transition: color 0.2s;
-        }
-        .simple-news-item:hover .simple-news-title { color: var(--primary); }
+        /* Quick News */
+        .quick-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 30px; }
+        .quick-news-item { display: block; padding: 18px 20px; background-color: white; text-decoration: none; color: inherit; border-radius: 12px; border: 1px solid var(--border); border-right: 4px solid var(--primary); transition: all 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .quick-news-item:hover { transform: translateX(-4px); border-right-color: var(--primary-dark); box-shadow: 0 8px 20px rgba(192, 57, 43, 0.15); }
+        .quick-news-topic { display: inline-block; font-size: 10px; color: var(--primary); font-weight: bold; background-color: #fff5f5; padding: 3px 10px; border-radius: 10px; border: 1px solid #fadbd8; margin-bottom: 8px; }
+        .quick-news-title { color: #1a1a1a; font-size: 14px; font-weight: bold; line-height: 1.7; transition: color 0.2s; }
+        .quick-news-desc { color: #777; font-size: 12px; line-height: 1.7; margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .quick-news-item:hover .quick-news-title { color: var(--primary); }
         
         /* صفحه‌بندی */
-        .pagination {
-            max-width: 1200px;
-            width: 100%;
-            margin: 25px auto;
-            padding: 0 16px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .page-num {
-            display: flex; align-items: center; justify-content: center;
-            min-width: 48px; height: 48px;
-            border-radius: 12px;
-            font-family: Georgia, serif;
-            font-size: 16px; font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s;
-            padding: 0 16px;
-            background-color: white;
-            color: #333;
-            border: 2px solid var(--border);
-        }
-        .page-num:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        .page-num.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.4);
-        }
+        .pagination { max-width: 1200px; width: 100%; margin: 25px auto; padding: 0 16px; display: flex; justify-content: center; gap: 10px; }
+        .page-num { display: flex; align-items: center; justify-content: center; min-width: 48px; height: 48px; border-radius: 12px; font-family: Georgia, serif; font-size: 16px; font-weight: bold; text-decoration: none; transition: all 0.3s; padding: 0 16px; background-color: white; color: #333; border: 2px solid var(--border); }
+        .page-num:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+        .page-num.active { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border-color: var(--primary); box-shadow: 0 6px 18px rgba(192, 57, 43, 0.4); }
         
         /* فوتر */
-        footer {
-            background-color: #0f0f1e;
-            padding: 35px 16px 22px 16px;
-            margin-top: auto;
-        }
-        .footer-links {
-            max-width: 1200px;
-            margin: 0 auto 25px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .footer-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px 30px;
-        }
-        .footer-row a {
-            color: #b8b8c8;
-            text-decoration: none;
-            font-size: 12px;
-            transition: color 0.25s;
-            white-space: nowrap;
-        }
+        footer { background-color: #0f0f1e; padding: 35px 16px 22px 16px; margin-top: auto; }
+        .footer-links { max-width: 1200px; margin: 0 auto 25px auto; display: flex; flex-direction: column; gap: 14px; }
+        .footer-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px 30px; }
+        .footer-row a { color: #b8b8c8; text-decoration: none; font-size: 12px; transition: color 0.25s; white-space: nowrap; }
         .footer-row a:hover { color: #ffffff; }
-        .footer-row a.about-link {
-            font-weight: bold;
-            color: var(--gold);
-        }
+        .footer-row a.about-link { font-weight: bold; color: var(--gold); }
         
-        .follow-section {
-            max-width: 1200px;
-            margin: 0 auto 20px auto;
-            padding-top: 22px;
-            border-top: 1px solid #2a2a3a;
-            text-align: center;
-        }
-        .follow-title {
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-        .whatsapp-channel-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 10px 24px;
-            border-radius: 25px;
-            font-size: 13px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        .whatsapp-channel-btn:hover {
-            background-color: #20b858;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
-        }
+        .follow-section { max-width: 1200px; margin: 0 auto 20px auto; padding-top: 22px; border-top: 1px solid #2a2a3a; text-align: center; }
+        .follow-title { color: #ffffff; font-size: 14px; font-weight: bold; margin-bottom: 12px; }
+        .whatsapp-channel-btn { display: inline-flex; align-items: center; gap: 8px; background-color: #25D366; color: white; text-decoration: none; padding: 10px 24px; border-radius: 25px; font-size: 13px; font-weight: bold; transition: all 0.3s; }
+        .whatsapp-channel-btn:hover { background-color: #20b858; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5); }
         .whatsapp-channel-btn svg { width: 18px; height: 18px; fill: white; }
         
-        .footer-copyright {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 18px;
-            border-top: 1px solid #2a2a3a;
-            color: #888;
-            font-size: 11px;
-            line-height: 2;
-        }
+        .footer-copyright { max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 18px; border-top: 1px solid #2a2a3a; color: #888; font-size: 11px; line-height: 2; }
         .footer-copyright p { margin: 4px 0; }
         .footer-copyright .network { font-size: 10px; color: #666; margin-top: 6px; }
         
         /* Toast */
-        .pwa-toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #1a1a2e, #2c3e50);
-            color: white;
-            border-radius: 16px;
-            padding: 18px 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            z-index: 9998;
-            max-width: 360px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            transform: translateY(200px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            border: 2px solid var(--accent);
-            direction: rtl;
-        }
-        .pwa-toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .pwa-toast-icon {
-            width: 50px; height: 50px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
+        .pwa-toast { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #1a1a2e, #2c3e50); color: white; border-radius: 16px; padding: 18px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); z-index: 9998; max-width: 360px; display: flex; align-items: flex-start; gap: 14px; transform: translateY(200px); opacity: 0; transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); border: 2px solid var(--accent); direction: rtl; }
+        .pwa-toast.show { transform: translateY(0); opacity: 1; }
+        .pwa-toast-icon { width: 50px; height: 50px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(192, 57, 43, 0.4); border: 2px solid rgba(255, 255, 255, 0.2); }
         .pwa-toast-icon img { width: 100%; height: 100%; object-fit: cover; }
         .pwa-toast-content { flex: 1; text-align: right; }
-        .pwa-toast-title {
-            font-size: 14px; font-weight: bold;
-            margin-bottom: 5px; color: #ffffff;
-            display: flex; align-items: center; gap: 6px;
-        }
+        .pwa-toast-title { font-size: 14px; font-weight: bold; margin-bottom: 5px; color: #ffffff; display: flex; align-items: center; gap: 6px; }
         .pwa-toast-title::before { content: '📲'; font-size: 16px; }
-        .pwa-toast-text {
-            font-size: 12px; color: #b8c4d9;
-            line-height: 1.6; margin-bottom: 12px;
-        }
+        .pwa-toast-text { font-size: 12px; color: #b8c4d9; line-height: 1.6; margin-bottom: 12px; }
         .pwa-toast-buttons { display: flex; gap: 8px; }
-        .pwa-toast-install {
-            background: linear-gradient(135deg, var(--accent), #e67e22);
-            color: white; border: none;
-            padding: 8px 16px; border-radius: 20px;
-            font-size: 12px; font-weight: bold;
-            font-family: 'IRANSans', Tahoma, sans-serif;
-            cursor: pointer; transition: all 0.25s;
-            flex: 1;
-        }
-        .pwa-toast-install:hover {
-            background: linear-gradient(135deg, #e67e22, #d35400);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.5);
-        }
-        .pwa-toast-close {
-            background: rgba(255,255,255,0.1);
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 8px 14px; border-radius: 20px;
-            font-size: 12px;
-            font-family: 'IRANSans', Tahoma, sans-serif;
-            cursor: pointer; transition: all 0.25s;
-        }
+        .pwa-toast-install { background: linear-gradient(135deg, var(--accent), #e67e22); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; font-family: 'IRANSans', Tahoma, sans-serif; cursor: pointer; transition: all 0.25s; flex: 1; }
+        .pwa-toast-install:hover { background: linear-gradient(135deg, #e67e22, #d35400); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(243, 156, 18, 0.5); }
+        .pwa-toast-close { background: rgba(255,255,255,0.1); color: #ffffff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 20px; font-size: 12px; font-family: 'IRANSans', Tahoma, sans-serif; cursor: pointer; transition: all 0.25s; }
         .pwa-toast-close:hover { background: rgba(255,255,255,0.2); }
-        .pwa-toast-close-x {
-            position: absolute; top: 10px; left: 12px;
-            background: transparent; border: none;
-            color: #888; font-size: 20px;
-            cursor: pointer; line-height: 1;
-            padding: 0; transition: color 0.2s;
-        }
+        .pwa-toast-close-x { position: absolute; top: 10px; left: 12px; background: transparent; border: none; color: #888; font-size: 20px; cursor: pointer; line-height: 1; padding: 0; transition: color 0.2s; }
         .pwa-toast-close-x:hover { color: #ffffff; }
         
         /* Responsive */
@@ -1151,62 +525,41 @@
             .ad-grg-badge .text { font-size: 10px; }
             .ad-slogan-fa { font-size: 11px; }
             .ad-slogan-en { font-size: 9px; }
-            
             .header-container { padding: 10px 12px; }
             .brand-title { font-size: 17px; }
             .brand-subtitle { font-size: 9px; }
             .menu-btn { width: 40px; height: 40px; }
             .menu-btn span { width: 18px; height: 2px; }
-            
             .menu-inner { grid-template-columns: 1fr; padding: 10px; }
             .menu-dropdown a { padding: 9px 12px; font-size: 12px; }
-            
-            .category-link { padding: 10px 12px; font-size: 12px; }
-            
             .lasontras-banner { padding: 8px 12px; gap: 10px; }
             .lasontras-image { width: 36px; height: 36px; }
             .lasontras-title { font-size: 13px; }
             .lasontras-subtitle { display: none; }
             .lasontras-arrow { font-size: 16px; }
-            
             .section-title { font-size: 16px; }
             .section-title::before { height: 20px; width: 4px; }
-            
             .urgent-news-card { padding: 16px; }
             .urgent-header { gap: 8px; padding-bottom: 10px; margin-bottom: 14px; }
             .urgent-badge { padding: 5px 10px; font-size: 11px; }
             .urgent-title-header { font-size: 14px; }
             .urgent-item { padding: 12px 14px; }
             .urgent-item-title { font-size: 12px; }
-            
             .hero-content { padding: 18px 16px; }
             .hero-title { font-size: 16px; }
             .hero-excerpt { font-size: 12px; -webkit-line-clamp: 2; }
             .hero-meta { font-size: 10px; gap: 10px; }
-            
             .quick-news-item { padding: 14px 16px; }
             .quick-news-title { font-size: 13px; }
-            
             .featured-title { font-size: 14px; }
             .featured-overlay { padding: 50px 14px 14px 14px; }
-            
             .news-card-title { font-size: 14px; }
-            
             .simple-news-item { padding: 14px 16px; }
             .simple-news-title { font-size: 13px; }
-            
-            .page-num {
-                min-width: 42px; height: 42px;
-                font-size: 14px; padding: 0 12px;
-            }
-            
+            .page-num { min-width: 42px; height: 42px; font-size: 14px; padding: 0 12px; }
             .footer-row { gap: 10px 16px; }
             .footer-row a { font-size: 11px; }
-            
-            .pwa-toast {
-                right: 10px; left: 10px; bottom: 10px;
-                max-width: none; padding: 16px; border-radius: 14px;
-            }
+            .pwa-toast { right: 10px; left: 10px; bottom: 10px; max-width: none; padding: 16px; border-radius: 14px; }
         }
     </style>
 </head>
@@ -1248,21 +601,6 @@
             </div>
         </div>
     </header>
-
-    <!-- نوار دسته‌بندی -->
-    <nav class="category-bar">
-        <div class="category-bar-inner">
-            <a href="index.html" class="category-link active">🏠 آخرین اخبار</a>
-            <a href="#" class="category-link">🏛️ سیاسی</a>
-            <a href="#" class="category-link">💰 اقتصادی</a>
-            <a href="#" class="category-link">⚽ ورزشی</a>
-            <a href="#" class="category-link">💻 تکنولوژی</a>
-            <a href="#" class="category-link">🎬 فرهنگی</a>
-            <a href="#" class="category-link">🏥 سلامت</a>
-            <a href="#" class="category-link">👥 اجتماعی</a>
-            <a href="#" class="category-link">💼 کسب و کار</a>
-        </div>
-    </nav>
 
     <!-- منو -->
     <div class="menu-dropdown" id="menuDropdown">
@@ -1306,177 +644,113 @@
     </div>
 
     <!-- محتوای اصلی -->
-<!-- ============================ -->
-<!-- خبر فوری - اسلایدر مدرن     -->
-<!-- ============================ -->
-<div class="urgent-news-section">
-    <div class="urgent-news-card">
-        <div class="urgent-header">
-            <div class="urgent-badge">فوری</div>
-            <div class="urgent-title-header">اخبار لحظه‌ای</div>
-            <div class="urgent-nav">
-                <button class="urgent-nav-btn" onclick="urgentPrev()">‹</button>
-                <span class="urgent-counter"><span id="urgentCurrent">1</span>/7</span>
-                <button class="urgent-nav-btn" onclick="urgentNext()">›</button>
+    <div class="main-content">
+
+        <!-- ============================ -->
+        <!-- خبر فوری - اسلایدر مدرن     -->
+        <!-- ============================ -->
+        <div class="urgent-news-section">
+            <div class="urgent-news-card">
+                <div class="urgent-header">
+                    <div class="urgent-badge">فوری</div>
+                    <div class="urgent-title-header">اخبار لحظه‌ای</div>
+                    <div class="urgent-nav">
+                        <button class="urgent-nav-btn" onclick="urgentPrev()">‹</button>
+                        <span class="urgent-counter"><span id="urgentCurrent">1</span>/7</span>
+                        <button class="urgent-nav-btn" onclick="urgentNext()">›</button>
+                    </div>
+                </div>
+                <div class="urgent-list" id="urgentList">
+                    <div class="urgent-item active">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">قیمت نفت برنت هم اکنون بیش از 96 دلار است</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">اقتصادی</span></div>
+                        </div>
+                    </div>
+                    <div class="urgent-item">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">ترامپ: می‌خواهم قبل از ترک کاخ سفید، پرونده کوبا را ببندم</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">بین‌الملل</span></div>
+                        </div>
+                    </div>
+                    <div class="urgent-item">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">احتمال حمله گسترده امریکا به ایران تا آخر سال 2026 در سایت شرط بندی پلی مارکت به 9 درصد کاهش یافت</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">سیاسی</span></div>
+                        </div>
+                    </div>
+                    <div class="urgent-item">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">وزارت دفاع روسیه: یک کشتی باری در دریای سیاه، جنوب غربی اودیسا، مورد هدف قرار گرفت</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">نظامی</span></div>
+                        </div>
+                    </div>
+                    <div class="urgent-item">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">اسرائیل جنوب لبنان را گلوله‌باران کرد؛ منابع محلی بامداد امروز از گلوله‌باران مناطقی در جنوب لبنان خبر دادند</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">خاورمیانه</span></div>
+                        </div>
+                    </div>
+                    <div class="urgent-item">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">ان بی سی: مذاکرات به بن بست محکمی خورده</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">سیاسی</span></div>
+                        </div>
+                    </div>
+                    <div class="urgent-item">
+                        <div class="urgent-item-content">
+                            <div class="urgent-item-title">ترامپ، روبیو رو مسئول مذاکرات با ایران کرد</div>
+                            <div class="urgent-item-meta"><span class="urgent-item-source">سیاسی</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="urgent-dots" id="urgentDots">
+                    <span class="urgent-dot active" onclick="urgentGo(0)"></span>
+                    <span class="urgent-dot" onclick="urgentGo(1)"></span>
+                    <span class="urgent-dot" onclick="urgentGo(2)"></span>
+                    <span class="urgent-dot" onclick="urgentGo(3)"></span>
+                    <span class="urgent-dot" onclick="urgentGo(4)"></span>
+                    <span class="urgent-dot" onclick="urgentGo(5)"></span>
+                    <span class="urgent-dot" onclick="urgentGo(6)"></span>
+                </div>
             </div>
         </div>
-        <div class="urgent-list" id="urgentList">
 
-            <div class="urgent-item active">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">قیمت نفت برنت هم اکنون بیش از 96 دلار است</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">اقتصادی</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="urgent-item">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">ترامپ: می‌خواهم قبل از ترک کاخ سفید، پرونده کوبا را ببندم</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">بین‌الملل</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="urgent-item">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">احتمال حمله گسترده امریکا به ایران تا آخر سال 2026 در سایت شرط بندی پلی مارکت به 9 درصد کاهش یافت</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">سیاسی</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="urgent-item">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">وزارت دفاع روسیه: یک کشتی باری در دریای سیاه، جنوب غربی اودیسا، مورد هدف قرار گرفت</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">نظامی</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="urgent-item">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">اسرائیل جنوب لبنان را گلوله‌باران کرد؛ منابع محلی بامداد امروز از گلوله‌باران مناطقی در جنوب لبنان خبر دادند</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">خاورمیانه</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="urgent-item">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">ان بی سی: مذاکرات به بن بست محکمی خورده</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">سیاسی</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="urgent-item">
-                <div class="urgent-item-content">
-                    <div class="urgent-item-title">ترامپ، روبیو رو مسئول مذاکرات با ایران کرد</div>
-                    <div class="urgent-item-meta">
-                        <span class="urgent-item-source">سیاسی</span>
-                    </div>
-                </div>
-            </div>
-
+        <!-- ==================================== -->
+        <!-- بخش ۱: تحلیل ویژه                   -->
+        <!-- ==================================== -->
+        <div class="section-header">
+            <h2 class="section-title">تحلیل ویژه</h2>
         </div>
-        <!-- نقطه‌های راهنما -->
-        <div class="urgent-dots" id="urgentDots">
-            <span class="urgent-dot active" onclick="urgentGo(0)"></span>
-            <span class="urgent-dot" onclick="urgentGo(1)"></span>
-            <span class="urgent-dot" onclick="urgentGo(2)"></span>
-            <span class="urgent-dot" onclick="urgentGo(3)"></span>
-            <span class="urgent-dot" onclick="urgentGo(4)"></span>
-            <span class="urgent-dot" onclick="urgentGo(5)"></span>
-            <span class="urgent-dot" onclick="urgentGo(6)"></span>
-        </div>
-    </div>
-</div>
 
-
-        <!-- آخرین اخبار -->
-<div class="section-header">
-    <h2 class="section-title">آخرین اخبار</h2>
-    
-</div>   
-    
-    <a href="N1/news32.html" class="quick-news-item">
-    <div class="featured-topic">| تکنولوژی</div>
-   <!-- نام عکس را در خط زیر وارد کنید -->
-    <img src="products/microsoft-outage.jpg" alt="قطعی گسترده مایکروسافت" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
-   <div class="featured-overlay">
-       <span class="featured-label">فناوری جهانی</span>
-      <div class="featured-title">تلاش بی‌وقفه مایکروسافت برای رفع مشکل؛ قطعی گسترده به دومین روز خود کشیده شد</div>
-        </div>
-  </a>
-
-
-<div class="quick-news-grid">
-    <a href="N1/news-nvidia.html" class="quick-news-item">
-    <span class="quick-news-topic">| تکنولوژی</span>
-    <div class="quick-news-title">احتمال ثبت یکی از بزرگ‌ترین طلاق‌های تاریخ فناوری برای مدیرعامل مستعفی انویدیا</div>
-    <div class="quick-news-desc">ایندیپندنت: ممکن است داستان ازدواج مدیرعامل مستعفی شرکت انویدیا به یکی از بزرگ‌ترین پرونده‌های طلاق در تاریخ صنعت فناوری تبدیل شود.</div>
-</a>
-
-<a href="N1/news-senator.html" class="quick-news-item">
-    <span class="quick-news-topic">| سیاسی</span>
-    <div class="quick-news-title">کریس ون هولن: آمریکا باید از تمام ابزارها برای پایان جنگ استفاده کند</div>
-    <div class="quick-news-desc">سناتور دموکرات خواستار استفاده دولت آمریکا از تمام ابزارهای خود برای پایان دادن به جنگ شد.</div>
-</a>
-
-    
-    <a href="N1/news26.html" class="quick-news-item">
-        <span class="quick-news-topic">| سیاسی</span>
-        <div class="quick-news-title">رفع ممنوعیت پروازهای ایرانی به فرودگاه نجف</div>
-        <div class="quick-news-desc">پس از هفته‌ها توقف، پروازهای ایرانی به فرودگاه نجف از سر گرفته شد.</div>
-    </a>
-    
-    <a href="N1/news27.html" class="quick-news-item">
-        <span class="quick-news-topic">| سیاسی</span>
-        <div class="quick-news-title">ادعای کشته شدن ۴ کارشناس ایرانی در یمن</div>
-        <div class="quick-news-desc">منابع ناشناس مدعی شدند ۴ کارشناس ایرانی در یمن کشته شده‌اند.</div>
-    </a>
-    
-    <a href="N1/news28.html" class="quick-news-item">
-        <span class="quick-news-topic">| سیاسی</span>
-        <div class="quick-news-title">بررسی نقش احتمالی تهران در طرح بمب‌گذاری</div>
-        <div class="quick-news-desc">گزارش‌ها از بررسی نقش احتمالی تهران در یک طرح بمب‌گذاری خبر می‌دهند.</div>
-    </a>
-    
-</div>
-
-        <!-- HERO -->
-        <a href="N1/news24.html" class="hero-card">
-            <div class="hero-image">
-                <div class="hero-badge">TECHNOLOGY</div>
-                <img src="products/ai-stress.jpg" alt="استرس هوش مصنوعی در آمریکا و چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+        <a href="N1/news32.html" class="hero-card" style="display: flex; flex-direction: column;">
+            <div class="hero-image" style="min-height: 350px;">
+                <div class="hero-badge" style="top: 15px; left: 15px; right: auto;">فناوری جهانی</div>
+                <img src="products/microsoft-outage.jpg" alt="قطعی مایکروسافت" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
             </div>
-            <div class="hero-content">
-                <div class="hero-category">تکنولوژی</div>
-                <h2 class="hero-title">هوش مصنوعی در حال ایجاد سطوح کاملاً متفاوتی از استرس در آمریکا و چین است</h2>
+            <div class="hero-content" style="padding: 25px 30px;">
+                <div class="hero-category">تکنولوژی و امنیت</div>
+                <h2 class="hero-title" style="font-size: 25px; margin-bottom: 15px;">تلاش بی‌وقفه مایکروسافت برای رفع مشکل؛ قطعی گسترده به دومین روز خود کشیده شد</h2>
                 <p class="hero-excerpt">
-                    پذیرش گسترده هوش مصنوعی در چین امروز، نشان‌دهنده استقبال این کشور از فناوری نوظهور است. نظرسنجی مورگان استنلی نشان داد ۸۰ درصد پاسخ‌دهندگان چینی حداقل هفتگی از هوش مصنوعی استفاده می‌کنند.
+                    بحران در سیستم‌های ابری و سرورهای مایکروسافت وارد دومین روز خود شد. مهندسان این شرکت در سراسر جهان در حال مسابقه با زمان هستند تا این اختلال بی‌سابقه را برطرف کنند.
                 </p>
                 <div class="hero-meta">
-                    <span>✍️ آناهیتا بهرامی</span>
-                    <span>📅 ۱۷ سپتامبر ۲۰۲۶</span>
-                    <span>🕐 ۸:۲۱ بعدظهر</span>
+                    <span>✍️ سرویس فناوری</span>
+                    <span>📅 ۱۳ نوامبر ۲۰۲۶</span>
+                    <span>🕐 ۱۴:۱۵ بعدازظهر</span>
                 </div>
             </div>
         </a>
 
-        <!-- اخبار ویژه -->
-        <div class="section-header">
-            <h2 class="section-title">اخبار ویژه</h2>
-        </div>
-
         <div class="featured-grid">
+            <a href="N1/news24.html" class="featured-card">
+                <div class="featured-topic">| تکنولوژی</div>
+                <img src="products/ai-stress.jpg" alt="استرس هوش مصنوعی در آمریکا و چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                <div class="featured-overlay">
+                    <span class="featured-label">تحلیل</span>
+                    <div class="featured-title">هوش مصنوعی در حال ایجاد سطوح کاملاً متفاوتی از استرس در آمریکا و چین است</div>
+                </div>
+            </a>
             <a href="N1/news20.html" class="featured-card">
                 <div class="featured-topic">| تحلیل</div>
                 <img src="products/china-ai.jpg" alt="چین در مسابقه هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
@@ -1485,12 +759,12 @@
                     <div class="featured-title">چین در مسابقه هوش مصنوعی به پیش می‌رود؛ صنعت جهانی در آستانه نقطه عطف</div>
                 </div>
             </a>
-            <a href="N1/news15.html" class="featured-card">
-                <div class="featured-topic">| سیاسی</div>
-                <img src="products/ai-news.jpg" alt="هشدار غول‌های هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+            <a href="N1/news-nvidia.html" class="featured-card">
+                <div class="featured-topic">| تکنولوژی</div>
+                <img src="products/nvidia.jpg" alt="انویدیا" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
                 <div class="featured-overlay">
                     <span class="featured-label">خبر ویژه</span>
-                    <div class="featured-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</div>
+                    <div class="featured-title">احتمال ثبت یکی از بزرگ‌ترین طلاق‌های تاریخ فناوری برای مدیرعامل مستعفی انویدیا</div>
                 </div>
             </a>
             <a href="N1/news19.html" class="featured-card">
@@ -1503,19 +777,49 @@
             </a>
         </div>
 
-        <!-- اخبار تکنولوژی -->
+        <!-- ==================================== -->
+        <!-- بخش ۲: اخبار سیاسی                   -->
+        <!-- ==================================== -->
         <div class="section-header">
-            <h2 class="section-title">اخبار تکنولوژی</h2>
+            <h2 class="section-title">اخبار سیاسی</h2>
         </div>
 
         <div class="news-grid">
+            <a href="N1/news-senator.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">| سیاسی</div>
+                    <img src="products/senator.jpg" alt="کریس ون هولن" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">سیاسی</div>
+                    <h3 class="news-card-title">کریس ون هولن: آمریکا باید از تمام ابزارها برای پایان جنگ استفاده کند</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ سرویس بین‌الملل</span>
+                        <span>📅 ۱۳ نوامبر</span>
+                    </div>
+                </div>
+            </a>
+            <a href="N1/news15.html" class="news-card">
+                <div class="news-card-image">
+                    <div class="news-card-badge">| سیاسی</div>
+                    <img src="products/ai-news.jpg" alt="هشدار غول‌های هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-category">سیاسی</div>
+                    <h3 class="news-card-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</h3>
+                    <div class="news-card-meta">
+                        <span>✍️ تحریریه</span>
+                        <span>📅 ۱۵ سپتامبر</span>
+                    </div>
+                </div>
+            </a>
             <a href="N1/news16.html" class="news-card">
                 <div class="news-card-image">
                     <div class="news-card-badge">تحلیل</div>
                     <img src="products/china-ai.jpg" alt="تحلیل ترامپ و چین" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
                 </div>
                 <div class="news-card-content">
-                    <div class="news-card-category">تحلیل</div>
+                    <div class="news-card-category">تحلیل سیاسی</div>
                     <h3 class="news-card-title">ترامپ ترمز هوش مصنوعی را نمی‌کشد چون می‌خواهد چین را شکست دهد</h3>
                     <div class="news-card-meta">
                         <span>✍️ آناهیتا بهرامی</span>
@@ -1523,53 +827,50 @@
                     </div>
                 </div>
             </a>
-            <a href="N1/news17.html" class="news-card">
-                <div class="news-card-image">
-                    <div class="news-card-badge">تکنولوژی</div>
-                    <img src="products/ai-stress.jpg" alt="سقوط سهام هوش مصنوعی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
-                </div>
-                <div class="news-card-content">
-                    <div class="news-card-category">تکنولوژی</div>
-                    <h3 class="news-card-title">سقوط سهام مرتبط با هوش مصنوعی پس از درخواست مدیران ارشد صنعت</h3>
-                    <div class="news-card-meta">
-                        <span>✍️ آناهیتا بهرامی</span>
-                        <span>📅 ۱۵ سپتامبر</span>
-                    </div>
-                </div>
-            </a>
-            <a href="N1/news18.html" class="news-card">
-                <div class="news-card-image">
-                    <div class="news-card-badge">تکنولوژی</div>
-                    <img src="products/ai-news.jpg" alt="نهاد استانداردسازی" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2c3e50)';this.removeAttribute('src');">
-                </div>
-                <div class="news-card-content">
-                    <div class="news-card-category">تکنولوژی</div>
-                    <h3 class="news-card-title">شرکت‌های پیشرو هوش مصنوعی درباره ایجاد نهاد استانداردسازی گفتگو کرده‌اند</h3>
-                    <div class="news-card-meta">
-                        <span>✍️ آناهیتا بهرامی</span>
-                        <span>📅 ۱۵ سپتامبر</span>
-                    </div>
-                </div>
-            </a>
         </div>
 
-        <!-- اخبار سیاسی -->
+        <!-- ==================================== -->
+        <!-- بخش ۳: آخرین اخبار                   -->
+        <!-- ==================================== -->
         <div class="section-header">
-            <h2 class="section-title">اخبار سیاسی</h2>
+            <h2 class="section-title">آخرین اخبار</h2>
         </div>
 
-        <div class="simple-news-grid">
-            <a href="N1/news21.html" class="simple-news-item">
-                <span class="simple-news-topic">| سیاسی</span>
-                <div class="simple-news-title">هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی و جنگی شدن فضا مخالفیم</div>
+        <div class="quick-news-grid">
+            <a href="N1/news26.html" class="quick-news-item">
+                <span class="quick-news-topic">| سیاسی</span>
+                <div class="quick-news-title">رفع ممنوعیت پروازهای ایرانی به فرودگاه نجف</div>
+                <div class="quick-news-desc">پس از هفته‌ها توقف، پروازهای ایرانی به فرودگاه نجف از سر گرفته شد.</div>
             </a>
-            <a href="N1/news22.html" class="simple-news-item">
-                <span class="simple-news-topic">| سیاسی</span>
-                <div class="simple-news-title">محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید</div>
+            <a href="N1/news27.html" class="quick-news-item">
+                <span class="quick-news-topic">| سیاسی</span>
+                <div class="quick-news-title">ادعای کشته شدن ۴ کارشناس ایرانی در یمن</div>
+                <div class="quick-news-desc">منابع ناشناس مدعی شدند ۴ کارشناس ایرانی در یمن کشته شده‌اند.</div>
             </a>
-            <a href="N1/news15.html" class="simple-news-item">
-                <span class="simple-news-topic">| سیاسی</span>
-                <div class="simple-news-title">هشدارهای غول‌های هوش مصنوعی مانند یک نقطه عطف سیاسی به نظر می‌رسد</div>
+            <a href="N1/news28.html" class="quick-news-item">
+                <span class="quick-news-topic">| سیاسی</span>
+                <div class="quick-news-title">بررسی نقش احتمالی تهران در طرح بمب‌گذاری</div>
+                <div class="quick-news-desc">گزارش‌ها از بررسی نقش احتمالی تهران در یک طرح بمب‌گذاری خبر می‌دهند.</div>
+            </a>
+            <a href="N1/news17.html" class="quick-news-item">
+                <span class="quick-news-topic">| تکنولوژی</span>
+                <div class="quick-news-title">سقوط سهام مرتبط با هوش مصنوعی پس از درخواست مدیران ارشد صنعت</div>
+                <div class="quick-news-desc">سهام شرکت‌های مرتبط با هوش مصنوعی با افت شدیدی روبرو شدند.</div>
+            </a>
+            <a href="N1/news18.html" class="quick-news-item">
+                <span class="quick-news-topic">| تکنولوژی</span>
+                <div class="quick-news-title">شرکت‌های پیشرو هوش مصنوعی درباره ایجاد نهاد استانداردسازی گفتگو کرده‌اند</div>
+                <div class="quick-news-desc">غول‌های تکنولوژی به دنبال ایجاد استانداردهای جدید هستند.</div>
+            </a>
+            <a href="N1/news21.html" class="quick-news-item">
+                <span class="quick-news-topic">| بین‌الملل</span>
+                <div class="quick-news-title">هشدار چین به آمریکا درباره فضا؛ با رقابت تسلیحاتی مخالفیم</div>
+                <div class="quick-news-desc">پکن نسبت به جنگی شدن فضا به واشنگتن هشدار داد.</div>
+            </a>
+            <a href="N1/news22.html" class="quick-news-item">
+                <span class="quick-news-topic">| بین‌الملل</span>
+                <div class="quick-news-title">محبوبیت ترامپ افزایش یافت؛ حمایت از رئیس‌جمهور آمریکا به ۳۵ درصد رسید</div>
+                <div class="quick-news-desc">آخرین نظرسنجی‌ها از رشد محبوبیت دونالد ترامپ خبر می‌دهند.</div>
             </a>
         </div>
 
