@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازگشت پرحاشیه محمد علی‌نیا - اخبار لاسونتراس</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: bold; font-style: normal; font-display: swap;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f5f5f7;
+            display: flex; flex-direction: column;
+            min-height: 100vh; color: #333;
+        }
+        
+        .header-row {
+            max-width: 900px; width: 100%;
+            margin: 18px auto 10px auto; padding: 0 15px;
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        }
+        .header-left {
+            display: flex; align-items: center; gap: 15px;
+        }
+        .menu-btn {
+            background-color: white; border: 2px solid #e0e0e0;
+            border-radius: 8px; width: 44px; height: 44px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+        }
+        .menu-btn:hover { border-color: #c0392b; background-color: #fff5f5; }
+        .menu-btn span { display: block; width: 22px; height: 3px; background-color: #333; border-radius: 3px; transition: all 0.3s; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        
+        .brand-block {
+            display: flex; flex-direction: column; line-height: 1.1;
+            text-decoration: none; cursor: pointer; transition: opacity 0.2s;
+        }
+        .brand-block:hover { opacity: 0.8; }
+        .brand-grg { font-size: 22px; font-weight: bold; color: #c0392b; font-family: 'IRANSans', sans-serif; }
+        .brand-name { font-size: 11px; color: #666; font-family: 'IRANSans', sans-serif; }
+        
+        .header-live {
+            display: flex; align-items: center; gap: 6px;
+            background-color: #fff5f5; border: 1.5px solid #c0392b;
+            padding: 6px 14px; border-radius: 20px; font-size: 11px;
+            font-weight: bold; color: #c0392b;
+        }
+        .header-live::before {
+            content: '●'; color: #c0392b; animation: blink 1.5s infinite; font-size: 13px;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        
+        .menu-dropdown {
+            max-width: 900px; width: 100%; margin: 0 auto; padding: 0 15px;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+        }
+        .menu-dropdown.open { max-height: 500px; }
+        .menu-inner {
+            background-color: white; border-radius: 12px; padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 8px; border: 1px solid #eee;
+        }
+        .menu-dropdown a {
+            display: block; padding: 10px 15px; color: #333; text-decoration: none;
+            font-size: 14px; border-radius: 8px; transition: all 0.2s;
+            font-family: 'IRANSans', sans-serif; font-weight: bold;
+        }
+        .menu-dropdown a:hover { background-color: #fff5f5; color: #c0392b; padding-right: 20px; }
+        .menu-category {
+            font-size: 11px; color: #999; padding: 12px 15px 5px 15px;
+            font-weight: bold; border-top: 1px solid #f0f0f0; margin-top: 5px;
+        }
+        
+        .container {
+            max-width: 900px; width: 100%;
+            margin: 15px auto 30px auto; padding: 0 15px;
+            flex: 1;
+        }
+        
+        .news-article {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .article-image-container {
+            width: 100%;
+            margin-bottom: 25px;
+            border-bottom: 4px solid #c0392b;
+        }
+        .article-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .article-content {
+            padding: 35px;
+        }
+        
+        .article-meta-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #888;
+            font-family: 'IRANSans', sans-serif;
+            flex-wrap: wrap;
+        }
+        .meta-badge {
+            background-color: #c0392b; color: white;
+            padding: 5px 14px; border-radius: 15px;
+            font-size: 11px; font-weight: bold; letter-spacing: 0.5px;
+        }
+        
+        .article-title {
+            color: #1a1a1a;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin: 0 0 25px 0;
+            font-family: 'IRANSans', sans-serif;
+            text-align: justify;
+        }
+        
+        .article-author-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid #c0392b;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .author-info { display: flex; align-items: center; gap: 12px; }
+        .author-avatar {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: linear-gradient(135deg, #c0392b, #7d1f17);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px; font-weight: bold;
+            font-family: Georgia, serif; flex-shrink: 0;
+        }
+        .author-details { display: flex; flex-direction: column; gap: 4px; }
+        .author-name { font-size: 14px; color: #1a1a1a; font-weight: bold; }
+        .author-time { font-size: 11.5px; color: #777; direction: ltr; text-align: right; }
+        
+        .article-body {
+            font-size: 16px;
+            line-height: 2.2;
+            color: #333;
+            text-align: justify;
+            font-family: 'IRANSans', sans-serif;
+        }
+        
+        .article-body p { margin-bottom: 22px; }
+        
+        .article-body .lead-paragraph {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+        
+        .article-body h3 {
+            color: #c0392b;
+            font-size: 20px;
+            margin: 40px 0 20px 0;
+            padding-right: 15px;
+            border-right: 4px solid #c0392b;
+        }
+        
+        .article-tags {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #fdf2f2;
+            color: #c0392b;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+            margin-bottom: 8px;
+            font-family: 'IRANSans', sans-serif;
+            border: 1px solid #fadbd8;
+        }
+        
+        .back-home-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            max-width: 900px; margin: 20px auto 40px auto; padding: 15px 25px;
+            background-color: white; color: #1a1a2e; text-decoration: none;
+            border-radius: 12px; font-size: 15px; font-weight: bold;
+            font-family: 'IRANSans', sans-serif;
+            border: 2px solid #e0e0e0; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .back-home-btn:hover {
+            background-color: #f8f9fa; border-color: #c0392b; color: #c0392b;
+            transform: translateY(-2px);
+        }
+        .back-btn-wrapper { max-width: 900px; margin: 0 auto; padding: 0 15px; }
+        
+        /* Footer */
+        footer {
+            background-color: #0f0f1e; padding: 40px 20px 25px 20px; margin-top: auto;
+        }
+        .footer-links {
+            max-width: 900px; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 18px;
+        }
+        .footer-row {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 25px 35px;
+        }
+        .footer-row a {
+            color: #b8b8c8; text-decoration: none; font-size: 13px;
+            font-family: 'IRANSans', sans-serif; transition: color 0.25s; white-space: nowrap;
+        }
+        .footer-row a:hover { color: #ffffff; }
+        .footer-row a.about-link { font-weight: bold; color: #f39c12; }
+        .footer-row a.about-link:hover { color: #ffd700; }
+        
+        .follow-section {
+            max-width: 900px; margin: 0 auto 25px auto; padding-top: 25px;
+            border-top: 1px solid #2a2a3a; text-align: center;
+        }
+        .follow-title { color: #ffffff; font-size: 15px; font-weight: bold; margin-bottom: 15px; }
+        .whatsapp-channel-btn {
+            display: inline-flex; align-items: center; gap: 10px; background-color: #25D366;
+            color: white; text-decoration: none; padding: 12px 28px; border-radius: 30px;
+            font-size: 14px; font-weight: bold; transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-channel-btn:hover {
+            background-color: #20b858; transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-channel-btn svg { width: 20px; height: 20px; fill: white; }
+        
+        .footer-copyright {
+            max-width: 900px; margin: 0 auto; text-align: center;
+            padding-top: 22px; border-top: 1px solid #2a2a3a;
+            color: #888; font-size: 12px; line-height: 2; font-family: 'IRANSans', sans-serif;
+        }
+        .footer-copyright p { margin: 5px 0; }
+        .footer-copyright .network { font-size: 11px; color: #666; margin-top: 8px; }
+        
+        @media (max-width: 768px) {
+            .article-content { padding: 25px 20px; }
+            .article-title { font-size: 22px; }
+            .article-body { font-size: 15px; }
+            .article-body .lead-paragraph { font-size: 16px; }
+            .article-body h3 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-row">
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="../LASVENTRAS/index.html" class="brand-block">
+                <div class="brand-grg">لاسونتراس</div>
+                <div class="brand-name">اخبار ایالت</div>
+            </a>
+        </div>
+        <div class="header-live">تحلیل اختصاصی</div>
+    </div>
+
+    <div class="menu-dropdown" id="menuDropdown">
+        <div class="menu-inner">
+            <a href="../LASVENTRAS/index.html">🏠 اخبار لاسونتراس</a>
+            <a href="../index.html">🌐 صفحه اصلی خبرگزاری</a>
+            <a href="../bours.html">📊 تحلیل اختصاصی بورس</a>
+            <div class="menu-category">دسته‌بندی‌های ایالت</div>
+            <a href="politics.html">🏛️ سیاسی</a>
+            <a href="social.html">👥 اجتماعی</a>
+            <a href="economy.html">💰 اقتصادی</a>
+            <div class="menu-category">📱 شبکه‌های اجتماعی</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" target="_blank">💬 کانال واتس‌اپ</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="news-article">
+            
+            <div class="article-content" style="padding-bottom: 10px;">
+                <div class="article-meta-top">
+                    <span class="meta-badge">تحلیل اختصاصی / سیاسی</span>
+                </div>
+                
+                <h1 class="article-title">بازگشت پرحاشیه محمد علی‌نیا؛ لاسونتراس با یک فرماندار پرسش‌برانگیز روبه‌روست؛ آیا تاریخ دوباره تکرار می‌شود؟</h1>
+                
+                <div class="article-author-row">
+                    <div class="author-info">
+                        <div class="author-avatar">ر</div>
+                        <div class="author-details">
+                            <span class="author-name">رضا ملکی</span>
+                            <span class="author-time">19:12 , 13 Nov , 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- عکس منتقل شد به زیر تیتر و اطلاعات نویسنده -->
+            <div class="article-image-container">
+                <img src="../../products/lasventras-featured.jpg" alt="بازگشت محمد علی‌نیا" class="article-image" onerror="this.style.display='none';">
+            </div>
+            
+            <div class="article-content" style="padding-top: 10px;">
+                <div class="article-body">
+                    <p class="lead-paragraph">
+                        با نزدیک شدن به آغاز دوره جدید فرمانداری محمد علی‌نیا، پرسش‌های جدی درباره ثبات مدیریتی، روابط سیاسی، امنیت ایالت و حواشی گذشته او مطرح شده است؛ آیا این بار قرار است یک دوره کامل فرمانداری را به پایان برساند یا لاسونتراس بار دیگر شاهد استعفای ناگهانی و بحران سیاسی خواهد بود؟
+                    </p>
+                    
+                    <p>بازگشت محمد علی‌نیا به ساختمان فرمانداری، پایان رقابت انتخاباتی نیست؛ بلکه آغاز دوره‌ای از آزمون‌های دشوار سیاسی و مدیریتی برای او و کل ایالت لاسونتراس خواهد بود. نامزدی که پیش‌تر نیز سابقه حضور در رأس مدیریت ایالت را داشته، این بار با مجموعه‌ای از پرسش‌ها و انتظارات سنگین وارد قدرت می‌شود؛ پرسش‌هایی که پاسخ به آن‌ها برای آینده سیاسی لاسونتراس اهمیت تعیین‌کننده‌ای دارد.</p>
+
+                    <h3>استعفای گذشته؛ آیا علی‌نیا دوباره در میانه راه کنار می‌کشد؟</h3>
+                    <p>یکی از مهم‌ترین نقاط بحث‌برانگیز در کارنامه سیاسی محمد علی‌نیا، پایان دوره قبلی حضور او در فرمانداری است. او در آن مقطع، در پی اختلافات سیاسی و درگیری با سنتکام و رئیس‌جمهور، از سمت خود استعفا داد و حامد صادقیان پس از او مسئولیت فرمانداری را بر عهده گرفت.</p>
+                    <p>اکنون سؤال اصلی این است: چه تضمینی وجود دارد که چنین اتفاقی دوباره تکرار نشود؟</p>
+                    <p>فرمانداری صرفاً یک جایگاه سیاسی نیست که با بروز اختلافات، بتوان آن را رها کرد. این مسئولیت مستقیماً با امنیت، اقتصاد، خدمات عمومی و زندگی میلیون‌ها شهروند ارتباط دارد. اگر اختلاف با رئیس‌جمهور یا نهادهای نظامی بار دیگر به وجود بیاید، آیا علی‌نیا راه مذاکره و مدیریت بحران را انتخاب خواهد کرد یا بار دیگر استعفا را ترجیح می‌دهد؟</p>
+                    <p>مردم حق دارند بدانند آیا این بار با یک برنامه مدیریتی بلندمدت روبه‌رو هستند یا با دولتی که ممکن است در میانه مسیر با بحران کناره‌گیری مواجه شود.</p>
+
+                    <h3>رابطه با رئیس‌جمهور؛ اتحاد سیاسی یا اختلافی که هنوز حل نشده است؟</h3>
+                    <p>محمد علی‌نیا از نظر گرایش سیاسی جمهوری‌خواه محسوب می‌شود و تمایل او به داشتن روابط نزدیک با رئیس‌جمهور می‌تواند در شکل‌گیری دولت جدید نقش مهمی داشته باشد.</p>
+                    <p>اما نزدیکی سیاسی به رئیس‌جمهور به‌تنهایی تضمین‌کننده ثبات نیست. تجربه دوره قبلی نشان داده است که اختلاف میان فرمانداری و دولت مرکزی می‌تواند به بحران مدیریتی تبدیل شود.</p>
+                    <p>پرسش مهم این است که آیا رابطه فعلی علی‌نیا و رئیس‌جمهور بر پایه توافق واقعی و برنامه مشترک شکل گرفته یا صرفاً یک نزدیکی سیاسی در دوران انتخابات است؟</p>
+                    <p>از سوی دیگر، نقش دموکرات‌ها در ماه‌های آینده نیز قابل چشم‌پوشی نیست. اگر آن‌ها در مجلس ایالتی یا نهادهای نظارتی قدرت قابل‌توجهی داشته باشند، ممکن است درباره بودجه، انتصاب‌ها، سیاست‌های امنیتی و تصمیم‌های اجرایی دولت جدید با علی‌نیا اختلاف پیدا کنند.</p>
+                    <p>البته مخالفت سیاسی به معنای ایجاد مانع غیرقانونی نیست؛ اما یک فرماندار باید توانایی مذاکره با مخالفان خود را داشته باشد. آیا علی‌نیا می‌تواند بدون تبدیل اختلافات حزبی به بحران حکومتی، ایالت را اداره کند؟</p>
+
+                    <h3>امنیت لاسونتراس؛ وعده‌های انتخاباتی یا بازگشت به فضای جنگ؟</h3>
+                    <p>یکی از حساس‌ترین موضوعات برای شهروندان، آینده امنیتی لاسونتراس است.</p>
+                    <p>علی‌نیا در سخنان انتخاباتی خود از تجربه نظامی و شناخت ساختارهای امنیتی سخن گفته و درباره توانایی خود برای مدیریت تهدیدها اظهارنظر کرده است. اما شهروندان تنها به شنیدن آمار نظامی و وعده‌های امنیتی نیاز ندارند؛ آن‌ها می‌خواهند بدانند آیا قرار است زندگی روزمره‌شان در آرامش ادامه پیدا کند یا بار دیگر شاهد افزایش تنش و درگیری باشند.</p>
+                    <p>آیا رابطه فرمانداری جدید با سنتکام به سمت همکاری و هماهنگی خواهد رفت یا اختلافات گذشته دوباره زنده می‌شوند؟</p>
+                    <p>آیا سیاست امنیتی دولت جدید بر کاهش تنش، حفاظت از مرزها و جلوگیری از درگیری متمرکز خواهد بود یا تصمیم‌های نظامی تازه‌ای در راه است؟</p>
+                    <p>امنیت واقعی تنها با نمایش قدرت نظامی سنجیده نمی‌شود. کاهش خشونت، حفاظت از شهروندان، ثبات مرزها و پاسخ‌گویی نهادهای امنیتی نیز بخش مهمی از آن هستند.</p>
+
+                    <h3>پرونده‌های جنجالی کلاب‌ها؛ اتهاماتی که نیازمند پاسخ روشن هستند</h3>
+                    <p>یکی دیگر از موضوعاتی که درباره گذشته محمد علی‌نیا مطرح شده، ادعاهای مربوط به تخلفات و فساد در برخی کلاب‌های کشور است. در این میان، اتهام‌هایی از جمله سوءاستفاده، تجاوز و تخلفات مرتبط با پرونده‌های قضایی و امنیتی نیز مطرح شده‌اند.</p>
+                    <p>این ادعاها، به‌ویژه اگر به پرونده‌های رسمی و قابل استناد مرتبط باشند، نمی‌توانند بدون پاسخ روشن باقی بمانند.</p>
+                    <p>آیا پرونده قضایی مشخصی علیه علی‌نیا وجود دارد؟ آیا اتهامات مطرح‌شده به تأیید مراجع قضایی رسیده‌اند؟ آیا او حاضر است درباره این حواشی توضیح دهد و اسناد و مواضع رسمی خود را در اختیار افکار عمومی قرار دهد؟</p>
+                    <p>باید میان اتهام، تحقیقات قضایی و محکومیت قطعی تفاوت قائل شد؛ اما این تفاوت نباید بهانه‌ای برای فرار از پاسخ‌گویی سیاسی باشد. شهروندان حق دارند درباره سوابق و شفافیت فردی که قرار است بالاترین مسئول اجرایی ایالت باشد، اطلاعات معتبر داشته باشند.</p>
+
+                    <h3>زندگی خانوادگی و حواشی شخصی؛ مرز میان حریم خصوصی و مسئولیت عمومی</h3>
+                    <p>زندگی شخصی علی‌نیا نیز در فضای سیاسی با حواشی متعددی همراه بوده است. بر اساس اطلاعات مطرح‌شده در این سناریو، او چهار بار ازدواج کرده و دو همسر سابقش فوت کرده‌اند. همچنین درباره دو همسر دیگر او ادعاهایی درباره برخوردهای خشونت‌آمیز و پرونده‌های قضایی مطرح شده است؛ از جمله بازداشت یکی از آن‌ها در ایتالیا و بازداشت دیگری پس از حادثه‌ای مسلحانه در محدوده مرز سان‌فییرو.</p>
+                    <p>با این حال، مسئولیت اعمال هر فرد بر عهده خود اوست و نمی‌توان صرفاً بر اساس رفتار یا پرونده‌های اعضای خانواده، درباره صلاحیت سیاسی فرماندار قضاوت کرد.</p>
+                    <p>موضوع اصلی زمانی اهمیت عمومی پیدا می‌کند که احتمال تعارض منافع، استفاده از قدرت دولتی برای مداخله در پرونده‌ها یا وجود تخلف قانونی از سوی خود مقام مسئول مطرح باشد. در چنین شرایطی، شفافیت و بررسی مستقل ضروری است.</p>
+
+                    <h3>مردم چه می‌خواهند بدانند؟</h3>
+                    <p>اکنون با نزدیک شدن به آغاز دوره جدید فرمانداری، چند مطالبه اساسی پیش روی محمد علی‌نیا قرار دارد:</p>
+                    <ul>
+                        <li>آیا او متعهد می‌شود دوره فرمانداری را کامل کند و بدون دلیل قانونی و روشن از مسئولیت کنار نرود؟</li>
+                        <li>آیا اختلافات گذشته با رئیس‌جمهور و سنتکام واقعاً حل شده‌اند؟</li>
+                        <li>آیا سیاست امنیتی دولت جدید بر کاهش تنش و جلوگیری از جنگ متمرکز خواهد بود؟</li>
+                        <li>آیا درباره اتهامات و حواشی قضایی مطرح‌شده، توضیحات مستند و شفاف ارائه خواهد شد؟</li>
+                        <li>آیا دولت او با دموکرات‌ها و دیگر جریان‌های سیاسی وارد تعامل خواهد شد یا اختلافات حزبی به مانع اداره ایالت تبدیل می‌شود؟</li>
+                        <li>آیا وعده‌های انتخاباتی در زمینه اقتصاد، اشتغال و امنیت به برنامه‌های اجرایی قابل سنجش تبدیل خواهند شد؟</li>
+                    </ul>
+
+                    <h3>جمع‌بندی؛ این بار مسئولیت با وعده‌ها تمام نمی‌شود</h3>
+                    <p>محمد علی‌نیا در آستانه دوره جدید فرمانداری با مسئولیتی فراتر از پیروزی در انتخابات روبه‌روست. سابقه استعفای قبلی، اختلافات سیاسی گذشته، پرسش‌های مربوط به رابطه با رئیس‌جمهور و سنتکام و همچنین حواشی مطرح‌شده درباره پرونده‌های قضایی، مجموعه‌ای از موضوعات هستند که دولت جدید نمی‌تواند به‌سادگی از کنار آن‌ها عبور کند.</p>
+                    <p>مردم لاسونتراس نه به شعارهای تکراری، بلکه به ثبات، امنیت، شفافیت و عملکرد قابل ارزیابی نیاز دارند.</p>
+                    <p>پرسش نهایی همچنان پابرجاست: آیا محمد علی‌نیا این بار می‌تواند یک دوره کامل و بدون بحران سیاسی اداره کند، یا چند ماه دیگر لاسونتراس دوباره با استعفا، اختلافات حکومتی و پرسش‌های بی‌پاسخ روبه‌رو خواهد شد؟</p>
+                    <p>پاسخ این پرسش را نه سخنرانی‌های انتخاباتی، بلکه عملکرد دولت جدید در ماه‌های آینده مشخص خواهد کرد.</p>
+                    
+                    <div class="article-tags">
+                        <span class="tag">#لاسونتراس</span>
+                        <span class="tag">#محمد_علی‌نیا</span>
+                        <span class="tag">#تحلیل_سیاسی</span>
+                        <span class="tag">#انتخابات</span>
+                        <span class="tag">#فرمانداری</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="../index.html" class="back-home-btn">← بازگشت به اخبار لاسونتراس</a>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <div class="footer-row">
+                <a href="../pages/terms.html">Terms of Use</a>
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/cookies.html">+Manage Cookies</a>
+                <a href="../pages/adchoices.html">Ad Choices</a>
+                <a href="../pages/accessibility.html">Accessibility & CC</a>
+                <a href="../pages/newsletters.html">Newsletters</a>
+                <a href="../pages/transcripts.html">Transcripts</a>
+                <a href="../pages/sitemap.html">Sitemap</a>
+                <a href="../pages/about.html" class="about-link">درباره ما</a>
+            </div>
+        </div>
+        
+        <div class="follow-section">
+            <div class="follow-title">📱 ما را دنبال کنید</div>
+            <a href="https://chat.whatsapp.com/Ij0qPvO3twGH7AgHeAXwxX?s=cl&p=a&ilr=1" class="whatsapp-channel-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.2c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                کانال واتس‌اپ
+            </a>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© ۲۰۲۶ گلهای رنگارنگ — متعلق به حامد صادقیان و محمد علی‌نیا می‌باشد و حقوق محفوظ است</p>
+            <p class="network">© ۲۰۲۶ شبکه خبر سان آندریاس ۲۰۱۹</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const btn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('menuDropdown');
+            btn.classList.toggle('active');
+            dropdown.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
