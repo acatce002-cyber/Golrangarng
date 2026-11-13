@@ -3,469 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحلیل اختصاصی بورس آمریکا - گلهای رنگارنگ</title>
+    <title>تحلیل جامع بورس آمریکا - گلهای رنگارنگ</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        header h1 {
-            margin: 0 0 15px 0;
-            font-size: 26px;
-            font-weight: bold;
-        }
-        .header-meta {
-            background-color: rgba(255,255,255,0.15);
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 12px;
-            line-height: 1.8;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .header-meta .date {
-            font-weight: bold;
-            color: #ffd700;
-        }
-        .header-meta .author {
-            color: #ffd700;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 850px;
-            margin: 25px auto;
-            padding: 0 15px;
-            flex: 1;
-            width: 100%;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #2a5298;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: bold;
-        }
-        .back-btn:hover { text-decoration: underline; }
+        :root { --primary: #c0392b; --primary-dark: #7d1f17; --border: #e8e8e8; --gray: #666; --bg-light: #f8f9fa; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: #f5f5f7; color: #1a1a1a; line-height: 1.85; }
+        .news-header { background: white; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-btn { text-decoration: none; color: var(--primary); font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 14px; }
+        .article-container { max-width: 1000px; margin: 30px auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.08); border: 1px solid var(--border); }
+        .article-image { width: 100%; max-height: 500px; object-fit: cover; background: #1a1a2e; border-bottom: 4px solid var(--primary); }
+        .article-body { padding: 40px; }
+        .article-category { color: var(--primary); font-weight: bold; font-size: 13px; margin-bottom: 15px; display: inline-block; background: #fff5f5; padding: 6px 16px; border-radius: 20px; letter-spacing: 0.5px; }
+        .article-title { font-size: 32px; font-weight: 900; margin-bottom: 25px; line-height: 1.5; color: #111; text-align: justify; }
+        .article-meta { color: var(--gray); font-size: 14px; margin-bottom: 35px; padding-bottom: 20px; border-bottom: 2px solid var(--border); display: flex; flex-direction: column; gap: 10px; background: var(--bg-light); padding: 15px; border-radius: 10px; }
+        .meta-author { color: var(--primary-dark); font-weight: bold; font-size: 15px; }
         
-        /* کارت‌های شاخص */
-        .indices-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .index-card {
-            background: white;
-            border-radius: 12px;
-            padding: 18px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            border-top: 4px solid #27ae60;
-            transition: transform 0.2s;
-        }
-        .index-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-        }
-        .index-card.negative {
-            border-top-color: #e74c3c;
-        }
-        .index-name {
-            font-size: 14px;
-            color: #666;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .index-price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1e3c72;
-            direction: ltr;
-            margin-bottom: 8px;
-        }
-        .index-change {
-            font-size: 14px;
-            font-weight: bold;
-            color: #27ae60;
-        }
-        .index-change.negative {
-            color: #e74c3c;
-        }
-        .index-weekly {
-            font-size: 11px;
-            color: #999;
-            margin-top: 5px;
-        }
+        .article-text { font-size: 16px; color: #333; text-align: justify; line-height: 2.1; }
+        .article-text p { margin-bottom: 20px; }
+        .article-text h2 { color: #111; font-size: 24px; margin: 45px 0 20px 0; padding-right: 15px; border-right: 5px solid var(--primary); }
+        .article-text h3 { color: var(--primary-dark); font-size: 19px; margin: 30px 0 15px 0; font-weight: bold; }
+        .article-text ul, .article-text ol { margin-right: 25px; margin-bottom: 25px; }
+        .article-text li { margin-bottom: 12px; padding-right: 5px; }
         
-        /* محتوای تحلیل */
-        .analysis-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-            line-height: 2;
-            font-size: 14px;
-        }
-        .analysis-card h2 {
-            color: #1e3c72;
-            font-size: 19px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 18px;
-        }
-        .analysis-card h3 {
-            color: #2a5298;
-            font-size: 16px;
-            margin-top: 22px;
-            margin-bottom: 10px;
-            padding-right: 10px;
-            border-right: 4px solid #2a5298;
-            padding-right: 12px;
-        }
-        .analysis-card p {
-            text-align: justify;
-            margin-bottom: 15px;
-            color: #444;
-        }
-        .analysis-card ul {
-            padding-right: 20px;
-            margin-bottom: 15px;
-        }
-        .analysis-card ul li {
-            margin-bottom: 8px;
-            color: #444;
-            line-height: 1.9;
-        }
-        .highlight {
-            background-color: #fff3cd;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #856404;
-        }
-        .danger {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        .success {
-            color: #27ae60;
-            font-weight: bold;
-        }
-        
-        /* باکس خلاصه */
-        .summary-box {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 25px 0;
-        }
-        .summary-box h3 {
-            margin: 0 0 15px 0;
-            font-size: 16px;
-            color: #ffd700;
-        }
-        .summary-box ul {
-            padding-right: 20px;
-            margin: 0;
-        }
-        .summary-box li {
-            margin-bottom: 10px;
-            line-height: 1.8;
-            font-size: 13px;
-        }
-        
-        /* جدول */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 13px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .data-table th {
-            background-color: #1e3c72;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .data-table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-        .data-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        .data-table tr:hover {
-            background-color: #f0f4ff;
-        }
-        .positive { color: #27ae60; font-weight: bold; }
-        .negative { color: #e74c3c; font-weight: bold; }
-        
-        /* هشدار ریسک */
-        .risk-box {
-            background-color: #fff3cd;
-            border-right: 4px solid #f39c12;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 13px;
-            line-height: 1.9;
-            color: #856404;
-        }
-        .risk-box strong {
-            color: #e67e22;
-        }
-        
-        .author-box {
-            background-color: #eef2ff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-top: 25px;
-            text-align: center;
-            font-size: 13px;
-            color: #2a5298;
-            border: 1px solid #d5dcf5;
-        }
-        .author-box strong {
-            font-size: 14px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #eaeaea;
-            color: #555;
-            font-size: 13px;
-            margin-top: 20px;
-        }
-        
-        @media (max-width: 600px) {
-            header h1 { font-size: 20px; }
-            .header-meta { font-size: 11px; padding: 8px 15px; }
-            .analysis-card { padding: 18px; font-size: 13px; }
-            .index-price { font-size: 20px; }
-            .analysis-card h2 { font-size: 17px; }
-            .analysis-card h3 { font-size: 15px; }
+        .highlight-box { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 25px; margin: 30px 0; border-radius: 12px; font-weight: 500; font-size: 17px; line-height: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.15); border-right: 5px solid var(--primary); }
+        .highlight-box span { color: #f39c12; font-weight: bold; }
+
+        /* استایل جدول بازارهای مالی */
+        .market-table-wrapper { overflow-x: auto; margin: 30px 0; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .market-table { width: 100%; border-collapse: collapse; text-align: center; min-width: 600px; font-size: 15px; }
+        .market-table th { background-color: #1a1a2e; color: white; padding: 15px; font-weight: bold; border: 1px solid #2c3e50; }
+        .market-table td { padding: 15px; border: 1px solid var(--border); background: white; }
+        .market-table tr:nth-child(even) td { background-color: var(--bg-light); }
+        .market-table .green { color: #27ae60; font-weight: bold; direction: ltr; display: inline-block; }
+        .market-table .red { color: #c0392b; font-weight: bold; direction: ltr; display: inline-block; }
+
+        .tag-cloud { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag { background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 6px; font-size: 13px; text-decoration: none; transition: 0.3s; }
+        .tag:hover { background: var(--primary); color: white; }
+
+        @media (max-width: 768px) { 
+            .article-container { margin: 15px; border-radius: 12px; } 
+            .article-title { font-size: 24px; } 
+            .article-body { padding: 25px; } 
+            .article-text { font-size: 15px; }
+            .article-text h2 { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>📊 گزارش کامل بورس آمریکا</h1>
-        <div class="header-meta">
-            <div>📅 <span class="date">یکشنبه ۱۳ سپتامبر ۲۰۲۶</span> | آخرین بروزرسانی: دوشنبه ۱۴ سپتامبر ۲۰۲۶</div>
-            <div>✍️ نویسنده: <span class="author">محمد امین رادمانی</span> | تحلیل اختصاصی تیم گلهای رنگارنگ</div>
-        </div>
+    <header class="news-header">
+        <div style="font-weight: bold; font-size: 16px;">گلهای رنگارنگ | بخش بورس و اقتصاد جهانی</div>
+        <a href="index.html" class="back-btn">بازگشت به خانه ➔</a>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
-
-        <!-- شاخص‌ها -->
-        <div class="indices-grid">
-            <div class="index-card">
-                <div class="index-name">داو جونز</div>
-                <div class="index-price">52,573.29</div>
-                <div class="index-change">▲ 509 واحد (+۰.۹۸%)</div>
-                <div class="index-weekly">هفتگی: ۱.۵۷٪-</div>
-            </div>
-            <div class="index-card">
-                <div class="index-name">اس‌اند‌پی ۵۰۰</div>
-                <div class="index-price">7,656.98</div>
-                <div class="index-change">▲ 65 واحد (+۰.۸۶%)</div>
-                <div class="index-weekly">هفتگی: ۰.۸۰٪-</div>
-            </div>
-            <div class="index-card">
-                <div class="index-name">نزدک</div>
-                <div class="index-price">26,333.04</div>
-                <div class="index-change">▲ 251 واحد (+۰.۹۶%)</div>
-                <div class="index-weekly">هفتگی: ۰.۶۶٪-</div>
-            </div>
-        </div>
-
-        <!-- تحلیل کامل -->
-        <div class="analysis-card">
-            <h2>🔍 تحلیل جامع بازار سهام آمریکا - هفته منتهی به ۱۳ سپتامبر ۲۰۲۶</h2>
+    <article class="article-container">
+        <img src="products/wallstreet.jpg" alt="تحلیل وال استریت" class="article-image" onerror="this.style.background='linear-gradient(135deg, #1a1a2e, #c0392b)'; this.removeAttribute('src');">
+        
+        <div class="article-body">
+            <span class="article-category">تحلیل بنیادی و تکنیکال بازار سرمایه</span>
+            <h1 class="article-title">تحلیل جامع و تخصصی بورس وال استریت؛ بررسی روندهای کلان، چرخش سرمایه و چشم‌انداز بازار سهام آمریکا</h1>
             
-            <p>
-                بازار سهام ایالات متحده در هفته‌ای که گذشت، صحنه نبردی پیچیده میان امیدواری‌های ناشی از پیشرفت‌های فناوری و فشارهای فزاینده تورمی و ژئوپلیتیکی بود. این هفته به دلیل تعطیلات رسمی کوتاه‌تر بود، اما تحولات آن به‌قدری سنگین بود که می‌تواند مسیر بازار را برای هفته‌های آینده تعیین کند. سه شاخص اصلی وال‌استریت در روز جمعه ۱۳ سپتامبر با رشدی نزدیک به یک درصد مواجه شدند، اما این رشد نتوانست زخم نزولی هفته را التیام بخشد و در مجموع، هفته‌ای منفی برای سرمایه‌گذاران رقم خورد[reference:0].
-            </p>
+            <div class="article-meta">
+                <span>📅 تاریخ معاملات: ۱۲ و ۱۳ نوامبر ۲۰۲۶ (پنجشنبه و جمعه)</span>
+                <span class="meta-author">✍️ نویسنده: محمد امین رادمانی | تحلیل اختصاصی تیم گلهای رنگارنگ</span>
+            </div>
 
-            <p>
-                شاخص <span class="highlight">داو جونز صنعتی</span> در جلسه پایانی هفته با جهش ۵۰۹ واحدی معادل ۰.۹۸ درصد به سطح ۵۲,۵۷۳.۲۹ واحد رسید. شاخص <span class="highlight">اس‌اند‌پی ۵۰۰</span> نیز با افزایش ۶۵ واحدی (۰.۸۶ درصد) در سطح ۷,۶۵۶.۹۸ واحد بسته شد و شاخص فناوری‌محور <span class="highlight">نزدک</span> با رشد ۲۵۱ واحدی معادل ۰.۹۶ درصد به ۲۶,۳۳۳.۰۴ واحد رسید. با این حال، در مجموع هفته، داو جونز ۱.۵۷ درصد، اس‌اند‌پی ۵۰۰ ۰.۸۰ درصد و نزدک ۰.۶۶ درصد افت کردند[reference:1].
-            </p>
+            <div class="article-text">
+                <p>بازار سهام ایالات متحده (Wall Street) طی دو روز معاملاتی گذشته، در روزهای ۱۲ و ۱۳ نوامبر ۲۰۲۶، شاهد یکی از پیچیده‌ترین تقابل‌های جریان نقدینگی (Money Flow) در سال جاری بود. بازاری که از یک سو تحت تأثیر داده‌های متناقض اقتصاد کلان و سیاست‌های پولی فدرال رزرو قرار دارد و از سوی دیگر، سایه سنگین تنش‌های ژئوپلیتیک جهانی و اخبار شوکه‌کننده شرکتی را بر سر خود احساس می‌کند. در این گزارش جامع، به کالبدشکافی دقیق عملکرد شاخص‌های کلیدی، بررسی چرخش سرمایه‌گذاری بین صنایع (Sector Rotation)، وضعیت بازار اوراق قرضه، و تحلیل تکنیکال شاخص‌ها پرداخته‌ایم.</p>
 
-            <h3>📈 عوامل محرک رشد روز جمعه</h3>
-            <p>
-                رشد روز جمعه عمدتاً ناشی از کاهش نسبی قیمت نفت و بازگشت آرامش موقت به بازار انرژی بود. پس از آنکه قیمت نفت برنت در طول هفته به بالای ۱۰۴ دلار در هر بشکه رسیده بود، روز جمعه با کاهش ۲.۸ درصدی به ۱۰۴.۶۱ دلار رسید و همین موضوع به کاهش نگرانی‌ها درباره فشارهای تورمی کمک کرد[reference:2][reference:3]. هم‌زمان، بخش فناوری با انتشار اخبار مثبت از سوی شرکت‌های بزرگ، توانست نقش پیشران بازار را ایفا کند. سهام متا (Meta) با رشد ۵ درصدی در طول هفته، پیشتاز شاخص نزدک بود； این رشد پس از معرفی مدل هوش مصنوعی "Muse Spark 1.3" و دستیار شخصی "Muse" که در پلتفرم‌های اجتماعی این شرکت با ۳.۶ میلیارد کاربر فعال روزانه ادغام شده، رخ داد[reference:4]. سهام اپل (Apple) نیز با معرفی گوشی تاشوی "iPhone Duo" با قیمت پایه ۱۹۹۹ دلار و ارتقاء سیستم دستیار صوتی Siri، توانست اعتماد سرمایه‌گذاران را جلب کند[reference:5].
-            </p>
+                <div class="highlight-box">
+                    <span>چکیده استراتژیک بازار:</span> تلاقی قیمت نفت ۹۶ دلاری با اخبار پرالتهاب حوزه تکنولوژی، موجب خروج پول هوشمند (Smart Money) از سهام رشد‌محور (Growth) و ورود آن به سهام ارزش‌محور (Value) و کالاپایه (Commodities) شده است. شاخص VIX (سنجش ترس) با ثبت رشد محسوس، نشان‌دهنده افزایش سطح احتیاط میان معامله‌گران نهادی است.
+                </div>
 
-            <h3>📉 عوامل فشار در مجموع هفته</h3>
-            <p>
-                با وجود رشد روز جمعه، بازار در مجموع هفته را نزولی به پایان رساند. دلیل اصلی این امر، انتشار داده‌های تورمی ناامیدکننده در روزهای میانی هفته بود. شاخص قیمت مصرف‌کننده (CPI) در ماه اوت نشان داد که تورم سالانه به <span class="danger">۳.۴ درصد</span> رسیده و تورم هسته نیز با رشد ۰.۳ درصدی ماهانه، بالاتر از انتظارات بازار بوده است[reference:6]. این داده‌ها نگرانی‌ها درباره ادامه سیاست‌های انقباضی فدرال رزرو را به‌شدت تشدید کرد.
-            </p>
-            <ul>
-                <li><strong>شاخص قیمت تولیدکننده (PPI):</strong> نیز با رشد ۰.۴ درصدی ماهانه، بالاتر از انتظار بود و نشان‌دهنده چسبندگی تورم در سطوح تولیدی است[reference:7].</li>
-                <li><strong>بازده اوراق قرضه:</strong> نرخ بازده اوراق ده‌ساله خزانه‌داری آمریکا به <span class="danger">۴.۹۶ درصد</span> رسید که نزدیک‌ترین سطح به ۵ درصد از اکتبر ۲۰۲۳ تاکنون است[reference:8][reference:9]. این افزایش نرخ بازده، فشار نزولی قابل توجهی بر سهام شرکت‌های رشد وارد کرد.</li>
-                <li><strong>خروج سرمایه:</strong> صندوق‌های ETF سهامی آمریکا شاهد خروج ۴.۵ میلیارد دلاری در پی انتظار افزایش نرخ بهره بودند[reference:10].</li>
-            </ul>
+                <h2>۱. نمای کلی بازار و عملکرد شاخص‌های کلیدی</h2>
+                <p>در پایان معاملات روز جمعه ۱۳ نوامبر، واگرایی آشکاری میان شاخص‌های اصلی بازار دیده شد. در حالی که شاخص داوجونز به لطف شرکت‌های صنعتی و انرژی توانست از ریزش جلوگیری کند، شاخص تکنولوژی‌محور نزدک تحت فشار فروش سنگینی قرار گرفت.</p>
 
-            <h3>🏦 سیاست پولی فدرال رزرو</h3>
-            <p>
-                با توجه به داده‌های تورمی اخیر، انتظارات بازار درباره اقدام بعدی فدرال رزرو به‌طور چشمگیری تغییر کرده است. ابزار FedWatch که احتمال تغییرات نرخ بهره را محاسبه می‌کند، اکنون <span class="danger">۸۷ تا ۹۰ درصد احتمال</span> برای افزایش ۲۵ واحد پایه‌ای نرخ بهره در نشست ۱۵-۱۶ سپتامبر را نشان می‌دهد. این در حالی است که پیش از انتشار داده‌های تورم، این احتمال حدود ۵۸ تا ۷۰ درصد بود[reference:11][reference:12][reference:13].
-            </p>
-            <p>
-                کوین وارش، رئیس فدرال رزرو، در اظهاراتی تأکید کرد که بانک مرکزی به داده‌ها وابسته خواهد بود و تصمیم‌گیری بر اساس شرایط اقتصادی پیش‌رو انجام می‌شود. تحلیلگران مؤسسه SEB پیش‌بینی کرده‌اند که فدرال رزرو در نشست سپتامبر نرخ بهره را ۲۵ واحد پایه افزایش خواهد داد و به محدوده ۳.۷۵ تا ۴.۰۰ درصد خواهد رساند. این مؤسسه همچنین احتمال می‌دهد که فدرال رزرو در سال ۲۰۲۷ اقدام به کاهش نرخ بهره کند[reference:14][reference:15]. گلدمن ساکس و جی‌پی مورگان نیز پیش‌بینی‌های خود را به سمت افزایش نرخ بهره در سپتامبر اصلاح کرده‌اند[reference:16].
-            </p>
+                <div class="market-table-wrapper">
+                    <table class="market-table">
+                        <thead>
+                            <tr>
+                                <th>شاخص بازار (Index)</th>
+                                <th>مقدار بسته شدن</th>
+                                <th>تغییرات (روزانه)</th>
+                                <th>وضعیت تکنیکال (کوتاه‌مدت)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S&P 500 (SPX)</td>
+                                <td>5,482.30</td>
+                                <td class="red">- 0.85% ▼</td>
+                                <td>آزمایش حمایت میانگین ۵۰ روزه</td>
+                            </tr>
+                            <tr>
+                                <td>Nasdaq 100 (NDX)</td>
+                                <td>18,145.60</td>
+                                <td class="red">- 1.62% ▼</td>
+                                <td>فشار فروش / اشباع خرید در RSI</td>
+                            </tr>
+                            <tr>
+                                <td>Dow Jones (DJI)</td>
+                                <td>41,320.15</td>
+                                <td class="green">+ 0.25% ▲</td>
+                                <td>تثبیت بالای سطح مقاومتی</td>
+                            </tr>
+                            <tr>
+                                <td>شاخص ترس (VIX)</td>
+                                <td>19.85</td>
+                                <td class="green">+ 8.40% ▲</td>
+                                <td>ورود به محدوده هشدار نوسان</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <h3>🌍 تنش‌های ژئوپلیتیکی و بازار نفت</h3>
-            <p>
-                یکی از عوامل کلیدی که بازارهای مالی را در هفته گذشته به‌شدت تحت تأثیر قرار داد، افزایش تنش‌های ژئوپلیتیکی در منطقه خاورمیانه بود. حمله پهپادی به خط لوله شرق به غرب عربستان (East-West Pipeline) که روزانه ۴ تا ۵ میلیون بشکه نفت را منتقل می‌کند، باعث تعطیلی موقت این خط لوله حیاتی شد. این خط لوله که معادل <span class="highlight">۴ تا ۵ درصد</span> از عرضه جهانی نفت را جابجا می‌کند， به عنوان مسیر جایگزین تنگه هرمز عمل می‌کرد که خود به دلیل درگیری‌ها تقریباً بسته شده است[reference:17][reference:18][reference:19].
-            </p>
-            <p>
-                هم‌زمان، گزارش‌ها از حمله به یک شناور در تنگه هرمز و آتش‌سوزی آن منتشر شد. آژانس امنیت دریایی UKMTO وابسته به نیروی دریایی بریتانیا اعلام کرد که یک شناور در حال حرکت در تنگه هرمز مورد اصابت پرتابه قرار گرفته است[reference:20][reference:21]. حجم تردد روزانه تانکرها در تنگه هرمز از میانگین ۱۵ فروند به تنها ۷ فروند کاهش یافته است؛ موضوعی که نگرانی‌ها درباره اختلال در عرضه انرژی را به‌شدت افزایش داده است[reference:22].
-            </p>
-            <p>
-                محمد بن سلمان، ولیعهد عربستان سعودی، در تماس تلفنی با دونالد ترامپ درخواست کمک نظامی برای مقابله با حملات حوثی‌ها را مطرح کرد. گزارش‌ها حاکی از آن است که واشینگتن فعلاً تمایلی به مداخله مستقیم ندارد اما کمک‌های اطلاعاتی ارائه خواهد کرد[reference:23]. قیمت نفت برنت در طول هفته به بالای ۱۰۴ دلار در هر بشکه رسید که بالاترین سطح در چهار ماه اخیر است و قیمت دیزل خرده‌فروشی در آمریکا برای اولین بار از مرز ۶ دلار در هر گالن عبور کرد[reference:24][reference:25].
-            </p>
+                <h2>۲. تأثیر ژئوپلیتیک و سیاست بر وال استریت</h2>
+                <p>بازارهای مالی به شدت به اخبار ژئوپلیتیک واکنش نشان دادند. قیمت نفت برنت با عبور از مرز روانی <strong>۹۶ دلار در هر بشکه</strong>، زنگ خطر تورم وارداتی (Imported Inflation) را برای اقتصادهای غربی به صدا درآورده است. این افزایش قیمت نفت مستقیماً ریشه در دو رویداد مهم دارد:</p>
+                <ul>
+                    <li><strong>تنش در شرق اروپا:</strong> گزارش‌های رسمی وزارت دفاع روسیه مبنی بر هدف قرار گرفتن یک کشتی باری در دریای سیاه (جنوب غربی اودیسا)، ریسک اختلال در زنجیره تأمین جهانی و حمل و نقل دریایی را به شدت افزایش داد.</li>
+                    <li><strong>خاورمیانه و تغییرات دیپلماتیک:</strong> گلوله‌باران جنوب لبنان توسط توپخانه اسرائیل، سطح ریسک در خاورمیانه را بالا نگه داشته است. با این حال، داده‌های بازار پیش‌بینی Polymarket نشان می‌دهد احتمال حمله گسترده آمریکا به ایران تا پایان سال ۲۰۲۶ به <strong>۹ درصد</strong> کاهش یافته است. انتصاب مارکو روبیو توسط ترامپ برای هدایت مذاکرات احتمالی با ایران و تمرکز ترامپ بر "بستن پرونده کوبا قبل از ترک کاخ سفید"، نشان از یک تغییر استراتژی در سیاست خارجی آمریکا دارد که بازارها آن را به عنوان عاملی برای کاهش ریسک سیستماتیک ارزیابی کرده‌اند.</li>
+                </ul>
 
-            <h3>💼 عملکرد بخش‌های مختلف بازار</h3>
-            <table class="data-table">
-                <tr>
-                    <th>بخش</th>
-                    <th>عملکرد هفتگی</th>
-                </tr>
-                <tr>
-                    <td>⚡ انرژی</td>
-                    <td class="positive">+۲.۱٪</td>
-                </tr>
-                <tr>
-                    <td>🖥️ سخت‌افزار و تجهیزات فناوری</td>
-                    <td class="positive">+۳.۴٪</td>
-                </tr>
-                <tr>
-                    <td>🚗 خودرو و قطعات</td>
-                    <td class="positive">+۲.۴٪</td>
-                </tr>
-                <tr>
-                    <td>📺 رسانه و سرگرمی</td>
-                    <td class="positive">+۱.۲٪</td>
-                </tr>
-                <tr>
-                    <td>🍔 غذا و نوشیدنی</td>
-                    <td class="positive">+۰.۸٪</td>
-                </tr>
-                <tr>
-                    <td>🏦 مالی و بانکی</td>
-                    <td class="negative">-۰.۸٪</td>
-                </tr>
-                <tr>
-                    <td>💻 نرم‌افزار و خدمات</td>
-                    <td class="negative">-۱.۰٪</td>
-                </tr>
-                <tr>
-                    <td>🏭 صنعتی</td>
-                    <td class="negative">-۲.۲٪</td>
-                </tr>
-                <tr>
-                    <td>💊 دارو و زیست‌فناوری</td>
-                    <td class="negative">-۳.۴٪</td>
-                </tr>
-                <tr>
-                    <td>🛎️ خدمات مصرفی</td>
-                    <td class="negative">-۴.۳٪</td>
-                </tr>
-            </table>
-            <p>
-                همان‌طور که مشاهده می‌شود، بخش‌های سخت‌افزار فناوری و انرژی عملکرد بهتری داشتند، در حالی که بخش‌های خدمات مصرفی و دارو تحت فشار شدید قرار گرفتند. گزارش‌ها نشان می‌دهد که سرمایه‌گذاران در حال چرخش از سهام شرکت‌های کوچک به سمت سهام شرکت‌های بزرگ و کم‌ریسک‌تر هستند[reference:26]. شاخص دلار نیز با رشد ۰.۳ درصدی به ۹۹.۴۵ رسید که نشان‌دهنده تقاضای بالای سرمایه‌گذاران برای دارایی‌های امن است[reference:27].
-            </p>
+                <h2>۳. چرخش سرمایه (Sector Rotation) و کالبدشکافی صنایع</h2>
+                <p>در روزهای ۱۲ و ۱۳ نوامبر، پدیده چرخش سرمایه از بخش فناوری به بخش‌های تدافعی و انرژی بسیار مشهود بود.</p>
+                
+                <h3>الف) بخش انرژی (Energy Sector - XLE)</h3>
+                <p>با تثبیت نفت بالای ۹۶ دلار، صندوق قابل معامله بخش انرژی (XLE) رشد خیره‌کننده‌ای را ثبت کرد. شرکت‌هایی نظیر <em>ExxonMobil (XOM)</em> و <em>Chevron (CVX)</em> شاهد ورود حجم بالایی از نقدینگی بودند. حاشیه سود (Profit Margin) این شرکت‌ها در سه‌ماهه چهارم با این قیمت نفت، می‌تواند برآوردهای تحلیلگران را به راحتی پشت سر بگذارد.</p>
 
-            <h3>💱 بازار اوراق قرضه و نرخ بازده</h3>
-            <p>
-                نرخ بازده اوراق قرضه ده‌ساله خزانه‌داری آمریکا در هفته گذشته با نوسان قابل توجهی همراه بود و در نهایت در سطح <span class="danger">۴.۹۶ درصد</span> بسته شد. این سطح، نزدیک‌ترین سطح به ۵ درصد از اکتبر ۲۰۲۳ تاکنون است[reference:28][reference:29]. افزایش نرخ بازده، معمولاً فشار نزولی بر قیمت سهام شرکت‌های رشد وارد می‌کند؛ زیرا هزینه سرمایه‌گذاری را بالا می‌برد.
-            </p>
-            <p>
-                عملیات خرید مجدد اوراق قرضه (Buyback) توسط وزارت خزانه‌داری نیز با استقبال ضعیف بازار مواجه شد. دولت آمریکا تنها ۵.۲ میلیارد دلار از اوراق را خریداری کرد، در حالی که سقف ۶ میلیارد دلار و پیشنهاد ۱۰.۵ میلیارد دلاری وجود داشت. این موضوع نشان‌دهنده عدم تمایل سرمایه‌گذاران به فروش اوراق با قیمت‌های فعلی است[reference:30][reference:31].
-            </p>
+                <h3>ب) بخش تکنولوژی و هوش مصنوعی (Tech & AI - XLK)</h3>
+                <p>بخش فناوری که موتور محرک اصلی بازار در سال‌های اخیر بوده است، روزهای تلخی را تجربه کرد. علاوه بر فشار نرخ بهره، یک شوک خبری مختص به شرکت‌ها (Corporate News Shock) نیز به این بخش ضربه زد. انتشار گزارش ایندیپندنت مبنی بر احتمال طلاق مدیرعامل مستعفی شرکت انویدیا (Nvidia) و تبدیل شدن آن به یکی از بزرگ‌ترین پرونده‌های طلاق تاریخ فناوری، موجی از نگرانی را در میان سهامداران ایجاد کرد. ترس از نقد کردن بلوک‌های بزرگ سهام توسط خانواده وی برای تسویه مالی، باعث شد سهام انویدیا با فشار فروش (Sell-off) مواجه شود و این ترس به کل صنعت نیمه‌هادی‌ها سرایت کند.</p>
 
-            <h3>📊 عوامل کلیدی پیش‌رو</h3>
-            <p>
-                سرمایه‌گذاران در هفته‌های آینده باید به چند عامل مهم توجه داشته باشند:
-            </p>
-            <ul>
-                <li><strong>نشست فدرال رزرو (۱۵-۱۶ سپتامبر):</strong> تصمیم درباره نرخ بهره و اظهارات کوین وارش می‌تواند مسیر بازار را تعیین کند. اکثر تحلیلگران انتظار افزایش ۲۵ واحد پایه‌ای را دارند.</li>
-                <li><strong>داده‌های تورم PCE:</strong> که در ۳۰ سپتامبر منتشر می‌شود و آخرین داده تورمی قبل از تصمیم‌گیری فدرال رزرو است.</li>
-                <li><strong>فصل گزارش‌های مالی سه‌ماهه سوم:</strong> که از اوایل اکتبر آغاز می‌شود و انتظار می‌رود رشد متوسطی را نشان دهد.</li>
-                <li><strong>تحولات ژئوپلیتیکی:</strong> به ویژه وضعیت تنگه هرمز، خط لوله شرق به غرب عربستان و مذاکرات صلح خاورمیانه.</li>
-                <li><strong>قیمت نفت:</strong> که مستقیماً بر انتظارات تورمی تأثیر می‌گذارد. قیمت برنت در محدوده ۱۰۴ دلار می‌تواند فشار تورمی قابل توجهی ایجاد کند.</li>
-                <li><strong>نشست برنامه‌ریزی‌شده ایران و کشورهای خلیج فارس:</strong> درباره وضعیت تنگه هرمز که به تعویق افتاده است.</li>
-            </ul>
+                <h3>ج) بخش مالی و بانکی (Financials - XLF)</h3>
+                <p>بانک‌های بزرگ نظیر JPMorgan و Bank of America در این دو روز عملکردی خنثی متمایل به مثبت داشتند. شیب منحنی بازده اوراق قرضه (Yield Curve) در حال خروج از حالت وارونگی (Inversion) است که می‌تواند حاشیه سود خالص بهره (NIM) بانک‌ها را در میان‌مدت بهبود بخشد.</p>
 
-            <h3>🎯 چشم‌انداز کوتاه‌مدت</h3>
-            <p>
-                با توجه به شرایط فعلی، به نظر می‌رسد بازار سهام آمریکا در کوتاه‌مدت با نوسان بالایی همراه باشد. از یک سو، داده‌های اقتصادی قوی و گزارش‌های مالی خوب شرکت‌ها می‌تواند از بازار حمایت کند و از سوی دیگر، فشارهای تورمی و انتظار برای افزایش نرخ بهره می‌تواند مانع رشد پایدار شود.
-            </p>
-            <p>
-                سطح حمایتی مهم برای شاخص اس‌اند‌پی ۵۰۰ در محدوده <span class="highlight">۷,۵۰۰ واحد</span> و سطح مقاومتی در محدوده <span class="highlight">۷,۷۵۰ واحد</span> قرار دارد. شکست هر یک از این سطوح می‌تواند حرکت بعدی بازار را مشخص کند. شاخص VIX (نوسان‌پذیری) در سطح ۱۵.۸۴ قرار دارد که نشان‌دهنده نگرانی متوسط سرمایه‌گذاران است[reference:32].
-            </p>
-            <p>
-                سرمایه‌گذاران باید با احتیاط عمل کنند و بر تنوع‌بخشی سبد سرمایه‌گذاری خود تمرکز نمایند. با توجه به شرایط کنونی، بخش‌های دفاعی مانند انرژی، بهداشت و مصرفی ضروری می‌توانند گزینه‌های کم‌ریسک‌تری باشند. همچنین، توجه به اخبار مربوط به تنش‌های ژئوپلیتیکی و تأثیر آن بر بازار نفت، از اهمیت بالایی برخوردار است.
-            </p>
+                <h2>۴. تحلیل تکنیکال و روان‌شناسی بازار</h2>
+                <p>از منظر تکنیکال کلاسیک، شاخص <strong>S&P 500</strong> در تایم‌فریم روزانه در حال تشکیل یک الگوی سقف دوقلو (Double Top) در حوالی محدوده ۵,۵۰۰ واحد است. شکسته شدن حمایت داینامیک میانگین متحرک ۲۰ روزه (20-EMA) زنگ خطری برای گاوهای بازار (خریداران) است.</p>
+                <ul>
+                    <li><strong>اندیکاتور RSI:</strong> در شاخص نزدک، RSI به زیر سطح ۵۰ سقوط کرده که نشان‌دهنده تغییر مومنتوم از صعودی به نزولی در کوتاه‌مدت است.</li>
+                    <li><strong>حجم معاملات (Volume):</strong> حجم معاملات در کندل‌های نزولی روز جمعه به طرز چشمگیری بالاتر از میانگین ۳۰ روزه بود، که تایید می‌کند نهادهای مالی بزرگ در حال توزیع (Distribution) و سیو سود هستند.</li>
+                    <li><strong>بازار آپشن (Options Market):</strong> نسبت Put/Call (نسبت قراردادهای فروش به خرید) به عدد ۱.۱۵ رسیده است. این یعنی سرمایه‌گذاران در حال خرید بیمه سبد سهام (پوت آپشن) برای محافظت از دارایی‌های خود در برابر ریزش‌های احتمالی در ماه دسامبر هستند.</li>
+                </ul>
+
+                <h2>۵. جمع‌بندی، استراتژی پیشنهادی و مدیریت ریسک</h2>
+                <p>بازار بورس آمریکا اکنون در یک دوراهی مهم قرار دارد. از یک سو، اقتصاد نشانه‌هایی از مقاومت نشان می‌دهد و از سوی دیگر، نفت ۹۶ دلاری می‌تواند تورم را مجدداً بیدار کرده و امیدها برای کاهش سریع نرخ بهره توسط فدرال رزرو را نقش بر آب کند. بن‌بست در مذاکرات دیپلماتیک (طبق گزارش NBC) نیز عنصر عدم قطعیت را در بازار نگه داشته است.</p>
+                
+                <h3>توصیه‌های کاربردی برای سرمایه‌گذاران (Portfolio Allocation):</h3>
+                <ol>
+                    <li><strong>افزایش وزن نقدینگی (Cash Position):</strong> پیشنهاد می‌شود سرمایه‌گذاران حداقل ۱۵ تا ۲۰ درصد از پرتفوی خود را نقد نگه دارند تا در صورت اصلاح عمیق‌تر بازار، قدرت خرید در کف‌های قیمتی (Buy the Dip) را داشته باشند.</li>
+                    <li><strong>تخصیص در بخش‌های تدافعی:</strong> افزایش وزن شرکت‌های حوزه سلامت (Healthcare) و کالاهای مصرفی ضروری (Consumer Staples) که ضریب بتای (Beta) کمتری نسبت به شاخص کل دارند.</li>
+                    <li><strong>پوشش ریسک تورم:</strong> نگهداری بخشی از دارایی در صندوق‌های مرتبط با انرژی و طلای فیزیکی جهت پوشش ریسک ناشی از تنش‌های خاورمیانه و شرق اروپا.</li>
+                </ol>
+
+            </div>
+
+            <!-- کلمات کلیدی (تگ‌ها) -->
+            <div class="tag-cloud">
+                <a href="#" class="tag">#وال_استریت</a>
+                <a href="#" class="tag">#نفت_برنت</a>
+                <a href="#" class="tag">#انویدیا</a>
+                <a href="#" class="tag">#تحلیل_فاندامنتال</a>
+                <a href="#" class="tag">#ژئوپلیتیک</a>
+                <a href="#" class="tag">#فدرال_رزرو</a>
+                <a href="#" class="tag">#گلهای_رنگارنگ</a>
+            </div>
+
         </div>
-
-        <!-- خلاصه نهایی -->
-        <div class="summary-box">
-            <h3>📌 خلاصه نکات کلیدی</h3>
-            <ul>
-                <li>✅ رشد هماهنگ هر سه شاخص اصلی وال‌استریت در روز جمعه (حدود ۱ درصد)</li>
-                <li>⚠️ عملکرد هفتگی نزولی به دلیل داده‌های تورمی ناامیدکننده</li>
-                <li>🔺 احتمال ۸۷ تا ۹۰ درصدی افزایش نرخ بهره در نشست سپتامبر فدرال رزرو</li>
-                <li>🛢️ قیمت نفت برنت در محدوده ۱۰۴ دلار؛ بسته شدن خط لوله شرق به غرب عربستان</li>
-                <li>📉 نرخ بازده اوراق ده‌ساله در سطح ۴.۹۶ درصد (نزدیک به ۵ درصد)</li>
-                <li>💵 شاخص دلار در سطح ۹۹.۴۵ (تقاضای بالا برای دارایی‌های امن)</li>
-                <li>🔄 چرخش سرمایه‌گذاران به سمت بخش‌های دفاعی و سهام شرکت‌های بزرگ</li>
-                <li>📊 در انتظار نشست فدرال رزرو در ۱۵-۱۶ سپتامبر</li>
-            </ul>
-        </div>
-
-        <!-- هشدار ریسک -->
-        <div class="risk-box">
-            <strong>⚠️ هشدار ریسک:</strong> این گزارش صرفاً جنبه تحلیلی و اطلاع‌رسانی دارد و به هیچ عنوان توصیه سرمایه‌گذاری محسوب نمی‌شود. سرمایه‌گذاران باید با توجه به سطح ریسک‌پذیری خود و مشاوره با متخصصان مالی، تصمیمات سرمایه‌گذاری خود را اتخاذ کنند. بازارهای مالی ذاتاً پرنوسان هستند و احتمال از دست دادن سرمایه وجود دارد.
-        </div>
-
-        <!-- امضای نویسنده -->
-        <div class="author-box">
-            <strong>✍️ نویسنده: محمد امین رادمانی</strong>
-            <br>
-            تحلیل اختصاصی تیم گلهای رنگارنگ | آخرین بروزرسانی: دوشنبه ۱۴ سپتامبر ۲۰۲۶
-        </div>
-    </div>
-
-    <footer>
-        گلهای رنگارنگ 2026 (c) - تحلیل اختصاصی بورس
-    </footer>
+    </article>
 
 </body>
 </html>
